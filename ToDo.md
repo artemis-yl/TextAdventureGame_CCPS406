@@ -12,7 +12,7 @@ Update each week what we need to do, who does it, etc.
   - Artemis (Yulim Lee)
   - Long
   - Adnan Ali
-  - ?
+  - Yamah Jaleel
 - Set up Github
 - Settle on programming language
   - Python3 + JSON   
