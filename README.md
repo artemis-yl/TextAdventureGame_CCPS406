@@ -8,8 +8,11 @@ To be coded in Python, and likely use JSON, as suggested by the Prof.
 fill this in more later...
 
 **TERM/DATE:** Fall 2023 (i.e. 15/9/23 - 8(?)/12/23)
-**STUDENTS:**
+
+**STUDENTS:** Yulim (Artemis) Lee, Yamah Jaleel, Adnan Ali, Benis(?)
+
 **COURSE:** CCPS406 : Introduction to Software Engineering
+
 **PROFESSOR:** Ilkka Kokkarinen
 
 **LANGUAGE:** Python3 + JSON
