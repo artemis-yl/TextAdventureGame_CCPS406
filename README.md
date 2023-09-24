@@ -9,7 +9,7 @@ fill this in more later...
 
 **TERM/DATE:** Fall 2023 (i.e. 15/9/23 - 8(?)/12/23)
 
-**STUDENTS:** Yulim (Artemis) Lee, Yamah Jaleel, Adnan Ali, Benis(?)
+**STUDENTS:** Yulim (Artemis) Lee, Yamah Jaleel, Adnan Ali, Nick Pavlasek (Benis)
 
 **COURSE:** CCPS406 : Introduction to Software Engineering
 
