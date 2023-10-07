@@ -25,4 +25,6 @@ In particular, "Getting started with Git" and "Using Git" to handle pushing/pull
 
 [Github markdown cheatsheet aka the .md files](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links)
 
+[BLACK](https://github.com/psf/black) : this is a code style enforcer so we don't have to spend energy dealing with it
+
 
