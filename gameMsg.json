@@ -1,0 +1,18 @@
+{
+    "introduction" : "in a galaxy far, far away...",
+    "youDied" : "you died lol",
+    "youWinMinimal" : "you won the most basic objectives",
+    "youWinBestEnding" : "oyu won, everyone lives, enemy dead, yay",
+    "commandList" : ["MOVE, ATTACK"],
+    "availableCommands" :  {
+        "MOVE" : {
+            "success" : "you moved",
+            "failure" : "you didn't move"
+        },
+        "ATTACK" : {
+            "success" : "you attacked blah",
+            "failure" : "with what you idiot"
+
+        }
+    }
+}
