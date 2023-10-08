@@ -3,7 +3,7 @@
         "name" : "puzzle example",
         "stateDescriptions" : {
             "unsolved" : "an example puzzle for JSON formatting purposes",
-            "solved" : "tho, maybe this should be a list??? who knows"
+            "solved" : "tho, maybe this should be a list??? but ah, we want to use the (un)solved keywords"
         },
         "initialState": "unsolved",
         "key" : "keyItemName",

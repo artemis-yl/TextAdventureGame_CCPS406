@@ -1,5 +1,13 @@
 {
    "chara" : {
-       "name" : "asdsadsa"
+       "name" : "NPC1",
+       "stateDescriptions" : {
+            "alive" : "it's aliiiiive!",
+            "dead" : "RIP",
+            "imprisoned" : "since we have a jail"
+       },
+       "initialState" : "alive",
+       "initialInventory" : ["item1", "item2", "etc"],
+       "puzzleList" : ["puzzleObj1", "puzzleObj2"]
    }
 }
