@@ -1,8 +1,23 @@
 {
     "puzzle1" : {
-        "name" : "asdsad"
-    }
+        "name" : "puzzle example",
+        "stateDescriptions" : {
+            "unsolved" : "an example puzzle for JSON formatting purposes",
+            "solved" : "tho, maybe this should be a list??? who knows"
+        },
+        "initialState": "unsolved",
+        "key" : "keyItemName",
+        "keyVerb" : "USE"
+    },
 
     "door1" : {
+        "name": "door object/puzzle example",
+        "stateDescriptions": {
+            "unsolved": "some doors will start out unsolved AKA locked",
+            "solved": "others however will start open and stay open. but we can add a mechanic to lock doors later"
+        },
+        "initialState": "unsolved",
+        "key": "anActualKeyName",
+        "keyVerb": "UNLOCK"
     }
 }
