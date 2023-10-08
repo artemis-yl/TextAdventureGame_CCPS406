@@ -1,10 +1,28 @@
 {
-    "item1" : {
-        "name" : "random item",
-        "stateDescriptions" : {
-            "working" : "this item works and can be used",
-            "notWorking" : "this item has broken, or been used all up"
+    "items": [
+        {
+            "name": "random item",
+            "stateDescriptions": {
+                "working": "this item works and can be used",
+                "notWorking": "this item has broken, or been used all up"
+            },
+            "initialState": "working"
         },
-        "initialState" : "working"
-    }
+        {
+            "name": "Blaster",
+            "state_descriptions": {
+                "working": "Pew Pew",
+                "notWorking": "this item has broken, or been used all up"
+            },
+            "initial_state": "working"
+        },
+        {
+            "name": "Beam Saber",
+            "state_descriptions": {
+                "working": "this item works and can be used",
+                "notWorking": "this item has broken, or been used all up"
+            },
+            "initial_state": "working"
+        }
+    ]
 }

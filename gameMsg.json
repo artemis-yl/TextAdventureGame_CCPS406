@@ -1,17 +1,17 @@
 {
-    "introduction" : "in a galaxy far, far away...",
-    "youDied" : "you died lol",
-    "youWinMinimal" : "you won the most basic objectives",
-    "youWinBestEnding" : "oyu won, everyone lives, enemy dead, yay",
+    "introduction" : "In a galaxy far, far away...",
+    "youDied" : "You died.",
+    "youWinMinimal" : "You won the most basic objectives. A success is a success, but don't you think you could do better?",
+    "youWinBestEnding" : "You won! Everyone lives, the enemy is dead, everything that could be done is done!",
     "commandList" : ["MOVE, ATTACK"],
     "availableCommands" :  {
         "MOVE" : {
-            "success" : "you moved",
-            "failure" : "you didn't move"
+            "success" : "You moved to <>",
+            "failure" : "You can't move there. "
         },
         "ATTACK" : {
-            "success" : "you attacked blah",
-            "failure" : "with what you idiot"
+            "success" : "You attacked <> with your <>!",
+            "failure" : "You failed to attack <>."
 
         }
     }
