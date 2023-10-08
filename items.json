@@ -1,5 +1,10 @@
 {
     "item1" : {
-        "name" : "iasndkjhas"
+        "name" : "random item",
+        "stateDescriptions" : {
+            "working" : "this item works and can be used",
+            "notWorking" : "this item has broken, or been used all up"
+        },
+        "initialState" : "working"
     }
 }
