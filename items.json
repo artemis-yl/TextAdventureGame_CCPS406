@@ -14,7 +14,7 @@
                 "working": "Pew Pew",
                 "notWorking": "this item has broken, or been used all up"
             },
-            "initial_state": "notWorking"
+            "initial_state": "working"
         },
         {
             "name": "Beam Saber",
