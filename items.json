@@ -6,7 +6,11 @@
                 "working": "this item works and can be used",
                 "notWorking": "this item has broken, or been used all up"
             },
-            "initialState": "working"
+            "initialState": "working",
+            "isWeapon" : true,
+            "isShield" : false,
+            "isTeleporter" : false,
+            "isRevive" : false
         },
         {
             "name": "Blaster",
@@ -14,7 +18,11 @@
                 "working": "Pew Pew",
                 "notWorking": "this item has broken, or been used all up"
             },
-            "initial_state": "working"
+            "initial_state": "working",
+            "isWeapon": true,
+            "isShield": false,
+            "isTeleporter": false,
+            "isRevive" : false
         },
         {
             "name": "Beam Saber",
@@ -22,7 +30,11 @@
                 "working": "this item works and can be used",
                 "notWorking": "this item has broken, or been used all up"
             },
-            "initial_state": "working"
+            "initial_state": "working",
+            "isWeapon": true,
+            "isShield": true,
+            "isTeleporter": false,
+            "isRevive" : false
         }
     ]
 }
