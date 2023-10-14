@@ -8,6 +8,8 @@
                 "imprisoned": "since we have a jail"
             },
             "initialState": "alive",
+            "isActive" : false,
+            "isRoaming" : false,
             "initialInventory": [
                 "item1",
                 "item2",
@@ -21,11 +23,13 @@
         {
             "name": "Lia",
             "state_descriptions": {
-                "alive": "it's aliiiiive!",
+                "alive": "Thank the stars, your friend Lia is alive.",
                 "dead": "So This Is How Liberty Dies - To A Thunderous Applause.",
                 "imprisoned": "Help me Obi-Wan, you're my only hope."
             },
             "initial_state": "imprisoned",
+            "isActive": false,
+            "isRoaming": false,
             "initial_inventory": [
                 "Blaster",
                 "item2",
@@ -44,6 +48,8 @@
                 "imprisoned": "Save me you must, my young Padawan."
             },
             "initial_state": "alive",
+            "isActive": false,
+            "isRoaming": false,
             "initial_inventory": [
                 "Beam Saber",
                 "item2",
