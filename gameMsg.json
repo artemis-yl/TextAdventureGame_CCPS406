@@ -5,9 +5,9 @@
     "youWinBestEnding" : "You won! Everyone lives, the enemy is dead, everything that could be done is done!",
     "commandList" : ["MOVE, ATTACK"],
     "availableCommands" :  {
-        "MOVE" : {
-            "success" : "You moved to <>",
-            "failure" : "You can't move there. "
+        "N" : {
+            "success" : "You moved north to <>",
+            "failure" : "You can't move north. <need to append due to non existing door OR door is locked"
         },
         "ATTACK" : {
             "success" : "You attacked <> with your <>!",
