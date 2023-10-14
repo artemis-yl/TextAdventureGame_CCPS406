@@ -1,10 +1,43 @@
 {
-    "room1" : {
-        "name" : "Example Room",
-        "description" : "a room JSON example",
-        "connectedTo" : ["room2", "room3", "room4", "room5", "room6"],
-        "initialDoorState" :  ["solved", "solved", "unsolved","solved","unsolved"],
-        "associatedDoor" : ["NULL", "NULL", "door1", "NULL", "door2"],  
-        "initalInventory" : ["item1", "item2"]     
+    "room1": {
+        "name": "Example Room",
+        "description": "a room JSON example",
+        "connectedTo": {
+            "N": "room2",
+            "S": "room3",
+            "E": "NULL",
+            "W": "room5"
+        },
+        "associatedDoor": {
+            "N": "door1",
+            "S": "door3",
+            "E": "NULL",
+            "W": "door4"
+        },
+        "initalInventory": [
+            "item1",
+            "item2"
+        ]
+    },
+    "EntranceExit": {
+        "name": "Hanger Bay",
+        "description": "You can see hundreds of black, triangular ships of the Empire. You ship is currently hidden... ADD MORE",
+        "connectedTo": {
+            "N": "NULL",
+            "S": "hallway1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "associatedDoor": {
+            "N": "NULL",
+            "S": "door1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "initalInventory": [
+            "playerCharacter",
+            "hangerKey",
+            "hangerKeyHint"
+        ]
     }
 }
