@@ -59,6 +59,66 @@
                 "puzzleObj1",
                 "puzzleObj2"
             ]
+        },
+	{
+            "name": "Trooper Patrol",
+            "stateDescriptions": {
+                "alive": "Trooper, reporting for duty!",
+                "dead": "We don't get paid enough for this... *Dies*",
+                "imprisoned": "Wait, how did I get in here!?"
+            },
+            "initialState": "alive",
+            "isActive" : true,
+            "isRoaming" : true,
+            "initialInventory": [
+                "Blaster",
+                "item2",
+                "etc"
+            ],
+            "puzzleList": [
+                "puzzleObj1",
+                "puzzleObj2"
+            ]
+        },
+	{
+            "name": "Trooper Guard",
+            "stateDescriptions": {
+                "alive": "Hey, who goes there!?",
+                "dead": "We don't get paid enough for this... *Dies*",
+                "imprisoned": "Wait, how did I get in here!?"
+            },
+            "initialState": "alive",
+            "isActive" : true,
+            "isRoaming" : false,
+            "initialInventory": [
+                "Blaster",
+                "item2",
+                "etc"
+            ],
+            "puzzleList": [
+                "puzzleObj1",
+                "puzzleObj2"
+            ]
+        },
+	{
+            "name": "Dark Father",
+            "stateDescriptions": {
+                "alive": "I have brought peace, freedom, justice and security to my new empire!",
+                "dead": "I have succumbed to your great powers.",
+                "imprisoned": "I think you broke the game."
+            },
+            "initialState": "alive",
+            "isActive" : true,
+            "isRoaming" : false,
+            "initialInventory": [
+                "Beam Saber",
+                "item2",
+                "etc"
+            ],
+            "puzzleList": [
+                "puzzleObj1",
+                "puzzleObj2"
+            ]
         }
     ]
 }

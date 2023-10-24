@@ -35,6 +35,102 @@
             "isShield": true,
             "isTeleporter": false,
             "isRevive" : false
+        },
+	{
+            "name": "Top Secret Data File",
+            "stateDescriptions": {
+                "working": "this item works and can be used",
+                "notWorking": "this item has broken, or been used all up"
+            },
+            "initialState": "working",
+            "isWeapon" : false,
+            "isShield" : false,
+            "isTeleporter" : false,
+            "isRevive" : false
+        },
+	{
+            "name": "Sabotage Device",
+            "stateDescriptions": {
+                "working": "this item works and can be used",
+                "notWorking": "this item has broken, or been used all up"
+            },
+            "initialState": "working",
+            "isWeapon" : false,
+            "isShield" : false,
+            "isTeleporter" : false,
+            "isRevive" : false
+        },
+	{
+            "name": "Jail Key",
+            "stateDescriptions": {
+                "working": "this item works and can be used",
+                "notWorking": "this item has broken, or been used all up"
+            },
+            "initialState": "working",
+            "isWeapon" : false,
+            "isShield" : false,
+            "isTeleporter" : false,
+            "isRevive" : false
+        },
+	{
+            "name": "Boss Room Key",
+            "stateDescriptions": {
+                "working": "this item works and can be used",
+                "notWorking": "this item has broken, or been used all up"
+            },
+            "initialState": "working",
+            "isWeapon" : false,
+            "isShield" : false,
+            "isTeleporter" : false,
+            "isRevive" : false
+        },
+	{
+            "name": "Hangar Door Key",
+            "stateDescriptions": {
+                "working": "this item works and can be used",
+                "notWorking": "this item has broken, or been used all up"
+            },
+            "initialState": "working",
+            "isWeapon" : false,
+            "isShield" : false,
+            "isTeleporter" : false,
+            "isRevive" : false
+        },
+	{
+            "name": "Reactor Room (SabotageRoom) Key",
+            "stateDescriptions": {
+                "working": "this item works and can be used",
+                "notWorking": "this item has broken, or been used all up"
+            },
+            "initialState": "working",
+            "isWeapon" : false,
+            "isShield" : false,
+            "isTeleporter" : false,
+            "isRevive" : false
+        },
+	{
+            "name": "Bacta Injection (Revival Item)",
+            "stateDescriptions": {
+                "working": "this item works and can be used",
+                "notWorking": "this item has broken, or been used all up"
+            },
+            "initialState": "working",
+            "isWeapon" : false,
+            "isShield" : false,
+            "isTeleporter" : false,
+            "isRevive" : false
+        },
+	{
+            "name": "Teleport",
+            "stateDescriptions": {
+                "working": "this item works and can be used",
+                "notWorking": "this item has broken, or been used all up"
+            },
+            "initialState": "working",
+            "isWeapon" : false,
+            "isShield" : false,
+            "isTeleporter" : false,
+            "isRevive" : false
         }
     ]
 }
