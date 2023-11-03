@@ -3,23 +3,23 @@
     "youDied": "You died.",
     "youWinMinimal": "You won the most basic objectives. A success is a success, but don't you think you could do better?",
     "youWinBestEnding": "You won! Everyone lives, the enemy is dead, everything that could be done is done!",
-    "commandList": ["MOVE", "ATTACK", "SCAN", "INVENTORY", "USE", "TAKE", "FIGHT", "LOCATION"],
+    "commandList": ["N", "S", "E", "W", "ATTACK", "SCAN", "INVENTORY", "USE", "TAKE", "FIGHT", "LOCATION"],
     "availableCommands": {
         "N": {
             "success": "You moved north to <>",
-            "failure": "You can't move north to <>"
+            "failure": "You can't move north"
         },
         "S": {
             "success": "You moved south to <>",
-            "failure": "You can't move south to <>"
+            "failure": "You can't move south"
         },
         "E": {
             "success": "You moved east to <>",
-            "failure": "You can't move east to <>"
+            "failure": "You can't move east"
         },
         "W": {
             "success": "You moved west to <>",
-            "failure": "You can't move west to <>"
+            "failure": "You can't move west"
         },
         "ATTACK": {
             "success": "You attacked <> with your <>!",
