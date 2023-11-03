@@ -1,18 +1,53 @@
 {
-    "introduction" : "In a galaxy far, far away...",
-    "youDied" : "You died.",
-    "youWinMinimal" : "You won the most basic objectives. A success is a success, but don't you think you could do better?",
-    "youWinBestEnding" : "You won! Everyone lives, the enemy is dead, everything that could be done is done!",
-    "commandList" : ["MOVE, ATTACK"],
-    "availableCommands" :  {
-        "N" : {
-            "success" : "You moved north to <>",
-            "failure" : "You can't move north. <need to append due to non existing door OR door is locked"
+    "introduction": "A long time ago in a galaxy far, far away... You (the player) have returned to your home planet to enjoy your winter break. Little do you know that the Galactic Empire has secretly begun constructing a new armored space station known as the DS-3 Orbital Battle Station (i.e. Planet Killer 3). Intel has also shown that during your time away, the Empire’s evil leader, Dark Vader, has returned, captured your freedom fighter friend Lia, and plans to thwart your much-deserved vacation by using the Planet Killer to destroy your homeworld. Meanwhile, a mysterious yet friendly Jaydai has already infiltrated DS-3.",
+    "youDied": "You died.",
+    "youWinMinimal": "You won the most basic objectives. A success is a success, but don't you think you could do better?",
+    "youWinBestEnding": "You won! Everyone lives, the enemy is dead, everything that could be done is done!",
+    "commandList": ["MOVE", "ATTACK", "SCAN", "INVENTORY", "USE", "TAKE", "FIGHT", "LOCATION"],
+    "availableCommands": {
+        "N": {
+            "success": "You moved north to <>",
+            "failure": "You can't move north to <>"
         },
-        "ATTACK" : {
-            "success" : "You attacked <> with your <>!",
-            "failure" : "You failed to attack <>."
-
+        "S": {
+            "success": "You moved south to <>",
+            "failure": "You can't move south to <>"
+        },
+        "E": {
+            "success": "You moved east to <>",
+            "failure": "You can't move east to <>"
+        },
+        "W": {
+            "success": "You moved west to <>",
+            "failure": "You can't move west to <>"
+        },
+        "ATTACK": {
+            "success": "You attacked <> with your <>!",
+            "failure": "You failed to attack <>."
+        },
+        "SCAN": {
+            "success": "You examined the room and found <>.",
+            "failure": "You couldn't find anything of interest."
+        },
+        "INVENTORY": {
+            "success": "Your inventory contains the following items: <>",
+            "failure": "Your inventory is empty."
+        },
+        "USE": {
+            "success": "You used <> on <>.",
+            "failure": "You can't use <> on <>."
+        },
+        "TAKE": {
+            "success": "You picked up <>.",
+            "failure": "You can't take <>."
+        },
+        "FIGHT": {
+            "success": "You initiated combat with <>.",
+            "failure": "You can't initiate combat with <>."
+        },
+        "LOCATION": {
+            "success": "You are currently in <>.",
+            "failure": "You can't determine your location."
         }
     }
 }
