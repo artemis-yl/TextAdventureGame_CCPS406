@@ -39,10 +39,6 @@
             "hangerKey",
             "hangerKeyHint"
         ],
-        "character": [
-            {
-                "name": "NULL"
-            }
-        ]
+        "character": []
     }
 }
