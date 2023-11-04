@@ -38,6 +38,11 @@
             "playerCharacter",
             "hangerKey",
             "hangerKeyHint"
+        ],
+        "character": [
+            {
+                "id": "NULL"
+            }
         ]
     }
 }
