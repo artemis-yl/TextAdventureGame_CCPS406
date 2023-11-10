@@ -1,0 +1,124 @@
+{
+    "npcs": [
+        {
+            "name": "NPCTemplate",
+            "stateDescriptions": {
+                "alive": "it's aliiiiive!",
+                "dead": "RIP",
+                "imprisoned": "since we have a jail"
+            },
+            "initialState": "alive",
+            "isActive" : false,
+            "isRoaming" : false,
+            "initialInventory": [
+                "item1",
+                "item2",
+                "etc"
+            ],
+            "puzzleList": [
+                "puzzleObj1",
+                "puzzleObj2"
+            ]
+        },
+        {
+            "name": "Lia",
+            "state_descriptions": {
+                "alive": "Thank the stars, your friend Lia is alive.",
+                "dead": "So This Is How Liberty Dies - To A Thunderous Applause.",
+                "imprisoned": "Help me Obi-Wan, you're my only hope."
+            },
+            "initial_state": "imprisoned",
+            "isActive": false,
+            "isRoaming": false,
+            "initial_inventory": [
+                "Blaster",
+                "item2",
+                "etc"
+            ],
+            "puzzle_list": [
+                "puzzleObj1",
+                "puzzleObj2"
+            ]
+        },
+        {
+            "name": "Jaydai",
+            "state_descriptions": {
+                "alive": "Fear is the path to the dark side. Fear leads to anger.",
+                "dead": "I lost the high ground...",
+                "imprisoned": "Save me you must, my young Padawan."
+            },
+            "initial_state": "alive",
+            "isActive": false,
+            "isRoaming": false,
+            "initial_inventory": [
+                "Beam Saber",
+                "item2",
+                "etc"
+            ],
+            "puzzle_list": [
+                "puzzleObj1",
+                "puzzleObj2"
+            ]
+        },
+	{
+            "name": "Trooper Patrol",
+            "stateDescriptions": {
+                "alive": "Trooper, reporting for duty!",
+                "dead": "We don't get paid enough for this... *Dies*",
+                "imprisoned": "Wait, how did I get in here!?"
+            },
+            "initialState": "alive",
+            "isActive" : true,
+            "isRoaming" : true,
+            "initialInventory": [
+                "Blaster",
+                "item2",
+                "etc"
+            ],
+            "puzzleList": [
+                "puzzleObj1",
+                "puzzleObj2"
+            ]
+        },
+	{
+            "name": "Trooper Guard",
+            "stateDescriptions": {
+                "alive": "Hey, who goes there!?",
+                "dead": "We don't get paid enough for this... *Dies*",
+                "imprisoned": "Wait, how did I get in here!?"
+            },
+            "initialState": "alive",
+            "isActive" : true,
+            "isRoaming" : false,
+            "initialInventory": [
+                "Blaster",
+                "item2",
+                "etc"
+            ],
+            "puzzleList": [
+                "puzzleObj1",
+                "puzzleObj2"
+            ]
+        },
+	{
+            "name": "Dark Father",
+            "stateDescriptions": {
+                "alive": "I have brought peace, freedom, justice and security to my new empire!",
+                "dead": "I have succumbed to your great powers.",
+                "imprisoned": "I think you broke the game."
+            },
+            "initialState": "alive",
+            "isActive" : true,
+            "isRoaming" : false,
+            "initialInventory": [
+                "Beam Saber",
+                "item2",
+                "etc"
+            ],
+            "puzzleList": [
+                "puzzleObj1",
+                "puzzleObj2"
+            ]
+        }
+    ]
+}
