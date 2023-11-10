@@ -74,7 +74,6 @@ class GameLoader:
 
         return puzzle_list
 
-# Example Usage:
-#if __name__ == "__main__":
-   # loader = GameLoader('npc_data.json', 'room_data.json', 'item_data.json', 'puzzle_data.json')
-   # loader.loadGame()
+    # Example Usage:
+    # loader = GameLoader('npc_data.json', 'room_data.json', 'item_data.json', 'puzzle_data.json')
+    # loader.loadGame()
