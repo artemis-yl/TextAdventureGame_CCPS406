@@ -1,26 +1,29 @@
 import json
-from npc import NPC         # Assuming we have an NPC class
-from room import Room       # Assuming we have a Room class
-from item import Item       # Assuming we have an Item class                                        
-from puzzle import Puzzle   # Assuming we have a Puzzle class
+from npc import NPC
+from room import Room
+from item import Item
+from puzzle import Puzzle
 
 class GameLoader:
     def __init__(self, npc_filename, room_filename, items_filename, puzzles_filename):
+        # Constructor to initialize the file names
         self.npc_filename = npc_filename
         self.room_filename = room_filename
         self.items_filename = items_filename
         self.puzzles_filename = puzzles_filename
 
     def loadGame(self):
+        # Method to load the game data
         npc = self.import_npc()
         room_list = self.import_rooms()
         item_list = self.import_items()
         puzzle_list = self.import_puzzles()
 
         # Initialize game using the loaded data
-        # For example, you might create instances of your game objects and set up the game state.
+        # For example, might create instances of game objects and set up the game state.
 
     def import_npc(self):
+        # Method to import NPC data from JSON
         with open(self.npc_filename, 'r') as npc_json:
             data = json.load(npc_json)
 
@@ -28,6 +31,7 @@ class GameLoader:
                    data['initial_inventory'], data['puzzle_list'])
 
     def import_rooms(self):
+        # Method to import room data from JSON
         with open(self.room_filename, 'r') as room_json:
             data = json.load(room_json)
 
@@ -42,6 +46,7 @@ class GameLoader:
         return room_list
 
     def import_items(self):
+        # Method to import item data from JSON
         with open(self.items_filename, 'r') as item_json:
             data = json.load(item_json)
 
@@ -55,6 +60,7 @@ class GameLoader:
         return item_list
 
     def import_puzzles(self):
+        # Method to import puzzle data from JSON
         with open(self.puzzles_filename, 'r') as puzzle_json:
             data = json.load(puzzle_json)
 
