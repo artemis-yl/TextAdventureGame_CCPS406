@@ -1,18 +1,18 @@
 import json
-from npc import NPC         # Assuming we have an NPC class
-from room import Room       # Assuming we have a Room class
-from item import Item       # Assuming we have an Item class
-from puzzle import Puzzle   # Assuming we have a Puzzle class
+from npc import NPC
+from room import Room
+from item import Item
+from puzzle import Puzzle
 
 class GameSaver:
     def __init__(self, npc_filename, room_filename, items_filename, puzzles_filename):
+        # Constructor to initialize the file names
         self.npc_filename = npc_filename
         self.room_filename = room_filename
         self.items_filename = items_filename
         self.puzzles_filename = puzzles_filename
 
     def saveData(self, npc, rooms, items, puzzles):
-
         # Save NPC data
         npc_data = {
             'name': npc.name,
@@ -76,20 +76,20 @@ class GameSaver:
         return npc, rooms, items, puzzles
 
     def _save_to_file(self, filename, data):
+        # Utility method to save data to a JSON file
         with open(filename, 'w') as file:
             json.dump(data, file, indent=2)
 
     def _load_from_file(self, filename):
+        # Utility method to load data from a JSON file
         with open(filename, 'r') as file:
             return json.load(file)
-        
 
-    #Example Usage
-    
-    # Instantiate GameSaver and save the data
-    #saver = GameSaver('npc_data.json', 'room_data.json', 'item_data.json', 'puzzle_data.json')
-    #saver.saveData(npc, [room1], [item1], [puzzle1])
+# Example Usage:
+# Instantiate GameSaver and save the data
+# saver = GameSaver('npc_data.json', 'room_data.json', 'item_data.json', 'puzzle_data.json')
+# saver.saveData(npc, [room1], [item1], [puzzle1])
 
-    # Instantiate GameLoader and load the data
-    #loader = GameLoader('npc_data.json', 'room_data.json', 'item_data.json', 'puzzle_data.json')
-    #loaded_npc, loaded_rooms, loaded_items, loaded_puzzles = loader.loadData()
+# Instantiate GameLoader and load the data
+# loader = GameLoader('npc_data.json', 'room_data.json', 'item_data.json', 'puzzle_data.json')
+# loaded_npc, loaded_rooms, loaded_items, loaded_puzzles = loader.loadData()
