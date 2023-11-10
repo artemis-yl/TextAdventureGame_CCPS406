@@ -1,8 +1,3 @@
-from room import Room  
-from npc import NPC  
-from puzzle import Puzzle  
-from item import Item  
-
 class GameState:
     def __init__(self):
         # Initialize the attributes
