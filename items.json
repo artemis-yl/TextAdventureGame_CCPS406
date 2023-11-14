@@ -1,13 +1,13 @@
 {
     "items": [
         {
-            "name": "random item",
+            "name": "test item",
             "stateDescriptions": {
                 "working": "this item works and can be used",
                 "notWorking": "this item has broken, or been used all up"
             },
-            "initialState": "working",
-            "isWeapon" : true,
+            "currentState": "working",
+            "isWeapon" : false,
             "isShield" : false,
             "isTeleporter" : false,
             "isRevive" : false
@@ -15,10 +15,10 @@
         {
             "name": "Blaster",
             "state_descriptions": {
-                "working": "Pew Pew",
-                "notWorking": "this item has broken, or been used all up"
+                "working": "Standard issue laser blaster. Point towards the enemy.",
+                "notWorking": "This item has broken for some unknown reason."
             },
-            "initial_state": "working",
+            "currentState": "working",
             "isWeapon": true,
             "isShield": false,
             "isTeleporter": false,
@@ -27,10 +27,10 @@
         {
             "name": "Beam Saber",
             "state_descriptions": {
-                "working": "this item works and can be used",
-                "notWorking": "this item has broken, or been used all up"
+                "working": "Must be the weapon of some late Jaydai, legends say they use these to deflect enemy fire.",
+                "notWorking": "This item has broken for some unknown reason."
             },
-            "initial_state": "working",
+            "currentState": "working",
             "isWeapon": true,
             "isShield": true,
             "isTeleporter": false,
@@ -39,10 +39,10 @@
 	{
             "name": "Top Secret Data File",
             "stateDescriptions": {
-                "working": "this item works and can be used",
-                "notWorking": "this item has broken, or been used all up"
+                "working": "Looks like a data disk. It seems it may have some important information stored on it.",
+                "notWorking": "This item has broken for some unknown reason."
             },
-            "initialState": "working",
+            "currentState": "working",
             "isWeapon" : false,
             "isShield" : false,
             "isTeleporter" : false,
@@ -51,10 +51,10 @@
 	{
             "name": "Sabotage Device",
             "stateDescriptions": {
-                "working": "this item works and can be used",
-                "notWorking": "this item has broken, or been used all up"
+                "working": "Do not arm this device near critical infrastructure!",
+                "notWorking": "This item has broken for some unknown reason."
             },
-            "initialState": "working",
+            "currentState": "working",
             "isWeapon" : false,
             "isShield" : false,
             "isTeleporter" : false,
@@ -63,10 +63,10 @@
 	{
             "name": "Jail Key",
             "stateDescriptions": {
-                "working": "this item works and can be used",
-                "notWorking": "this item has broken, or been used all up"
+                "working": "This key looks like it unlocks a door with someone important behind it.",
+                "notWorking": "This item has broken for some unknown reason."
             },
-            "initialState": "working",
+            "currentState": "working",
             "isWeapon" : false,
             "isShield" : false,
             "isTeleporter" : false,
@@ -75,10 +75,10 @@
 	{
             "name": "Boss Room Key",
             "stateDescriptions": {
-                "working": "this item works and can be used",
-                "notWorking": "this item has broken, or been used all up"
+                "working": "This key looks like it unlocks a door with great evil behind it. ",
+                "notWorking": "This item has broken for some unknown reason."
             },
-            "initialState": "working",
+            "currentState": "working",
             "isWeapon" : false,
             "isShield" : false,
             "isTeleporter" : false,
@@ -87,10 +87,10 @@
 	{
             "name": "Hangar Door Key",
             "stateDescriptions": {
-                "working": "this item works and can be used",
-                "notWorking": "this item has broken, or been used all up"
+                "working": "This key looks like it unlocks a door with everything else behind it.",
+                "notWorking": "This item has broken for some unknown reason."
             },
-            "initialState": "working",
+            "currentState": "working",
             "isWeapon" : false,
             "isShield" : false,
             "isTeleporter" : false,
@@ -99,10 +99,10 @@
 	{
             "name": "Reactor Room (SabotageRoom) Key",
             "stateDescriptions": {
-                "working": "this item works and can be used",
-                "notWorking": "this item has broken, or been used all up"
+                "working": "This key looks like it unlocks a door with something critical behind it.",
+                "notWorking": "This item has broken for some unknown reason."
             },
-            "initialState": "working",
+            "currentState": "working",
             "isWeapon" : false,
             "isShield" : false,
             "isTeleporter" : false,
@@ -111,25 +111,25 @@
 	{
             "name": "Bacta Injection (Revival Item)",
             "stateDescriptions": {
-                "working": "this item works and can be used",
-                "notWorking": "this item has broken, or been used all up"
+                "working": "The Bacta Injection will automatically revive your character upon death, or you may choose to revive an ally.",
+                "notWorking": "You've already used your Bacta Injection, "
             },
-            "initialState": "working",
+            "currentState": "working",
             "isWeapon" : false,
             "isShield" : false,
-            "isTeleporter" : false,
-            "isRevive" : false
+            "isTeleporter" : true,
+            "isRevive" : true
         },
 	{
             "name": "Teleport",
             "stateDescriptions": {
-                "working": "this item works and can be used",
-                "notWorking": "this item has broken, or been used all up"
+                "working": "The teleporter is a one-time use item, it will take your character back to the starting hangar bay.",
+                "notWorking": "You've already used your teleporter, it no longer works!"
             },
-            "initialState": "working",
+            "currentState": "working",
             "isWeapon" : false,
             "isShield" : false,
-            "isTeleporter" : false,
+            "isTeleporter" : true,
             "isRevive" : false
         }
     ]
