@@ -38,6 +38,7 @@
             "playerCharacter",
             "hangerKey",
             "hangerKeyHint"
-        ]
+        ],
+        "character": []
     }
 }
