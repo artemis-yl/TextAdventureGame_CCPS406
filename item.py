@@ -1,9 +1,11 @@
 class Item:
-    def __init__(self, name, description, inventory):
+    def __init__(self, name, state_descriptions, state, is_purpose=[False, False, False, False]):
         self.name = name
-        self.description = description
-        self.inventory = inventory
-        self.state = "Normal"
+        self.state_descriptions=state_descriptions
+        self.state=state
+
+        #[Weapon, Shield, Teleporter, Revive]
+        self.is_purpose=is_purpose
 
     def getName(self):
         return self.name
@@ -15,18 +17,20 @@ class Item:
         return self.description
 
     def isWeapon(self):
-        return False            # Override if the item is a weapon
+        return self.is_purpose[0]           # Override if the item is a weapon
 
     def isShield(self):
-        return False            # Override if the item is a shield
+        return self.is_purpose[1]            # Override if the item is a shield
 
     def isRevive(self):
-        return False            # Override if the item is for revival
+        return self.is_purpose[2]             # Override if the item is for revival
 
     def isTeleport(self):
-        return False            # Override if the item is for teleportation
-
-    def isHealthPotion(self):
-        return False            # Override if the item is a health potion
+        return self.is_purpose[3]             # Override if the item is for teleportation
 
 
+    def __str__(self):
+        return f"{self.name}"
+    
+    def __repr__(self):
+        return f"{self.name}"   
