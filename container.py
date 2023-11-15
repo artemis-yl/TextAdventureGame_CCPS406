@@ -1,6 +1,8 @@
 class ContainterModel:
     def __init__(self, name, description, inventory) -> None:
         self.name = name
+        # this is a list of strings, if only one it will be a list of 1 element
+        # the subclasses will describe which index holds what kind of description
         self.description = description
         self.inventory = inventory
 
