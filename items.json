@@ -14,7 +14,7 @@
         },
         {
             "name": "Blaster",
-            "state_descriptions": {
+            "stateDescriptions": {
                 "working": "Standard issue laser blaster. Point towards the enemy.",
                 "notWorking": "This item has broken for some unknown reason."
             },
@@ -26,7 +26,7 @@
         },
         {
             "name": "Beam Saber",
-            "state_descriptions": {
+            "stateDescriptions": {
                 "working": "Must be the weapon of some late Jaydai, legends say they use these to deflect enemy fire.",
                 "notWorking": "This item has broken for some unknown reason."
             },
