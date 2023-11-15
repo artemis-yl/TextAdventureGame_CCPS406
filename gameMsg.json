@@ -50,6 +50,59 @@
             "failure": "You can't determine your location."
         }
     }
+    "roomMessages": {
+        "hangarBay": {
+            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. 
+                            Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a 
+                            glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a 
+                            shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some 
+                            clues left behind by the personnel from the last shift.",
+            "rentry": "You find yourself back in the hangar bay that you had initially arrived in. It doesn't seem like theres anything important left to do here."
+        },
+        
+        "hallwayOne": {
+            "firstEntry": "You enter a very long, wide, and empty hallway, made of reinforced steel beams, smooth dark panels, and lined with bright white lights. As you look into the 
+                            distance you notice that the hallway continues as it curves away into another section. You also see 3 doors, one that leads back to the freight hangar bay,
+                            and two others that pique your interest. They have signs that read 'Armory' and 'MedBay'.,
+            "rentry": "You find yourself back in the first half of the long main service hallway. Looking in one direction, the hallway continues around a bend, in the other direction are
+                        3 doors, to the Freight Hangar Bay, the Armory, and the MedBay."
+        },
+        "hallwayTwo": {
+            "firstEntry": "To be completed.",
+            "rentry": "To be completed."
+        },
+        "armory": {
+            "firstEntry": "You enter the armory for this section of the DS-3 Station. Lining the walls are many securely locked cabinets containing a cornucopia of high-tech devices and 
+                            weaponry from your standard blaster, to long-range rifles, grenades, and rocket launchers. On the far end of the room there is a large desk containing a computer
+                            terminal, and some loose items strewn about. It seems like that area probably serves as an inventory check-in/check-out station.",
+            "rentry": "You find yourself back in the armory. It doesn't seem like you'll be able to access the locked cabinets, but there may be some useful items laying on the desk of the
+                        check-out station."
+        },
+        "medbay": {
+            "firstEntry": "To be completed.",
+            "rentry": "To be completed."
+        },
+        "sabotageRoom": {
+            "firstEntry": "To be completed.",
+            "rentry": "To be completed."
+        },
+        "securityRoom": {
+            "firstEntry": "To be completed.",
+            "rentry": "To be completed."
+        },
+        "jail": {
+            "firstEntry": "To be completed.",
+            "rentry": "To be completed."
+        },
+        "bossBedroom": {
+            "firstEntry": "To be completed.",
+            "rentry": "To be completed."
+        },
+        "bossRoom": {
+            "firstEntry": "To be completed.",
+            "rentry": "To be completed."
+        }
+    }
 }
 
 
