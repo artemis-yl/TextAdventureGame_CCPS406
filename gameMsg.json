@@ -63,27 +63,33 @@
         "hallwayOne": {
             "firstEntry": "You enter a very long, wide, and empty hallway, made of reinforced steel beams, smooth dark panels, and lined with bright white lights. As you look into the 
                             distance you notice that the hallway continues as it curves away into another section. You also see 3 doors, one that leads back to the freight hangar bay,
-                            and two others that pique your interest. They have signs that read 'Armory' and 'MedBay'.,
+                            and two others that pique your interest. They have signs that read 'Armory' and 'MedBay'. You think you can hear voices coming from the room title 'MedBay'.,
             "rentry": "You find yourself back in the first half of the long main service hallway. Looking in one direction, the hallway continues around a bend, in the other direction are
-                        3 doors, to the Freight Hangar Bay, the Armory, and the MedBay."
+                        three doors, to the Freight Hangar Bay, the Armory, and the MedBay."
         },
         "hallwayTwo": {
-            "firstEntry": "To be completed.",
-            "rentry": "To be completed."
+            "firstEntry": "You enter the second half of the long, empty, curving hallway. Just as the previous section, steel beams run from floor to ceiling, with dark panelling filling 
+                            the space between. Many doors line the walls but you can discern three important looking doors. They have signs that read 'Reactor Room' and 'Security Room'. 
+                            The third door is ornate with a mysterious pattern, it looks very ominous, maybe you should leave it for last.",
+            "rentry": "You find yourself back in the second half of the long main service hallway. Looking in one direction, the hallway extends around a bend and in the other direction, the hallway leads to three doors. The first two are titled 'Reactor Room' and 'Security Room', the third only has an ornate, ominous looking door."
         },
         "armory": {
             "firstEntry": "You enter the armory for this section of the DS-3 Station. Lining the walls are many securely locked cabinets containing a cornucopia of high-tech devices and 
-                            weaponry from your standard blaster, to long-range rifles, grenades, and rocket launchers. On the far end of the room there is a large desk containing a computer
-                            terminal, and some loose items strewn about. It seems like that area probably serves as an inventory check-in/check-out station.",
-            "rentry": "You find yourself back in the armory. It doesn't seem like you'll be able to access the locked cabinets, but there may be some useful items laying on the desk of the
+                            weaponry from your standard blaster, to long-range rifles and explosives. On the far end of the room there is a large desk containing a computer
+                            terminal and some loose items strewn about. It seems like that area probably serves as an inventory check-in/check-out station.",
+            "rentry": "You find yourself back in the armory. It doesn't seem like you'll be able to access the locked cabinets of weaponry, but there may be some useful items laying on the desk of the
                         check-out station."
         },
         "medbay": {
-            "firstEntry": "To be completed.",
-            "rentry": "To be completed."
+            "firstEntry": "You enter the medical bay of the DS-3 Station. The walls and floor are made of a smooth, brilliant white material, with bright lights giving the room a surgically clean appearance.
+                            Within the room there are multiple rows of tall, sealed medical pods used to heal all manners of injuries and illness. In the corners of the rooms, there are parked supply
+                            trolleys filled with different types of medical supplies. You can see some injection devices filled with a thick, gelatinous substance that catch your eye.",
+            "rentry": "You find yourself back in the medical bay. It doesn't seem like you would be able to heal yourself in the medical pods without getting caught, but maybe there are some medical supplies to scavenge?"
         },
         "sabotageRoom": {
-            "firstEntry": "To be completed.",
+            "firstEntry": "You enter a large circular room with a walkway around the edges and a massive, open shaft running vertically through the floor and ceiling. The walls are heavily reinforced and covered 
+                            by black energy absorbing panelling. In the center of the shaft is a large, suspended, spherical machine with crackling energy visible from behind thick glass windows. Access walkways
+                            branch off from the edges of the room and lead to the machine. The whole room buzzes with immense energy.",
             "rentry": "To be completed."
         },
         "securityRoom": {
