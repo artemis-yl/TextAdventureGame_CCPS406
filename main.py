@@ -1,87 +1,59 @@
-import math
-import json
-from mechanics import *
+import gameLoader
+import gameSaver
+
+loader = gameLoader.GameLoader('npcs.json', 'room.json', 'items.json', 'puzzles.json')
+npc_list, room_list, item_list, puzzle_list = loader.loadGame()
 
 
-def import_npcs(npc_filename):
-    with open(npc_filename, 'r') as npc_json:
-        data = json.load(npc_json)
 
-    npc_list = []
-
-    for npc_data in data['npcs']:
-        npc = Character(npc_data['name'], npc_data['state_descriptions'], npc_data['initial_state'],
-                        npc_data['initial_inventory'], npc_data['puzzle_list'])
-
-        npc_list.append(npc)
-
-    return npc_list
-
-
-def import_rooms(room_filename):
-    with open(room_filename, 'r') as room_json:
-        data = json.load(room_json)
-
-    room_list = []
-
-    for room_data in data['rooms']:
-        room = Room(room_data['name'], room_data['description'], room_data['connected_to'],
-                    room_data['initial_door_state'], room_data['associated_door'], room_data['initial_inventory'])
-
-        room_list.append(room)
-
-    return room_list
+print("-" * 50)
+print("NPCS")
+print("-" * 50)
+for npc in npc_list:
+    print(f"NPC Name: {npc.npc_id}")
+    print(f"Current State: {npc.current_state}")
+    print(f"Active: {npc.is_active}")
+    print(f"Roaming: {npc.is_roaming}")
+    print(f"Initial Inventory: {npc.initial_inventory}")
+    print(f"Puzzle List: {npc.puzzle_list}")
+    print(f"\n")
 
 
-def import_items(items_filename):
-    with open(items_filename, 'r') as item_json:
-        data = json.load(item_json)
-
-    item_list = []
-
-    for item_data in data['items']:
-        item = Item(item_data['name'], item_data['state_descriptions'], item_data['initial_state'])
-
-        item_list.append(item)
-
-    return item_list
-
-
-def import_puzzles(puzzles_filename):
-    with open(puzzles_filename, 'r') as puzzle_json:
-        data = json.load(puzzle_json)
-
-    puzzle_list = []
-
-    for puzzle_data in data['puzzles']:
-        puzzle = Puzzle(puzzle_data['name'], puzzle_data['state_descriptions'], puzzle_data['initial_state'],
-                        puzzle_data['key'], puzzle_data['key_verb'])
-
-        puzzle_list.append(puzzle)
-
-    return puzzle_list
+print("-" * 50)
+print("ITEMS")
+print("-" * 50)
+for item in item_list:
+    print(f"Item Name: {item.getName()}")
+    print(f"Description: {item.getDescription()}")
+    print(f"Is Weapon: {item.isWeapon()}")
+    print(f"Is Shield: {item.isShield()}")
+    print(f"Is Teleport: {item.isTeleport()}")
+    print(f"Is Revive: {item.isRevive()}")
+    print("\n")
 
 
-npc_dir = 'npc_data.json'
-npc_list = import_npcs(npc_dir)
 
-for i in npc_list:
-    print(i.name)
+print("-" * 50)
+print("ROOMS")
+print("-" * 50)
+for room in room_list:
+    print(f"Room Name: {room.room_name}")
+    print(f"Description: {room.description}")
+    print(f"Connected To: {room.connected_to}")
+    print(f"Associated Door: {room.associated_door}")
+    print(f"Initial Inventory: {room.initial_inventory}")
+    print("\n")
 
-room_dir = 'room_data.json'
-room_list = import_rooms(room_dir)
 
-for i in room_list:
-    print(i.name)
-
-item_dir = 'item_data.json'
-item_list = import_items(item_dir)
-
-for i in item_list:
-    print(i.name)
-
-puzzle_dir = 'puzzle_data.json'
-puzzle_list = import_puzzles(puzzle_dir)
-
-for i in puzzle_list:
-    print(i.name)
+print("-" * 50)
+print("PUZZLES")
+print("-" * 50)
+for puzzle in puzzle_list:
+    print(f"Puzzle Name: {puzzle.name}")
+    print(f"Descriptions: {puzzle.stateDescriptions}")
+    print(f"Current State: {puzzle.currentState}")
+    print(f"Key: {puzzle.key}")
+    print(f"Verb: {puzzle.keyVerb}")
+    print(f"Hints: {puzzle.hints}")
+    print(f"SubPuzzles: {puzzle.subPuzzles}")
+    print("\n")
