@@ -1,5 +1,3 @@
-import json
-
 class NPC:
     def __init__(self, npc_id, initial_state, possible_states, is_active, is_roaming, initial_inventory, puzzle_list):
         self.npc_id = npc_id
@@ -36,7 +34,8 @@ class NPC:
         roaming_status = "roaming" if is_roaming else "not roaming"
         print(f"{self.npc_id} is now {roaming_status}")
 
-# Load NPC data from file
+'''
+#Load NPC data from file
 with open("npcs.json", 'r') as npc_file:
     npc_data = json.load(npc_file)
     npc_instances = []
@@ -64,3 +63,4 @@ for npc in npc_instances:
     print(f"Initial Inventory: {npc.initial_inventory}")
     print(f"Puzzle List: {npc.puzzle_list}")
     print("\n")
+'''
