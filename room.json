@@ -1,44 +1,53 @@
 {
-    "room1": {
-        "name": "Example Room",
-        "description": "a room JSON example",
-        "connectedTo": {
-            "N": "room2",
-            "S": "room3",
-            "E": "NULL",
-            "W": "room5"
+    "rooms": [
+        {
+            "name": "Example Room",
+            "description": "a room JSON example",
+            "connectedTo": {
+                "N": "room2",
+                "S": "room3",
+                "E": "NULL",
+                "W": "room5"
+            },
+            "associatedDoor": {
+                "N": "door1",
+                "S": "door3",
+                "E": "NULL",
+                "W": "door4"
+            },
+            "initialInventory": [
+                "item1",
+                "item2"
+            ],
+            "npc": [
+                "npc_1",
+                "npc_2"
+            ]
         },
-        "associatedDoor": {
-            "N": "door1",
-            "S": "door3",
-            "E": "NULL",
-            "W": "door4"
-        },
-        "initial_inventory": [
-            "item1",
-            "item2"
-        ]
-    },
-    "EntranceExit": {
-        "name": "Hanger Bay",
-        "description": "You can see hundreds of black, triangular ships of the Empire. You ship is currently hidden... ADD MORE",
-        "connectedTo": {
-            "N": "NULL",
-            "S": "hallway1",
-            "E": "NULL",
-            "W": "NULL"
-        },
-        "associatedDoor": {
-            "N": "NULL",
-            "S": "door1",
-            "E": "NULL",
-            "W": "NULL"
-        },
-        "initial_inventory": [
-            "playerCharacter",
-            "hangerKey",
-            "hangerKeyHint"
-        ],
-        "character": []
-    }
+        {
+            "name": "Hanger Bay",
+            "description": "You can see hundreds of black, triangular ships of the Empire. You ship is currently hidden... ADD MORE",
+            "connectedTo": {
+                "N": "NULL",
+                "S": "hallway1",
+                "E": "NULL",
+                "W": "NULL"
+            },
+            "associatedDoor": {
+                "N": "NULL",
+                "S": "door1",
+                "E": "NULL",
+                "W": "NULL"
+            },
+            "initialInventory": [
+                "playerCharacter",
+                "hangerKey",
+                "hangerKeyHint"
+            ],
+            "npc": [
+                "npc_1",
+                "npc_2"
+            ]
+        }
+    ]
 }
