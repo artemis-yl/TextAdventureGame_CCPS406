@@ -14,21 +14,35 @@ class GameLoader:
 
     def loadGame(self):
         # Method to load the game data
-        npc = self.import_npc()
+        npc_list = self.import_npc()
         room_list = self.import_rooms()
         item_list = self.import_items()
         puzzle_list = self.import_puzzles()
 
-        # Initialize game using the loaded data
-        # For example, might create instances of game objects and set up the game state.
+        return npc_list, room_list, item_list, puzzle_list
 
     def import_npc(self):
         # Method to import NPC data from JSON
         with open(self.npc_filename, 'r') as npc_json:
             data = json.load(npc_json)
 
-        return NPC(data['name'], data['state_descriptions'], data['initial_state'],
-                   data['initial_inventory'], data['puzzle_list'])
+        npc_list = []
+
+        for npc_data in data['npcs']:
+            npc_list.append(
+            NPC
+            (
+                    npc_data["name"],
+                    npc_data.get("initialState"),
+                    npc_data.get("stateDescriptions"),  
+                    npc_data.get("isActive"),
+                    npc_data.get("isRoaming"),
+                    npc_data.get("initialInventory"),
+                    npc_data.get("puzzleList")
+            )
+            )
+
+        return npc_list
 
     def import_rooms(self):
         # Method to import room data from JSON
@@ -38,10 +52,17 @@ class GameLoader:
         room_list = []
 
         for room_data in data['rooms']:
-            room = Room(room_data['name'], room_data['description'], room_data['connected_to'],
-                        room_data['initial_door_state'], room_data['associated_door'], room_data['initial_inventory'])
-
-            room_list.append(room)
+            room_list.append(
+            Room
+            (
+                room_data["name"],
+                room_data["description"],
+                room_data["connectedTo"],
+                room_data["associatedDoor"],
+                room_data["initialInventory"],
+                room_data["npc"]
+            )
+            )
 
         return room_list
 
@@ -53,27 +74,43 @@ class GameLoader:
         item_list = []
 
         for item_data in data['items']:
-            item = Item(item_data['name'], item_data['state_descriptions'], item_data['initial_state'])
-
-            item_list.append(item)
+            item_list.append(
+            Item
+            (
+                item_data["name"],
+                item_data["stateDescriptions"],
+                item_data["currentState"],
+                [
+                item_data["isWeapon"],
+                item_data["isShield"],
+                item_data["isTeleporter"],
+                item_data["isRevive"]
+                ]
+            )
+            )
 
         return item_list
 
     def import_puzzles(self):
         # Method to import puzzle data from JSON
-        with open(self.puzzles_filename, 'r') as puzzle_json:
+        with open(self.puzzles_filename, 'r', encoding='utf-8') as puzzle_json:
             data = json.load(puzzle_json)
 
         puzzle_list = []
 
         for puzzle_data in data['puzzles']:
-            puzzle = Puzzle(puzzle_data['name'], puzzle_data['state_descriptions'], puzzle_data['initial_state'],
-                            puzzle_data['key'], puzzle_data['key_verb'])
-
-            puzzle_list.append(puzzle)
-
+            puzzle_list.append(
+            Puzzle
+            (
+                puzzle_data["name"], 
+                puzzle_data["stateDescriptions"], 
+                puzzle_data["currentState"], 
+                puzzle_data["key"], 
+                puzzle_data["keyVerb"], 
+                puzzle_data["hints"], 
+                puzzle_data["subPuzzles"]
+            
+            )
+            )
+        
         return puzzle_list
-
-    # Example Usage:
-    # loader = GameLoader('npc_data.json', 'room_data.json', 'item_data.json', 'puzzle_data.json')
-    # loader.loadGame()
