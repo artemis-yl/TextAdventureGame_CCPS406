@@ -37,7 +37,7 @@ class NPC:
         print(f"{self.npc_id} is now {roaming_status}")
 
 # Load NPC data from file
-with open("NPC.json", 'r') as npc_file:
+with open("npcs.json", 'r') as npc_file:
     npc_data = json.load(npc_file)
     npc_instances = []
 
