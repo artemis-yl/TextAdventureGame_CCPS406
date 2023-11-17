@@ -1,33 +1,40 @@
-import json
-
-# Load JSON data from file
-with open("puzzle.json", 'r') as puzzle_file:
-    puzzles_data = json.load(puzzle_file)
-    
 class Puzzle:
-    def __init__(self, solvedState=False, keyItem="", keyVerb=""):
-        self.solvedState = solvedState
-        self.keyItem = keyItem
+    def __init__(self, name, stateDescriptions, currentState, key, keyVerb, hints, subPuzzles):
+        self.name = name
+        self.stateDescriptions = stateDescriptions
+        self.currentState = currentState
+        self.key = key
         self.keyVerb = keyVerb
+        self.hints = hints
+        self.subPuzzles = subPuzzles
 
-    def getKeyItem(self):
-        return self.keyItem
+    def getName(self):
+        return self.name
+
+    def getStateDescriptions(self):
+        return self.stateDescriptions
+
+    def getCurrentState(self):
+        return self.currentState
+
+    def getKey(self):
+        return self.key
 
     def getKeyVerb(self):
         return self.keyVerb
 
-    def getState(self):
-        return self.solvedState
+    def getHints(self):
+        return self.hints
 
-    def setState(self, solvedState):
-        self.solvedState = solvedState
+    def getSubPuzzles(self):
+        return self.subPuzzles
+
+    def setCurrentState(self, currentState):
+        self.currentState = currentState
 
 
-# Create instances of the Puzzle class for each puzzle
-puzzle_instances = {}
-for puzzle_id, puzzle_data in puzzles_data.items():
-    puzzle_instances[puzzle_id] = Puzzle(solvedState=puzzle_data["initialState"] == "solved", keyItem=puzzle_data["key"], keyVerb=puzzle_data["keyVerb"])
-"""
+
+'''        
 # Example usage in a text-based game
 if __name__ == "__main__":
     # Initialize the game state
@@ -76,9 +83,10 @@ if __name__ == "__main__":
         # Game progression logic (e.g., moving to other rooms) goes here
         else:
             print("There's nothing to do here.")
-    """
-
-        # Access and manipulate the puzzle instances
+'''
+    
+'''   
+    # Access and manipulate the puzzle instances
     puzzle1 = puzzle_instances["compoundPuzzle1"]
     puzzle2 = puzzle_instances["compoundPuzzle2"]
     puzzle3 = puzzle_instances["compoundPuzzle3"]
@@ -105,9 +113,4 @@ if __name__ == "__main__":
     print("Puzzle 4 Key Item:", puzzle4.getKeyItem())
     print("Puzzle 4 Key Verb:", puzzle4.getKeyVerb())
     print("Puzzle 4 Solved State:", puzzle4.getState())
- 
-
-
-
-
-
+'''
