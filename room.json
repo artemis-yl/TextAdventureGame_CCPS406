@@ -14,7 +14,7 @@
             "E": "NULL",
             "W": "door4"
         },
-        "initalInventory": [
+        "initial_inventory": [
             "item1",
             "item2"
         ]
