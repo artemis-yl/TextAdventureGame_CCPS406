@@ -34,7 +34,7 @@
             "E": "NULL",
             "W": "NULL"
         },
-        "initalInventory": [
+        "initial_inventory": [
             "playerCharacter",
             "hangerKey",
             "hangerKeyHint"
