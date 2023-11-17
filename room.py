@@ -5,7 +5,7 @@ class Room:
         self.connected_to = connected_to
         self.associated_door = associated_door
         self.initial_inventory=initial_inventory
-        self.npcs_inside=[]
+        self.npcs_inside=npc
         self.state = None
 
     def getRoomName(self):
