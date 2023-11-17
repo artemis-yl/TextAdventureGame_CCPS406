@@ -1,5 +1,9 @@
 import json
 
+# Load JSON data from file
+with open("puzzle.json", 'r') as puzzle_file:
+    puzzles_data = json.load(puzzle_file)
+    
 class Puzzle:
     def __init__(self, solvedState=False, keyItem="", keyVerb=""):
         self.solvedState = solvedState
@@ -18,31 +22,12 @@ class Puzzle:
     def setState(self, solvedState):
         self.solvedState = solvedState
 
-# Load JSON data for puzzles
-json_data = """
-{
-    "compoundPuzzle1": {
-        // Define puzzle 1 data
-    },
-    "compoundPuzzle2": {
-        // Define puzzle 2 data
-    },
-    "compoundPuzzle3": {
-        // Define puzzle 3 data
-    },
-    "compoundPuzzle4": {
-        // Define puzzle 4 data
-    }
-}
-"""
-
-puzzles_data = json.loads(json_data)
 
 # Create instances of the Puzzle class for each puzzle
 puzzle_instances = {}
 for puzzle_id, puzzle_data in puzzles_data.items():
     puzzle_instances[puzzle_id] = Puzzle(solvedState=puzzle_data["initialState"] == "solved", keyItem=puzzle_data["key"], keyVerb=puzzle_data["keyVerb"])
-
+"""
 # Example usage in a text-based game
 if __name__ == "__main__":
     # Initialize the game state
@@ -91,7 +76,7 @@ if __name__ == "__main__":
         # Game progression logic (e.g., moving to other rooms) goes here
         else:
             print("There's nothing to do here.")
-
+    """
 
         # Access and manipulate the puzzle instances
     puzzle1 = puzzle_instances["compoundPuzzle1"]
