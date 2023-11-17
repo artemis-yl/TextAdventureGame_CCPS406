@@ -40,6 +40,8 @@ class Room:
     
     def __repr__(self):
         return f"Room Name: {self.room_name}"
+    
+'''
 # Load room data from file
 with open("room.json", 'r') as room_file:
     room_data = json.load(room_file)
@@ -64,3 +66,4 @@ for room_id, room in room_instances.items():
     print(f"Associated Door: {room.associated_door}")
     print(f"Initial Inventory: {room.initial_inventory}")
     print("\n")
+'''
