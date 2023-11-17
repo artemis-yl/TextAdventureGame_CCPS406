@@ -1,11 +1,12 @@
 {
-    "compoundPuzzle1": {
+    "puzzles": [
+        {
         "name": "The Mysterious Door",
         "stateDescriptions": {
             "unsolved": "A mysterious door stands before you, locked and unyielding. You need to find a way to open it.",
             "solved": "You've unlocked the mysterious door! It was a riddle and a key puzzle all along."
         },
-        "initialState": "unsolved",
+        "currentState": "unsolved",
         "key": "entranceKey",
         "keyVerb": "USE",
         "hints": [
@@ -21,14 +22,14 @@
                 "hints": ["Think about common items taken from a mine and enclosed in a wooden case."]
             }
         ]
-    },
-    "compoundPuzzle2": {
+        },
+        {
         "name": "The Enigmatic Jail",
         "stateDescriptions": {
             "unsolved": "Someone is in jail, and you need to find a way to open it.",
             "solved": "You've successfully opened the jail! It was a word puzzle and a key puzzle all along."
         },
-        "initialState": "unsolved",
+        "currentState": "unsolved",
         "key": "jailKey",
         "keyVerb": "UNLOCK",
         "hints": [
@@ -44,14 +45,14 @@
                 "hints": ["Try rearranging the letters to form a common metal."]
             }
         ]
-    },
-    "compoundPuzzle3": {
+        },
+        {
         "name": "The Metallic Door",
         "stateDescriptions": {
             "unsolved": "You're still searching for the beamsword, a powerful weapon.",
             "solved": "You've found the beamsword! It was an inventory and retrieval puzzle all along."
         },
-        "initialState": "unsolved",
+        "currentState": "unsolved",
         "key": "beamswordLocation",
         "keyVerb": "SCAN",
         "hints": [
@@ -67,14 +68,14 @@
                 "hints": ["Examine your inventory to see if you already have these essential items."]
             }
         ]
-    },
-    "compoundPuzzle4": {
+        },
+        {
         "name": "The Captain's Enigma",
         "stateDescriptions": {
             "unsolved": "You need to find a key to open the Captain's Room, but there might be some tricks. The answer lies in a challenging logic puzzle.",
             "solved": "You've opened the Captain's Room! It was a challenging logic puzzle and a key puzzle all along."
         },
-        "initialState": "unsolved",
+        "currentState": "unsolved",
         "key": "captainKey",
         "keyVerb": "USE",
         "hints": [
@@ -90,5 +91,6 @@
                 "hints": ["Each symbol represents a letter. Decode the symbols to reveal the message."]
             }
         ]
-    }
+        }
+    ]
 }
