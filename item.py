@@ -1,4 +1,3 @@
-import json
 class Item:
     def __init__(self, name, state_descriptions, state, is_purpose=[False, False, False, False]):
         self.name = name
@@ -36,7 +35,11 @@ class Item:
         return f"{self.name}"
     
     def __repr__(self):
-        return f"{self.name}"   
+        return f"{self.name}" 
+
+
+
+'''          
 # Load item data from file
 with open("items.json", 'r') as items_file:
     items_data = json.load(items_file)
@@ -66,3 +69,4 @@ for item in item_instances:
     print(f"Is Teleport: {item.isTeleport()}")
     print(f"Is Revive: {item.isRevive()}")
     print("\n")
+'''
