@@ -5,13 +5,13 @@ loader = gameLoader.GameLoader('npcs.json', 'room.json', 'items.json', 'puzzles.
 npc_list, room_list, item_list, puzzle_list = loader.loadGame()
 
 
-
 print("-" * 50)
 print("NPCS")
 print("-" * 50)
 for npc in npc_list:
     print(f"NPC Name: {npc.npc_id}")
     print(f"Current State: {npc.current_state}")
+    print(f"State Descriptions: {npc.possible_states}")
     print(f"Active: {npc.is_active}")
     print(f"Roaming: {npc.is_roaming}")
     print(f"Initial Inventory: {npc.initial_inventory}")
@@ -42,6 +42,7 @@ for room in room_list:
     print(f"Connected To: {room.connected_to}")
     print(f"Associated Door: {room.associated_door}")
     print(f"Initial Inventory: {room.initial_inventory}")
+    print(f"Npcs: {room.npcs_inside}")
     print("\n")
 
 
