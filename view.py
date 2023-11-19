@@ -75,7 +75,6 @@ class OutputHandler:
         else:
             formatted = list[0]
 
-        print(formatted)
         return formatted
 
     """
@@ -91,17 +90,13 @@ class OutputHandler:
 
     # even is there is only 1 object to print, must be in a list for para(meter)s
     def formatOutput(self, msg, paras):
-        position = re.findall("<>", msg)
-        formatted = self.listToGrammarString(paras)
+        splited = re.split("<>", msg)  # string to list, split at seperator "<>"
 
-        print(position, formatted)
-
-        if len(position) > 1:  # AKA more than one "<>"
-            front = msg[: position[0]]
-            back = msg[position[0] :]
-            msg = front + formatted + back  # may need to add a space???
+        # this is very... hardcoded. good for now but may need to be redone
+        if len(splited) == 2:  # AKA only 1 "<>" AKA 1 split AKA 2 substrings
+            msg = splited[0] + self.listToGrammarString(paras) + splited[1]
         else:
-            msg.format(formatted)
+            msg = splited[0] + paras[0] + splited[1] + paras[1] + splited[2]
 
         self.appendToBuffer(msg)
 
@@ -141,9 +136,14 @@ print("verb: " + inH.getVerb())
 print("1st: " + inH.getFirstKeyword())
 print("2nd: " + inH.getSecondKeyword())
 """
+
 """testing output Handler
-"""
+
 
 inO = OutputHandler()
 inO.formatOutput("You attacked <>", ["grunt"])
 inO.displayOutput()
+
+inO.formatOutput("You attacked <> with <>!", ["grunt", "sword"])
+inO.displayOutput()
+"""
