@@ -1,4 +1,4 @@
-import view, stateModifier
+import view #, stateModifier
 
 
 class GameEngine:
@@ -8,13 +8,18 @@ class GameEngine:
         self.dataNeeded = [None]
         self.dataToBeChanged: [None]
         # self.stateModifier = stateModifier.StateModifier()
-        self.inputHandler = view.InputHandler()
-        self.outputHandler = view.OutputHandler()
+        self.inHandler = view.InputHandler()
+        self.outHandler = view.OutputHandler()
 
     def executeCommand(self):
-        pass
+        self.inHandler.parseInput()
+        verb = self.inHandler.getVerb()
 
-    def checkDonditions(self):
+        # check dictionary of verbs to see which correct action to take
+        # execute the verb
+        # where the heck are we storing the verbs rn...
+
+    def checkConditions(self):
         pass
 
     def handleCombat(self):

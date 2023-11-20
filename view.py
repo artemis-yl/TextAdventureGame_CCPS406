@@ -68,15 +68,6 @@ class OutputHandler:
         print(self.buffer)
         self.clearBuffer()
 
-    # method assumes list is a homogeneous list of Strings
-    def listToGrammarString(self, list):
-        if len(list) > 1:
-            formatted = ", ".join(list[:-1]) + ", and " + list[-1]
-        else:
-            formatted = list[0]
-
-        return formatted
-
     """
     two types of msgs that needs to be formatted: 
         1) "You blah <> with/on <>" 
@@ -89,19 +80,28 @@ class OutputHandler:
     """
 
     # even is there is only 1 object to print, must be in a list for para(meter)s
-    def formatOutput(self, msg, paras):
+    def formatOutput(self, msg, objectList):
         splited = re.split("<>", msg)  # string to list, split at seperator "<>"
 
         # this is very... hardcoded. good for now but may need to be redone
         if len(splited) == 2:  # AKA only 1 "<>" AKA 1 split AKA 2 substrings
-            msg = splited[0] + self.listToGrammarString(paras) + splited[1]
+            msg = splited[0] + self.listToGrammarString(objectList) + splited[1]
         else:
-            msg = splited[0] + paras[0] + splited[1] + paras[1] + splited[2]
+            msg = splited[0] + objectList[0] + splited[1] + objectList[1] + splited[2]
 
         self.appendToBuffer(msg)
 
-    def appendToBuffer(self, formatted):
-        self.buffer += formatted
+    # method assumes parameter list is a homogeneous list of Strings
+    def listToGrammarString(list):
+        if len(list) > 1:
+            formatted = ", ".join(list[:-1]) + ", and " + list[-1]
+        else:
+            formatted = list[0]
+
+        return formatted
+
+    def appendToBuffer(self, string):
+        self.buffer += string
 
     def clearBuffer(self):
         self.buffer = ""
