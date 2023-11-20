@@ -41,9 +41,9 @@
             "success": "You picked up <>.",
             "failure": "You can't take <>."
         },
-        "FIGHT": {
-            "success": "You initiated combat with <>.",
-            "failure": "You can't initiate combat with <>."
+        "TALK": {
+            "success": "You initiate a conversation with <>.",
+            "failure": "You can't initiate a converstation with <>."
         },
         "LOCATION": {
             "success": "You are currently in <>.",
