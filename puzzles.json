@@ -1,96 +1,64 @@
 {
     "puzzles": [
         {
-        "name": "The Mysterious Door",
-        "stateDescriptions": {
-            "unsolved": "A mysterious door stands before you, locked and unyielding. You need to find a way to open it.",
-            "solved": "You've unlocked the mysterious door! It was a riddle and a key puzzle all along."
-        },
-        "currentState": "unsolved",
-        "key": "entranceKey",
-        "keyVerb": "USE",
-        "hints": [
-            "Notice the PC monitor message: 'hey, did you lock the hanger again? Good thing I have a key.' It might be referring to the entrance door. Who could have the key?",
-            "Solve the riddle to unlock the door."
-        ],
-        "subPuzzles": [
-            {
-                "type": "riddle",
-                "name": "Mysterious Riddle",
-                "question": "I'm taken from a mine and shut up in a wooden case, from which I am never released, and yet I am used by almost every person. What am I?",
-                "answer": "pencil",
-                "hints": ["Think about common items taken from a mine and enclosed in a wooden case."]
-            }
-        ]
+            "name": "The Mysterious Door",
+            "stateDescriptions": {
+                "unsolved": "A mysterious door stands before you, locked and unyielding. You need to find a way to open it.",
+                "solved": "You've unlocked the mysterious door! It was a riddle and a key puzzle all along."
+            },
+            "currentState": "unsolved",
+            "key": "entranceKey",
+            "keyVerb": "USE",
+            "hints": [
+                "Notice the PC monitor message: 'hey, did you lock the hanger again? Good thing I have a key.' It might be referring to the entrance door. Who could have the key?",
+                "Solve the riddle to unlock the door."
+            ],
+            "subPuzzles": "Mysterious Riddle"
         },
         {
-        "name": "The Enigmatic Jail",
-        "stateDescriptions": {
-            "unsolved": "Someone is in jail, and you need to find a way to open it.",
-            "solved": "You've successfully opened the jail! It was a word puzzle and a key puzzle all along."
-        },
-        "currentState": "unsolved",
-        "key": "jailKey",
-        "keyVerb": "UNLOCK",
-        "hints": [
-            "If you're wondering who's in jail and how to open it, try looking around for clues about the prisoner and any key items that might be relevant.",
-            "Solve the word puzzle to unlock the jail."
-        ],
-        "subPuzzles": [
-            {
-                "type": "word puzzle",
-                "name": "Word Jumble",
-                "question": "Unscramble the letters: L I V R E V E S I",
-                "answer": "silver",
-                "hints": ["Try rearranging the letters to form a common metal."]
-            }
-        ]
+            "name": "The Enigmatic Jail",
+            "stateDescriptions": {
+                "unsolved": "Someone is in jail, and you need to find a way to open it.",
+                "solved": "You've successfully opened the jail! It was a word puzzle and a key puzzle all along."
+            },
+            "currentState": "unsolved",
+            "key": "jailKey",
+            "keyVerb": "UNLOCK",
+            "hints": [
+                "If you're wondering who's in jail and how to open it, try looking around for clues about the prisoner and any key items that might be relevant.",
+                "Solve the word puzzle to unlock the jail."
+            ],
+            "subPuzzles": "Word Jumble"
         },
         {
-        "name": "The Metallic Door",
-        "stateDescriptions": {
-            "unsolved": "You're still searching for the beamsword, a powerful weapon.",
-            "solved": "You've found the beamsword! It was an inventory and retrieval puzzle all along."
-        },
-        "currentState": "unsolved",
-        "key": "beamswordLocation",
-        "keyVerb": "SCAN",
-        "hints": [
-            "Still searching for the beamsword? Think about where you might find such a powerful weapon. Sometimes it's hidden in plain sight.",
-            "Solve the inventory puzzle to unlock the door."
-        ],
-        "subPuzzles": [
-            {
-                "type": "inventory puzzle",
-                "name": "Inventory Challenge",
-                "question": "You need to find specific items (a key, a beamsaber, and a blaster) in your inventory to escape the room. Check your inventory to see if you have these items.",
-                "answer": ["key", "beamsaber", "blaster"],
-                "hints": ["Examine your inventory to see if you already have these essential items."]
-            }
-        ]
+            "name": "The Metallic Door",
+            "stateDescriptions": {
+                "unsolved": "You're still searching for the beamsword, a powerful weapon.",
+                "solved": "You've found the beamsword! It was an inventory and retrieval puzzle all along."
+            },
+            "currentState": "unsolved",
+            "key": "beamswordLocation",
+            "keyVerb": "SCAN",
+            "hints": [
+                "Still searching for the beamsword? Think about where you might find such a powerful weapon. Sometimes it's hidden in plain sight.",
+                "Solve the inventory puzzle to unlock the door."
+            ],
+            "subPuzzles": "Inventory Challenge"
         },
         {
-        "name": "The Captain's Enigma",
-        "stateDescriptions": {
-            "unsolved": "You need to find a key to open the Captain's Room, but there might be some tricks. The answer lies in a challenging logic puzzle.",
-            "solved": "You've opened the Captain's Room! It was a challenging logic puzzle and a key puzzle all along."
-        },
-        "currentState": "unsolved",
-        "key": "captainKey",
-        "keyVerb": "USE",
-        "hints": [
-            "To keep track of where the key is, look for a room that might contain all the keys. This room can be helpful in opening doors.",
-            "Solve the challenging logic puzzle to obtain the key and unlock the Captain's Room."
-        ],
-        "subPuzzles": [
-            {
-                "type": "logic puzzle",
-                "name": "Cryptic Symbols",
-                "question": "Decipher the cryptic symbols and find the hidden message: Ⓢ€©®€⌧ □◯◯Ⓜ️",
-                "answer": "SECRET ROOM",
-                "hints": ["Each symbol represents a letter. Decode the symbols to reveal the message."]
-            }
-        ]
+            "name": "The Captain's Enigma",
+            "stateDescriptions": {
+                "unsolved": "You need to find a key to open the Captain's Room, but there might be some tricks. The answer lies in a challenging logic puzzle.",
+                "solved": "You've opened the Captain's Room! It was a challenging logic puzzle and a key puzzle all along."
+            },
+            "currentState": "unsolved",
+            "key": "captainKey",
+            "keyVerb": "USE",
+            "hints": [
+                "To keep track of where the key is, look for a room that might contain all the keys. This room can be helpful in opening doors.",
+                "Solve the challenging logic puzzle to obtain the key and unlock the Captain's Room."
+            ],
+            "subPuzzles": "Cryptic Symbols"
         }
     ]
 }

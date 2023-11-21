@@ -1,0 +1,44 @@
+{
+    "Mysterious Riddle" : {
+        "name": "Mysterious Riddle",
+        "puzzleName" : "The Mysterious Door",
+        "question": "I'm taken from a mine and shut up in a wooden case, from which I am never released, and yet I am used by almost every person. What am I?",
+        "answer": ["pencil"],
+        "hints": [
+            "Think about common items taken from a mine and enclosed in a wooden case."
+        ]
+    },
+    "Word Jumble" : {
+        "name" : "Word Jumble",
+        "puzzleName" : "The Enigmatic Jail",
+        "question": "Unscramble the letters: L I V R E V E S I",
+        "answer": ["silver"],
+        "hints": [
+            "Try rearranging the letters to form a common metal."
+        ]
+    },
+    "Inventory Challenge" : {
+        "name": "Inventory Challenge",
+        "puzzleName" : "The Metallic Door",
+        "question": "You need to find specific items (a key, a beamsaber, and a blaster) in your inventory to escape the room. Check your inventory to see if you have these items.",
+        "answer": [
+            "key",
+            "beamsaber",
+            "blaster"
+        ],
+        "hints": [
+            "Examine your inventory to see if you already have these essential items."
+        ]
+    },
+    "Cryptic Symbols" : {
+        "name": "Cryptic Symbols",
+        "puzzleName" : "The Captain's Enigma",
+        "question": "Decipher the cryptic symbols and find the hidden message: Ⓢ€©®€⌧ □◯◯Ⓜ️",
+        "answer": ["SECRET ROOM"],
+        "hints": [
+            "Each symbol represents a letter. Decode the symbols to reveal the message."
+        ]
+    }
+
+    
+}
