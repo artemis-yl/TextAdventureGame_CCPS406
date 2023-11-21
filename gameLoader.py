@@ -5,23 +5,25 @@ from item import Item
 from puzzle import Puzzle
 
 class GameLoader:
-    def __init__(self, npc_filename, room_filename, items_filename, puzzles_filename):
+    def __init__(self, npc_filename, room_filename, items_filename, puzzles_filename, messages_filename):
         # Constructor to initialize the file names
         self.npc_filename = npc_filename
         self.room_filename = room_filename
         self.items_filename = items_filename
         self.puzzles_filename = puzzles_filename
+        self.messages_filename = messages_filename
 
     def loadGame(self):
         # Method to load the game data
-        npc_list = self.import_npc()
+        npc_list = self.import_npcs()
         room_list = self.import_rooms()
         item_list = self.import_items()
         puzzle_list = self.import_puzzles()
+        message_dict = self.import_messages()
 
-        return npc_list, room_list, item_list, puzzle_list
+        return npc_list, room_list, item_list, puzzle_list, message_dict
 
-    def import_npc(self):
+    def import_npcs(self):
         # Method to import NPC data from JSON
         with open(self.npc_filename, 'r') as npc_json:
             data = json.load(npc_json)
@@ -114,3 +116,21 @@ class GameLoader:
             )
         
         return puzzle_list
+  
+    def import_messages(self):
+        # Method to import message data from JSON
+        with open(self.messages_filename, 'r') as message_json:
+            data = json.load(message_json)
+
+        messages_dict = {}
+
+        for message_data in data['messages']:
+            messages_dict['introduction'] = message_data["introduction"]
+            messages_dict['youDied'] = message_data["youDied"]
+            messages_dict['youWinMinimal'] = message_data["youWinMinimal"]
+            messages_dict['youWinBestEnding'] = message_data["youWinBestEnding"]
+            messages_dict['commandList'] = message_data["commandList"]
+            messages_dict['availableCommands'] = message_data["availableCommands"]
+            messages_dict['roomMessages'] = message_data["roomMessages"]
+  
+        return messages_dict
