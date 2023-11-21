@@ -9,10 +9,6 @@
             "currentState": "unsolved",
             "key": "entranceKey",
             "keyVerb": "USE",
-            "hints": [
-                "Notice the PC monitor message: 'hey, did you lock the hanger again? Good thing I have a key.' It might be referring to the entrance door. Who could have the key?",
-                "Solve the riddle to unlock the door."
-            ],
             "subPuzzles": "Mysterious Riddle"
         },
         {
@@ -24,14 +20,32 @@
             "currentState": "unsolved",
             "key": "jailKey",
             "keyVerb": "UNLOCK",
-            "hints": [
-                "If you're wondering who's in jail and how to open it, try looking around for clues about the prisoner and any key items that might be relevant.",
-                "Solve the word puzzle to unlock the jail."
-            ],
             "subPuzzles": "Word Jumble"
         },
         {
             "name": "The Metallic Door",
+            "stateDescriptions": {
+                "unsolved": "You're unable to get into the Reactor room. Sensible. It is likely to be stored in a secured location.",
+                "solved": "You've have key into the Reactor room! Now you can sabotage it IF you have what you need..."
+            },
+            "currentState": "unsolved",
+            "key": "beamswordLocation",
+            "keyVerb": "SCAN",
+            "subPuzzles": "Inventory Challenge"
+        },
+        {
+            "name": "The Captain's Enigma",
+            "stateDescriptions": {
+                "unsolved": "You need to find a key to open the Control Room where Dark Vader, but there might be some tricks. The answer lies in a challenging logic puzzle.",
+                "solved": "You've opened the Control Room Room! It was a challenging logic puzzle and a key puzzle all along."
+            },
+            "currentState": "unsolved",
+            "key": "captainKey",
+            "keyVerb": "USE",
+            "subPuzzles": "Cryptic Symbols"
+        },
+        {
+            "name": "The Path of Power",
             "stateDescriptions": {
                 "unsolved": "You're still searching for the beamsword, a powerful weapon.",
                 "solved": "You've found the beamsword! It was an inventory and retrieval puzzle all along."
@@ -39,26 +53,7 @@
             "currentState": "unsolved",
             "key": "beamswordLocation",
             "keyVerb": "SCAN",
-            "hints": [
-                "Still searching for the beamsword? Think about where you might find such a powerful weapon. Sometimes it's hidden in plain sight.",
-                "Solve the inventory puzzle to unlock the door."
-            ],
             "subPuzzles": "Inventory Challenge"
-        },
-        {
-            "name": "The Captain's Enigma",
-            "stateDescriptions": {
-                "unsolved": "You need to find a key to open the Captain's Room, but there might be some tricks. The answer lies in a challenging logic puzzle.",
-                "solved": "You've opened the Captain's Room! It was a challenging logic puzzle and a key puzzle all along."
-            },
-            "currentState": "unsolved",
-            "key": "captainKey",
-            "keyVerb": "USE",
-            "hints": [
-                "To keep track of where the key is, look for a room that might contain all the keys. This room can be helpful in opening doors.",
-                "Solve the challenging logic puzzle to obtain the key and unlock the Captain's Room."
-            ],
-            "subPuzzles": "Cryptic Symbols"
         }
     ]
 }

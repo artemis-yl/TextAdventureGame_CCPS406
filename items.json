@@ -36,43 +36,7 @@
             "isTeleporter": false,
             "isRevive" : false
         },
-	    {
-            "name": "Top Secret Data File",
-            "stateDescriptions": {
-                "working": "Looks like a data disk. It seems it may have some important information stored on it.",
-                "notWorking": "This item has broken for some unknown reason."
-            },
-            "currentState": "working",
-            "isWeapon" : false,
-            "isShield" : false,
-            "isTeleporter" : false,
-            "isRevive" : false
-        },
-	    {
-            "name": "Sabotage Device",
-            "stateDescriptions": {
-                "working": "Do not arm this device near critical infrastructure!",
-                "notWorking": "This item has broken for some unknown reason."
-            },
-            "currentState": "working",
-            "isWeapon" : false,
-            "isShield" : false,
-            "isTeleporter" : false,
-            "isRevive" : false
-        },
-	    {
-            "name": "Jail Key",
-            "stateDescriptions": {
-                "working": "This key looks like it unlocks a door with someone important behind it.",
-                "notWorking": "This item has broken for some unknown reason."
-            },
-            "currentState": "working",
-            "isWeapon" : false,
-            "isShield" : false,
-            "isTeleporter" : false,
-            "isRevive" : false
-        },
-	    {
+        {
             "name": "Boss Room Key",
             "stateDescriptions": {
                 "working": "This key looks like it unlocks a door with great evil behind it. ",
@@ -84,7 +48,7 @@
             "isTeleporter" : false,
             "isRevive" : false
         },
-	    {
+        {
             "name": "Hangar Door Key",
             "stateDescriptions": {
                 "working": "This key looks like it unlocks a door with everything else behind it.",
@@ -96,7 +60,7 @@
             "isTeleporter" : false,
             "isRevive" : false
         },
-	    {
+        {
             "name": "Reactor Room (SabotageRoom) Key",
             "stateDescriptions": {
                 "working": "This key looks like it unlocks a door with something critical behind it.",
@@ -108,7 +72,7 @@
             "isTeleporter" : false,
             "isRevive" : false
         },
-	    {
+        {
             "name": "Bacta Injection (Revival Item)",
             "stateDescriptions": {
                 "working": "The Bacta Injection will automatically revive your character upon death, or you may choose to revive an ally.",
@@ -120,7 +84,7 @@
             "isTeleporter" : true,
             "isRevive" : true
         },
-	    {
+        {
             "name": "Teleport",
             "stateDescriptions": {
                 "working": "The teleporter is a one-time use item, it will take your character back to the starting hangar bay.",
@@ -131,6 +95,44 @@
             "isShield" : false,
             "isTeleporter" : true,
             "isRevive" : false
+        },
+        {
+            "name": "Hangar Hint",
+            "stateDescriptions": {
+                "working": "You notice the PC monitor message: 'hey, did you lock me in the hanger again? Good thing I left a key here.' It might be referring to the entrance door. Where could have the key?",
+                "notWorking": "The PC has been destroyed. You cannot read anything that may have once been on the screen."
+            },
+            "currentState": "working",
+            "isWeapon": false,
+            "isShield": false,
+            "isTeleporter": false,
+            "isRevive": false
+        },
+        {
+            "name": "Jail Hint",
+            "stateDescriptions": {
+                "working": "You notice a report on a tablet 'Prisoner Name: Lia ... Notes: To ensure the prisoner cannot steal the keycard to their cell, it has been hidden in the hallway.",
+                "notWorking": "The tablet has been destroyed. You cannot read anything that may have once been on the screen."
+            },
+            "currentState": "working",
+            "isWeapon": false,
+            "isShield": false,
+            "isTeleporter": false,
+            "isRevive": false
+        },
+        {
+            "name": "Beamsword Hint",
+            "stateDescriptions": {
+                "working": "You notice a chatlog on a communication device. ' ... weird that the boss didn't want to store such a powerful weapon in the armory, but I guess sometimes it's better hidden in plain sight.",
+                "notWorking": "The tablet has been destroyed. You cannot read anything that may have once been on the screen."
+            },
+            "currentState": "working",
+            "isWeapon": false,
+            "isShield": false,
+            "isTeleporter": false,
+            "isRevive": false
         }
+        
+            
     ]
 }
