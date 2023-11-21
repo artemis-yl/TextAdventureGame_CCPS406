@@ -1,8 +1,8 @@
 import gameLoader
 import gameSaver
 
-loader = gameLoader.GameLoader('npcs.json', 'room.json', 'items.json', 'puzzles.json')
-npc_list, room_list, item_list, puzzle_list = loader.loadGame()
+loader = gameLoader.GameLoader('npcs.json', 'room.json', 'items.json', 'puzzles.json', 'gameMsg.json')
+npc_list, room_list, item_list, puzzle_list, message_dict = loader.loadGame()
 
 
 print("-" * 50)
@@ -57,4 +57,11 @@ for puzzle in puzzle_list:
     print(f"Verb: {puzzle.keyVerb}")
     print(f"Hints: {puzzle.hints}")
     print(f"SubPuzzles: {puzzle.subPuzzles}")
+    print("\n")
+
+print("-" * 50)
+print("MESSAGES")
+print("-" * 50)
+for key, value in message_dict.items():
+    print(f"{key}: {value}")
     print("\n")
