@@ -1,23 +1,20 @@
 {
     "npcs": [
         {
-            "name": "NPCTemplate",
+            "name": "Player",
             "stateDescriptions": {
-                "alive": "it's aliiiiive!",
-                "dead": "RIP",
-                "imprisoned": "since we have a jail"
+                "alive": "You're alive. Somehow.",
+                "dead": "YOU'RE DEAD",
+                "imprisoned": "You find yourself locked up - it seems you have been caught and imprisioned."
             },
             "initialState": "alive",
-            "isActive" : false,
-            "isRoaming" : false,
+            "isActive" : true,
+            "isRoaming" : true,
             "initialInventory": [
-                "item1",
-                "item2",
-                "etc"
+                "NULL"
             ],
             "puzzleList": [
-                "puzzleObj1",
-                "puzzleObj2"
+                "NULL"
             ]
         },
         {
@@ -31,13 +28,10 @@
             "isActive": false,
             "isRoaming": false,
             "initial_inventory": [
-                "Blaster",
-                "item2",
-                "etc"
+                "Blaster"
             ],
             "puzzle_list": [
-                "puzzleObj1",
-                "puzzleObj2"
+                "puzzleObj1"
             ]
         },
         {
@@ -51,13 +45,10 @@
             "isActive": false,
             "isRoaming": false,
             "initial_inventory": [
-                "Beam Saber",
-                "item2",
-                "etc"
+                "Beam Saber"
             ],
             "puzzle_list": [
-                "puzzleObj1",
-                "puzzleObj2"
+                "puzzleObj1"
             ]
         },
 	{
@@ -71,13 +62,10 @@
             "isActive" : true,
             "isRoaming" : true,
             "initialInventory": [
-                "Blaster",
-                "item2",
-                "etc"
+                "Blaster"
             ],
             "puzzleList": [
-                "puzzleObj1",
-                "puzzleObj2"
+                "NULL"
             ]
         },
 	{
@@ -91,13 +79,10 @@
             "isActive" : true,
             "isRoaming" : false,
             "initialInventory": [
-                "Blaster",
-                "item2",
-                "etc"
+                "Blaster"
             ],
             "puzzleList": [
-                "puzzleObj1",
-                "puzzleObj2"
+                "NULL"
             ]
         },
 	{
@@ -111,13 +96,10 @@
             "isActive" : true,
             "isRoaming" : false,
             "initialInventory": [
-                "Beam Saber",
-                "item2",
-                "etc"
+                "Beam Saber"
             ],
             "puzzleList": [
-                "puzzleObj1",
-                "puzzleObj2"
+                "NULL"
             ]
         }
     ]
