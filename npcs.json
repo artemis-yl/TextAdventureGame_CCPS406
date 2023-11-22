@@ -1,106 +1,110 @@
 {
-    "npcs": [
-        {
-            "name": "Player",
-            "stateDescriptions": {
-                "alive": "You're alive. Somehow.",
-                "dead": "YOU'RE DEAD",
-                "imprisoned": "You find yourself locked up - it seems you have been caught and imprisioned."
-            },
-            "initialState": "alive",
-            "isActive" : true,
-            "isRoaming" : true,
-            "initialInventory": [
-                "NULL"
-            ],
-            "puzzleList": [
-                "NULL"
-            ]
+    "npc_player" : {
+        "name": "Player",
+        "stateDescriptions": {
+            "alive": "You're alive. Somehow.",
+            "dead": "YOU DIED",
+            "imprisoned": "You find yourself locked up - it seems you have been caught and imprisioned."
         },
-        {
-            "name": "Lia",
-            "state_descriptions": {
-                "alive": "Thank the stars, your friend Lia is alive.",
-                "dead": "So This Is How Liberty Dies - To A Thunderous Applause.",
-                "imprisoned": "Help me Obi-Wan, you're my only hope."
-            },
-            "initial_state": "imprisoned",
-            "isActive": false,
-            "isRoaming": false,
-            "initial_inventory": [
-                "Blaster"
-            ],
-            "puzzle_list": [
-                "puzzleObj1"
-            ]
+        "dialogue" : [],
+        "initialState": "alive",
+        "isActive" : true,
+        "isRoaming" : true,
+        "initialInventory": [
+            "NULL"
+        ],
+        "puzzleList": [
+            "NULL"
+        ]
+    },
+    "npc_lia" : {
+        "name": "Lia",
+        "state_descriptions": {
+            "alive": "Thank the stars, your friend Lia is alive.",
+            "dead": "So This Is How Liberty Dies - To A Thunderous Applause.",
+            "imprisoned": "Help me Obi-Wan, you're my only hope."
         },
-        {
-            "name": "Jaydai",
-            "state_descriptions": {
-                "alive": "Fear is the path to the dark side. Fear leads to anger.",
-                "dead": "I lost the high ground...",
-                "imprisoned": "Save me you must, my young Padawan."
-            },
-            "initial_state": "alive",
-            "isActive": false,
-            "isRoaming": false,
-            "initial_inventory": [
-                "Beam Saber"
-            ],
-            "puzzle_list": [
-                "puzzleObj1"
-            ]
+        "dialogue": [],
+        "initial_state": "imprisoned",
+        "isActive": false,
+        "isRoaming": false,
+        "initial_inventory": [
+            "Blaster"
+        ],
+        "puzzle_list": [
+            "puzzleObj1"
+        ]
+    },
+    "npc_jaydai" : {
+        "name": "Jaydai",
+        "state_descriptions": {
+            "alive": "Fear is the path to the dark side. Fear leads to anger.",
+            "dead": "I lost the high ground...",
+            "imprisoned": "Save me you must, my young Padawan."
         },
-	{
-            "name": "Trooper Patrol",
-            "stateDescriptions": {
-                "alive": "Trooper, reporting for duty!",
-                "dead": "We don't get paid enough for this... *Dies*",
-                "imprisoned": "Wait, how did I get in here!?"
-            },
-            "initialState": "alive",
-            "isActive" : true,
-            "isRoaming" : true,
-            "initialInventory": [
-                "Blaster"
-            ],
-            "puzzleList": [
-                "NULL"
-            ]
+        "dialogue": [],
+        "initial_state": "alive",
+        "isActive": false,
+        "isRoaming": false,
+        "initial_inventory": [
+            "Beam Saber"
+        ],
+        "puzzle_list": [
+            "puzzleObj1"
+        ]
+    },
+    "npc_gruntRoam" : {
+        "name": "Trooper Patrol",
+        "stateDescriptions": {
+            "alive": "Trooper, reporting for duty!",
+            "dead": "We don't get paid enough for this... *Dies*",
+            "imprisoned": "Wait, how did I get in here!?"
         },
-	{
-            "name": "Trooper Guard",
-            "stateDescriptions": {
-                "alive": "Hey, who goes there!?",
-                "dead": "We don't get paid enough for this... *Dies*",
-                "imprisoned": "Wait, how did I get in here!?"
-            },
-            "initialState": "alive",
-            "isActive" : true,
-            "isRoaming" : false,
-            "initialInventory": [
-                "Blaster"
-            ],
-            "puzzleList": [
-                "NULL"
-            ]
+        "dialogue": [],
+        "initialState": "alive",
+        "isActive" : true,
+        "isRoaming" : true,
+        "initialInventory": [
+            "Blaster"
+        ],
+        "puzzleList": [
+            "NULL"
+        ]
+    },
+    "npc_gruntStationary" : {
+        "name": "Trooper Guard",
+        "stateDescriptions": {
+            "alive": "Hey, who goes there!?",
+            "dead": "We don't get paid enough for this... *Dies*",
+            "imprisoned": "Wait, how did I get in here!?"
         },
-	{
-            "name": "Dark Father",
-            "stateDescriptions": {
-                "alive": "I have brought peace, freedom, justice and security to my new empire!",
-                "dead": "I have succumbed to your great powers.",
-                "imprisoned": "I think you broke the game."
-            },
-            "initialState": "alive",
-            "isActive" : true,
-            "isRoaming" : false,
-            "initialInventory": [
-                "Beam Saber"
-            ],
-            "puzzleList": [
-                "NULL"
-            ]
-        }
-    ]
+        "dialogue": [],
+        "initialState": "alive",
+        "isActive" : true,
+        "isRoaming" : false,
+        "initialInventory": [
+            "Blaster"
+        ],
+        "puzzleList": [
+            "NULL"
+        ]
+    },
+    "npc_boss" : {
+        "name": "Dark Father",
+        "stateDescriptions": {
+            "alive": "I have brought peace, freedom, justice and security to my new empire!",
+            "dead": "I have succumbed to your great powers.",
+            "imprisoned": "I think you broke the game."
+        },
+        "dialogue": [],
+        "initialState": "alive",
+        "isActive" : true,
+        "isRoaming" : false,
+        "initialInventory": [
+            "Beam Saber"
+        ],
+        "puzzleList": [
+            "NULL"
+        ]
+    }
 }

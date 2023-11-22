@@ -1,308 +1,278 @@
 {
-    "rooms": [
-        {
-            "name": "Hanger Bay",
-            "description": {
-                "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-                "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
-            },
-            "connectedTo": {
-                "N": "NULL",
-                "S": "Hallway One",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "associatedDoor": {
-                "N": "NULL",
-                "S": "The Mysterious Door",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "initialInventory": [
-                "playerCharacter",
-                "hangerKey",
-                "hangerKeyHint"
-            ],
-            "npc": [
-                "Player"
-            ]
+    "room_Hangar" : {
+        "name": "Hangar Bay",
+        "description": {
+            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
+            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
         },
-        {
-            "name": "Hallway One",
-            "description": {
-                "firstEntry": "You enter a very long, wide, and empty hallway, made of reinforced steel beams, smooth dark panelling, and lined with bright white lights. As you look into the distance you notice that the hallway continues as it curves away into another section. You also see three doors, one that leads back to the freight hangar bay, and two others that pique your interest. They have signs that read 'Armory' and 'MedBay'. You think you can hear voices coming from the room titled 'MedBay'.",
-                "rentry": "You find yourself back in the first half of the long main service hallway. Looking in one direction, the hallway continues around a bend, in the other direction are three doors, to the Freight Hangar Bay, the Armory, and the MedBay."
-            },
-            "connectedTo": {
-                "N": "Hanger Bay",
-                "S": "Medbay",
-                "E": "Armory",
-                "W": "Hallway Two"
-            },
-            "associatedDoor": {
-                "N": "The Mysterious Door",
-                "S": "NULL",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "initialInventory": [
-            ],
-            "npc": [
-                "npc_1",
-                "npc_2"
-            ]
+        "connectedTo": {
+            "N": "NULL",
+            "S": "Hallway One",
+            "E": "NULL",
+            "W": "NULL"
         },
-        {
-            "name": "Hanger Bay",
-            "description": {
-                "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-                "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
-            },
-            "connectedTo": {
-                "N": "NULL",
-                "S": "hallway1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "associatedDoor": {
-                "N": "NULL",
-                "S": "door1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "initialInventory": [
-                "playerCharacter",
-                "hangerKey",
-                "hangerKeyHint"
-            ],
-            "npc": [
-                "npc_1",
-                "npc_2"
-            ]
+        "associatedDoor": {
+            "N": "NULL",
+            "S": "The Mysterious Door",
+            "E": "NULL",
+            "W": "NULL"
         },
-        {
-            "name": "Hanger Bay",
-            "description": {
-                "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-                "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
-            },
-            "connectedTo": {
-                "N": "NULL",
-                "S": "hallway1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "associatedDoor": {
-                "N": "NULL",
-                "S": "door1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "initialInventory": [
-                "playerCharacter",
-                "hangerKey",
-                "hangerKeyHint"
-            ],
-            "npc": [
-                "npc_1",
-                "npc_2"
-            ]
+        "initialInventory": [
+            "playerCharacter",
+            "hangerKey",
+            "hangerKeyHint"
+        ],
+        "npc": [
+            "Player"
+        ]
+    },
+    "room_hallway1" : {
+        "name": "Hallway One",
+        "description": {
+            "firstEntry": "You enter a very long, wide, and empty hallway, made of reinforced steel beams, smooth dark panelling, and lined with bright white lights. As you look into the distance you notice that the hallway continues as it curves away into another section. You also see three doors, one that leads back to the freight hangar bay, and two others that pique your interest. They have signs that read 'Armory' and 'MedBay'. You think you can hear voices coming from the room titled 'MedBay'.",
+            "rentry": "You find yourself back in the first half of the long main service hallway. Looking in one direction, the hallway continues around a bend, in the other direction are three doors, to the Freight Hangar Bay, the Armory, and the MedBay."
         },
-        {
-            "name": "Hanger Bay",
-            "description": {
-                "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-                "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
-            },
-            "connectedTo": {
-                "N": "NULL",
-                "S": "hallway1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "associatedDoor": {
-                "N": "NULL",
-                "S": "door1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "initialInventory": [
-                "playerCharacter",
-                "hangerKey",
-                "hangerKeyHint"
-            ],
-            "npc": [
-                "npc_1",
-                "npc_2"
-            ]
+        "connectedTo": {
+            "N": "Hanger Bay",
+            "S": "Medbay",
+            "E": "Armory",
+            "W": "Hallway Two"
         },
-        {
-            "name": "Hanger Bay",
-            "description": {
-                "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-                "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
-            },
-            "connectedTo": {
-                "N": "NULL",
-                "S": "hallway1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "associatedDoor": {
-                "N": "NULL",
-                "S": "door1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "initialInventory": [
-                "playerCharacter",
-                "hangerKey",
-                "hangerKeyHint"
-            ],
-            "npc": [
-                "npc_1",
-                "npc_2"
-            ]
+        "associatedDoor": {
+            "N": "The Mysterious Door",
+            "S": "NULL",
+            "E": "NULL",
+            "W": "NULL"
         },
-        {
-            "name": "Hanger Bay",
-            "description": {
-                "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-                "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
-            },
-            "connectedTo": {
-                "N": "NULL",
-                "S": "hallway1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "associatedDoor": {
-                "N": "NULL",
-                "S": "door1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "initialInventory": [
-                "playerCharacter",
-                "hangerKey",
-                "hangerKeyHint"
-            ],
-            "npc": [
-                "npc_1",
-                "npc_2"
-            ]
+        "initialInventory": [
+            "NULL"
+        ],
+        "npc": [
+            "NULL"
+        ]
+    },
+    "room_hallway2" : {
+        "name": "Hallway Two",
+        "description": {
+            "firstEntry": "You enter the second half of the long, empty, curving hallway. Just as the previous section, steel beams run from floor to ceiling, with dark panelling filling the space between. Many doors line the walls but you can discern three important looking doors. They have signs that read 'Reactor Room' and 'Security Room'. The third door is ornate with a mysterious pattern, it looks very ominous, maybe you should leave it for last.",
+            "rentry": "You find yourself back in the second half of the long main service hallway. Looking in one direction, the hallway extends around a bend and in the other direction, the hallway leads to three doors. The first two are titled 'Reactor Room' and 'Security Room', the third only has an ornate, ominous looking door."
         },
-        {
-            "name": "Hanger Bay",
-            "description": {
-                "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-                "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
-            },
-            "connectedTo": {
-                "N": "NULL",
-                "S": "hallway1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "associatedDoor": {
-                "N": "NULL",
-                "S": "door1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "initialInventory": [
-                "playerCharacter",
-                "hangerKey",
-                "hangerKeyHint"
-            ],
-            "npc": [
-                "npc_1",
-                "npc_2"
-            ]
+        "connectedTo": {
+            "N": "Security Room",
+            "S": "Reactor",
+            "E": "Hallway One",
+            "W": "Control Room"
         },
-        {
-            "name": "Hanger Bay",
-            "description": {
-                "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-                "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
-            },
-            "connectedTo": {
-                "N": "NULL",
-                "S": "hallway1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "associatedDoor": {
-                "N": "NULL",
-                "S": "door1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "initialInventory": [
-                "playerCharacter",
-                "hangerKey",
-                "hangerKeyHint"
-            ],
-            "npc": [
-                "npc_1",
-                "npc_2"
-            ]
+        "associatedDoor": {
+            "N": "NULL",
+            "S": "door1",
+            "E": "NULL",
+            "W": "NULL"
         },
-        {
-            "name": "Hanger Bay",
-            "description": {
-                "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-                "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
-            },
-            "connectedTo": {
-                "N": "NULL",
-                "S": "hallway1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "associatedDoor": {
-                "N": "NULL",
-                "S": "door1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "initialInventory": [
-                "playerCharacter",
-                "hangerKey",
-                "hangerKeyHint"
-            ],
-            "npc": [
-                "npc_1",
-                "npc_2"
-            ]
+        "initialInventory": [
+            "playerCharacter",
+            "hangerKey",
+            "hangerKeyHint"
+        ],
+        "npc": [
+            "npc_1",
+            "npc_2"
+        ]
+    },
+    "room_armory" : {
+        "name": "Hanger Bay",
+        "description": {
+            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
+            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
         },
-        {
-            "name": "Hanger Bay",
-            "description": {
-                "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-                "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
-            },
-            "connectedTo": {
-                "N": "NULL",
-                "S": "hallway1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "associatedDoor": {
-                "N": "NULL",
-                "S": "door1",
-                "E": "NULL",
-                "W": "NULL"
-            },
-            "initialInventory": [
-                "playerCharacter",
-                "hangerKey",
-                "hangerKeyHint"
-            ],
-            "npc": [
-                "npc_1",
-                "npc_2"
-            ]
-        }
-    ]
+        "connectedTo": {
+            "N": "NULL",
+            "S": "hallway1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "associatedDoor": {
+            "N": "NULL",
+            "S": "door1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "initialInventory": [
+            "playerCharacter",
+            "hangerKey",
+            "hangerKeyHint"
+        ],
+        "npc": [
+            "npc_1",
+            "npc_2"
+        ]
+    },
+    "room_medbay" : {
+        "name": "Hanger Bay",
+        "description": {
+            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
+            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
+        },
+        "connectedTo": {
+            "N": "NULL",
+            "S": "hallway1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "associatedDoor": {
+            "N": "NULL",
+            "S": "door1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "initialInventory": [
+            "playerCharacter",
+            "hangerKey",
+            "hangerKeyHint"
+        ],
+        "npc": [
+            "npc_1",
+            "npc_2"
+        ]
+    },
+    "room_reactor" : {
+        "name": "Hanger Bay",
+        "description": {
+            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
+            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
+        },
+        "connectedTo": {
+            "N": "NULL",
+            "S": "hallway1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "associatedDoor": {
+            "N": "NULL",
+            "S": "door1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "initialInventory": [
+            "playerCharacter",
+            "hangerKey",
+            "hangerKeyHint"
+        ],
+        "npc": [
+            "npc_1",
+            "npc_2"
+        ]
+    },
+    "room_security" : {
+        "name": "Hanger Bay",
+        "description": {
+            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
+            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
+        },
+        "connectedTo": {
+            "N": "NULL",
+            "S": "hallway1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "associatedDoor": {
+            "N": "NULL",
+            "S": "door1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "initialInventory": [
+            "playerCharacter",
+            "hangerKey",
+            "hangerKeyHint"
+        ],
+        "npc": [
+            "npc_1",
+            "npc_2"
+        ]
+    },
+    "room_jail" : {
+        "name": "Hanger Bay",
+        "description": {
+            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
+            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
+        },
+        "connectedTo": {
+            "N": "NULL",
+            "S": "hallway1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "associatedDoor": {
+            "N": "NULL",
+            "S": "door1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "initialInventory": [
+            "playerCharacter",
+            "hangerKey",
+            "hangerKeyHint"
+        ],
+        "npc": [
+            "npc_1",
+            "npc_2"
+        ]
+    },
+    "room_bedroom" : {
+        "name": "Hanger Bay",
+        "description": {
+            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
+            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
+        },
+        "connectedTo": {
+            "N": "NULL",
+            "S": "hallway1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "associatedDoor": {
+            "N": "NULL",
+            "S": "door1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "initialInventory": [
+            "playerCharacter",
+            "hangerKey",
+            "hangerKeyHint"
+        ],
+        "npc": [
+            "npc_1",
+            "npc_2"
+        ]
+    },
+    "room_control" : {
+        "name": "Hanger Bay",
+        "description": {
+            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
+            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
+        },
+        "connectedTo": {
+            "N": "NULL",
+            "S": "hallway1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "associatedDoor": {
+            "N": "NULL",
+            "S": "door1",
+            "E": "NULL",
+            "W": "NULL"
+        },
+        "initialInventory": [
+            "playerCharacter",
+            "hangerKey",
+            "hangerKeyHint"
+        ],
+        "npc": [
+            "npc_1",
+            "npc_2"
+        ]
+    }
 }

@@ -1,59 +1,68 @@
 {
-    "puzzles": [
-        {
-            "name": "The Mysterious Door",
-            "stateDescriptions": {
-                "unsolved": "A mysterious door stands before you, locked and unyielding. You need to find a way to open it.",
-                "solved": "You've unlocked the mysterious door! It was a riddle and a key puzzle all along."
-            },
-            "currentState": "unsolved",
-            "key": "entranceKey",
-            "keyVerb": "USE",
-            "subPuzzles": "Mysterious Riddle"
+    "puzzle_hangarDoor" : {
+        "name": "The Mysterious Door",
+        "stateDescriptions": {
+            "unsolved": "A mysterious door stands before you, locked and unyielding. You need to find a way to open it.",
+            "solved": "You've unlocked the mysterious door! It was a riddle and a key puzzle all along."
         },
-        {
-            "name": "The Enigmatic Jail",
-            "stateDescriptions": {
-                "unsolved": "Someone is in jail, and you need to find a way to open it.",
-                "solved": "You've successfully opened the jail! It was a word puzzle and a key puzzle all along."
-            },
-            "currentState": "unsolved",
-            "key": "jailKey",
-            "keyVerb": "UNLOCK",
-            "subPuzzles": "Word Jumble"
+        "currentState": "unsolved",
+        "key": "entranceKey",
+        "keyVerb": "USE",
+        "subPuzzles": "Mysterious Riddle"
+    },
+    "puzzle_jailDoor" : {
+        "name": "The Enigmatic Jail",
+        "stateDescriptions": {
+            "unsolved": "Someone is in jail, and you need to find a way to open it.",
+            "solved": "You've successfully opened the jail! It was a word puzzle and a key puzzle all along."
         },
-        {
-            "name": "The Metallic Door",
-            "stateDescriptions": {
-                "unsolved": "You're unable to get into the Reactor room. Sensible. It is likely to be stored in a secured location.",
-                "solved": "You've have key into the Reactor room! Now you can sabotage it IF you have what you need..."
-            },
-            "currentState": "unsolved",
-            "key": "beamswordLocation",
-            "keyVerb": "SCAN",
-            "subPuzzles": "Inventory Challenge"
+        "currentState": "unsolved",
+        "key": "jailKey",
+        "keyVerb": "USE",
+        "subPuzzles": "Word Jumble"
+    },
+    "puzzle_reactorDoor" : {
+        "name": "The Metallic Door",
+        "stateDescriptions": {
+            "unsolved": "You're unable to get into the Reactor room. Sensible. It is likely to be stored in a secured location.",
+            "solved": "You've have key into the Reactor room! Now you can sabotage it IF you have what you need..."
         },
-        {
-            "name": "The Captain's Enigma",
-            "stateDescriptions": {
-                "unsolved": "You need to find a key to open the Control Room where Dark Vader, but there might be some tricks. The answer lies in a challenging logic puzzle.",
-                "solved": "You've opened the Control Room Room! It was a challenging logic puzzle and a key puzzle all along."
-            },
-            "currentState": "unsolved",
-            "key": "captainKey",
-            "keyVerb": "USE",
-            "subPuzzles": "Cryptic Symbols"
+        "currentState": "unsolved",
+        "key": "Reactor Room Key",
+        "keyVerb": "USE",
+        "subPuzzles": "Inventory Challenge"
+    },
+    "puzzle_controlRoom" : {
+        "name": "The Captain's Enigma",
+        "stateDescriptions": {
+            "unsolved": "You need to find a key to open the Control Room where Dark Vader, but there might be some tricks. The answer lies in a challenging logic puzzle.",
+            "solved": "You've opened the Control Room Room! It was a challenging logic puzzle and a key puzzle all along."
         },
-        {
-            "name": "The Path of Power",
-            "stateDescriptions": {
-                "unsolved": "You're still searching for the beamsword, a powerful weapon.",
-                "solved": "You've found the beamsword! It was an inventory and retrieval puzzle all along."
-            },
-            "currentState": "unsolved",
-            "key": "beamswordLocation",
-            "keyVerb": "SCAN",
-            "subPuzzles": "Inventory Challenge"
-        }
-    ]
+        "currentState": "unsolved",
+        "key": "captainKey",
+        "keyVerb": "USE",
+        "subPuzzles": "Cryptic Symbols"
+    },
+    "puzzle_sword" : {
+        "name": "The Path of Power",
+        "stateDescriptions": {
+            "unsolved": "You're still searching for the beamsword, a powerful weapon.",
+            "solved": "You've found the beamsword! It was an inventory and retrieval puzzle all along."
+        },
+        "currentState": "unsolved",
+        "key": "beamswordLocation",
+        "keyVerb": "SCAN",
+        "subPuzzles": "Inventory Challenge"
+    },
+    "puzzle_finalSabotage" : {
+        "name": "The Reactor",
+        "stateDescriptions": {
+            "unsolved": "the reactor....",
+            "solved": "You plant the bomb. There is now a countdown"
+        },
+        "currentState": "unsolved",
+        "key": "sabotage",
+        "keyVerb": "USE",
+        "subPuzzles": "NULL"
+    }
 }
