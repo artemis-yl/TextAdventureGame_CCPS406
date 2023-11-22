@@ -4,7 +4,7 @@ class Puzzle(ContainterModel):
     def __init__(self, id, name, stateDescriptions, currentState, key, keyVerb, subPuzzles):
         super().__init__(self, id, name, stateDescriptions, subPuzzles)
 
-        self.currentState = currentState
+        self.state = currentState
         self.key = key
         self.keyVerb = keyVerb
 

@@ -21,9 +21,6 @@
             "playerCharacter",
             "hangerKey",
             "hangerKeyHint"
-        ],
-        "npc": [
-            "Player"
         ]
     },
     "room_hallway1" : {
@@ -45,9 +42,6 @@
             "W": "NULL"
         },
         "initialInventory": [
-            "NULL"
-        ],
-        "npc": [
             "NULL"
         ]
     },
@@ -73,10 +67,6 @@
             "playerCharacter",
             "hangerKey",
             "hangerKeyHint"
-        ],
-        "npc": [
-            "npc_1",
-            "npc_2"
         ]
     },
     "room_armory" : {
@@ -101,10 +91,6 @@
             "playerCharacter",
             "hangerKey",
             "hangerKeyHint"
-        ],
-        "npc": [
-            "npc_1",
-            "npc_2"
         ]
     },
     "room_medbay" : {
@@ -129,10 +115,6 @@
             "playerCharacter",
             "hangerKey",
             "hangerKeyHint"
-        ],
-        "npc": [
-            "npc_1",
-            "npc_2"
         ]
     },
     "room_reactor" : {
@@ -157,10 +139,6 @@
             "playerCharacter",
             "hangerKey",
             "hangerKeyHint"
-        ],
-        "npc": [
-            "npc_1",
-            "npc_2"
         ]
     },
     "room_security" : {
@@ -185,10 +163,6 @@
             "playerCharacter",
             "hangerKey",
             "hangerKeyHint"
-        ],
-        "npc": [
-            "npc_1",
-            "npc_2"
         ]
     },
     "room_jail" : {
@@ -213,10 +187,6 @@
             "playerCharacter",
             "hangerKey",
             "hangerKeyHint"
-        ],
-        "npc": [
-            "npc_1",
-            "npc_2"
         ]
     },
     "room_bedroom" : {
@@ -241,10 +211,6 @@
             "playerCharacter",
             "hangerKey",
             "hangerKeyHint"
-        ],
-        "npc": [
-            "npc_1",
-            "npc_2"
         ]
     },
     "room_control" : {
@@ -269,10 +235,6 @@
             "playerCharacter",
             "hangerKey",
             "hangerKeyHint"
-        ],
-        "npc": [
-            "npc_1",
-            "npc_2"
         ]
     }
 }
