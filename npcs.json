@@ -12,7 +12,7 @@
         "isRoaming" : true,
         "initialInventory": [
             "NULL"
-        ],=
+        ]
     },
     "npc_lia" : {
         "name": "Lia",
