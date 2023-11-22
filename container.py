@@ -1,10 +1,10 @@
 class ContainterModel:
-    def __init__(self, id, name, description, inventory) -> None:
+    def __init__(self, id, name, states, inventory) -> None:
         self.id = id
         self.name = name
         # this is a list of strings, if only one it will be a list of 1 element
         # the subclasses will describe which index holds what kind of description
-        self.description = description
+        self.state_descriptions = states
         self.inventory = inventory
 
     # pythonically, no true data encapsulation, therefore no real need for setter/getters
@@ -23,8 +23,8 @@ class ContainterModel:
     def setInv(self, invList):
         self.inventory = invList
 
-    def getDescription(self):
-        return self.description
+    def getStateDescriptions(self):
+        return self.state_descriptions
 
         """
             #above is the more... pythonic way, below is more OOP ala java

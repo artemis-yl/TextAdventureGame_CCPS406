@@ -1,47 +1,39 @@
 from container import ContainterModel
+
+
 class Room(ContainterModel):
-    def __init__(self, id, name, description, connected_to, associated_door, initial_inventory):
+    def __init__(
+        self, id, name, description, connected_to, associated_door, initial_inventory
+    ):
         super().__init__(self, id, name, description, initial_inventory)
 
         self.connected_to = connected_to
         self.associated_door = associated_door
-        self.inventory=initial_inventory
-
-
-    def getRoomName(self):
-        return self.room_name
+        self.inventory = initial_inventory
 
     def getConnectedRooms(self):
         return self.connected_to
 
-    def getState(self):
-        return self.state
-
-    def setState(self, new_state):
-        self.state = new_state
-
     def getAssociatedDoor(self):
         return self.associated_door
 
-    def getInitialInventory(self):
-        return self.initial_inventory
-
     def addNPC(self, npc):
-        self.npcs_inside.append(npc)
+        self.inventory.append(npc)
 
     def removeNPC(self, npc):
-        if npc in self.npcs_inside:
-            self.npcs_inside.remove(npc)
+        if npc in self.inventory:
+            self.inventory.remove(npc)
         else:
-            print(f"{npc.npc_id} is not inside {self.room_name}")
+            print(f"{npc.name} is not inside {self.name}")
 
     def __str__(self):
-        return f"Room Name: {self.room_name}"
-    
+        return f"Room Name: {self.name}"
+
     def __repr__(self):
-        return f"Room Name: {self.room_name}"
-    
-'''
+        return f"Room Name: {self.name}"
+
+
+"""
 # Load room data from file
 with open("room.json", 'r') as room_file:
     room_data = json.load(room_file)
@@ -66,4 +58,4 @@ for room_id, room in room_instances.items():
     print(f"Associated Door: {room.associated_door}")
     print(f"Initial Inventory: {room.initial_inventory}")
     print("\n")
-'''
+"""
