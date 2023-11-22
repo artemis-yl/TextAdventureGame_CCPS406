@@ -1,6 +1,8 @@
-class Item:
-    def __init__(self, name, state_descriptions, state, is_purpose=[False, False, False, False]):
-        self.name = name
+from container import ContainterModel
+class Item(ContainterModel):
+    def __init__(self, id, name, state_descriptions, state, is_purpose=[False, False, False, False]):
+        super().__init__(self, id, name, state, [None])
+
         self.state_descriptions=state_descriptions
         self.state=state
 

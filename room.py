@@ -1,12 +1,12 @@
-class Room:
-    def __init__(self, room_name, description, connected_to,associated_door,initial_inventory,npc):
-        self.room_name = room_name
-        self.description = description
+from container import ContainterModel
+class Room(ContainterModel):
+    def __init__(self, id, name, description, connected_to, associated_door, initial_inventory):
+        super().__init__(self, id, name, description, initial_inventory)
+
         self.connected_to = connected_to
         self.associated_door = associated_door
-        self.initial_inventory=initial_inventory
-        self.npcs_inside=npc
-        self.state = None
+        self.inventory=initial_inventory
+
 
     def getRoomName(self):
         return self.room_name
