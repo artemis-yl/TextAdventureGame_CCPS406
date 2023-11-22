@@ -21,7 +21,7 @@ class GameLoader:
         puzzle_list = self.import_puzzles()
         message_dict = self.import_messages()
 
-        return npc_list, room_list, item_list, puzzle_list, message_dict
+        return [npc_list, room_list, item_list, puzzle_list, message_dict]
 
     def import_npcs(self):
         # Method to import NPC data from JSON

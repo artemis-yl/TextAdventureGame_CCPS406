@@ -3,7 +3,10 @@ import re
 
 class InputHandler:
     def __init__(
-        self, prompt="What will you do? >", invalidResponse="Invalid input."
+        self,
+        commandList,
+        prompt="What will you do? >",
+        invalidResponse="Invalid input.",
     ) -> None:
         """
         Verb Target Item ex) attack grunt with blaster
@@ -15,6 +18,7 @@ class InputHandler:
         self.verb = ""
         self.keyword2 = ""
         self.keyword1 = ""
+        self.commandList = commandList
         self.prompt = prompt
         self.invalidResponse = invalidResponse
 
@@ -61,12 +65,17 @@ class InputHandler:
 
 
 class OutputHandler:
-    def __init__(self) -> None:
+    def __init__(self, commandList) -> None:
         self.buffer = ""
+        self.commandList = commandList
 
     def displayOutput(self):
         print(self.buffer)
         self.clearBuffer()
+
+    def getCMDOutput(self, key, result):
+        # result keys can be "sucess" or "failure"
+        self.commandList[key[result]]
 
     """
     two types of msgs that needs to be formatted: 
@@ -80,7 +89,8 @@ class OutputHandler:
     """
 
     # even is there is only 1 object to print, must be in a list for para(meter)s
-    def formatOutput(self, msg, objectList):
+    def formatOutput(self, verb, result, objectList):
+        msg = self.getCMDOutput(verb, result)
         splited = re.split("<>", msg)  # string to list, split at seperator "<>"
 
         # this is very... hardcoded. good for now but may need to be redone

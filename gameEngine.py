@@ -1,4 +1,4 @@
-import view #, stateModifier
+import view, gameLoader
 
 
 class GameEngine:
@@ -7,9 +7,12 @@ class GameEngine:
         self.turnCounter = 0
         self.dataNeeded = [None]
         self.dataToBeChanged: [None]
-        # self.stateModifier = stateModifier.StateModifier()
-        self.inHandler = view.InputHandler()
-        self.outHandler = view.OutputHandler()
+
+        self.model = gameLoader( "npc.json", "room.json", "items.json", "puzzles.json", "gameMsg.json", "commands.json" ) 
+        self.npcDict, self.roomDict, self.itemDict, self.puzzleDict, self.msgDict, self.commandDict = self.model.loadGame()
+
+        self.inHandler = view.InputHandler(self.commandDict)
+        self.outHandler = view.OutputHandler(self.commandDict)
 
     def executeCommand(self):
         self.inHandler.parseInput()
