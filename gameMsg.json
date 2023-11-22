@@ -1,63 +1,9 @@
 {
-    "messages": [
-      {
-        "introduction": "A long time ago in a galaxy far, far away... You have returned to your home planet to enjoy your winter break. Little do you know that the Galactic Empire has secretly begun constructing a new armored space station known as the DS-3 Orbital Battle Station (i.e. Planet Killer 3). Intel has also shown that during your time away, the Empire’s evil leader, Dark Vader, has returned, captured your freedom fighter friend Lia, and plans to thwart your much-deserved vacation by using the Planet Killer to destroy your homeworld. Meanwhile, a mysterious yet friendly Jaydai has already infiltrated DS-3.",
-        "youDied": "You died.",
-        "youWinMinimal": "You won the most basic objectives. A success is a success, but don't you think you could do better?",
-        "youWinBestEnding": "You won! Everyone lives, the enemy is dead, everything that could be done is done!",
-        "commandList": ["N", "S", "E", "W", "ATTACK", "SCAN", "INVENTORY", "USE", "TAKE", "FIGHT", "LOCATION"],
-        "availableCommands": {
-            "N": {
-                "success": "You moved north to <>",
-                "failure": "You can't move north"
-            },
-            "S": {
-                "success": "You moved south to <>",
-                "failure": "You can't move south"
-            },
-            "E": {
-                "success": "You moved east to <>",
-                "failure": "You can't move east"
-            },
-            "W": {
-                "success": "You moved west to <>",
-                "failure": "You can't move west"
-            },
-            "ATTACK": {
-                "success": "You attacked <> with your <>!",
-                "failure": "You failed to attack <>."
-            },
-            "SCAN": {
-                "success": "You examined the room and found <>.",
-                "failure": "You couldn't find anything of interest."
-            },
-            "INVENTORY": {
-                "success": "Your inventory contains the following items: <>",
-                "failure": "Your inventory is empty."
-            },
-            "USE": {
-                "success": "You used <> on <>.",
-                "failure": "You can't use <> on <>."
-            },
-            "TAKE": {
-                "success": "You picked up <>.",
-                "failure": "You can't take <>."
-            },
-            "TALK": {
-                "success": "You initiate a conversation with <>.",
-                "failure": "You can't initiate a conversation with <>."
-            },
-            "LOCATION": {
-                "success": "You are currently in <>.",
-                "failure": "You can't determine your location."
-            },
-            "DISCARD" : {
-                "success": "You discarded <>.",
-                "failure": "You can't discard <>."
-            }
-
-        },
-        "roomMessages": {
+    "introduction": "A long time ago in a galaxy far, far away... You have returned to your home planet to enjoy your winter break. Little do you know that the Galactic Empire has secretly begun constructing a new armored space station known as the DS-3 Orbital Battle Station (i.e. Planet Killer 3). Intel has also shown that during your time away, the Empire’s evil leader, Dark Vader, has returned, captured your freedom fighter friend Lia, and plans to thwart your much-deserved vacation by using the Planet Killer to destroy your homeworld. Meanwhile, a mysterious yet friendly Jaydai has already infiltrated DS-3.",
+    "youDied": "You died.",
+    "youWinMinimal": "You won the most basic objectives. A success is a success, but don't you think you could do better?",
+    "youWinBestEnding": "You won! Everyone lives, the enemy is dead, everything that could be done is done!",
+    "roomMessages": {
         "hangarBay": {
             "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
             "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
@@ -98,7 +44,5 @@
             "firstEntry": "You enter the throne room of the DS-3 Station. It is a huge, open chamber, with dark-grey sculpted stone walls, lined by carved pillars extending from floor to ceiling. The room is so large, you notice a faint mist hovering along the far reaches of the chamber. Midway into the room is a series of flights of stairs, spanning wall-to-wall and interspersed by brief platforms, leading upwards to the final level. Atop this peak sits a large jagged throne made of some dark, light-absorbing material that gives the seat an appearance as if it is made of shadows. Within the shadows, you can just barely make out the silhouette of some ominous figure.",
             "rentry": "You find yourself back inside of the throne room. A chamber intentionally designed to stoke fear and awe within those who come to see the dark ruler of the DS-3 Station."
         }
-        }
     }
-    ]
 }
