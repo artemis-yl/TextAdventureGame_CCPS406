@@ -23,18 +23,6 @@
         "isTeleporter": false,
         "isRevive" : false
     },
-    "item_keyControlRoom" : {
-        "name": "Control Room Key",
-        "stateDescriptions": {
-            "working": "This key looks like it unlocks a door with great evil behind it. ",
-            "notWorking": "This item has broken for some unknown reason."
-        },
-        "currentState": "working",
-        "isWeapon" : false,
-        "isShield" : false,
-        "isTeleporter" : false,
-        "isRevive" : false
-    },
     "item_keyHangar" : {
         "name": "Hangar Door Key",
         "stateDescriptions": {
@@ -47,6 +35,18 @@
         "isTeleporter" : false,
         "isRevive" : false
     },
+    "item_keyJail": {
+        "name": "Jail Door Key",
+        "stateDescriptions": {
+            "working": "This keycard is has an image of an ancient jail cell gate on it. ",
+            "notWorking": "This item has broken for some unknown reason."
+        },
+        "currentState": "working",
+        "isWeapon": false,
+        "isShield": false,
+        "isTeleporter": false,
+        "isRevive": false
+    },
     "item_keyReactor" : {
         "name": "Reactor Room Key",
         "stateDescriptions": {
@@ -58,6 +58,18 @@
         "isShield" : false,
         "isTeleporter" : false,
         "isRevive" : false
+    },
+    "item_keyControlRoom" : {
+        "name": "Control Room Key",
+        "stateDescriptions": {
+            "working": "This key looks like it unlocks a door with great evil behind it. ",
+            "notWorking": "This item has broken for some unknown reason."
+        },
+        "currentState": "working",
+        "isWeapon": false,
+        "isShield": false,
+        "isTeleporter": false,
+        "isRevive": false
     },
     "item_revive" : {
         "name": "Bacta Injection (Revival Item)",
@@ -112,6 +124,18 @@
         "stateDescriptions": {
             "working": "You notice a chatlog on a communication device. ' ... weird that the boss didn't want to store such a powerful weapon in the armory, but I guess sometimes it's better hidden in plain sight.",
             "notWorking": "The tablet has been destroyed. You cannot read anything that may have once been on the screen."
+        },
+        "currentState": "working",
+        "isWeapon": false,
+        "isShield": false,
+        "isTeleporter": false,
+        "isRevive": false
+    },
+    "item_sabotageBomb": {
+        "name": "High Yield Explosive",
+        "stateDescriptions": {
+            "working": "This is a powerful bomb. It can take out several rooms, but placed carefully it can take out even larger structures.",
+            "notWorking": "You've already planted your explosive and started the countdown, you better run!"
         },
         "currentState": "working",
         "isWeapon": false,
