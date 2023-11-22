@@ -23,8 +23,8 @@ class ContainterModel:
     def setInv(self, invList):
         self.inventory = invList
 
-    def getStateDescription(self, key):
-        return self.state_descriptions[key]
+    def getStateDescription(self, state_key):
+        return self.state_descriptions[state_key]
 
         """
             #above is the more... pythonic way, below is more OOP ala java

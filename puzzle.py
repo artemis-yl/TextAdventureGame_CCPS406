@@ -1,27 +1,18 @@
 from container import ContainterModel
 
 class Puzzle(ContainterModel):
-    def __init__(self, id, name, stateDescriptions, currentState, key, keyVerb, subPuzzles):
-        super().__init__(self, id, name, stateDescriptions, subPuzzles)
+    def __init__(self, id, name, state_descriptions, initial_state, key, key_verb, subPuzzles):
+        super().__init__(self, id, name, state_descriptions, subPuzzles)
 
-        self.state = currentState
+        self.state = initial_state
         self.key = key
-        self.keyVerb = keyVerb
+        self.keyVerb = key_verb
 
     def solve(self):
         self.currentState = "solved"
 
-    """ 
-    #these are in superclass
-    def getName(self):
-        return self.name
-
-    def getStateDescriptions(self):
-        return self.stateDescriptions
-
     def getSubPuzzles(self):
-        return self.subPuzzles
-    """
+        return self.getInv()
 
     def getCurrentState(self):
         return self.currentState

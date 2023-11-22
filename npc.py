@@ -7,7 +7,6 @@ class NPC(ContainterModel):
         self.current_state = initial_state
         self.is_active = is_active
         self.is_roaming = is_roaming
-        self.inventory = initial_inventory
 
     def getPuzzleState(self):
         pass
@@ -15,8 +14,8 @@ class NPC(ContainterModel):
     # check if the given key and command are correct
     def tryPuzzle(self, command):
         key = self.puzzle.getKey()
-        keyCmd = self.puzzle.getKeyVerb()
-        if key in self.inventory and keyCmd == command:
+        key_cmd = self.puzzle.getKeyVerb()
+        if key in self.inventory and key_cmd == command:
             self.puzzle.solve()
         
 
