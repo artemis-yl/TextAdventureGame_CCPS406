@@ -95,7 +95,7 @@
         "isTeleporter" : true,
         "isRevive" : false
     },
-    "item_HintHangar" : {
+    "item_hintHangar" : {
         "name": "Hangar Hint",
         "stateDescriptions": {
             "working": "You notice the PC monitor message: 'hey, did you lock me in the hanger again? Good thing I left a key here.' It might be referring to the entrance door. Where could have the key?",
@@ -136,6 +136,18 @@
         "stateDescriptions": {
             "working": "This is a powerful bomb. It can take out several rooms, but placed carefully it can take out even larger structures.",
             "notWorking": "You've already planted your explosive and started the countdown, you better run!"
+        },
+        "currentState": "working",
+        "isWeapon": false,
+        "isShield": false,
+        "isTeleporter": false,
+        "isRevive": false
+    },
+    "item_secretInfo": {
+        "name": "Datastick with Information",
+        "stateDescriptions": {
+            "working": "A datastick already loaded with secret information. Lia will want this!",
+            "notWorking": "Somehow the datastick has been destroyed. Any information on it has now been lost."
         },
         "currentState": "working",
         "isWeapon": false,

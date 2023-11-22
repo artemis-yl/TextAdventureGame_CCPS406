@@ -1,12 +1,24 @@
-class NPC:
-    def __init__(self, npc_id, initial_state, possible_states, is_active, is_roaming, initial_inventory, puzzle_list):
-        self.npc_id = npc_id
+from container import ContainterModel
+class NPC(ContainterModel):
+    def __init__(self, npc_id, name, initial_state, possible_states, dialogue, is_active, is_roaming, initial_inventory, puzzle):
+        super().__init__(self, npc_id, name, possible_states, initial_inventory)
+        self.dialogue =  dialogue
         self.current_state = initial_state
-        self.possible_states = possible_states
         self.is_active = is_active
         self.is_roaming = is_roaming
-        self.initial_inventory = initial_inventory
-        self.puzzle_list = puzzle_list
+        self.inventory = initial_inventory
+        self.puzzle = puzzle
+
+    def getPuzzleState(self):
+        pass
+
+    # check if the given key and command are correct
+    def tryPuzzle(self, command):
+        key = self.puzzle["key"]
+        keyCmd = self.puzzle["keyVerb"]
+        if key in self.inventory and keyCmd == command:
+            self.puzzle.setState()
+        
 
     def getState(self):
         return self.current_state
@@ -17,6 +29,9 @@ class NPC:
             print(f"{self.npc_id} is now in state: {new_state}")
         else:
             print(f"Error: {new_state} is not a valid state for {self.npc_id}")
+
+    def getDialogue(self):
+        return self.dialogue
 
     def checkIfActive(self):
         return self.is_active
@@ -34,7 +49,8 @@ class NPC:
         roaming_status = "roaming" if is_roaming else "not roaming"
         print(f"{self.npc_id} is now {roaming_status}")
 
-'''
+
+"""
 #Load NPC data from file
 with open("npcs.json", 'r') as npc_file:
     npc_data = json.load(npc_file)
@@ -63,4 +79,4 @@ for npc in npc_instances:
     print(f"Initial Inventory: {npc.initial_inventory}")
     print(f"Puzzle List: {npc.puzzle_list}")
     print("\n")
-'''
+"""

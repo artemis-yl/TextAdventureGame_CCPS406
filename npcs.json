@@ -13,9 +13,7 @@
         "initialInventory": [
             "NULL"
         ],
-        "puzzleList": [
-            "NULL"
-        ]
+        "puzzleList": "NULL"
     },
     "npc_lia" : {
         "name": "Lia",
@@ -31,9 +29,7 @@
         "initial_inventory": [
             "Blaster"
         ],
-        "puzzle_list": [
-            "puzzleObj1"
-        ]
+        "puzzle_list": "item_secretInfo"
     },
     "npc_jaydai" : {
         "name": "Jaydai",
@@ -49,9 +45,7 @@
         "initial_inventory": [
             "Beam Saber"
         ],
-        "puzzle_list": [
-            "puzzleObj1"
-        ]
+        "puzzle_list": "NULL"
     },
     "npc_gruntRoam" : {
         "name": "Trooper Patrol",
@@ -67,9 +61,7 @@
         "initialInventory": [
             "Blaster"
         ],
-        "puzzleList": [
-            "NULL"
-        ]
+        "puzzleList": "NULL"
     },
     "npc_gruntStationary" : {
         "name": "Trooper Guard",
@@ -85,9 +77,7 @@
         "initialInventory": [
             "Blaster"
         ],
-        "puzzleList": [
-            "NULL"
-        ]
+        "puzzleList": "NULL"
     },
     "npc_boss" : {
         "name": "Dark Father",
@@ -103,8 +93,6 @@
         "initialInventory": [
             "Beam Saber"
         ],
-        "puzzleList": [
-            "NULL"
-        ]
+        "puzzleList": ""
     }
 }

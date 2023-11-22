@@ -64,5 +64,27 @@
         "key": "item_sabotageBomb",
         "keyVerb": "USE",
         "subPuzzles": "NULL"
+    },
+    "puzzle_LiaInfo": {
+        "name": "SideQuest - Lia's Object",
+        "stateDescriptions": {
+            "unsolved": "Lia, as a freedom fighter is seeking secret information hidden inside the Planet Killer. She was in the process of loading the secret info onto a datastick when she got caught. Perhaps you can find the datastick somewhere secure.",
+            "solved": "You have found the secret information! Lia is quite pleased."
+        },
+        "currentState": "unsolved",
+        "key": "item_secretInfo",
+        "keyVerb": "TALK",
+        "subPuzzles": "NULL"
+    },
+    "puzzle_Jaydai": {
+        "name": "The Reactor",
+        "stateDescriptions": {
+            "unsolved": "the reactor....",
+            "solved": "You plant the bomb. There is now a countdown"
+        },
+        "currentState": "unsolved",
+        "key": "item_sabotageBomb",
+        "keyVerb": "TALK",
+        "subPuzzles": "NULL"
     }
 }

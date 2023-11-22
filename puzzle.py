@@ -1,21 +1,33 @@
-class Puzzle:
-    def __init__(self, name, stateDescriptions, currentState, key, keyVerb, hints, subPuzzles):
-        self.name = name
-        self.stateDescriptions = stateDescriptions
-        self.currentState = currentState
+from container import ContainterModel
+
+class Puzzle(ContainterModel):
+    def __init__(
+        self, id, name, stateDescriptions, currentState, key, keyVerb, subPuzzles
+    ):
+        super().__init__(self, id, name, stateDescriptions, subPuzzles)
         self.key = key
         self.keyVerb = keyVerb
-        self.hints = hints
-        self.subPuzzles = subPuzzles
 
+    def solve(self):
+        self.currentState = "solved"
+
+    """ 
+    #these are in superclass
     def getName(self):
         return self.name
 
     def getStateDescriptions(self):
         return self.stateDescriptions
 
+    def getSubPuzzles(self):
+        return self.subPuzzles
+    """
+
     def getCurrentState(self):
         return self.currentState
+
+    def setCurrentState(self, currentState):
+        self.currentState = currentState
 
     def getKey(self):
         return self.key
@@ -23,18 +35,8 @@ class Puzzle:
     def getKeyVerb(self):
         return self.keyVerb
 
-    def getHints(self):
-        return self.hints
 
-    def getSubPuzzles(self):
-        return self.subPuzzles
-
-    def setCurrentState(self, currentState):
-        self.currentState = currentState
-
-
-
-'''        
+"""        
 # Example usage in a text-based game
 if __name__ == "__main__":
     # Initialize the game state
@@ -83,9 +85,9 @@ if __name__ == "__main__":
         # Game progression logic (e.g., moving to other rooms) goes here
         else:
             print("There's nothing to do here.")
-'''
-    
-'''   
+"""
+
+"""   
     # Access and manipulate the puzzle instances
     puzzle1 = puzzle_instances["compoundPuzzle1"]
     puzzle2 = puzzle_instances["compoundPuzzle2"]
@@ -113,4 +115,4 @@ if __name__ == "__main__":
     print("Puzzle 4 Key Item:", puzzle4.getKeyItem())
     print("Puzzle 4 Key Verb:", puzzle4.getKeyVerb())
     print("Puzzle 4 Solved State:", puzzle4.getState())
-'''
+"""

@@ -1,5 +1,6 @@
 class ContainterModel:
-    def __init__(self, name, description, inventory) -> None:
+    def __init__(self, id, name, description, inventory) -> None:
+        self.id = id
         self.name = name
         # this is a list of strings, if only one it will be a list of 1 element
         # the subclasses will describe which index holds what kind of description
@@ -9,10 +10,12 @@ class ContainterModel:
     # pythonically, no true data encapsulation, therefore no real need for setter/getters
     # shall include anyway, for now
 
+    # both, name and ID will never change so no need to have setters
     def getName(self):
         return self.name
 
-    # again, name will never change so no need to have a setter
+    def getID(self):
+        return self.id
 
     def getInv(self):
         return self.inventory
