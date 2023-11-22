@@ -2,14 +2,12 @@ from container import ContainterModel
 
 
 class Room(ContainterModel):
-    def __init__(
-        self, id, name, description, connected_to, associated_door, initial_inventory
-    ):
-        super().__init__(self, id, name, description, initial_inventory)
+    def __init__(self, puzzle):
+        super().__init__(self, puzzle["name"], puzzle["description"], puzzle["initialInventory"])
 
-        self.connected_to = connected_to
-        self.associated_door = associated_door
-        self.inventory = initial_inventory
+        self.connected_to = puzzle["connectedTo"]
+        self.associated_door = puzzle["associatedDoor"]
+        self.inventory = puzzle["initialInventory"]
 
     def getConnectedRooms(self):
         return self.connected_to

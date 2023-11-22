@@ -1,12 +1,19 @@
 from container import ContainterModel
-class NPC(ContainterModel):
-    def __init__(self, id, name, initial_state, possible_states, dialogue, is_active, is_roaming, initial_inventory):
-        super().__init__(self, id, name, possible_states, initial_inventory)
 
-        self.dialogue =  dialogue
-        self.current_state = initial_state
-        self.is_active = is_active
-        self.is_roaming = is_roaming
+
+class NPC(ContainterModel):
+    def __init__(self, puzzle):
+        super().__init__(
+            self,
+            puzzle["name"],
+            puzzle["stateDescriptions"],
+            puzzle["initialInventory"],
+        )
+
+        self.dialogue = puzzle["dialogue"]
+        self.current_state = puzzle["initialState"]
+        self.is_active = puzzle["isActive"]
+        self.is_roaming = puzzle["isRoaming"]
 
     def getPuzzleState(self):
         pass
@@ -17,7 +24,6 @@ class NPC(ContainterModel):
         key_cmd = self.puzzle.getKeyVerb()
         if key in self.inventory and key_cmd == command:
             self.puzzle.solve()
-        
 
     def getState(self):
         return self.current_state
