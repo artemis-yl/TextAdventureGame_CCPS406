@@ -6,10 +6,7 @@
             "notWorking": "This item has broken for some unknown reason."
         },
         "currentState": "working",
-        "isWeapon": true,
-        "isShield": false,
-        "isTeleporter": false,
-        "isRevive" : false
+        "is_purpose" : [true, false, false, false]
     },
     "item_beamSaber" : {
         "name": "Beam Saber",
@@ -18,10 +15,7 @@
             "notWorking": "This item has broken for some unknown reason."
         },
         "currentState": "working",
-        "isWeapon": true,
-        "isShield": true,
-        "isTeleporter": false,
-        "isRevive" : false
+        "is_purpose" : [true, true, false, false]
     },
     "item_keyHangar" : {
         "name": "Hangar Door Key",
@@ -30,10 +24,7 @@
             "notWorking": "This item has broken for some unknown reason."
         },
         "currentState": "working",
-        "isWeapon" : false,
-        "isShield" : false,
-        "isTeleporter" : false,
-        "isRevive" : false
+        "is_purpose" : [false, false, false, false]
     },
     "item_keyJail": {
         "name": "Jail Door Key",
@@ -42,10 +33,7 @@
             "notWorking": "This item has broken for some unknown reason."
         },
         "currentState": "working",
-        "isWeapon": false,
-        "isShield": false,
-        "isTeleporter": false,
-        "isRevive": false
+        "is_purpose" : [false, false, false, false]
     },
     "item_keyReactor" : {
         "name": "Reactor Room Key",
@@ -54,10 +42,7 @@
             "notWorking": "This item has broken for some unknown reason."
         },
         "currentState": "working",
-        "isWeapon" : false,
-        "isShield" : false,
-        "isTeleporter" : false,
-        "isRevive" : false
+        "is_purpose" : [false, false, false, false]
     },
     "item_keyControlRoom" : {
         "name": "Control Room Key",
@@ -66,10 +51,7 @@
             "notWorking": "This item has broken for some unknown reason."
         },
         "currentState": "working",
-        "isWeapon": false,
-        "isShield": false,
-        "isTeleporter": false,
-        "isRevive": false
+        "is_purpose" : [false, false, false, false]
     },
     "item_revive" : {
         "name": "Bacta Injection (Revival Item)",
@@ -78,10 +60,7 @@
             "notWorking": "You've already used your Bacta Injection, "
         },
         "currentState": "working",
-        "isWeapon" : false,
-        "isShield" : false,
-        "isTeleporter" : true,
-        "isRevive" : true
+        "is_purpose" : [false, false, true, true]
     },
     "item_teleport" : {
         "name": "Teleport",
@@ -90,10 +69,7 @@
             "notWorking": "You've already used your teleporter, it no longer works!"
         },
         "currentState": "working",
-        "isWeapon" : false,
-        "isShield" : false,
-        "isTeleporter" : true,
-        "isRevive" : false
+        "is_purpose" : [false, false, true, false]
     },
     "item_hintHangar" : {
         "name": "Hangar Hint",
@@ -102,10 +78,7 @@
             "notWorking": "The PC has been destroyed. You cannot read anything that may have once been on the screen."
         },
         "currentState": "working",
-        "isWeapon": false,
-        "isShield": false,
-        "isTeleporter": false,
-        "isRevive": false
+        "is_purpose" : [false, false, false, false]
     },
     "item_hintJail" : {
         "name": "Jail Hint",
@@ -114,10 +87,7 @@
             "notWorking": "The tablet has been destroyed. You cannot read anything that may have once been on the screen."
         },
         "currentState": "working",
-        "isWeapon": false,
-        "isShield": false,
-        "isTeleporter": false,
-        "isRevive": false
+        "is_purpose" : [false, false, false, false]
     },
     "item_hintBSLocation" : {
         "name": "Beamsword Hint",
@@ -126,10 +96,7 @@
             "notWorking": "The tablet has been destroyed. You cannot read anything that may have once been on the screen."
         },
         "currentState": "working",
-        "isWeapon": false,
-        "isShield": false,
-        "isTeleporter": false,
-        "isRevive": false
+        "is_purpose" : [false, false, false, false]
     },
     "item_sabotageBomb": {
         "name": "High Yield Explosive",
@@ -138,10 +105,7 @@
             "notWorking": "You've already planted your explosive and started the countdown, you better run!"
         },
         "currentState": "working",
-        "isWeapon": false,
-        "isShield": false,
-        "isTeleporter": false,
-        "isRevive": false
+        "is_purpose" : [false, false, false, false]
     },
     "item_secretInfo": {
         "name": "Datastick with Information",
@@ -150,9 +114,6 @@
             "notWorking": "Somehow the datastick has been destroyed. Any information on it has now been lost."
         },
         "currentState": "working",
-        "isWeapon": false,
-        "isShield": false,
-        "isTeleporter": false,
-        "isRevive": false
+        "is_purpose" : [false, false, false, false]
     }
 }

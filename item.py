@@ -1,47 +1,36 @@
 from container import ContainterModel
+
+
 class Item(ContainterModel):
-    def __init__(self, id, name, state_descriptions, state, is_purpose=[False, False, False, False]):
-        super().__init__(self, id, name, state, [None])
+    def __init__(self, id, name, state_descriptions, initial_state, is_purpose):
+        super().__init__(self, id, name, state_descriptions, [None])
 
-        self.state_descriptions=state_descriptions
-        self.state=state
-
-        #[Weapon, Shield, Teleporter, Revive]
-        self.is_purpose=is_purpose
-
-    def getName(self):
-        return self.name
-
-    def setName(self, new_name):
-        self.name = new_name
-
-    def getDescription(self):
-        return self.state_descriptions.get(self.state, "No description available.")
+        self.current_state = initial_state
+        self.is_purpose = is_purpose  # [Weapon, Shield, Teleporter, Revive]
 
     def isWeapon(self):
-        return self.is_purpose[0]           # Override if the item is a weapon
+        return self.is_purpose[0]  # Override if the item is a weapon
 
     def isShield(self):
-        return self.is_purpose[1]            # Override if the item is a shield
+        return self.is_purpose[1]  # Override if the item is a shield
 
     def isRevive(self):
-        return self.is_purpose[2]             # Override if the item is for revival
+        return self.is_purpose[2]  # Override if the item is for revival
 
     def isTeleport(self):
-        return self.is_purpose[3]             # Override if the item is for teleportation
-    
+        return self.is_purpose[3]  # Override if the item is for teleportation
+
     def setState(self, new_state):
-        self.state = new_state
+        self.current_state = new_state
 
     def __str__(self):
         return f"{self.name}"
-    
+
     def __repr__(self):
-        return f"{self.name}" 
+        return f"{self.name}"
 
 
-
-'''          
+"""          
 # Load item data from file
 with open("items.json", 'r') as items_file:
     items_data = json.load(items_file)
@@ -71,4 +60,4 @@ for item in item_instances:
     print(f"Is Teleport: {item.isTeleport()}")
     print(f"Is Revive: {item.isRevive()}")
     print("\n")
-'''
+"""
