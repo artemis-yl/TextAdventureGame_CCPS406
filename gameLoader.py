@@ -15,122 +15,75 @@ class GameLoader:
 
     def loadGame(self):
         # Method to load the game data
-        npc_list = self.import_npcs()
-        room_list = self.import_rooms()
-        item_list = self.import_items()
-        puzzle_list = self.import_puzzles()
+        npc_dict = self.import_npcs()
+        room_dict = self.import_rooms()
+        item_dict = self.import_items()
+        puzzle_dict = self.import_puzzles()
         message_dict = self.import_messages()
 
-        return [npc_list, room_list, item_list, puzzle_list, message_dict]
+        return [npc_dict, room_dict, item_dict, puzzle_dict, message_dict]
 
     def import_npcs(self):
-        # Method to import NPC data from JSON
-        with open(self.npc_filename, 'r') as npc_json:
-            data = json.load(npc_json)
+        # Method to import npcs
+        with open(self.npc_filename, 'r') as file:
+            npc_data = json.load(file)
 
-        npc_list = []
+        npc_dict = {}
 
-        for npc_data in data['npcs']:
-            npc_list.append(
-            NPC
-            (
-                    npc_data["name"],
-                    npc_data.get("initialState"),
-                    npc_data.get("stateDescriptions"),  
-                    npc_data.get("isActive"),
-                    npc_data.get("isRoaming"),
-                    npc_data.get("initialInventory"),
-                    npc_data.get("puzzleList")
-            )
-            )
+        for npc_key, npc_d in npc_data.items():
+            npc_instance = NPC(npc_d)
+            npc_dict[npc_key] = npc_instance
 
-        return npc_list
+        return npc_dict
 
     def import_rooms(self):
-        # Method to import room data from JSON
-        with open(self.room_filename, 'r') as room_json:
-            data = json.load(room_json)
+        # Method to import rooms 
+        with open(self.room_filename, 'r') as file:
+            room_data = json.load(file)
 
-        room_list = []
+        room_dict = {}
 
-        for room_data in data['rooms']:
-            room_list.append(
-            Room
-            (
-                room_data["name"],
-                room_data["description"],
-                room_data["connectedTo"],
-                room_data["associatedDoor"],
-                room_data["initialInventory"],
-                room_data["npc"]
-            )
-            )
+        for room_key, room_d in room_data.items():
+            room_instance = Room(room_d)
+            room_dict[room_key] = room_instance
 
-        return room_list
+        return room_dict
 
     def import_items(self):
-        # Method to import item data from JSON
+        # Method to import items
         with open(self.items_filename, 'r') as item_json:
             data = json.load(item_json)
 
-        item_list = []
+        item_dict = {}
 
-        for item_data in data['items']:
-            item_list.append(
-            Item
-            (
-                item_data["name"],
-                item_data["stateDescriptions"],
-                item_data["currentState"],
-                [
-                item_data["isWeapon"],
-                item_data["isShield"],
-                item_data["isTeleporter"],
-                item_data["isRevive"]
-                ]
-            )
-            )
+        for item_key, item_data in data.items():
+            item_instance = Item(item_data)
+            item_dict[item_key] = item_instance
 
-        return item_list
+        return item_dict
 
     def import_puzzles(self):
-        # Method to import puzzle data from JSON
+        # Method to import puzzles
         with open(self.puzzles_filename, 'r', encoding='utf-8') as puzzle_json:
             data = json.load(puzzle_json)
 
-        puzzle_list = []
+        puzzle_dict = {}
 
-        for puzzle_data in data['puzzles']:
-            puzzle_list.append(
-            Puzzle
-            (
-                puzzle_data["name"], 
-                puzzle_data["stateDescriptions"], 
-                puzzle_data["currentState"], 
-                puzzle_data["key"], 
-                puzzle_data["keyVerb"], 
-                puzzle_data["hints"], 
-                puzzle_data["subPuzzles"]
-            
-            )
-            )
-        
-        return puzzle_list
+        for puzzle_key, puzzle_data in data.items():
+            puzzle_instance = Puzzle(puzzle_data)
+            puzzle_dict[puzzle_key] = puzzle_instance
+
+        return puzzle_dict
+
   
     def import_messages(self):
-        # Method to import message data from JSON
+        # Method to import messages
         with open(self.messages_filename, 'r') as message_json:
             data = json.load(message_json)
 
         messages_dict = {}
 
-        for message_data in data['messages']:
-            messages_dict['introduction'] = message_data["introduction"]
-            messages_dict['youDied'] = message_data["youDied"]
-            messages_dict['youWinMinimal'] = message_data["youWinMinimal"]
-            messages_dict['youWinBestEnding'] = message_data["youWinBestEnding"]
-            messages_dict['commandList'] = message_data["commandList"]
-            messages_dict['availableCommands'] = message_data["availableCommands"]
-            messages_dict['roomMessages'] = message_data["roomMessages"]
-  
+        for message_key, message_data in data.items():
+            messages_dict[message_key] = message_data
+
         return messages_dict
