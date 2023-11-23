@@ -14,7 +14,7 @@ for npc_key, npc_instance in npc_dict.items():
     print(f"Descriptions: {npc_instance.state_descriptions}")
     print(f"Active: {npc_instance.is_active}")
     print(f"Roaming: {npc_instance.is_roaming}")
-    print(f"Initial Inventory: {npc_instance.inventory}")
+    print(f"Inventory: {npc_instance.inventory}")
     #print(f"Puzzle List: {npc_instance.puzzle_list}")  
     print(f"\n")
 
