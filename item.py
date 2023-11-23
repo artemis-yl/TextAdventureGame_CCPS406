@@ -2,16 +2,16 @@ from container import ContainterModel
 
 
 class Item(ContainterModel):
-    def __init__(self, puzzle):
+    def __init__(self, item):
         super().__init__(
             self,
-            puzzle["name"],
-            puzzle["stateDescriptions"],
+            item["name"],
+            item["stateDescriptions"],
             [None],
         )
 
-        self.current_state = puzzle["currentState"]
-        self.is_purpose = puzzle["is_purpose"] #[Weapon, Shield, Teleporter, Revive]
+        self.current_state = item["currentState"]
+        self.is_purpose = item["is_purpose"] #[Weapon, Shield, Teleporter, Revive]
 
     def isWeapon(self):
         return self.is_purpose[0]  # Override if the item is a weapon

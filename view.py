@@ -65,9 +65,14 @@ class InputHandler:
 
 
 class OutputHandler:
-    def __init__(self, commandList) -> None:
+    def __init__(self, command_msgs, game_msgs) -> None:
         self.buffer = ""
-        self.commandList = commandList
+        self.command_msgs = command_msgs
+        self.game_msgs = game_msgs
+
+    def printGameMessage(self, key):
+        self.appendToBuffer(self.game_msgs[key])
+        self.displayOutput()
 
     def displayOutput(self):
         print(self.buffer)
@@ -75,7 +80,7 @@ class OutputHandler:
 
     def getCMDOutput(self, key, result):
         # result keys can be "sucess" or "failure"
-        self.commandList[key[result]]
+        return self.command_msgs[key][result]
 
     """
     two types of msgs that needs to be formatted: 
