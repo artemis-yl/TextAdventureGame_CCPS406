@@ -110,7 +110,7 @@
     "item_secretInfo": {
         "name": "Datastick with Information",
         "stateDescriptions": {
-            "working": "A datastick already loaded with secret information. Lia will want this!",
+            "working": "A datastick. Looks like it's nearly full.",
             "notWorking": "Somehow the datastick has been destroyed. Any information on it has now been lost."
         },
         "currentState": "working",

@@ -4,14 +4,14 @@
         "stateDescriptions": {
             "alive": "You're alive. Somehow.",
             "dead": "YOU DIED",
-            "imprisoned": "You find yourself locked up - it seems you have been caught and imprisioned."
+            "imprisoned": "You find yourself locked up - it seems you have been caught and imprisoned."
         },
         "dialogue" : [],
         "initialState": "alive",
         "isActive" : true,
         "isRoaming" : true,
         "initialInventory": [
-            "NULL"
+            null
         ]
     },
     "npc_lia" : {
@@ -27,7 +27,7 @@
         "isRoaming": false,
         "initial_inventory": [
             "item_secretInfo",
-            "Blaster"
+            "item_blaster"
         ]
     },
     "npc_jaydai" : {
@@ -42,7 +42,7 @@
         "isActive": false,
         "isRoaming": false,
         "initial_inventory": [
-            "Beam Saber"
+            "item_beamSaber"
         ]
     },
     "npc_gruntRoam" : {
@@ -57,7 +57,7 @@
         "isActive" : true,
         "isRoaming" : true,
         "initialInventory": [
-            "Blaster"
+            "item_blaster"
         ]
     },
     "npc_gruntStationary" : {
@@ -72,7 +72,7 @@
         "isActive" : true,
         "isRoaming" : false,
         "initialInventory": [
-            "Blaster"
+            "item_blaster"
         ]
     },
     "npc_boss" : {
@@ -87,7 +87,7 @@
         "isActive" : true,
         "isRoaming" : false,
         "initialInventory": [
-            "Beam Saber"
+            "item_beamSaber"
         ]
     }
 }

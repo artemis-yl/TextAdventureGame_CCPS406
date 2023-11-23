@@ -6,21 +6,21 @@
             "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
         },
         "connectedTo": {
-            "N": "NULL",
-            "S": "Hallway One",
-            "E": "NULL",
-            "W": "NULL"
+            "N": null,
+            "S": "room_hallway1",
+            "E": null,
+            "W": null
         },
         "associatedDoor": {
-            "N": "NULL",
-            "S": "The Mysterious Door",
-            "E": "NULL",
-            "W": "NULL"
+            "N": null,
+            "S": "puzzle_hangarDoor",
+            "E": null,
+            "W": null
         },
         "initialInventory": [
-            "playerCharacter",
-            "hangerKey",
-            "hangerKeyHint"
+            "npc_player",
+            "item_keyHangar",
+            "item_hintHangar"
         ]
     },
     "room_hallway1" : {
@@ -30,16 +30,16 @@
             "rentry": "You find yourself back in the first half of the long main service hallway. Looking in one direction, the hallway continues around a bend, in the other direction are three doors, to the Freight Hangar Bay, the Armory, and the MedBay."
         },
         "connectedTo": {
-            "N": "Hanger Bay",
-            "S": "Medbay",
-            "E": "Armory",
-            "W": "Hallway Two"
+            "N": "room_Hangar",
+            "S": "room_medbay",
+            "E": "room_armory",
+            "W": "room_hallway2"
         },
         "associatedDoor": {
-            "N": "The Mysterious Door",
-            "S": "NULL",
-            "E": "NULL",
-            "W": "NULL"
+            "N": "puzzle_hangarDoor",
+            "S": null,
+            "E": null,
+            "W": null
         },
         "initialInventory": [
             "NULL"
@@ -52,189 +52,186 @@
             "rentry": "You find yourself back in the second half of the long main service hallway. Looking in one direction, the hallway extends around a bend and in the other direction, the hallway leads to three doors. The first two are titled 'Reactor Room' and 'Security Room', the third only has an ornate, ominous looking door."
         },
         "connectedTo": {
-            "N": "Security Room",
-            "S": "Reactor",
-            "E": "Hallway One",
-            "W": "Control Room"
+            "N": "room_security",
+            "S": "room_reactor",
+            "E": "room_hallway1",
+            "W": "room_control"
         },
         "associatedDoor": {
-            "N": "NULL",
-            "S": "door1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": null,
+            "S": "puzzle_reactorDoor",
+            "E": null,
+            "W": "puzzle_controlRoom"
         },
         "initialInventory": [
-            "playerCharacter",
-            "hangerKey",
-            "hangerKeyHint"
+            "item_keyJail"
         ]
     },
     "room_armory" : {
-        "name": "Hanger Bay",
+        "name": "Armory",
         "description": {
-            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
+            "firstEntry": "You enter the armory for this section of the DS-3 Station. Lining the walls are many securely locked cabinets containing a cornucopia of high-tech devices and weaponry from your standard blaster, to long-range rifles and explosives. On the far end of the room there is a large desk containing a computer terminal and some loose items strewn about. As you walk towards the desk, it appears that this area serves as an inventory check-in/check-out station.",
+            "rentry": "You find yourself back inside of the armory. It doesn't seem like you'll be able to access the locked cabinets of weaponry, but there may be some useful items laying on the desk of the inventory station."
         },
         "connectedTo": {
-            "N": "NULL",
-            "S": "hallway1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": null,
+            "S": null,
+            "E": null,
+            "W": "room_hallway1"
         },
         "associatedDoor": {
-            "N": "NULL",
-            "S": "door1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": null,
+            "S": null,
+            "E": null,
+            "W": null
         },
         "initialInventory": [
-            "playerCharacter",
-            "hangerKey",
-            "hangerKeyHint"
+            "item_teleport",
+            "item_blaster",
+            "item_sabotageBomb",
+            "item_hintBSLocation"
         ]
     },
     "room_medbay" : {
-        "name": "Hanger Bay",
+        "name": "Medbay",
         "description": {
-            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
+            "firstEntry": "You enter the medical bay of the DS-3 Station. The walls and floor are made of a smooth, brilliant white plastic, with bright lights giving the room a surgically clean appearance. Within the room there are multiple rows of tall, sealed medical pods used to heal all manners of injuries and illness. In the corners of the rooms, there are parked supply trolleys filled with different types of medical supplies. As you walk through the rows of med-pods, you can see some injection devices filled with a thick, gelatinous substance that catch your eye.",
+            "rentry": "You find yourself back inside of the medical bay. It doesn't seem like you would be able to heal yourself in the medical pods without getting caught, but maybe there are some medical supplies to scavenge."
         },
         "connectedTo": {
-            "N": "NULL",
-            "S": "hallway1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": "room_hallway1",
+            "S": null,
+            "E": null,
+            "W": null
         },
         "associatedDoor": {
-            "N": "NULL",
-            "S": "door1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": null,
+            "S": null,
+            "E": null,
+            "W": null
         },
         "initialInventory": [
-            "playerCharacter",
-            "hangerKey",
-            "hangerKeyHint"
+            "npc_gruntStationary",
+            "item_revive"
         ]
     },
     "room_reactor" : {
-        "name": "Hanger Bay",
+        "name": "Reactor Room",
         "description": {
-            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
+            "firstEntry": "You enter the reactor room of the DS-3 Station. It is a large, spherical room with a walkway spanning around the inner edge of the equator. Although you see no guards, you feel a mysterious presence watching you. You notice the walls are heavily reinforced and covered by black, energy absorbing panelling. There is a massive, open shaft running vertically through the floor and ceiling of the sphere. In the center of the shaft is a large, suspended, spherical machine with crackling energy visible from behind small observation windows. Access walkways branch off from the edges of the room and lead to the machine. The whole room buzzes with the immense energy emanating from within the device, which you determine to be the reactor.",
+            "rentry": "You find yourself back inside of the reactor room. It seems the machine in this room supplies the entirety of the power to the DS-3 Station. With the great amount of energy emanating from within the spherical reactor, you suppose that damaging the device could severely damage the entire station."
         },
         "connectedTo": {
-            "N": "NULL",
-            "S": "hallway1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": "room_hallway2",
+            "S": null,
+            "E": null,
+            "W": null
         },
         "associatedDoor": {
-            "N": "NULL",
-            "S": "door1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": "puzzle_reactorDoor",
+            "S": null,
+            "E": null,
+            "W": null
         },
         "initialInventory": [
-            "playerCharacter",
-            "hangerKey",
-            "hangerKeyHint"
+            "npc_jaydai",
+            "puzzle_finalSabotage"
         ]
     },
     "room_security" : {
-        "name": "Hanger Bay",
+        "name": "Security Room",
         "description": {
-            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
+            "firstEntry": "You enter the security room of the DS-3 Station. Evenly spaced cubicles form a grid pattern throughout most of the room, with narrow pathways separating each cubicle. They seem to be workstations for security personnel, evidenced by the many monitors displaying surveillance camera feeds of various points within the DS-3 Station. In one corner of the far end of the room there is a stairwell leading to a raised observation platform that holds a seat overlooking the room. Ontop of the platform, a door leads elsewhere. In the other corner of the room there is a metal-barred office titled 'Inmate Processing' that surrounds a secure-looking door titled 'Jail Block'.",
+            "rentry": "You find yourself back inside of the security room. This must be where all the sensitive information pertaining to the DS-3 Station and its captives is held. This room contains three doors, one leading back into the curving hallway, one into the 'Jail Block', and another unmarked, slightly ominous looking door."
         },
         "connectedTo": {
-            "N": "NULL",
-            "S": "hallway1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": "room_jail",
+            "S": "room_hallway2",
+            "E": null,
+            "W": "room_bedroom"
         },
         "associatedDoor": {
-            "N": "NULL",
-            "S": "door1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": "puzzle_jailDoor",
+            "S": null,
+            "E": null,
+            "W": null
         },
         "initialInventory": [
-            "playerCharacter",
-            "hangerKey",
-            "hangerKeyHint"
+            "npc_gruntStationary",
+            "item_hintJail",
+            "item_secretInfo",
+            "item_keyControlRoom",
+            "item_keyJail"
         ]
     },
     "room_jail" : {
-        "name": "Hanger Bay",
+        "name": "Jail",
         "description": {
-            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
+            "firstEntry": "You enter the jail block of the DS-3 Station. It is a narrow, dimly lit, hexagonal-shaped hallway with a low ceiling. As the hall extends further from the entrance, there are recessed security doors, each with their own control panel. The doors sit at even intervals along the walls and lead to cramped, individual holding cells. Each door has a light above it, with some glowing red, most likely to indicate the occupancy status of the cell. At the opposite end of this narrow room is a final cell, its light casting a red glare on the floor below.",
+            "rentry": "You find yourself back inside of the jail block. Within the cells of this narrow, dark hallway is where the prisoners of the DS-3 Station are held in captivity. The doors look very secure and sturdy, it seems the only way to get through them is by using the control panel."
         },
         "connectedTo": {
-            "N": "NULL",
-            "S": "hallway1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": null,
+            "S": "room_security",
+            "E": null,
+            "W": null
         },
         "associatedDoor": {
-            "N": "NULL",
-            "S": "door1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": null,
+            "S": "puzzle_jailDoor",
+            "E": null,
+            "W": null
         },
         "initialInventory": [
-            "playerCharacter",
-            "hangerKey",
-            "hangerKeyHint"
+            "npc_gruntStationary",
+            "npc_lia"
         ]
     },
     "room_bedroom" : {
-        "name": "Hanger Bay",
+        "name": "Dark Vader's Bedroom",
         "description": {
-            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
+            "firstEntry": "You enter the station leader's personal quarters. The vaulted-ceilinged room is enclosed by intricately decorated walls, covered in the blood-red and charcoal patterns of some ancient culture. Dimly glowing light fixtures hang from chains suspended from the ceiling, illuminating the room in an eerie, dark light. In the center of the room is an oval-shaped resting chamber, surrounded by some strange devices, while along the walls are a series of ornate display cases housing mysterious looking artifacts. The air within the room feels as if it has steeped in an evil presence.",
+            "rentry": "You find yourself back inside of the station leader's personal quarters. You strain to narrow your focus and not become distracted by the evil looking decor. As you glance past the centered resting chamber and it's surrounding devices, you wonder if any of the various artifacts on display could prove useful to your mission on the DS-3 Station."
         },
         "connectedTo": {
-            "N": "NULL",
-            "S": "hallway1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": null,
+            "S": null,
+            "E": "room_security",
+            "W": null
         },
         "associatedDoor": {
-            "N": "NULL",
-            "S": "door1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": null,
+            "S": null,
+            "E": null,
+            "W": null
         },
         "initialInventory": [
-            "playerCharacter",
-            "hangerKey",
-            "hangerKeyHint"
+            "item_beamSaber"
         ]
     },
     "room_control" : {
-        "name": "Hanger Bay",
+        "name": "Throne Room",
         "description": {
-            "firstEntry": "You quietly slip out of the empty cargo container that you had hidden inside to smuggle yourself onto the DS-3 Orbital Battle Station. Glancing at the wall you notice that you find yourself in 'Freight Hangar Bay #03'. Down the isle of stacked cargo containers, you see a dimly lit room with a glowing sign above it, reading 'Inventory Office'. You check your watch and just as you had planned, the staff are in the midst of a shift change. As you walk towards the office, you realize that you'll have some time here alone to get oriented and maybe pick up some clues left behind by the personnel from the last shift.",
-            "rentry": "You find yourself back inside of the hangar bay that you had initially arrived in. It doesn't seem like there is anything important left to do here."
+            "firstEntry": "You enter the throne room of the DS-3 Station. It is a huge, open chamber, with dark-grey sculpted stone walls, lined by carved pillars extending from floor to ceiling. The room is so large, you notice a faint mist hovering along the far reaches of the chamber. Midway into the room is a series of flights of stairs, spanning wall-to-wall and interspersed by brief platforms, leading upwards to the final level. Atop this peak sits a large jagged throne made of some dark, light-absorbing material that gives the seat an appearance as if it is made of shadows. Within the shadows, you can just barely make out the silhouette of some ominous figure.",
+            "rentry": "You find yourself back inside of the throne room. A chamber intentionally designed to stoke fear and awe within those who come to see the dark ruler of the DS-3 Station."
         },
         "connectedTo": {
-            "N": "NULL",
-            "S": "hallway1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": null,
+            "S": null,
+            "E": "room_hallway2",
+            "W": null
         },
         "associatedDoor": {
-            "N": "NULL",
-            "S": "door1",
-            "E": "NULL",
-            "W": "NULL"
+            "N": null,
+            "S": null,
+            "E": null,
+            "W": null
         },
         "initialInventory": [
-            "playerCharacter",
-            "hangerKey",
-            "hangerKeyHint"
+            "npc_boss",
+            "npc_gruntRoam",
+            "npc_gruntRoam",
+            "npc_gruntRoam"
         ]
     }
 }
