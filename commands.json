@@ -1,18 +1,4 @@
 {
-    "commandList": [
-        "N",
-        "S",
-        "E",
-        "W",
-        "ATTACK",
-        "SCAN",
-        "INVENTORY",
-        "USE",
-        "TAKE",
-        "FIGHT",
-        "LOCATION",
-        "DISCARD"
-    ],
     "N": {
         "success": "You moved north to <>",
         "failure": "You can't move north"
@@ -60,5 +46,13 @@
     "DISCARD": {
         "success": "You discarded <>.",
         "failure": "You can't discard <>."
+    },
+    "SAVE": {
+        "success": "You have saved the game.",
+        "failure": "You cannot save the game."
+    },
+    "HELP": {
+        "success": "These are the actions you can take: <>.",
+        "failure": "No help for you, for <>."
     }
 }
