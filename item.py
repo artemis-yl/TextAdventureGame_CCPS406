@@ -33,36 +33,3 @@ class Item(ContainterModel):
 
     def __repr__(self):
         return f"{self.name}"
-
-
-"""          
-# Load item data from file
-with open("items.json", 'r') as items_file:
-    items_data = json.load(items_file)
-    item_instances = []
-
-    for item_info in items_data['items']:
-        new_item = Item(
-            item_info["name"],
-            item_info["stateDescriptions"],
-            item_info["currentState"],
-            [
-                item_info["isWeapon"],
-                item_info["isShield"],
-                item_info["isTeleporter"],
-                item_info["isRevive"]
-            ]
-        )
-        item_instances.append(new_item)
-
-# Example usage...
-# Access and manipulate the Item instances
-for item in item_instances:
-    print(f"Item Name: {item.getName()}")
-    print(f"Description: {item.getDescription()}")
-    print(f"Is Weapon: {item.isWeapon()}")
-    print(f"Is Shield: {item.isShield()}")
-    print(f"Is Teleport: {item.isTeleport()}")
-    print(f"Is Revive: {item.isRevive()}")
-    print("\n")
-"""
