@@ -26,9 +26,6 @@ class GameLoader:
 
         return [npc_dict, room_dict, item_dict, puzzle_dict, message_dict, cmd_dict]
 
-    def import_commands(self):
-        pass
-
     def import_npcs(self):
         # Method to import npcs
         with open(self.npc_filename, "r") as file:
@@ -92,3 +89,15 @@ class GameLoader:
             messages_dict[message_key] = message_data
 
         return messages_dict
+
+    def import_commands(self):
+        # Method to import commands
+        with open(self.commands_filename, "r") as commands_json:
+            data = json.load(commands_json)
+
+        commands_dict = {}
+
+        for command_key, command_data in data.items():
+            commands_dict[command_key] = command_data
+
+        return commands_dict
