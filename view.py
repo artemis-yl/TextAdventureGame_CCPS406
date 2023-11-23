@@ -1,6 +1,5 @@
 import re
 
-
 class InputHandler:
     def __init__(
         self,

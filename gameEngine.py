@@ -1,6 +1,5 @@
 import view, gameLoader
 
-
 class GameEngine:
     def __init__(self) -> None:
         self.player_status = True

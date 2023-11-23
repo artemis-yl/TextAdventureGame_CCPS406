@@ -12,9 +12,6 @@ class GameState:
         # Method to signal a change in the game state
         print("Game state changed!")
 
-
-
-
     # Example Usage:
     # Instantiate GameState and use its attributes and methods
     # game_state = GameState()
