@@ -8,18 +8,32 @@ class GameState:
         self.items = []
         self.player = None
 
+        self.model = gameLoader(
+            "npc.json",
+            "room.json",
+            "items.json",
+            "puzzles.json",
+            "gameMsg.json",
+            "commands.json",
+        )
+        (
+            self.npc_dict,
+            self.room_dict,
+            self.item_dict,
+            self.puzzle_dict,
+            self.msg_dict,
+            self.command_dict,
+        ) = self.model.loadGame()
+
     def signalChange(self):
         # Method to signal a change in the game state
         print("Game state changed!")
-
-
-
 
     # Example Usage:
     # Instantiate GameState and use its attributes and methods
     # game_state = GameState()
     # game_state.currentRoom = Room("Start Room", "A room where the adventure begins", [], "Open", None, [])
-    # game_state.rooms = [Room("Room 1", "Description 1", [], "Open", None, []),    
+    # game_state.rooms = [Room("Room 1", "Description 1", [], "Open", None, []),
     #                     Room("Room 2", "Description 2", [], "Open", None, [])]
     # game_state.npcs = [NPC("John Doe", "Friendly", "Alive", ["Key"], ["solve_puzzle"]),
     #                    NPC("Jane Doe", "Mysterious", "Alive", ["Map"], ["unlock_door"])]

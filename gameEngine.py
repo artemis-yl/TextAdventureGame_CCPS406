@@ -8,6 +8,7 @@ class GameEngine:
         self.data_needed = [None]
         self.data_TBChanged: [None]
 
+        #to be removed into gameState.py
         self.model = gameLoader(
             "npc.json",
             "room.json",
