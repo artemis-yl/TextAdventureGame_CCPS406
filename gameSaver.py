@@ -84,12 +84,3 @@ class GameSaver:
         # Utility method to load data from a JSON file
         with open(filename, 'r') as file:
             return json.load(file)
-
-# Example Usage:
-# Instantiate GameSaver and save the data
-# saver = GameSaver('npc_data.json', 'room_data.json', 'item_data.json', 'puzzle_data.json')
-# saver.saveData(npc, [room1], [item1], [puzzle1])
-
-# Instantiate GameLoader and load the data
-# loader = GameLoader('npc_data.json', 'room_data.json', 'item_data.json', 'puzzle_data.json')
-# loaded_npc, loaded_rooms, loaded_items, loaded_puzzles = loader.loadData()

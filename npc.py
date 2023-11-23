@@ -1,6 +1,5 @@
 from container import ContainterModel
 
-
 class NPC(ContainterModel):
     def __init__(self, npc):
         super().__init__(

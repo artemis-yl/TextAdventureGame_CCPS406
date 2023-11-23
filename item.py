@@ -1,6 +1,5 @@
 from container import ContainterModel
 
-
 class Item(ContainterModel):
     def __init__(self, item):
         super().__init__(

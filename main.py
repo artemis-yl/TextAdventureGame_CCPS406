@@ -4,7 +4,6 @@ import gameSaver
 loader = gameLoader.GameLoader('npcs.json', 'room.json', 'items.json', 'puzzles.json', 'gameMsg.json')
 npc_dict, room_dict, item_dict, puzzle_dict, message_dict = loader.loadGame()
 
-
 print("-" * 50)
 print("NPCS")
 print("-" * 50)
