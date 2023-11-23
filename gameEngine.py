@@ -72,8 +72,9 @@ class GameEngine:
         objectList = []
 
         # check dictionary of commands to see which correct action to take
-        if verb.upper() in self.COMMANDS:
-            self.COMMANDS[verb.upper()]()
+        if verb.upper() in COMMANDS:
+            #need to handle parameters somehow but do that later....
+            COMMANDS[verb.upper()]()
         else:
             self.outHandler.formatOutput(verb, "failure", objectList)
 

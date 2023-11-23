@@ -2,18 +2,18 @@ from container import ContainterModel
 
 
 class NPC(ContainterModel):
-    def __init__(self, puzzle):
+    def __init__(self, npc):
         super().__init__(
             self,
-            puzzle["name"],
-            puzzle["stateDescriptions"],
-            puzzle["initialInventory"],
+            npc["name"],
+            npc["stateDescriptions"],
+            npc["initialInventory"],
         )
 
-        self.dialogue = puzzle["dialogue"]
-        self.current_state = puzzle["initialState"]
-        self.is_active = puzzle["isActive"]
-        self.is_roaming = puzzle["isRoaming"]
+        self.dialogue = npc["dialogue"]
+        self.current_state = npc["initialState"]
+        self.is_active = npc["isActive"]
+        self.is_roaming = npc["isRoaming"]
 
     def getPuzzleState(self):
         pass
