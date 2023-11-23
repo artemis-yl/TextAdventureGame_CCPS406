@@ -16,32 +16,32 @@
     },
     "npc_lia" : {
         "name": "Lia",
-        "state_descriptions": {
+        "stateDescriptions": {
             "alive": "Thank the stars, your friend Lia is alive.",
             "dead": "So This Is How Liberty Dies - To A Thunderous Applause.",
             "imprisoned": "Help me Obi-Wan, you're my only hope."
         },
         "dialogue": [],
-        "initial_state": "imprisoned",
+        "initialState": "imprisoned",
         "isActive": false,
         "isRoaming": false,
-        "initial_inventory": [
+        "initialInventory": [
             "item_secretInfo",
             "item_blaster"
         ]
     },
     "npc_jaydai" : {
         "name": "Jaydai",
-        "state_descriptions": {
+        "stateDescriptions": {
             "alive": "Fear is the path to the dark side. Fear leads to anger.",
             "dead": "I lost the high ground...",
             "imprisoned": "Save me you must, my young Padawan."
         },
         "dialogue": [],
-        "initial_state": "alive",
+        "initialState": "alive",
         "isActive": false,
         "isRoaming": false,
-        "initial_inventory": [
+        "initialInventory": [
             "item_beamSaber"
         ]
     },
