@@ -53,35 +53,3 @@ class NPC(ContainterModel):
         self.is_roaming = is_roaming
         roaming_status = "roaming" if is_roaming else "not roaming"
         print(f"{self.npc_id} is now {roaming_status}")
-
-
-"""
-#Load NPC data from file
-with open("npcs.json", 'r') as npc_file:
-    npc_data = json.load(npc_file)
-    npc_instances = []
-
-    for npc_info in npc_data["npcs"]:
-        npc_instances.append(
-            NPC(
-                npc_info["name"],
-                npc_info.get("initialState", ""),  # Handling possible keys in the JSON
-                npc_info.get("stateDescriptions", {}),
-                npc_info.get("isActive", False),
-                npc_info.get("isRoaming", False),
-                npc_info.get("initialInventory", []),
-                npc_info.get("puzzleList", [])
-            )
-        )
-
-# Example usage...
-# Access and manipulate the NPC instances
-for npc in npc_instances:
-    print(f"NPC Name: {npc.npc_id}")
-    print(f"Current State: {npc.current_state}")
-    print(f"Active: {npc.is_active}")
-    print(f"Roaming: {npc.is_roaming}")
-    print(f"Initial Inventory: {npc.initial_inventory}")
-    print(f"Puzzle List: {npc.puzzle_list}")
-    print("\n")
-"""
