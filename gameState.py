@@ -1,21 +1,11 @@
+from gameLoader import GameLoader
+
+FILE_NAME_LIST = ["npcs.json", "room.json", "items.json","puzzles.json","gameMsg.json", "commands.json"]
+
 class GameState:
     def __init__(self):
-        # Initialize the attributes
-        self.currentRoom = None
-        self.rooms = []
-        self.npcs = []
-        self.puzzles = []
-        self.items = []
-        self.player = None
-
-        self.model = gameLoader(
-            "npc.json",
-            "room.json",
-            "items.json",
-            "puzzles.json",
-            "gameMsg.json",
-            "commands.json",
-        )
+        # load the json objects into dictionaries of each object type
+        self.models = GameLoader(FILE_NAME_LIST)
         (
             self.npc_dict,
             self.room_dict,
@@ -23,7 +13,23 @@ class GameState:
             self.puzzle_dict,
             self.msg_dict,
             self.command_dict,
-        ) = self.model.loadGame()
+        ) = self.models.loadGame()
+
+        print(self.npc_dict)
+
+    def populateWorld(self):
+        # 1) fill NPC inventories with items + puzzles
+        for npc in self.npc_dict.values():
+            print(npc.name)
+
+        # 2) fill room inventories with NPCs, items, + puzzles (doors + others)
+
+        # return updated room dictionary
+        return self.room_dict
+
+    def save(self):
+        pass
+        # call gameSaver to save data
 
     def signalChange(self):
         # Method to signal a change in the game state
@@ -43,3 +49,6 @@ class GameState:
 
     # Call the signalChange method to indicate a change in the game state
     # game_state.signalChange()
+
+test = GameState()
+test.populateWorld()
