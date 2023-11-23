@@ -10,9 +10,9 @@ class Room(ContainterModel):
             room["initialInventory"],
         )
 
-        self.connected_to = puzzle["connectedTo"]
-        self.associated_door = puzzle["associatedDoor"]
-        self.inventory = puzzle["initialInventory"]
+        self.connected_to = room["connectedTo"]
+        self.associated_door = room["associatedDoor"]
+        self.inventory = room["initialInventory"]
 
     def getConnectedRooms(self):
         return self.connected_to
