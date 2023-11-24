@@ -23,7 +23,9 @@ class GameState:
             self.command_dict,
         ) = self.models.loadGame()
 
-        print(self.npc_dict)
+    def keyToObject(self, dict):
+        pass
+
 
     def populateWorld(self):
         # 1) fill NPC inventories with items + puzzles
