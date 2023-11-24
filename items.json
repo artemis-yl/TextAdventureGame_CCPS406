@@ -11,7 +11,7 @@
     "item_beamSaber" : {
         "name": "Beam Saber",
         "stateDescriptions": {
-            "working": "Must be the weapon of some late Jaydai, legends say they use these to deflect enemy fire.",
+            "working": "Must be the weapon of some late Jaydai, legends say they used these to deflect enemy fire.",
             "notWorking": "This item has broken for some unknown reason."
         },
         "currentState": "working",
@@ -20,16 +20,16 @@
     "item_keyHangar" : {
         "name": "Hangar Door Key",
         "stateDescriptions": {
-            "working": "This key looks like it unlocks a door with everything else behind it.",
+            "working": "You sense that this key is the starting point to a great challenge.",
             "notWorking": "This item has broken for some unknown reason."
         },
         "currentState": "working",
         "is_purpose" : [false, false, false, false]
     },
     "item_keyJail": {
-        "name": "Jail Door Key",
+        "name": "Jail Door Master Key",
         "stateDescriptions": {
-            "working": "This keycard is has an image of an ancient jail cell gate on it. ",
+            "working": "You sense that this key unlocks a door with a very important person trapped behind it.",
             "notWorking": "This item has broken for some unknown reason."
         },
         "currentState": "working",
@@ -38,7 +38,7 @@
     "item_keyReactor" : {
         "name": "Reactor Room Key",
         "stateDescriptions": {
-            "working": "This key looks like it unlocks a door with something critical behind it.",
+            "working": "You sense that this key unlocks a door with something critical behind it.",
             "notWorking": "This item has broken for some unknown reason."
         },
         "currentState": "working",
@@ -47,14 +47,14 @@
     "item_keyControlRoom" : {
         "name": "Control Room Key",
         "stateDescriptions": {
-            "working": "This key looks like it unlocks a door with great evil behind it. ",
+            "working": "You sense that this key unlocks a door with great evil behind it. ",
             "notWorking": "This item has broken for some unknown reason."
         },
         "currentState": "working",
         "is_purpose" : [false, false, false, false]
     },
     "item_revive" : {
-        "name": "Bacta Injection (Revival Item)",
+        "name": "Medical Injection",
         "stateDescriptions": {
             "working": "The Bacta Injection will automatically revive your character upon death, or you may choose to revive an ally.",
             "notWorking": "You've already used your Bacta Injection, "
@@ -74,7 +74,7 @@
     "item_hintHangar" : {
         "name": "Hangar Hint",
         "stateDescriptions": {
-            "working": "You notice the PC monitor message: 'hey, did you lock me in the hanger again? Good thing I left a key here.' It might be referring to the entrance door. Where could have the key?",
+            "working": "You notice a message on the computer monitor: 'Hey, did you lock me in the hangar again? Good thing I keep a spare key here.' The message must be referring to the hangar entrance door.",
             "notWorking": "The PC has been destroyed. You cannot read anything that may have once been on the screen."
         },
         "currentState": "working",
@@ -83,7 +83,7 @@
     "item_hintJail" : {
         "name": "Jail Hint",
         "stateDescriptions": {
-            "working": "You notice a report on a tablet 'Prisoner Name: Lia ... Notes: To ensure the prisoner cannot steal the keycard to their cell, it has been hidden in the hallway.",
+            "working": "You notice a report on a tablet, quickly skimming it you read: 'The loss of the jail block master key is unacceptable... The station commander's prisoner Lia is a highly valuable asset... Key must be retrieved at once... Reports indicate the loss occured within the Hallway near the Security Room.",
             "notWorking": "The tablet has been destroyed. You cannot read anything that may have once been on the screen."
         },
         "currentState": "working",
@@ -92,7 +92,7 @@
     "item_hintBSLocation" : {
         "name": "Beamsword Hint",
         "stateDescriptions": {
-            "working": "You notice a chatlog on a communication device. ' ... weird that the boss didn't want to store such a powerful weapon in the armory, but I guess sometimes it's better hidden in plain sight.",
+            "working": "You notice a chatlog on a communications device. '... strange that the commander came to check-out such an old sword from the armory, my guess is it must have some sentimental meaning to him.",
             "notWorking": "The tablet has been destroyed. You cannot read anything that may have once been on the screen."
         },
         "currentState": "working",
@@ -101,16 +101,16 @@
     "item_sabotageBomb": {
         "name": "High Yield Explosive",
         "stateDescriptions": {
-            "working": "This is a powerful bomb. It can take out several rooms, but placed carefully it can take out even larger structures.",
-            "notWorking": "You've already planted your explosive and started the countdown, you better run!"
+            "working": "This is a powerful explosive device. It can destroy several rooms, but placed in critical areas, it can take out larger structures.",
+            "notWorking": "You've already planted your explosive and initiated the countdown, getting off this station should be your only goal now!"
         },
         "currentState": "working",
         "is_purpose" : [false, false, false, false]
     },
     "item_secretInfo": {
-        "name": "Datastick with Information",
+        "name": "Top-Secret DataDrive",
         "stateDescriptions": {
-            "working": "A datastick. Looks like it's nearly full.",
+            "working": "A DataDrive. Looks like it contains someone's valuable information.",
             "notWorking": "Somehow the datastick has been destroyed. Any information on it has now been lost."
         },
         "currentState": "working",
