@@ -23,27 +23,34 @@ class GameState:
             self.command_dict,
         ) = self.models.loadGame()
 
-    def keyToObject(self, dict):
-        pass
+        # print(self.npc_dict["npc_player"].inventory)
 
-
-    def populateWorld(self):
-        # 1) fill NPC inventories with items + puzzles
-        for npc in self.npc_dict.values():
+    def keyToObject(self, beingFilled, pool):
+        for model in beingFilled.values():
+            #print(model)
             tmpList = []
 
-            for thing in npc.inventory:
-                if thing.startswith("item"):
-                    obj = self.item_dict[thing]
-                else:
-                    obj = self.puzzle_dict[thing]
+            for thing in model.inventory:
+                #print(thing)
+                if thing is None:
+                    break
+                obj = pool[thing]
                 tmpList.append(obj)
 
-            npc.inventory = tmpList
+            model.inventory.clear()
+            model.inventory.extend(tmpList)
+
+    def populateWorld(self):
+        pool = {**self.item_dict, **self.puzzle_dict}  # merge the dictionaries
+
+        # 1) fill NPC inventories with items + puzzles
+        self.keyToObject(self.npc_dict, pool)
+
+        print(">>> npc filled")
 
         # 2) fill room inventories with NPCs, items, + puzzles (doors + others)
-        for room in self.room_dict.values():
-            pass
+        pool.update(self.npc_dict)
+        self.keyToObject(self.room_dict, pool)
 
         # return updated room dictionary
         return self.room_dict
@@ -73,4 +80,4 @@ class GameState:
 
 
 test = GameState()
-test.populateWorld()
+print(test.populateWorld())

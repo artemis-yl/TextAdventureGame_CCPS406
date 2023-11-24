@@ -42,7 +42,7 @@
             "W": null
         },
         "initialInventory": [
-            "NULL"
+            null
         ]
     },
     "room_hallway2" : {
