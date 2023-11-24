@@ -1,6 +1,14 @@
 from gameLoader import GameLoader
 
-FILE_NAME_LIST = ["npcs.json", "room.json", "items.json","puzzles.json","gameMsg.json", "commands.json"]
+FILE_NAME_LIST = [
+    "npcs.json",
+    "room.json",
+    "items.json",
+    "puzzles.json",
+    "gameMsg.json",
+    "commands.json",
+]
+
 
 class GameState:
     def __init__(self):
@@ -20,9 +28,20 @@ class GameState:
     def populateWorld(self):
         # 1) fill NPC inventories with items + puzzles
         for npc in self.npc_dict.values():
-            print(npc.name)
+            tmpList = []
+
+            for thing in npc.inventory:
+                if thing.startswith("item"):
+                    obj = self.item_dict[thing]
+                else:
+                    obj = self.puzzle_dict[thing]
+                tmpList.append(obj)
+
+            npc.inventory = tmpList
 
         # 2) fill room inventories with NPCs, items, + puzzles (doors + others)
+        for room in self.room_dict.values():
+            pass
 
         # return updated room dictionary
         return self.room_dict
@@ -49,6 +68,7 @@ class GameState:
 
     # Call the signalChange method to indicate a change in the game state
     # game_state.signalChange()
+
 
 test = GameState()
 test.populateWorld()
