@@ -1,4 +1,5 @@
-import view, gameLoader
+import view, gameState
+
 
 class GameEngine:
     def __init__(self) -> None:
@@ -7,28 +8,14 @@ class GameEngine:
         self.data_needed = [None]
         self.data_TBChanged: [None]
 
-        #to be removed into gameState.py
-        self.model = gameLoader(
-            "npc.json",
-            "room.json",
-            "items.json",
-            "puzzles.json",
-            "gameMsg.json",
-            "commands.json",
+        self.gameState = gameState.GameState()
+
+        self.filled_rooms = self.gameState.populateWorld()
+
+        self.inHandler = view.InputHandler(self.gameState.command_dict)
+        self.outHandler = view.OutputHandler(
+            self.gameState.command_dict, self.gameState.msg_dict
         )
-        (
-            self.npc_dict,
-            self.room_dict,
-            self.item_dict,
-            self.puzzle_dict,
-            self.msg_dict,
-            self.command_dict,
-        ) = self.model.loadGame()
-
-        self.player = self.npc_dict["npc_player"]
-
-        self.inHandler = view.InputHandler(self.command_dict)
-        self.outHandler = view.OutputHandler(self.command_dict, self.msg_dict)
 
     def executeCommand(self):
         # maybe change the obj calling the method depending where we actually store the damn methods
@@ -46,6 +33,8 @@ class GameEngine:
             "TALK": self.talk,
             "LOCATION": self.location,
             "DISCARD": self.player.discard,
+            "SAVE": self.gameState.save,
+            "HELP": self.listCommands,
         }
 
         # notes on where these methods should be....
@@ -58,6 +47,7 @@ class GameEngine:
         # TALK only work on NPC, but the NPC needs to be in the same room as player => here in gameEngine
         # USE requires that the player has the item, and that the target is in the room => here in game engine
         # TAKE can only work on items, but need to place into NPC inv => gameEngine.py
+        # HELP list commands which are stored in this class
 
         # SCAN lists out everything inside the current room's inventory => should be in room.py
 
@@ -89,3 +79,21 @@ class GameEngine:
 
     def handlePuzzle(self):
         pass
+
+    # transfering xixek's methods - reminder that method names are camelcase but variables are underscored
+    def itemUseFail():
+        print("Nothing happens.")
+
+    def findThing(self, key, dict):
+        if key in dict:
+            return dict[key]
+        return None
+
+    def findItem(self, item_name, items_dict):
+        return self.findThing(item_name, items_dict)
+
+    def findRoom(self, room_name, room_dict):
+        return self.findThing(room_name, room_dict)
+
+    def findPuzzle(self, puzzle_name, puzzle_dict):
+        return self.findThing(puzzle_name, puzzle_dict)

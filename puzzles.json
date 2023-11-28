@@ -63,7 +63,7 @@
         "currentState": "unsolved",
         "key": "item_sabotageBomb",
         "keyVerb": "USE",
-        "subPuzzles": ["NULL"]
+        "subPuzzles": [null]
     },
     "puzzle_LiaInfo": {
         "name": "SideQuest - Lia's Object",
@@ -74,6 +74,6 @@
         "currentState": "unsolved",
         "key": "item_secretInfo",
         "keyVerb": "TALK",
-        "subPuzzles": ["NULL"]
+        "subPuzzles": [null]
     }
 }
