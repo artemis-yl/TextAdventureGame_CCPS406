@@ -27,11 +27,11 @@ class GameState:
 
     def keyToObject(self, beingFilled, pool):
         for model in beingFilled.values():
-            #print(model)
+            # print(model)
             tmpList = []
 
             for thing in model.inventory:
-                #print(thing)
+                # print(thing)
                 if thing is None:
                     break
                 obj = pool[thing]
@@ -46,7 +46,7 @@ class GameState:
         # 1) fill NPC inventories with items + puzzles
         self.keyToObject(self.npc_dict, pool)
 
-        print(">>> npc filled")
+        # print(">>> npc filled")
 
         # 2) fill room inventories with NPCs, items, + puzzles (doors + others)
         pool.update(self.npc_dict)
@@ -80,4 +80,5 @@ class GameState:
 
 
 test = GameState()
-print(test.populateWorld())
+rooms = test.populateWorld()
+print(rooms.get("room_Hangar").associated_door)

@@ -1,19 +1,7 @@
 {
-    "N": {
-        "success": "You moved north to <>",
-        "failure": "You can't move north"
-    },
-    "S": {
-        "success": "You moved south to <>",
-        "failure": "You can't move south"
-    },
-    "E": {
-        "success": "You moved east to <>",
-        "failure": "You can't move east"
-    },
-    "W": {
-        "success": "You moved west to <>",
-        "failure": "You can't move west"
+    "MOVE": {
+        "success": "You moved to <>",
+        "failure": "You can't move to <>"
     },
     "ATTACK": {
         "success": "You attacked <> with your <>!",

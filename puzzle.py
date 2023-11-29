@@ -3,10 +3,9 @@ from container import ContainterModel
 class Puzzle(ContainterModel):
     def __init__(self, puzzle):
         super().__init__(
-            self,
             puzzle["name"],
             puzzle["stateDescriptions"],
-            puzzle["subPuzzles"],
+            puzzle["subPuzzles"]
         )
 
         self.current_state = puzzle["currentState"]

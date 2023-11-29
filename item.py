@@ -3,10 +3,9 @@ from container import ContainterModel
 class Item(ContainterModel):
     def __init__(self, item):
         super().__init__(
-            self,
             item["name"],
             item["stateDescriptions"],
-            [None],
+            [None]
         )
 
         self.current_state = item["currentState"]

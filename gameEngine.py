@@ -21,10 +21,14 @@ class GameEngine:
         # maybe change the obj calling the method depending where we actually store the damn methods
         # to use method,type COMMANDS[key]( parameter )
         COMMANDS = {
+            """
             "N": self.N,
             "S": self.S,
             "E": self.E,
             "W": self.W,
+            """
+            "SAY" : self.say,
+            "MOVE" : self.move,
             "ATTACK": self.attack,
             "SCAN": self.current_room.scan,
             "INVENTORY": self.player.listInventory,
@@ -68,19 +72,28 @@ class GameEngine:
         else:
             self.outHandler.formatOutput(verb, "failure", objectList)
 
-    def checkConditions(self):
-        pass
-
-    def handleCombat(self):
-        pass
-
-    def handleDetection(self):
-        pass
-
-    def handlePuzzle(self):
-        pass
-
     # transfering xixek's methods - reminder that method names are camelcase but variables are underscored
+    def say(self):
+        pass
+    
+    def move(self, current_room, direction="x"):
+        # get rid of invalid input
+        if direction.upper() not in ["N", "E", "W", "S"]:
+            return current_room
+
+        # get the door
+        door = current_room.getAssociatedDoor().get(direction)
+
+        if door is None:
+            pass
+        else:
+            door_state = door.state
+
+            if door_state == "solved":
+                return current_room.getConnectedRooms().get(direction)
+            elif door_state == "unsolved":
+                pass  # need to tell view to send failure door msg
+
     def itemUseFail():
         print("Nothing happens.")
 
@@ -97,3 +110,13 @@ class GameEngine:
 
     def findPuzzle(self, puzzle_name, puzzle_dict):
         return self.findThing(puzzle_name, puzzle_dict)
+
+    def unlockAllDoors(room_dict):
+        for room in room_dict.values():
+            connections = room.associated_door
+
+            for door in connections:
+                if door is None:
+                    continue
+                else:
+                    door.current_state = "solved"

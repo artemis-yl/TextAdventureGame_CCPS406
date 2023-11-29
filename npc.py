@@ -3,10 +3,9 @@ from container import ContainterModel
 class NPC(ContainterModel):
     def __init__(self, npc):
         super().__init__(
-            self,
             npc["name"],
             npc["stateDescriptions"],
-            npc["initialInventory"],
+            npc["initialInventory"]
         )
 
         self.dialogue = npc["dialogue"]

@@ -3,10 +3,9 @@ from container import ContainterModel
 class Room(ContainterModel):
     def __init__(self, room):
         super().__init__(
-            self,
             room["name"],
             room["description"],
-            room["initialInventory"],
+            room["initialInventory"]
         )
 
         self.connected_to = room["connectedTo"]
