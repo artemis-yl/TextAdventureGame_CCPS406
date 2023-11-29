@@ -1,0 +1,76 @@
+{
+    "example_item": {
+        "name": "Example Item",
+        "description": "Example description",
+        "type": "Item"
+    },
+    "key1": {
+        "name": "HangarDoorKey",
+        "description": "You sense that this key is the starting point to a great challenge.",
+        "type": "Key"
+    },
+    "key2": {
+        "name": "HangarHint",
+        "description": "You notice a message on the computer monitor: 'Hey, did you lock me in the hangar again? Good thing I keep a spare key here.' The message must be referring to the hangar entrance door.",
+        "type": "Item"
+    },
+    "key3": {
+        "name": "Blaster",
+        "description": "Standard issue laser blaster. Point towards the enemy.",
+        "type": "Item"
+    },
+    "key4": {
+        "name": "HighYieldExplosive",
+        "description": "This is a powerful explosive device. It can destroy several rooms, but placed in critical areas, it can take out larger structures.",
+        "type": "End"
+    },
+    "key5": {
+        "name": "Teleport",
+        "description": "The teleporter is a one-time use item, it will take your character back to the starting hangar bay.",
+        "type": "Item"
+    },
+    "key6": {
+        "name": "MedicalInjection",
+        "description": "The Bacta Injection will automatically revive your character upon death, or you may choose to revive an ally.",
+        "type": "Item"
+    },
+    "key7": {
+        "name": "JailKey",
+        "description": "You sense that this key unlocks a door with a very important person trapped behind it.",
+        "type": "Key"
+    },
+    "key8": {
+        "name": "ReactorRoomKey",
+        "description": "You sense that this key unlocks a door with something critical behind it.",
+        "type": "Key"
+    },
+    "key9": {
+        "name": "ControlRoomKey",
+        "description": "You sense that this key unlocks a door with great evil behind it.",
+        "type": "Key"
+    },
+    "key10": {
+        "name": "JailHint",
+        "description": "You notice a report on a tablet, quickly skimming it you read: 'The loss of the jail block master key is unacceptable... The station commander's prisoner Lia is a highly valuable asset... Key must be retrieved at once... Reports indicate the loss occured within the Hallway near the Security Room.",
+        "type": "Item"
+    },
+    "key11": {
+        "name": "DataDrive",
+        "description": "A DataDrive. Looks like it contains someone's valuable information.",
+        "type": "Item"
+    },
+    "key12": {
+        "name": "BeamSaber",
+        "description": "Must be the weapon of some late Jaydai, legends say they used these to deflect enemy fire.",
+        "type": "Item"
+    },
+
+    "coin": {
+        "name": "Coin",
+        "description": "A gold coin adorned with intricate engravings, featuring the partially discernible inscription 'Khajiit'. ",
+        "type": "Gift",
+        "use_error": "It does nothing, maybe you could give this to someone?"
+        
+    }
+    
+}

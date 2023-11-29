@@ -1,0 +1,18 @@
+{
+    "example_npc": {
+        "name": "Example NPC",
+        "description": "Example description",
+        "type": "Example",
+        "dialogue":["Random dialogue 1","Random dialogue 2"],
+        "current_room":"Example Room"
+    },
+    "npc_1": {
+        "name": "Khajit",
+        "description": "A simple merchant",
+        "type": "GNPC",
+        "dialogue":["Khajit has wares if you have coin","Give Khajit coin and he will clear the path ahead"],
+        "current_room":"Armory",
+        "gift":"coin"
+    }
+    
+}

@@ -1,0 +1,90 @@
+{
+    "Example Door": {
+        "name": "Example Door",
+        "is_puzzle": "Put True if puzzle door (can be locked/unlocked), put False otherwise",
+        "rooms": ["Room 1","Room 2"],
+        "direction": ["N","S"]
+    },
+    "doorA": {
+        "name": "Door A",
+        "is_puzzle": "True",
+        "state_descriptions": {
+            "unsolved": "Locked",
+            "solved": "Unlocked"
+        },
+        "state": "unsolved",
+        "key_item": "JailKey",
+        "key_verb": "Use",
+        "rooms": ["the Security Room","the Jail"],
+        "direction": ["N","S"]
+    },
+    "doorB": {
+        "name": "Door B",
+        "is_puzzle": "False",
+        "rooms": ["the Bedroom","the Security Room"],
+        "direction": ["E","W"]
+    },
+    "doorE": {
+        "name": "Door E",
+        "is_puzzle": "False",
+        "rooms": ["Hallway Two","the Security Room"],
+        "direction": ["N","S"]
+    },
+    "doorF": {
+        "name": "Door F",
+        "is_puzzle": "True",
+        "state_descriptions": {
+            "unsolved": "Locked",
+            "solved": "Unlocked"
+        },
+        "state": "unsolved",
+        "key_item": "HangarDoorKey",
+        "key_verb": "Use",
+        "rooms": ["Hallway One","the Hangar Bay"],
+        "direction": ["N","S"]
+    },
+    "doorG": {
+        "name": "Door G",
+        "is_puzzle": "True",
+        "state_descriptions": {
+            "unsolved": "Locked",
+            "solved": "Unlocked"
+        },
+        "state": "unsolved",
+        "key_item": "ControlRoomKey",
+        "key_verb": "Use",
+        "rooms": ["the Control Room","Hallway Two"],
+        "direction": ["E","W"]
+    },
+    "doorH": {
+        "name": "Door H",
+        "is_puzzle": "False",
+        "rooms": ["Hallway Two","Hallway One"],
+        "direction": ["E","W"]
+    },
+    "doorI": {
+        "name": "Door I",
+        "is_puzzle": "False",
+        "rooms": ["Hallway One","the Armory"],
+        "direction": ["E","W"]
+    },
+    "doorJ": {
+        "name": "Door J",
+        "is_puzzle": "True",
+        "state_descriptions": {
+            "unsolved": "Locked",
+            "solved": "Unlocked"
+        },
+        "state": "unsolved",
+        "key_item": "ReactorRoomKey",
+        "key_verb": "Use",
+        "rooms": ["the Reactor Room","Hallway Two"],
+        "direction": ["N","S"]
+    },
+    "doorK": {
+        "name": "Door K",
+        "is_puzzle": "False",
+        "rooms": ["the Medbay","Hallway One"],
+        "direction": ["N","S"]
+    }
+}
