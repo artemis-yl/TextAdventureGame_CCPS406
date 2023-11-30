@@ -1,11 +1,16 @@
 # TextAdventureGame_CCPS406
-Course Project where we will code a basic text adventure game in a team of four.
 
-To be coded in Python, and likely use JSON, as suggested by the Prof.
+![6bzltIg_-_Imgur](https://github.com/lyulim/TextAdventureGame_CCPS406/assets/79334714/34e070cf-1654-4644-8532-56c9ca106d58)
+
+
+
+> Once upon a time, in a distant galaxy, you, the player, find yourself back on your home planet, looking forward to a peaceful winter break. Unbeknownst to you, the Galactic Empire has initiated the covert construction of a formidable space station called the DS-3 Orbital Battle Station, also known as Planet Killer 3. Intelligence reports reveal that in your absence, the Empire's malevolent leader, Dark Vader, has resurfaced, captured your freedom fighter comrade, Lia, and intends to disrupt your well-deserved vacation by deploying the Planet Killer to annihilate your homeworld.
+
+Text-based adventure game developed by a team of five.
+
+Coded in Python, and using JSON for data files
 
 ## Labeling Info
-
-fill this in more later...
 
 **TERM/DATE:** Fall 2023 (i.e. 15/9/23 - 8(?)/12/23)
 
@@ -16,15 +21,3 @@ fill this in more later...
 **PROFESSOR:** Ilkka Kokkarinen
 
 **LANGUAGE:** Python3 + JSON
-
-
-## Useful links:
-
-[Github getting started guide](https://docs.github.com/en/get-started)
-In particular, "Getting started with Git" and "Using Git" to handle pushing/pulling to a remote repo.
-
-[Github markdown cheatsheet aka the .md files](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links)
-
-[BLACK](https://github.com/psf/black) : this is a code style enforcer so we don't have to spend energy dealing with it
-
-
