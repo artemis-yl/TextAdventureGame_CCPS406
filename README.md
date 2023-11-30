@@ -12,7 +12,7 @@ Coded in Python, and using JSON for data files
 
 ## Labeling Info
 
-**TERM/DATE:** Fall 2023 (i.e. 15/9/23 - 8(?)/12/23)
+**TERM/DATE:** Fall 2023 (09/15/2023 - 12/16/2023)
 
 **STUDENTS:** Yulim (Artemis) Lee, Yamah Jaleel, Adnan Ali, Nick Pavlasek (Benis), Long Nguyen
 
