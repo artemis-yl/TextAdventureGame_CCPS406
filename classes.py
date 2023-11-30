@@ -32,7 +32,7 @@ class Container:
 
 
 class Room(Container):
-    def __init__(self, room_name, description):
+    def __init__(self, room_name, description,hint=""):
         super().__init__(room_name,description)
         self.inventory=[]
 
@@ -40,6 +40,7 @@ class Room(Container):
         self.connected_rooms=['NULL','NULL','NULL','NULL']
         self.connected_doors=['NULL','NULL','NULL','NULL']
         self.puzzles=[]
+        self.hint=hint
 
     
 
@@ -182,6 +183,9 @@ class Room(Container):
         final_scan_description = doors_description+'\n'+item_description
 
         return final_scan_description
+    
+    def get_hint(self):
+          return self.hint
 
     def get_room_inventory(self):
 
@@ -233,6 +237,11 @@ class Item(Container):
 
         print('That item is not giftable.')
 
+        return
+
+    def use_item(self,current_game_state):
+
+        print("That item cannot be used.")
         return
 
     
@@ -409,7 +418,7 @@ class GameState:
             room_description=self.current_room.get_room_description()
 
 
-            txt_to_print=enter_room+room_description
+            txt_to_print=room_description
             print(txt_to_print)
 
 
@@ -439,6 +448,7 @@ class NPC(Container):
         self.dialogues=dialogues
         self.roaming=True
         self.first_meeting=True
+        self.static=False
 
 
     
@@ -481,6 +491,11 @@ class NPC(Container):
             print(interaction_dialogue)
             return
 
+
+        if self.static:
+            dialogue=self.name+" mumbles something to himself."
+            print(dialogue)
+            return
         rng_dialogue=random.randint(0,len(self.dialogues)-1)
 
         dialogue_used=self.dialogues[rng_dialogue]
@@ -518,6 +533,8 @@ class GNPC(NPC):
                     doors[i]='solved'
 
         txt=self.name+" has unlocked all the doors in the area due to your generous gift."
+
+        self.static=True
         
         print(txt)
 

@@ -58,10 +58,11 @@ def import_rooms(room_filename,items_list):
         name=room_data['name']
         description=room_data['description']
         inventory=room_data['inventory']
+        hint=room_data['hint']
 
         
 
-        new_room=Room(name,description)
+        new_room=Room(name,description,hint)
 
         for item in inventory:
             if item in items_list:
@@ -169,13 +170,15 @@ def import_npcs(npc_filename,rooms_list,items_list):
 
         new_npc=None
 
+        
+
         if current_room not in rooms_list:
             continue
 
         for room in rooms_list:
 
             if room.name==current_room:
-                current_room=room
+                current_room=room       
 
         
             
@@ -198,10 +201,24 @@ def import_npcs(npc_filename,rooms_list,items_list):
         if new_npc is not None:
             npc_list.append(new_npc)
         
+        
 
     
 
     return npc_list
 
 
+
+def import_gameMsg(gameMsg_filename):
+
+
+    with open(gameMsg_filename,'r',encoding='utf-8') as gameMsg_json:
+        data_dict=json.load(gameMsg_json)
+        introduction = data_dict["introduction"]
+        youDied = data_dict["youDied"]
+        youWinMinimal = data_dict["youWinMinimal"]
+        youWinBestEnding = data_dict["youWinBestEnding"]
+        # print(introduction)
+
+    return introduction,youWinBestEnding
 
