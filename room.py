@@ -15,8 +15,8 @@ class Room(ContainterModel):
     def getConnectedRooms(self):
         return self.connected_to
 
-    def getAssociatedDoor(self):
-        return self.associated_door
+    def getAssociatedDoor(self, key):
+        return self.associated_door[key]
 
     def addNPC(self, npc):
         self.inventory.append(npc)

@@ -11,36 +11,15 @@ class GameEngine:
         self.gameState = gameState.GameState()
 
         self.filled_rooms = self.gameState.populateWorld()
+        self.current_room = self.filled_rooms["room_Hangar"]
+        self.player = self.gameState.getPlayer()
 
-        self.inHandler = view.InputHandler(self.gameState.command_dict)
+        self.inHandler = view.InputHandler()
         self.outHandler = view.OutputHandler(
             self.gameState.command_dict, self.gameState.msg_dict
         )
 
     def executeCommand(self):
-        # maybe change the obj calling the method depending where we actually store the damn methods
-        # to use method,type COMMANDS[key]( parameter )
-        COMMANDS = {
-            """
-            "N": self.N,
-            "S": self.S,
-            "E": self.E,
-            "W": self.W,
-            """
-            "SAY" : self.say,
-            "MOVE" : self.move,
-            "ATTACK": self.attack,
-            "SCAN": self.current_room.scan,
-            "INVENTORY": self.player.listInventory,
-            "USE": self.player.use,
-            "TAKE": self.player.take,  # (item_to_take)
-            "TALK": self.talk,
-            "LOCATION": self.location,
-            "DISCARD": self.player.discard,
-            "SAVE": self.gameState.save,
-            "HELP": self.listCommands,
-        }
-
         # notes on where these methods should be....
 
         # N,S,E,W needs to move the player from the current room inventory to the desired room's inventory
@@ -58,6 +37,31 @@ class GameEngine:
         # INVENTORY lists out player inventory => in NPC.py
         # DISCARD is for player to remove an item => in NPC.py
 
+        # maybe change the obj calling the method depending where we actually store the damn methods
+        # to use method,type COMMANDS[key]( parameter )
+        COMMANDS = {
+            """
+            "N": self.N,
+            "S": self.S,
+            "E": self.E,
+            "W": self.W,
+            """
+            "SAY": self.say,
+            "MOVE": self.move,
+            "EXIT": self.exit,
+            "ATTACK": self.attack,
+            "SCAN": self.scan,
+            "INVENTORY": self.listInventory,
+            "USE": self.use,
+            "TAKE": self.take,  # (item_to_take)
+            "TALK": self.talk,
+            "LOCATION": self.location,
+            "DISCARD": self.discard,
+            "SAVE": self.gameState.save,
+            "HELP": self.listCommands,
+        }
+
+        # get the input from user/player
         self.inHandler.parseInput()
         verb = self.inHandler.getVerb()
         keyword1 = self.inHandler.getFirstKeyword()
@@ -67,32 +71,81 @@ class GameEngine:
 
         # check dictionary of commands to see which correct action to take
         if verb.upper() in COMMANDS:
-            # need to handle parameters somehow but do that later....
-            COMMANDS[verb.upper()]()
+            if keyword1 == "":
+                # need to handle parameters somehow but do that later....
+                COMMANDS[verb.upper()]()
+            elif keyword2 == "":
+                COMMANDS[verb.upper()](keyword1)
+                objectList.append(keyword1)
+            else:  # unlikely to occure since game atm is very simple
+                COMMANDS[verb.upper()](keyword1, keyword2)
+                objectList.append(keyword1)
+                objectList.append(keyword2)
         else:
             self.outHandler.formatOutput(verb, "failure", objectList)
 
-    # transfering xixek's methods - reminder that method names are camelcase but variables are underscored
-    def say(self):
+    def startGame(self):
         pass
-    
-    def move(self, current_room, direction="x"):
+        # print introduction
+
+    # all command methods below - limited to 2 parameters AKA keyword
+    # returns the new current room
+    def move(self, direction="x"):
+        direction = direction.upper()  # to match keys
+
+        print(self.current_room.name, direction)
+
         # get rid of invalid input
         if direction.upper() not in ["N", "E", "W", "S"]:
-            return current_room
+            #
+            print(" >> invalid direction: cant move there")
 
         # get the door
-        door = current_room.getAssociatedDoor().get(direction)
-
+        door = self.current_room.getAssociatedDoor(direction)
+        print(door.name)
         if door is None:
             pass
         else:
-            door_state = door.state
+            if door.current_state == "solved":
+                self.current_room = self.current_room.getConnectedRooms().get(direction)
+            elif door.current_state == "unsolved":
+                print(" >> door is locked")
 
-            if door_state == "solved":
-                return current_room.getConnectedRooms().get(direction)
-            elif door_state == "unsolved":
-                pass  # need to tell view to send failure door msg
+    def say(self):
+        pass
+
+    def attack(self):
+        pass
+
+    def scan(self):
+        pass
+
+    def listInventory(self):
+        pass
+
+    def use(self):
+        pass
+
+    def take(self):
+        pass
+
+    def talk(self):
+        pass
+
+    def location(self):
+        pass
+
+    def discard(self):
+        pass
+
+    def save(self):
+        pass
+
+    def listCommands(self):
+        pass
+
+    def exit(self):
+        pass
 
     def itemUseFail():
         print("Nothing happens.")
@@ -120,3 +173,7 @@ class GameEngine:
                     continue
                 else:
                     door.current_state = "solved"
+
+
+test = GameEngine()
+test.executeCommand()

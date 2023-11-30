@@ -1,10 +1,10 @@
 import re
 
+
 class InputHandler:
     def __init__(
         self,
-        commandList,
-        prompt="What will you do? >",
+        prompt="Enter what you wanna do (exit to quit)",
         invalidResponse="Invalid input.",
     ) -> None:
         """
@@ -17,7 +17,7 @@ class InputHandler:
         self.verb = ""
         self.keyword2 = ""
         self.keyword1 = ""
-        self.commandList = commandList
+
         self.prompt = prompt
         self.invalidResponse = invalidResponse
 
