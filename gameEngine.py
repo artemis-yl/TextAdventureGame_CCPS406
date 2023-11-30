@@ -3,7 +3,6 @@ import view, gameState
 
 class GameEngine:
     def __init__(self) -> None:
-        self.player_status = True
         self.turn_counter = 0
         self.data_needed = [None]
         self.data_TBChanged: [None]
@@ -13,6 +12,10 @@ class GameEngine:
         self.filled_rooms = self.gameState.populateWorld()
         self.current_room = self.filled_rooms["room_Hangar"]
         self.player = self.gameState.getPlayer()
+        self.player_status = True
+        cmd_list = [ cmds for cmds in self.gameState.command_dict ]
+        #print(cmd_list)
+        self.commands = self.player.listToGrammarString(cmd_list )  # list of command strings
 
         self.inHandler = view.InputHandler()
         self.outHandler = view.OutputHandler(
@@ -20,24 +23,6 @@ class GameEngine:
         )
 
     def executeCommand(self):
-        # notes on where these methods should be....
-
-        # N,S,E,W needs to move the player from the current room inventory to the desired room's inventory
-        #  will call on currentRoom to check if a room exist and the puzzle/door
-        #  => needs to stored HERE in gameEngine
-        # ATTACK needs the attacking NPC and target NPC => here in GameEngine
-        # LOCATION tells you current room => her ein GameEngine
-        # TALK only work on NPC, but the NPC needs to be in the same room as player => here in gameEngine
-        # USE requires that the player has the item, and that the target is in the room => here in game engine
-        # TAKE can only work on items, but need to place into NPC inv => gameEngine.py
-        # HELP list commands which are stored in this class
-
-        # SCAN lists out everything inside the current room's inventory => should be in room.py
-
-        # INVENTORY lists out player inventory => in NPC.py
-        # DISCARD is for player to remove an item => in NPC.py
-
-        # maybe change the obj calling the method depending where we actually store the damn methods
         # to use method,type COMMANDS[key]( parameter )
         COMMANDS = {
             """
@@ -47,19 +32,21 @@ class GameEngine:
             "W": self.W,
             """
             "SAY": self.say,
-            "MOVE": self.move,
+            "MOVE": self.move,  # done
             "EXIT": self.exit,
             "ATTACK": self.attack,
-            "SCAN": self.scan,
-            "INVENTORY": self.listInventory,
+            "SCAN": self.scan,  # done
+            "INVENTORY": self.listInventory,  # done
             "USE": self.use,
             "TAKE": self.take,  # (item_to_take)
             "TALK": self.talk,
-            "LOCATION": self.location,
+            "LOCATION": self.location,  # done
             "DISCARD": self.discard,
             "SAVE": self.gameState.save,
             "HELP": self.listCommands,
         }
+        # some of these will call the method from the appropriate object (container, room, etc)
+        # but then get additional paramters when sent to outputHandler
 
         # get the input from user/player
         self.inHandler.parseInput()
@@ -82,7 +69,9 @@ class GameEngine:
                 objectList.append(keyword1)
                 objectList.append(keyword2)
         else:
-            self.outHandler.formatOutput(verb, "failure", objectList)
+            self.outHandler.appendToBuffer("Invalid input, please try again.")
+
+        self.outHandler.displayOutput()
 
     def startGame(self):
         pass
@@ -90,37 +79,61 @@ class GameEngine:
 
     # all command methods below - limited to 2 parameters AKA keyword
     # returns the new current room
+
+    def basicOutputCall(self, toBeInserted, verb):
+        if toBeInserted is None:
+            self.outHandler.formatOutput(verb, "failure", [])
+        else:
+            self.outHandler.formatOutput(verb, "success", [toBeInserted])
+
     def move(self, direction="x"):
         direction = direction.upper()  # to match keys
 
-        print(self.current_room.name, direction)
+        # print(self.current_room.name, direction)
 
         # get rid of invalid input
         if direction.upper() not in ["N", "E", "W", "S"]:
-            #
-            print(" >> invalid direction: cant move there")
+            return " That's not a valid direction. "
 
-        # get the door
+        # get the door + room to move to
         door = self.current_room.getAssociatedDoor(direction)
-        print(door.name)
-        if door is None:
-            pass
-        else:
+        new_room = self.current_room.getConnectedRooms().get(direction)
+
+        if door is not None:  # aka there is a room there but a puzzle exists
             if door.current_state == "solved":
-                self.current_room = self.current_room.getConnectedRooms().get(direction)
+                self.current_room = new_room
+                self.moveSuccess()
             elif door.current_state == "unsolved":
-                print(" >> door is locked")
+                self.moveFailure(new_room.getName())
+        elif new_room is not None:  # no puzzle door, but room exists
+            self.current_room = new_room
+            self.moveSuccess()
+        elif new_room is None:
+            self.moveFailure("a room that doesn't exist")
+
+    def moveFailure(self, targeted_room_name):
+        # if you cannot move to that room
+        # "failure": "You can't move to <>"
+        self.outHandler.formatOutput("MOVE", "failure", [targeted_room_name])
+
+    def moveSuccess(self):
+        # if you successfuly move to a new room, you saythe success move msg + describe new room
+        # "success": "You moved to <>",
+        self.outHandler.formatOutput("MOVE", "success", [self.current_room.getName()])
+        self.outHandler.appendToBuffer(self.current_room.describeRoom())
+
+    def scan(self):
+        objects = self.current_room.scan()  # aka the room's inventory
+        self.basicOutputCall(objects, "SCAN")
+
+    def listInventory(self):
+        invString = self.player.listInventory()
+        self.basicOutputCall(invString, "INVENTORY")
 
     def say(self):
         pass
 
     def attack(self):
-        pass
-
-    def scan(self):
-        pass
-
-    def listInventory(self):
         pass
 
     def use(self):
@@ -133,7 +146,7 @@ class GameEngine:
         pass
 
     def location(self):
-        pass
+        self.basicOutputCall(self.current_room.getName(), "LOCATION")
 
     def discard(self):
         pass
@@ -142,7 +155,7 @@ class GameEngine:
         pass
 
     def listCommands(self):
-        pass
+        self.outHandler.formatOutput("HELP", "success", [self.commands])
 
     def exit(self):
         pass

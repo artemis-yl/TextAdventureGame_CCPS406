@@ -1,6 +1,6 @@
 {
     "npc_player" : {
-        "name": "Player",
+        "name": "Player AKA You",
         "stateDescriptions": {
             "alive": "You're alive. Somehow.",
             "dead": "YOU DIED",

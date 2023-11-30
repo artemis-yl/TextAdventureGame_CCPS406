@@ -27,7 +27,7 @@ class GameState:
         # print(self.npc_dict["npc_player"].inventory)
 
     def keyToObject(self, beingFilled, pool):
-        #print("-" * 20)
+        # print("-" * 20)
         # get individual npc/room/etc whose inv needs to be filled
         for model in beingFilled.values():
             # print(model.name)
@@ -42,13 +42,12 @@ class GameState:
                 tmpList.append(true_obj)
 
             model.inventory.clear()
-            model.inventory.append(tmpList)
+            model.inventory.extend(tmpList)
             # print(model.inventory)
 
     def fillRooms(self, room_dict, pool):
-
         for room in room_dict.values():
-            #print(">>>> ", room.name)
+            # print(">>>> ", room.name)
             for direction in room.connected_to:
                 # fill out connected to
                 connected_room_name = room.connected_to[direction]
@@ -66,8 +65,8 @@ class GameState:
                     true_door = None
                 room.associated_door[direction] = true_door
 
-            #print(room.connected_to)
-            #print(room.associated_door)
+            # print(room.connected_to)
+            # print(room.associated_door)
 
     def populateWorld(self):
         pool = {**self.item_dict, **self.puzzle_dict}  # merge the dictionaries
@@ -75,7 +74,7 @@ class GameState:
 
         # 1) fill NPC inventories with items + puzzles
         self.keyToObject(self.npc_dict, pool)
-        #print(self.npc_dict["npc_lia"].inventory)
+        # print(self.npc_dict["npc_lia"].inventory)
         # print(">>> npc filled")
 
         # 2) fill room inventories with NPCs, items, + puzzles (doors + others)
@@ -113,6 +112,7 @@ class GameState:
     # game_state.signalChange()
 
 
-##test = GameState()
+#test = GameState()
 #rooms = test.populateWorld()
-#print(rooms.get("room_Hangar").associated_door)
+#print(rooms["room_armory"].describeRoom())
+# print(rooms.get("room_Hangar").associated_door)

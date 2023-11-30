@@ -66,7 +66,7 @@ class InputHandler:
 class OutputHandler:
     def __init__(self, command_msgs, game_msgs) -> None:
         self.buffer = ""
-        self.command_msgs = command_msgs
+        self.command_msgs = command_msgs  # this and below are dictionarys
         self.game_msgs = game_msgs
 
     def printGameMessage(self, key):
@@ -93,15 +93,17 @@ class OutputHandler:
     """
 
     # even is there is only 1 object to print, must be in a list for para(meter)s
-    def formatOutput(self, verb, result, objectList):
-        msg = self.getCMDOutput(verb, result)
+    def formatOutput(self, verb, result, given):
+        msg = self.getCMDOutput(verb, result)  # get success or failure ver of msg
         splited = re.split("<>", msg)  # string to list, split at seperator "<>"
+
+        #print(">>> ", given)
 
         # this is very... hardcoded. good for now but may need to be redone
         if len(splited) == 2:  # AKA only 1 "<>" AKA 1 split AKA 2 substrings
-            msg = splited[0] + self.listToGrammarString(objectList) + splited[1]
-        else:
-            msg = splited[0] + objectList[0] + splited[1] + objectList[1] + splited[2]
+            msg = splited[0] + given[0] + splited[1]
+        elif len(splited) > 2:
+            msg = splited[0] + given[0] + splited[1] + given[1] + splited[2]
 
         self.appendToBuffer(msg)
 

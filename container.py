@@ -26,6 +26,27 @@ class ContainterModel:
     def getStateDescription(self, state_key):
         return self.state_descriptions[state_key]
 
+    # utility method that's really useful
+    def listToGrammarString(self, list):
+        if len(list) > 1:
+            formatted = ", ".join(list[:-1]) + ", and " + list[-1]
+        elif len(list):
+            formatted = list[0]
+        else:
+            formatted = "empty"
+
+        return formatted
+
+    # useful for all  command method
+    def listInventory(self):
+        str_list = []
+        for item in self.inventory:
+            str_list.append(item.name)
+        
+        if str_list == []:
+            return None
+        return self.listToGrammarString(str_list)
+
         """
             #above is the more... pythonic way, below is more OOP ala java
             self.__name = name

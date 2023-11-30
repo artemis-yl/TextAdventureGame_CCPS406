@@ -1,16 +1,63 @@
 from container import ContainterModel
 
+
 class Room(ContainterModel):
     def __init__(self, room):
-        super().__init__(
-            room["name"],
-            room["description"],
-            room["initialInventory"]
-        )
+        super().__init__(room["name"], room["description"], room["initialInventory"])
 
         self.connected_to = room["connectedTo"]
         self.associated_door = room["associatedDoor"]
         self.inventory = room["initialInventory"]
+
+    def scan(self):
+        return self.listInventory()
+        
+
+    def describeRoom(self):
+        door_description = self.describeDoors()
+        item_description = self.describeItems()
+
+        return door_description + "\n" + item_description
+
+    def describeItems(self):
+        itemNum = len(self.inventory)
+        if itemNum == 0:
+            description = "This room is empty of any people or thing."
+        elif itemNum == 1:
+            description = "There is something in the room: " + self.inventory[0].name
+        else:
+            description = "There are " + str(itemNum) + " things in the room: " + self.listInventory()
+
+        return description
+
+    def describeDoors(self):
+        connection_count = 0
+
+        # get number of connected rooms an dlist their directions
+        connections = []
+        for direction in self.connected_to:
+            room = self.connected_to[direction]
+
+            if room is not None:
+                connection_count += 1
+                connections.append(direction.upper())
+
+        if len(connections) > 1:
+            semiString = ", ".join(connections[:-1]) + ", and " + connections[-1]
+            # print("SEMI STRING : " + semiString)
+            description = (
+                "There are "
+                + str(connection_count)
+                + " doors in the room. They are to the "
+                + semiString
+                + "."
+            )
+        else:
+            description = (
+                "There is 1 door in the room. It is to the " + connections[0] + "."
+            )
+
+        return description
 
     def getConnectedRooms(self):
         return self.connected_to

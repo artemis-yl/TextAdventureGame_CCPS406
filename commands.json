@@ -3,6 +3,10 @@
         "success": "You moved to <>",
         "failure": "You can't move to <>"
     },
+    "EXIT": {
+        "success": "You have exited AstroWars",
+        "failure": "You can't exit AstroWars"
+    },
     "ATTACK": {
         "success": "You attacked <> with your <>!",
         "failure": "You failed to attack <>."
