@@ -4,7 +4,6 @@ def handle_input(verb,target,current_game_state):
 
     current_room=current_game_state.current_room
 
-    
 
     if verb=="move":
         new_room=move(current_room,rooms_list,target[0].upper())
@@ -79,7 +78,13 @@ def handle_input(verb,target,current_game_state):
         for npc in current_game_state.npcs_list:
 
             npc.roam(current_game_state)
-            print(npc.current_room)
+            #print(npc.current_room)
+    
+
+    
+
+    current_game_state.add_ending_counter()
+        
 
     print('-'*10)
 
@@ -107,7 +112,6 @@ intro,ending = import_gameMsg(game_json)
 
 
 current_game_state=GameState(starting_room,rooms_list,items_list,npcs_list)
-print(npcs_list)
 
 
 
@@ -118,12 +122,14 @@ previous_room=current_room
 
 end=False
 
+
 #khajit_room=find_room("armory",rooms_list)
 
 #khajit=NPC("Khajit","Khajit Description",khajit_room,["Khajit has wares if you have coin."])
 
 print(intro)
 print('-'*10)
+print(starting_room.description)
 while current_game_state.loop_condition:
 
     verb=""
@@ -160,7 +166,12 @@ if current_game_state.loop_condition==False:
 
 
 if end==True:
-    print(ending)
+
+    if current_game_state.ending==0:
+        print('Bad Ending.')
+
+    else:
+        print(ending)
 
 else:
     print("Exiting game.")

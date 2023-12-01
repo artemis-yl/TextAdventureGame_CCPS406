@@ -57,12 +57,13 @@ def import_rooms(room_filename,items_list):
     for room_key,room_data in data.items():
         name=room_data['name']
         description=room_data['description']
+        short_description=room_data['description2']
         inventory=room_data['inventory']
         hint=room_data['hint']
 
         
 
-        new_room=Room(name,description,hint)
+        new_room=Room(name,description,hint=hint,short_description=short_description)
 
         for item in inventory:
             if item in items_list:
@@ -80,6 +81,8 @@ def import_rooms(room_filename,items_list):
 
     else:
         starting_room=start_check
+        starting_room.ending_room=True
+        starting_room.visited=True
     
 
     return room_list,starting_room

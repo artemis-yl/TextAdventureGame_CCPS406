@@ -32,15 +32,22 @@ class Container:
 
 
 class Room(Container):
-    def __init__(self, room_name, description,hint=""):
+    def __init__(self, room_name, description,hint="",short_description=""):
         super().__init__(room_name,description)
         self.inventory=[]
+
+        self.visited=False
+        self.short_description=short_description
 
         #[N, E, W, S]
         self.connected_rooms=['NULL','NULL','NULL','NULL']
         self.connected_doors=['NULL','NULL','NULL','NULL']
         self.puzzles=[]
         self.hint=hint
+
+
+        #Ending stuff
+        self.ending_room=False
 
     
 
@@ -120,34 +127,14 @@ class Room(Container):
     
 
     def get_room_description(self):
+        
+        if self.visited:
+            room_descr=self.short_description
 
-        room_descr=self.description
-        doors_description=""
-        
-        door_counter=0
-        door_locs=['north','east','west','south']
-        door_locations=""
-        for i in range(len(self.connected_doors)):
-            if self.connected_doors[i]!="NULL":
-                door_counter+=1
-                door_locations=door_locations+"One to the "+door_locs[i]+'. '
-        
-        doors_description="There are "+str(door_counter)+" door(s) in the room. "+door_locations
-
-        item_counter=0
-        
-        items=self.get_room_inventory()
-
-        if items is None:
-            item_description="There are no items inside the room."
-        
         else:
-            item_description="There are "+str(len(items))+" item(s) inside the room"
-            item_description=item_description+': '
-
-            for i in items:
-                item_description=item_description+'A '+str(i)+'. '
-
+            room_descr=self.description
+            self.visited=True
+        
 
         final_description=room_descr
         #+'\n'+doors_description+'\n'+item_description
@@ -281,13 +268,26 @@ class Ending_Item(Item):
     def __init__(self, name, description):
         super().__init__(name,description)
         self.purpose=[True, False,False,False,False]
+        self.use_room=None
 
     
     def use_item(self,current_game_state):
 
-        current_game_state.loop_condition=False
+        if self.use_room==None:
+            current_game_state.start_ending()
+            return
+            
+
+        if current_game_state.current_room==self.use_room:
+
+            current_game_state.start_ending()
 
         return
+    
+
+    def set_use_room(self,room):
+        self.use_room=room
+
     
 
 class Gift(Item):
@@ -381,6 +381,11 @@ class GameState:
         self.solved_puzzles=[]
         self.loop_condition=True
 
+        #0 = Bad, 1=Good, 2=whatever (print at end)
+        self.ending=1
+        self.ending_sequence=False
+        self.ending_counter=0
+
 
 
     
@@ -420,6 +425,33 @@ class GameState:
 
             txt_to_print=room_description
             print(txt_to_print)
+
+    
+
+    def start_ending(self):
+
+        print('Shutdown engaged.')
+        self.ending_sequence=True
+
+    
+    def add_ending_counter(self):
+
+
+        if self.ending_sequence==True:
+            self.ending_counter+=1
+
+            if self.current_room.ending_room:
+                self.loop_condition=False
+                return
+
+        if self.ending_counter==10:
+            self.ending=0
+            self.loop_condition=False
+            return
+            
+        
+        return
+
 
 
 
@@ -462,7 +494,6 @@ class NPC(Container):
 
         if connected_rooms[rng]!="NULL":
             self.current_room=connected_rooms[rng]
-            print(self.current_room)
         
         return
     
