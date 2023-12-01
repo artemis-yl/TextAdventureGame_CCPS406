@@ -430,7 +430,7 @@ class GameState:
 
     def start_ending(self):
 
-        print('Shutdown engaged.')
+        print('You carefully place the explosive, and initiate the countdown. You better escape to the hangar bay.')
         self.ending_sequence=True
 
     
@@ -515,9 +515,8 @@ class NPC(Container):
 
         if self.first_meeting:
 
-            interaction_dialogue="You come across another living person.\n"
-            interaction_dialogue=interaction_dialogue+"\"My name is "+self.name+"\" they exclaim. "
-
+            interaction_dialogue="A Trooper Guard enters the room.\n"
+            interaction_dialogue=interaction_dialogue+"\"Who are you? You're not supposed to be in here!\" they exclaim."
             self.first_meeting=False
             print(interaction_dialogue)
             return
