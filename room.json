@@ -19,7 +19,7 @@
         "description": "You enter the jail block of the DS-3 Station. It is a narrow, dimly lit, hexagonal-shaped hallway with a low ceiling. As the hall extends further from the entrance, there are recessed security doors, each with their own control panel. The doors sit at even intervals along the walls and lead to cramped, individual holding cells. Each door has a light above it, with some glowing red, most likely to indicate the occupancy status of the cell. At the opposite end of this narrow room is a final cell, its light casting a red glare on the floor below.",
         "description2": "You find yourself back inside of the jail block. Within the cells of this narrow, dark hallway is where the prisoners of the DS-3 Station are held in captivity. The doors look very secure and sturdy, it seems the only way to get through them is by using the control panel.",
         "inventory": [],
-        "hint": "You notice a report on a tablet, quickly skimming it you read: 'The loss of the jail block master key is unacceptable... The station commander's prisoner Lia is a highly valuable asset... Key must be retrieved at once... Reports indicate the loss occured within the Hallway near the Security Room."
+        "hint": ""
     },
     "room3": {
         "name": "the Bedroom",
@@ -33,7 +33,7 @@
         "description": "You enter the security room of the DS-3 Station. Evenly spaced cubicles form a grid pattern throughout most of the room, with narrow pathways separating each cubicle. They seem to be workstations for security personnel, evidenced by the many monitors displaying surveillance camera feeds of various points within the DS-3 Station. In one corner of the far end of the room there is a stairwell leading to a raised observation platform that holds a seat overlooking the room. Ontop of the platform, a door leads elsewhere. In the other corner of the room there is a metal-barred office titled 'Inmate Processing' that surrounds a secure-looking door titled 'Jail Block'.",
         "description2": "You find yourself back inside of the security room. This must be where all the sensitive information pertaining to the DS-3 Station and its captives is held. This room contains three doors, one leading back into the curving hallway, one into the 'Jail Block', and another unmarked, slightly ominous looking door.",
         "inventory": ["Decryptor", "Keycard", "Datadrive"],
-        "hint": ""
+        "hint": "You notice a report on a tablet, quickly skimming it you read: 'The loss of the jail block master key is unacceptable... The station commander's prisoner Lia is a highly valuable asset... Key must be retrieved at once... Reports indicate the loss occured within the Hallway near the Security Room."
     },
     "room5": {
         "name": "the Control Room",
