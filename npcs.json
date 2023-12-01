@@ -7,10 +7,10 @@
         "current_room":"Example Room"
     },
     "npc_1": {
-        "name": "Khajit",
-        "description": "A simple merchant",
+        "name": "Trooper Patrol",
+        "description": "A roaming guard.",
         "type": "GNPC",
-        "dialogue":["Khajit has wares if you have coin","Give Khajit coin and he will clear the path ahead"],
+        "dialogue":["I'm reporting your presence to the security office.","How did you even get here?"],
         "current_room":"the Control Room",
         "gift":"coin"
     }
