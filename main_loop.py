@@ -157,10 +157,10 @@ if current_game_state.loop_condition==False:
 if end==True:
 
     if current_game_state.ending==0:
-        print('The station rumbles around you for a moment, until everything around you is engulfed in a fiery explosion all at once. It seems you didn't escape in time.')
+        print("The station rumbles around you for a moment, until everything around you is engulfed in a fiery explosion all at once. It seems you didn't escape in time.")
 
     else:
-        print('You succesfully escape the DS-3 Orbital battle station, just as the bomb you planted detonates in the reactor room, causing a cataclysmic explosion. The station is destroyed, and a success is a success, but don't you think you could have done better?')
+        print("You succesfully escape the DS-3 Orbital battle station, just as the bomb you planted detonates in the reactor room, causing a cataclysmic explosion. The station is destroyed, and a success is a success, but don't you think you could have done better?")
 
 else:
     print("Exiting game.")
