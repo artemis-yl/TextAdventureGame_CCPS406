@@ -13,7 +13,7 @@
             "solved": "Unlocked"
         },
         "state": "unsolved",
-        "key_item": "JailKey",
+        "key_item": "Lockpick",
         "key_verb": "Use",
         "rooms": ["the Security Room","the Jail"],
         "direction": ["N","S"]
@@ -38,7 +38,7 @@
             "solved": "Unlocked"
         },
         "state": "unsolved",
-        "key_item": "HangarDoorKey",
+        "key_item": "Fob",
         "key_verb": "Use",
         "rooms": ["Hallway One","the Hangar Bay"],
         "direction": ["N","S"]
@@ -51,7 +51,7 @@
             "solved": "Unlocked"
         },
         "state": "unsolved",
-        "key_item": "ControlRoomKey",
+        "key_item": "Keycard",
         "key_verb": "Use",
         "rooms": ["the Control Room","Hallway Two"],
         "direction": ["E","W"]
@@ -76,7 +76,7 @@
             "solved": "Unlocked"
         },
         "state": "unsolved",
-        "key_item": "ReactorRoomKey",
+        "key_item": "Decryptor",
         "key_verb": "Use",
         "rooms": ["the Reactor Room","Hallway Two"],
         "direction": ["N","S"]

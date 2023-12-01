@@ -123,9 +123,6 @@ previous_room=current_room
 end=False
 
 
-#khajit_room=find_room("armory",rooms_list)
-
-#khajit=NPC("Khajit","Khajit Description",khajit_room,["Khajit has wares if you have coin."])
 
 print(intro)
 print('-'*10)
@@ -155,14 +152,6 @@ while current_game_state.loop_condition:
 if current_game_state.loop_condition==False:
     end=True
 
-# for i in rooms_list:
-#     print(i.name)
-#     print(i.get_connected_rooms())
-#     #print(i.get_connected_doors())
-#     #print(i.get_door_puzzles())
-    
-#     print(i.inventory)
-#     print()
 
 
 if end==True:
@@ -175,3 +164,16 @@ if end==True:
 
 else:
     print("Exiting game.")
+
+
+
+
+
+#for i in rooms_list:
+    #print(i.name)
+    #print(i.get_connected_rooms())
+    #print(i.get_connected_doors())
+    #print(i.get_door_puzzles())
+    
+    #print(i.inventory)
+    #print()

@@ -1,40 +1,14 @@
 
 
 -No introductory dialogue
-#Introductory dialogue reads from gameMsg.json - also prints on finishing the game.
-
 -No room description for the starting room, since we don't "move" into it
-#Starts off from introductory dialogue but can put in a description if needed
-
 -descriptions for items, rooms are printed on one long line
-#If you wrap the text of the IDE, it should move over to the other line. Its the 3rd button on your console gutter
-
--room description doesn't switch from description to description2 on reentry to a room.
-#This needs to be fixed
-
+-room description doesn't switch from description to description2 on reentry to a room
 -On entry to a room, the rooms name is announced, along with the rooms description which states the name of the room in
     the first sentence, one of these is redundant.
-#I will comment out the room name print just before the final version. I put it there to draw the map.
-
 -Possibly rework how game ends, rather than on use of sabotage device (formerly k10) while in sabotage room,
     to reflect our actual game, game should end on return to hangar bay (post use of sabotage device)
-#This needs to be done.
-
 -Remove debug print-out on game exit
-#Already done, just have the print statements for room names (for map) and npc movements (for QA) but will remove them later
 
 Possible minor changes:
 -if item is key and is used, it could be deleted from the inventory
-#Kept it there to keep using the discard function during our presentation.
-
-Other notes:
-Included 'Hint' as another verb. There is a hint section in the room.json which will print out upon using the verb.
-I have removed the HangarBayHint items from the rooms (still present in the items.json for reference) since they
-looked out of place when doing 'use HangarBayHint'
-
-Khajiit does not keep using the same lines after you give him the coin. He shuts up and just mumbles
-
-The map seems to be wrong now. We need to do a detailed playthrough and remap the whole area again. If you can
-do that in draw.io, would be awesome.
-
-I will print out item.descriptions soon upon scan (Hopefully I can finish this part today) so it goes with hints

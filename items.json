@@ -5,7 +5,7 @@
         "type": "Item"
     },
     "key1": {
-        "name": "HangarDoorKey",
+        "name": "Fob",
         "description": "You sense that this key is the starting point to a great challenge.",
         "type": "Key"
     },
@@ -20,7 +20,7 @@
         "type": "Item"
     },
     "key4": {
-        "name": "HighYieldExplosive",
+        "name": "Explosive",
         "description": "This is a powerful explosive device. It can destroy several rooms, but placed in critical areas, it can take out larger structures.",
         "type": "End"
     },
@@ -30,22 +30,22 @@
         "type": "Item"
     },
     "key6": {
-        "name": "MedicalInjection",
+        "name": "Injection",
         "description": "The Bacta Injection will automatically revive your character upon death, or you may choose to revive an ally.",
         "type": "Item"
     },
     "key7": {
-        "name": "JailKey",
+        "name": "Lockpick",
         "description": "You sense that this key unlocks a door with a very important person trapped behind it.",
         "type": "Key"
     },
     "key8": {
-        "name": "ReactorRoomKey",
+        "name": "Decryptor",
         "description": "You sense that this key unlocks a door with something critical behind it.",
         "type": "Key"
     },
     "key9": {
-        "name": "ControlRoomKey",
+        "name": "Keycard",
         "description": "You sense that this key unlocks a door with great evil behind it.",
         "type": "Key"
     },
@@ -55,12 +55,12 @@
         "type": "Item"
     },
     "key11": {
-        "name": "DataDrive",
+        "name": "Datadrive",
         "description": "A DataDrive. Looks like it contains someone's valuable information.",
         "type": "Item"
     },
     "key12": {
-        "name": "BeamSaber",
+        "name": "Beamsaber",
         "description": "Must be the weapon of some late Jaydai, legends say they used these to deflect enemy fire.",
         "type": "Item"
     },

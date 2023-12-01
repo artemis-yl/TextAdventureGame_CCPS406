@@ -57,6 +57,13 @@ def parse_input(user_input, current_game_state):
 
     max_input_length=80
 
+    if user_input=="":
+        print("Invalid input.")
+        return "invalid","invalid"
+    
+    
+    
+
     
     if len(user_input)>max_input_length:
         print('Input too long. Inputs should be under 80 characters.')
@@ -67,6 +74,10 @@ def parse_input(user_input, current_game_state):
 
 
     input_list=user_input.split()
+
+    if len(input_list)<1:
+        print("Invalid input.")
+        return "invalid","invalid"
 
     if input_list[0].lower()=='say' and len(input_list)>1:
 

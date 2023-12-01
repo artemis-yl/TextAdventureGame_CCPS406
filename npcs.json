@@ -11,7 +11,7 @@
         "description": "A simple merchant",
         "type": "GNPC",
         "dialogue":["Khajit has wares if you have coin","Give Khajit coin and he will clear the path ahead"],
-        "current_room":"the Armory",
+        "current_room":"the Control Room",
         "gift":"coin"
     }
     
