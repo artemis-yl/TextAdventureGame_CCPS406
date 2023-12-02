@@ -1,50 +1,50 @@
 {
     "MOVE": {
-        "success": "You moved to <>",
-        "failure": "You can't move to <>"
+        "success": "You moved to <>. ",
+        "failure": "You can't move to <>. "
     },
     "EXIT": {
-        "success": "You have exited AstroWars",
-        "failure": "You can't exit AstroWars"
+        "success": "You have exited AstroWars. ",
+        "failure": "You can't exit AstroWars. "
     },
     "ATTACK": {
-        "success": "You attacked <> with your <>!",
-        "failure": "You failed to attack <>."
+        "success": "You attacked <> with your <>! ",
+        "failure": "You failed to attack <>. "
     },
     "SCAN": {
-        "success": "You examined the room and found <>.",
-        "failure": "You couldn't find anything of interest."
+        "success": "You examined the room and found <>. ",
+        "failure": "You couldn't find anything of interest. "
     },
     "INVENTORY": {
-        "success": "Your inventory contains the following items: <>",
-        "failure": "Your inventory is empty."
+        "success": "Your inventory contains the following items: <>. ",
+        "failure": "Your inventory is empty. "
     },
     "USE": {
-        "success": "You used <> on <>.",
-        "failure": "You can't use <> on <>."
+        "success": "You used <> on <>. ",
+        "failure": "You can't use <> on <>. "
     },
     "TAKE": {
-        "success": "You picked up <>.",
-        "failure": "You can't take <>."
+        "success": "You picked up <>. ",
+        "failure": "You can't take <>. "
     },
-    "TALK": {
-        "success": "You initiate a conversation with <>.",
-        "failure": "You can't initiate a conversation with <>."
+    "SAY": {
+        "success": "You look around you and scream: <>. ",
+        "failure": "You don't say anything. "
     },
     "LOCATION": {
-        "success": "You are currently in <>.",
+        "success": "You are currently in the <>. ",
         "failure": "You can't determine your location."
     },
     "DISCARD": {
-        "success": "You discarded <>.",
-        "failure": "You can't discard <>."
+        "success": "You discarded <>. ",
+        "failure": "You can't discard <>. " 
     },
     "SAVE": {
-        "success": "You have saved the game.",
-        "failure": "You cannot save the game."
+        "success": "You have saved the game. ",
+        "failure": "You cannot save the game. "
     },
     "HELP": {
-        "success": "These are the actions you can take: <>.",
-        "failure": "No help for you, for <>."
+        "success": "These are the actions you can take: <>. ",
+        "failure": "No help for you, for <>. "
     }
 }

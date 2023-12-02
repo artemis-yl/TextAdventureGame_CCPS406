@@ -8,16 +8,26 @@ class Room(ContainterModel):
         self.connected_to = room["connectedTo"]
         self.associated_door = room["associatedDoor"]
         self.inventory = room["initialInventory"]
+        self.entered_before = False
+
+    def hasEntered(self):
+        self.entered_before = True
 
     def scan(self):
         return self.listInventory()
-        
 
+    # might remove
     def describeRoom(self):
+        if self.entered_before is False:
+            room_description = self.getStateDescription("firstEntry")
+            self.entered_before = True
+        else:
+            room_description = self.getStateDescription("rentry")
+
         door_description = self.describeDoors()
         item_description = self.describeItems()
 
-        return door_description + "\n" + item_description
+        return room_description + "\n\n" + door_description + "\n"  # + item_description
 
     def describeItems(self):
         itemNum = len(self.inventory)
@@ -26,7 +36,12 @@ class Room(ContainterModel):
         elif itemNum == 1:
             description = "There is something in the room: " + self.inventory[0].name
         else:
-            description = "There are " + str(itemNum) + " things in the room: " + self.listInventory()
+            description = (
+                "There are "
+                + str(itemNum)
+                + " things in the room: "
+                + self.listInventory()
+            )
 
         return description
 
