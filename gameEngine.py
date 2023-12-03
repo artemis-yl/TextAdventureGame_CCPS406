@@ -1,4 +1,6 @@
 import view, gameState
+from item import Item
+from puzzle import Puzzle
 
 START_ROOM = "room_Hangar"
 
@@ -101,20 +103,21 @@ class GameEngine:
 
         # get rid of invalid input
         if direction.upper() not in ["N", "E", "W", "S"]:
-            return " That's not a valid direction. "
+            self.outHandler.appendToBuffer("That's not a valid direction.")
+            return
 
         # get the door + room to move to
         door = self.current_room.getAssociatedDoor(direction)
         new_room = self.current_room.getConnectedRooms().get(direction)
 
-        if door is not None:  # aka there is a room there but a puzzle exists
-            if door.current_state == "solved":
+        if door is not None:  # there is a room that direction but door locked
+            if door.getCurrentState() == "solved":
                 self.moveSuccess(new_room)
-            elif door.current_state == "unsolved":
-                self.moveFailure(new_room.getName())
-        elif new_room is not None:  # no puzzle door, but room exists
+            elif door.getCurrentState() == "unsolved":
+                self.moveFailure("there, " + door.getName() + " is locked")
+        elif new_room is not None:  # room that direction, unblocked
             self.moveSuccess(new_room)
-        elif new_room is None:
+        else:
             self.moveFailure("a room that doesn't exist")
 
     # === the following 2 methods are helper methods for move() ===
@@ -128,9 +131,9 @@ class GameEngine:
         # if you successfuly move to a new room, you saythe success move msg + describe new room
         # "success": "You moved to <>",
         self.outHandler.formatOutput("MOVE", "success", [self.current_room.getName()])
-        self.outHandler.appendToBuffer("\n" + self.current_room.describeRoom() + "\n")
+        self.outHandler.appendToBuffer("\n" + self.current_room.describeRoom())
 
-        new_room.hasEntered() 
+        new_room.hasEntered()
 
     # refactoring to reduce code reuse
     def basicOutputCall(self, toBeInserted, verb):
@@ -159,41 +162,43 @@ class GameEngine:
     def location(self):
         self.basicOutputCall(self.current_room.getName(), "LOCATION")
 
-    # use is currently just to "solve" puzzle
-    def use(self, item_name):
-        # not coded for potential teleporter or helth items
+    # helper for use()
+    # will look for a door puzzle and see if the item is its key, but already opened doors fail
+    def tryOpeningDoors(self, item_obj):
+        if self.current_room.tryOpeningDoors(item_obj):
+            self.outHandler.formatOutput("USE", "success", [item_obj.getName()])
+            self.outHandler.appendToBuffer("\nYou unlocked a door.\n")
+            return True
+        else:
+            self.outHandler.formatOutput("USE", "failure", [item_obj.getName()])
+            return False
 
+    # helper for use()
+    # will look in room for a puzzle and try to solve it
+    def tryPuzzle(self, keyItem):
+        if self.current_room.tryPuzzle(keyItem):
+            self.outHandler.formatOutput("USE", "success", [keyItem.getName()])
+            self.outHandler.appendToBuffer("\nYou unlocked a door")
+        else:
+            self.outHandler.formatOutput("USE", "failure", [keyItem.getName()])
+
+    # use can be used on door keys, puzzle keyItems
+    # NOT CODED IN: teleporter, revive, other special items -> will need to be sibclassed
+    def use(self, item_name):
         used = False
-        # check player has item
+        # retrieve the item, but None if not in inv
         item_obj = self.player.getObject(item_name)
 
-        if item_obj is not None:
-            # check if there is a puzzle door to unlock
-            if self.current_room.tryOpenDoor(item_obj):
-                self.outHandler.formatOutput("USE", "success", [item_name])
-                self.outHandler.appendToBuffer("\nYou unlocked a door.\n")
-                used = True
-            else:
-                pass
-
-            # check if there is a standalone puzzle object
-            puzzle = self.current_room.findPuzzle()
-            if puzzle is not None:
-                if puzzle.tryToSolve(item_obj):
-                    self.outHandler.formatOutput("USE", "success", [item_name])
-                    self.outHandler.appendToBuffer(
-                        "\nYou did something to ", puzzle.name
-                    )
-                    used = True
-            else:
-                pass
-
-        else:
+        if item_obj is None:
+            item_name += " because you don't have it."
             self.outHandler.formatOutput("USE", "failure", [item_name])
+        # means the item can only be a puzzle's key
+        elif item_obj.use():
+            if not self.tryOpeningDoors(item_obj):  # check the doors
+                self.tryPuzzle(item_obj)  # check the room for a standalone puzzle
 
-        if used is False:
-            self.outHandler.formatOutput("USE", "failure", [item_name])
-
+    # due to our current naming in JSON and thus how inputHandler gets the keywords
+    # the item_name is case sensitive
     def take(self, item_name):
         # get the item, remove from room if there BUT returns None if not
         item_obj = self.current_room.getObject(item_name)
@@ -205,7 +210,7 @@ class GameEngine:
         else:
             # print item description
             self.outHandler.appendToBuffer(
-                "\n" + item_obj.getStateDescription(item_obj.current_state) + "\n"
+                item_obj.getStateDescription(item_obj.current_state) + "\n"
             )
             # remove item and add item to player inv
             self.current_room.removeObject(item_obj)

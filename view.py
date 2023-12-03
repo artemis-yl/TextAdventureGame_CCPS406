@@ -29,7 +29,7 @@ class InputHandler:
         while True:
             # recall that: - strip() trims whitespace at front and end of string
             #            : - split() list-ifys a string based on a given seperator
-            rawInput = input(self.prompt).strip().lower().split(" ")
+            rawInput = input(self.prompt).strip().split(" ")
 
             # basic error check : may create a new function for this later
             if rawInput[0] == "" or len(rawInput) > 4:
@@ -38,7 +38,7 @@ class InputHandler:
                 break
 
         # min valid input is a verb. target and item are not always there
-        self.verb = rawInput[0]
+        self.verb = rawInput[0].lower()
         if len(rawInput) > 1:
             self.keyword1 = rawInput[1]
         if len(rawInput) > 2:

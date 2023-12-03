@@ -17,8 +17,10 @@ class ContainterModel:
     def getID(self):
         return self.id
 
-    # will give you the object + remove it from inv
+    # will give you the object 
     def getObject(self, obj_name):
+        print(obj_name)
+        print(self.inventory)
         if obj_name in self.inventory:
             return self.inventory[obj_name]
         return None
@@ -57,7 +59,7 @@ class ContainterModel:
     # useful for all  command method
     def listInventory(self):
         str_list = []
-        for item in self.inventory:
+        for item in self.inventory.values():
             str_list.append(item.name)
 
         if str_list == []:

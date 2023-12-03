@@ -11,6 +11,11 @@ class Item(ContainterModel):
         self.current_state = item["currentState"]
         self.is_purpose = item["is_purpose"] #[Weapon, Shield, Teleporter, Revive]
 
+    # needs to be overriden in a subclass for weapon, revive, teleporter, etc
+    # will currently return True to indicate item is only a puzzle's key
+    def use(self):
+        return True
+
     def isWeapon(self):
         return self.is_purpose[0]  # Override if the item is a weapon
 

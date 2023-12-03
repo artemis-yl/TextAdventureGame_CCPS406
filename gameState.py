@@ -26,6 +26,29 @@ class GameState:
 
         # print(self.npc_dict["npc_player"].inventory)
 
+    # This method converts the inventories of all NPCs + Rooms into dictionaries
+    # that points to the actual item/puzzle/npc object
+    # Also converts puzzle's key into the actual object
+    def populateWorld(self):
+        # fill puzzle keys
+        self.keyToObject()
+
+        pool = {**self.item_dict, **self.puzzle_dict}  # merge the dictionaries
+        # print(pool)
+
+        # 1) fill NPC inventories with items + puzzles
+        self.fillInv(self.npc_dict, pool)
+        # print(self.npc_dict["npc_lia"].inventory)
+        # print(">>> npc filled")
+
+        # 2) fill room inventories with NPCs, items, + puzzles (doors + others)
+        pool.update(self.npc_dict)
+        self.fillInv(self.room_dict, pool)
+        self.fillRooms(self.room_dict, pool)
+
+        # return updated room dictionary
+        return self.room_dict
+
     # converts the inventory from a list of strings(keys) to dictionary of objects
     def fillInv(self, beingFilled, pool):
         # print("-" * 20)
@@ -45,6 +68,7 @@ class GameState:
             model.inventory = tmp
             # print(model.inventory)
 
+    # specifically handles the room's doors and connecting rooms
     def fillRooms(self, room_dict, pool):
         for room in room_dict.values():
             # print(">>>> ", room.name)
@@ -68,31 +92,12 @@ class GameState:
             # print(room.connected_to)
             # print(room.associated_door)
 
+    # specifically handles converting a puzzle's key from a string to an object
     def keyToObject(self):
         for puzzle in self.puzzle_dict.values():
             item = self.item_dict[puzzle.getKey()]
             puzzle.setKey(item)
-            #print(puzzle.getKey())
-
-    def populateWorld(self):
-        # fill puzzle keys
-        self.keyToObject()
-
-        pool = {**self.item_dict, **self.puzzle_dict}  # merge the dictionaries
-        # print(pool)
-
-        # 1) fill NPC inventories with items + puzzles
-        self.fillInv(self.npc_dict, pool)
-        # print(self.npc_dict["npc_lia"].inventory)
-        # print(">>> npc filled")
-
-        # 2) fill room inventories with NPCs, items, + puzzles (doors + others)
-        pool.update(self.npc_dict)
-        self.fillInv(self.room_dict, pool)
-        self.fillRooms(self.room_dict, pool)
-
-        # return updated room dictionary
-        return self.room_dict
+            # print(puzzle.getKey())
 
     def getPlayer(self):
         return self.npc_dict["npc_player"]
@@ -107,13 +112,9 @@ class GameState:
         pass
         # call gameSaver to save data
 
-    def signalChange(self):
-        # Method to signal a change in the game state
-        print("Game state changed!")
 
-
-test = GameState()
-rooms = test.populateWorld()
-print(rooms["room_Hangar"].inventory)
+#test = GameState()
+#rooms = test.populateWorld()
+#print(rooms["room_security"].inventory)
 # print(rooms["room_armory"].describeRoom())
 # print(rooms.get("room_Hangar").associated_door)

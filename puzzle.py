@@ -13,7 +13,8 @@ class Puzzle(ContainterModel):
         self.keyVerb = puzzle["keyVerb"]
 
     def tryToSolve(self, keyItem):
-        if self.key == keyItem.name:
+        #print(self.key, keyItem)
+        if self.key == keyItem:
             self.current_state = "solved"
             return True
         else:

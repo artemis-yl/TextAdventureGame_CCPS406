@@ -1,6 +1,7 @@
 from container import ContainterModel
 from puzzle import Puzzle
 
+
 class Room(ContainterModel):
     def __init__(self, room):
         super().__init__(room["name"], room["description"], room["initialInventory"])
@@ -15,29 +16,31 @@ class Room(ContainterModel):
 
     def scan(self):
         return self.listInventory()
-    
-    #at the moment, just 1 standalone puzzle object per room (so doors don't count)
-    def findPuzzle(self):
-        for thing in self.inventory:
-            if isinstance(thing, Puzzle):
-                return thing
-        return None
 
-    # returns false is no puzzle door exists, OR all doors already unlocked
-    def tryOpenDoor(self, keyItem):
-        check = False
-        # check if the room has a puzzle door
-        for door in self.associated_door.values():
-            # a door exists
-            if door is not None:
-                if door.getCurrentState() == "solved":  # if already open move on
-                    continue
-                elif door.tryToSolve(keyItem):
-                    check = True
-                    break
+    # will look for the puzzle in the room's inv, and try to solve it
+    # will return false is the puzzle DNE or key doesn't match it
+    def tryPuzzle(self, keyItem):
+        check = False # will become true IF a puzzle has been found and solved
+
+        for thing in self.inventory.values():
+            if isinstance(thing, Puzzle):
+                check = check or thing.tryToSolve(keyItem)
+
         return check
 
-    # might remove
+    # returns false is no puzzle door exists, OR all doors already unlocked
+    def tryOpeningDoors(self, keyItem):
+        check = False  # will stay false unless a door was unlocked
+
+        for door in self.associated_door.values():
+            if door is not None:  # a door exists
+                if door.getCurrentState() == "solved":  # if already open move on
+                    continue
+                check = check or door.tryToSolve(keyItem)
+
+        return check
+
+    # creates a formatted string of the room description and of the doors
     def describeRoom(self):
         if self.entered_before is False:
             room_description = self.getStateDescription("firstEntry")
@@ -45,11 +48,10 @@ class Room(ContainterModel):
         else:
             room_description = self.getStateDescription("rentry")
 
-        door_description = self.describeDoors()
-        item_description = self.describeItems()
+        return room_description + "\n\n" + self.describeDoors() + "\n"
 
-        return room_description + "\n\n" + door_description + "\n"  # + item_description
-
+    # created a formatted string that described the items in the room
+    # CURRENTLY UNUSED
     def describeItems(self):
         itemNum = len(self.inventory)
         if itemNum == 0:

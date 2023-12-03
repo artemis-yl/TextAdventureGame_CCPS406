@@ -1,6 +1,6 @@
 {
     "puzzle_hangarDoor" : {
-        "name": "The Mysterious Door",
+        "name": "the Mysterious Door",
         "stateDescriptions": {
             "unsolved": "A mysterious door stands before you, locked and unyielding. You need to find a way to open it.",
             "solved": "You've unlocked the mysterious door! It was a riddle and a key puzzle all along."
@@ -11,7 +11,7 @@
         "subPuzzles": ["Mysterious Riddle"]
     },
     "puzzle_jailDoor" : {
-        "name": "The Enigmatic Jail",
+        "name": "the Enigmatic Jail",
         "stateDescriptions": {
             "unsolved": "Someone is in jail, and you need to find a way to open it.",
             "solved": "You've successfully opened the jail! It was a word puzzle and a key puzzle all along."
@@ -22,7 +22,7 @@
         "subPuzzles": ["Word Jumble"]
     },
     "puzzle_reactorDoor" : {
-        "name": "The Metallic Door",
+        "name": "the Metallic Door",
         "stateDescriptions": {
             "unsolved": "You're unable to get into the Reactor room. Sensible. It is likely to be stored in a secured location.",
             "solved": "You've have key into the Reactor room! Now you can sabotage it IF you have what you need..."
@@ -33,7 +33,7 @@
         "subPuzzles": ["Inventory Challenge"]
     },
     "puzzle_controlRoom" : {
-        "name": "The Captain's Enigma",
+        "name": "the Captain's Enigma",
         "stateDescriptions": {
             "unsolved": "You need to find a key to open the Control Room where Dark Vader, but there might be some tricks. The answer lies in a challenging logic puzzle.",
             "solved": "You've opened the Control Room Room! It was a challenging logic puzzle and a key puzzle all along."
@@ -44,7 +44,7 @@
         "subPuzzles": ["Cryptic Symbols"]
     },
     "puzzle_sword" : {
-        "name": "The Path of Power",
+        "name": "the Path of Power",
         "stateDescriptions": {
             "unsolved": "You're still searching for the beamsword, a powerful weapon.",
             "solved": "You've found the beamsword! It was an inventory and retrieval puzzle all along."
@@ -55,7 +55,7 @@
         "subPuzzles": ["Inventory Challenge"]
     },
     "puzzle_finalSabotage" : {
-        "name": "The Reactor",
+        "name": "the Reactor",
         "stateDescriptions": {
             "unsolved": "the reactor....",
             "solved": "You plant the bomb. There is now a countdown"
