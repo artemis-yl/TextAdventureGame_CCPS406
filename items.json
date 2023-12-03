@@ -36,7 +36,7 @@
         "is_purpose" : [false, false, false, false]
     },
     "item_keyReactor" : {
-        "name": "EngineCard",
+        "name": "EngineCardKey",
         "stateDescriptions": {
             "working": "You sense that this key unlocks a door with something critical behind it.",
             "notWorking": "This item has broken for some unknown reason."

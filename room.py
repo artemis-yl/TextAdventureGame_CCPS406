@@ -23,12 +23,11 @@ class Room(ContainterModel):
                 return thing
         return None
 
-
     # returns false is no puzzle door exists, OR all doors already unlocked
     def tryOpenDoor(self, keyItem):
         check = False
         # check if the room has a puzzle door
-        for door in self.current_room.associated_door.values():
+        for door in self.associated_door.values():
             # a door exists
             if door is not None:
                 if door.getCurrentState() == "solved":  # if already open move on

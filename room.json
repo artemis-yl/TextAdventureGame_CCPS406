@@ -161,7 +161,7 @@
             "item_hintJail",
             "item_secretInfo",
             "item_keyControlRoom",
-            "item_keyJail"
+            "item_keyReactor"
         ]
     },
     "room_jail" : {

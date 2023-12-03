@@ -12,8 +12,12 @@ class Puzzle(ContainterModel):
         self.key = puzzle["key"]
         self.keyVerb = puzzle["keyVerb"]
 
-    def solve(self):
-        self.current_state = "solved"
+    def tryToSolve(self, keyItem):
+        if self.key == keyItem.name:
+            self.current_state = "solved"
+            return True
+        else:
+            return False
 
     def getSubPuzzles(self):
         return self.getInv()

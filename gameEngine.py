@@ -125,11 +125,12 @@ class GameEngine:
 
     def moveSuccess(self, new_room):
         self.current_room = new_room
-        new_room.hasEntered()
         # if you successfuly move to a new room, you saythe success move msg + describe new room
         # "success": "You moved to <>",
         self.outHandler.formatOutput("MOVE", "success", [self.current_room.getName()])
         self.outHandler.appendToBuffer("\n" + self.current_room.describeRoom() + "\n")
+
+        new_room.hasEntered() 
 
     # refactoring to reduce code reuse
     def basicOutputCall(self, toBeInserted, verb):
