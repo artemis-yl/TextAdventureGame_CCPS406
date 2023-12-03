@@ -1,13 +1,13 @@
 from gameLoader import GameLoader
-from room import Room
+from modelClasses import Room
 
 FILE_NAME_LIST = [
-    "npcs.json",
-    "room.json",
-    "items.json",
-    "puzzles.json",
-    "gameMsg.json",
-    "commands.json",
+    "JSON/npcs.json",
+    "JSON/room.json",
+    "JSON/items.json",
+    "JSON/puzzles.json",
+    "JSON/gameMsg.json",
+    "JSON/commands.json",
 ]
 
 
@@ -113,8 +113,8 @@ class GameState:
         # call gameSaver to save data
 
 
-#test = GameState()
-#rooms = test.populateWorld()
-#print(rooms["room_security"].inventory)
+test = GameState()
+rooms = test.populateWorld()
+# print(rooms["room_security"].inventory)
 # print(rooms["room_armory"].describeRoom())
 # print(rooms.get("room_Hangar").associated_door)

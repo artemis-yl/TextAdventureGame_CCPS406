@@ -1,8 +1,5 @@
 import json
-from npc import NPC
-from room import Room
-from item import Item
-from puzzle import Puzzle
+from modelClasses import NPC, Room, Item, Puzzle
 
 class GameSaver:
     def __init__(self, npc_filename, room_filename, items_filename, puzzles_filename):

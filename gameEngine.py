@@ -1,6 +1,5 @@
 import view, gameState
-from item import Item
-from puzzle import Puzzle
+from modelClasses import Item, Puzzle
 
 START_ROOM = "room_Hangar"
 

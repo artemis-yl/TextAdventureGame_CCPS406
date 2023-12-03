@@ -1,7 +1,16 @@
 import gameLoader
 import gameSaver
 
-loader = gameLoader.GameLoader(['npcs.json', 'room.json', 'items.json', 'puzzles.json', 'gameMsg.json','commands.json'])
+FILE_NAME_LIST = [
+    "JSON/npcs.json",
+    "JSON/room.json",
+    "JSON/items.json",
+    "JSON/puzzles.json",
+    "JSON/gameMsg.json",
+    "JSON/commands.json",
+]
+
+loader = gameLoader.GameLoader(FILE_NAME_LIST)
 data = loader.loadGame()
 
 npc_dict = data[0]
@@ -22,7 +31,7 @@ for npc_key, npc_instance in npc_dict.items():
     print(f"Active: {npc_instance.is_active}")
     print(f"Roaming: {npc_instance.is_roaming}")
     print(f"Inventory: {npc_instance.inventory}")
-    #print(f"Puzzle List: {npc_instance.puzzle_list}")  
+    # print(f"Puzzle List: {npc_instance.puzzle_list}")
     print(f"\n")
 
 print("-" * 50)
