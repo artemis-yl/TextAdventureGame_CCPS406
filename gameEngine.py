@@ -122,20 +122,19 @@ class GameEngine:
 
     # === the following 2 methods are helper methods for move() ===
     def moveFailure(self, targeted_room_name):
-        # if you cannot move to that room
-        # "failure": "You can't move to <>"
+        # if you cannot move to that room # "failure": "You can't move to <>"
         self.outHandler.formatOutput("MOVE", "failure", [targeted_room_name])
 
     def moveSuccess(self, new_room):
         self.current_room = new_room
-        # if you successfuly move to a new room, you saythe success move msg + describe new room
-        # "success": "You moved to <>",
+        # you saythe success move msg + describe new room # "success": "You moved to <>",
         self.outHandler.formatOutput("MOVE", "success", [self.current_room.getName()])
         self.outHandler.appendToBuffer("\n" + self.current_room.describeRoom())
 
         new_room.hasEntered()
 
-    # refactoring to reduce code reuse
+    # HELPER for commands/verbs as some are very simple and use same structure
+    # so far used in scan(), listInventory(), location(), listCommands()
     def basicOutputCall(self, toBeInserted, verb):
         if toBeInserted is None:
             self.outHandler.formatOutput(verb, "failure", [])
@@ -150,6 +149,12 @@ class GameEngine:
         invString = self.player.listInventory()
         self.basicOutputCall(invString, "INVENTORY")
 
+    def location(self):
+        self.basicOutputCall(self.current_room.getName(), "LOCATION")
+
+    def listCommands(self):
+        self.outHandler.formatOutput("HELP", "success", [self.commands])
+
     def say(self, speech):
         if speech != "":
             self.outHandler.formatOutput("SAY", "success", [speech])
@@ -158,9 +163,6 @@ class GameEngine:
 
     def attack(self):
         pass
-
-    def location(self):
-        self.basicOutputCall(self.current_room.getName(), "LOCATION")
 
     # helper for use()
     # will look for a door puzzle and see if the item is its key, but already opened doors fail
@@ -178,7 +180,6 @@ class GameEngine:
     def tryPuzzle(self, keyItem):
         if self.current_room.tryPuzzle(keyItem):
             self.outHandler.formatOutput("USE", "success", [keyItem.getName()])
-            self.outHandler.appendToBuffer("\nYou unlocked a door")
         else:
             self.outHandler.formatOutput("USE", "failure", [keyItem.getName()])
 
@@ -194,6 +195,10 @@ class GameEngine:
             self.outHandler.formatOutput("USE", "failure", [item_name])
         # means the item can only be a puzzle's key
         elif item_obj.use():
+            # RIGHT NOW THIS ORDER IS WACK
+            # MIGHT NEED TO IMPLEMENT USE WITHIN CLASSES SOMEHOW
+            # OR
+            # MAKE USE REQUIRE 2 KEYWORDS
             if not self.tryOpeningDoors(item_obj):  # check the doors
                 self.tryPuzzle(item_obj)  # check the room for a standalone puzzle
 
@@ -219,6 +224,7 @@ class GameEngine:
             # print take msg
             self.outHandler.formatOutput("TAKE", "success", [item_name])
 
+    # like take, item_name is case Sensitive
     def discard(self, item_name):
         # check the player has the item, will also remove from inv if it is there
         item_obj = self.player.getObject(item_name)
@@ -238,9 +244,6 @@ class GameEngine:
     def save(self):
         pass
 
-    def listCommands(self):
-        self.outHandler.formatOutput("HELP", "success", [self.commands])
-
     def give(self):
         pass
 
@@ -248,6 +251,7 @@ class GameEngine:
         self.player_status = False
         self.outHandler.formatOutput("EXIT", "success", [])
 
+    # from old demo code.... may not need
     def itemUseFail():
         print("Nothing happens.")
 

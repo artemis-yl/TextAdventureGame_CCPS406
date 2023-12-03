@@ -1,7 +1,5 @@
 from container import ContainterModel
 from puzzle import Puzzle
-
-
 class Room(ContainterModel):
     def __init__(self, room):
         super().__init__(room["name"], room["description"], room["initialInventory"])
