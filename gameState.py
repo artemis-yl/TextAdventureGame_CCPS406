@@ -99,8 +99,8 @@ class GameState:
             puzzle.setKey(item)
             # print(puzzle.getKey())
 
-    def getPlayer(self):
-        return self.npc_dict["npc_player"]
+    def getPlayer(self, npc_name):
+        return self.npc_dict[npc_name]
 
     def getCommands(self):
         return self.command_dict

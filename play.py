@@ -2,9 +2,11 @@ from gameEngine import GameEngine
 
 engine = GameEngine()
 
-# start the game
+# print the introduction
 engine.startGame()
 
+# start the game
+engine.play()
 
 
-#core while loop
+# maybe have .play() spit out true is win and false if bad...

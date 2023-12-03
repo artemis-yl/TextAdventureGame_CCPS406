@@ -1,11 +1,16 @@
 import re
 
+DEFAULT_PROMPT = "Enter what you wanna do (exit to quit)"
+INVALID = "Invalid input."
 
+
+# purpose of this class is to:
+# 1) prompt the player to enter their next move
+# 2) parse the VERB and any keywords
+# 3) Basic invalid inputs are also handled
 class InputHandler:
     def __init__(
-        self,
-        prompt="Enter what you wanna do (exit to quit)",
-        invalidResponse="Invalid input.",
+        self, cmd_list, prompt=DEFAULT_PROMPT, invalidResponse=INVALID
     ) -> None:
         """
         Verb Target Item ex) attack grunt with blaster
@@ -17,32 +22,57 @@ class InputHandler:
         self.verb = ""
         self.keyword2 = ""
         self.keyword1 = ""
+        self.cmd_list = cmd_list
 
         self.prompt = prompt
         self.invalidResponse = invalidResponse
+
+    # checks if the raw input is valid
+    #  i.e.) not blank, didn't type more than 4 words,
+    def checkRawInput(self, rawInput):
+        if rawInput[0] == "" or len(rawInput) > 4:
+            return False
+        return True
+
+    # check if the verb extracted is valid
+    def checkVerb(self):
+        if self.verb.upper() in self.cmd_list:
+            return True
+        else:
+            self.reset()
+            return False
+
+    # returns False if the rawInput was invalid
+    def extractInput(self):
+        # prompt user and then listify inputted string
+        rawInput = input(self.prompt).strip().split(" ")
+
+        # extract verb + keywords if raw input is ok
+        rawCheck = self.checkRawInput(rawInput)
+        if rawCheck:
+            # min valid input is a verb. target and item are not always there
+            self.verb = rawInput[0].lower()
+            if len(rawInput) > 1:
+                self.keyword1 = rawInput[1]
+            if len(rawInput) > 2:
+                self.keyword2 = rawInput[-1]
+            return True
+        else:
+            print(self.invalidResponse)
+            return False
 
     # this method will extract the verb/command, and keywords from the user Input
     def parseInput(self):
         self.reset()  # ensures prev parsed input does not linger
 
         # imitation do-while loop to ensure valid input from user
+        # if the rawInput is invalid OR the verb not on list, keep looping
+        # else, break out of while loop
         while True:
-            # recall that: - strip() trims whitespace at front and end of string
-            #            : - split() list-ifys a string based on a given seperator
-            rawInput = input(self.prompt).strip().split(" ")
-
-            # basic error check : may create a new function for this later
-            if rawInput[0] == "" or len(rawInput) > 4:
-                print(self.invalidResponse)
-            else:
+            if self.extractInput() is False:
+                continue
+            if self.checkVerb() is True:
                 break
-
-        # min valid input is a verb. target and item are not always there
-        self.verb = rawInput[0].lower()
-        if len(rawInput) > 1:
-            self.keyword1 = rawInput[1]
-        if len(rawInput) > 2:
-            self.keyword2 = rawInput[-1]
 
     def getVerb(self):
         return self.verb
@@ -62,7 +92,10 @@ class InputHandler:
         self.keyword2 = ""
         self.keyword1 = ""
 
-
+# the purpose of this class is to handle printing everything to the user/player
+# 1) it primarily formats the success and failure responses to each VERB
+# 2) it also allows one to add anyother string to the buffer before displaying
+# in case the method caller has other text
 class OutputHandler:
     def __init__(self, command_msgs, game_msgs) -> None:
         self.buffer = ""
@@ -97,7 +130,7 @@ class OutputHandler:
         msg = self.getCMDOutput(verb, result)  # get success or failure ver of msg
         splited = re.split("<>", msg)  # string to list, split at seperator "<>"
 
-        #print(">>> ", given)
+        # print(">>> ", given)
 
         # this is very... hardcoded. good for now but may need to be redone
         if len(splited) == 2:  # AKA only 1 "<>" AKA 1 split AKA 2 substrings

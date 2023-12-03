@@ -1,7 +1,17 @@
 import view, gameState
 from modelClasses import Item, Puzzle
 
+# starting game constants : can change as desired, but may softlock players
 START_ROOM = "room_Hangar"
+USER_NPC = "npc_player"
+
+# output msg keys
+SUCCESS = "success"
+FAILED = "failure"
+
+# output msg formatting
+NEW_LINE = "\n"
+TURN_BORDER = "\n" + "=" * 20
 
 
 class GameEngine:
@@ -13,18 +23,18 @@ class GameEngine:
 
         self.filled_rooms = self.gameState.populateWorld()
         self.current_room = self.filled_rooms[START_ROOM]
-        self.player = self.gameState.getPlayer()
+        self.player = self.gameState.getPlayer(USER_NPC)
         self.player_status = True
+
         cmd_list = [cmds for cmds in self.gameState.command_dict]
-        # print(cmd_list)
-        # list of command strings
         self.commands = self.player.listToGrammarString(cmd_list)
 
-        self.inHandler = view.InputHandler()
+        self.inHandler = view.InputHandler(cmd_list)
         self.outHandler = view.OutputHandler(
             self.gameState.getCommands(), self.gameState.getMsgs()
         )
 
+    # helper for the play() method's main while loop
     # will check every possible flag that means the game needs to end
     def checkPlayStatus(self):
         if self.player_status is False or self.playing_now is False:
@@ -32,18 +42,21 @@ class GameEngine:
         else:
             return True
 
-    # MAIN LOOP
-    def play(self):
-        # create method that will print the intro
+    # ====== MAIN LOOP - WILL BE CALLED IN play.py ======
+    def startgame(self):
+        pass
 
+    def badEnging(self):
+        pass
+
+    def play(self):
         while self.checkPlayStatus():
-            self.outHandler.appendToBuffer("\n")
+            self.outHandler.appendToBuffer(NEW_LINE)
             self.executeCommand()
-            self.outHandler.appendToBuffer("\n" + "-=-" * 15)
+            self.outHandler.appendToBuffer(TURN_BORDER)
             self.outHandler.displayOutput()
 
-        # create method(s) that will print the end, depending on good or bad
-
+    # =====================================================
     def executeCommand(self):
         # MOVE THESE 2 DICTS UPWARD AS GLOBAL CONSTANTS LATER
 
@@ -122,12 +135,12 @@ class GameEngine:
     # === the following 2 methods are helper methods for move() ===
     def moveFailure(self, targeted_room_name):
         # if you cannot move to that room # "failure": "You can't move to <>"
-        self.outHandler.formatOutput("MOVE", "failure", [targeted_room_name])
+        self.outHandler.formatOutput("MOVE", FAILED, [targeted_room_name])
 
     def moveSuccess(self, new_room):
         self.current_room = new_room
         # you saythe success move msg + describe new room # "success": "You moved to <>",
-        self.outHandler.formatOutput("MOVE", "success", [self.current_room.getName()])
+        self.outHandler.formatOutput("MOVE", SUCCESS, [self.current_room.getName()])
         self.outHandler.appendToBuffer("\n" + self.current_room.describeRoom())
 
         new_room.hasEntered()
@@ -136,9 +149,9 @@ class GameEngine:
     # so far used in scan(), listInventory(), location(), listCommands()
     def basicOutputCall(self, toBeInserted, verb):
         if toBeInserted is None:
-            self.outHandler.formatOutput(verb, "failure", [])
+            self.outHandler.formatOutput(verb, FAILED, [])
         else:
-            self.outHandler.formatOutput(verb, "success", [toBeInserted])
+            self.outHandler.formatOutput(verb, SUCCESS, [toBeInserted])
 
     def scan(self):
         objects = self.current_room.scan()  # aka the room's inventory
@@ -152,13 +165,13 @@ class GameEngine:
         self.basicOutputCall(self.current_room.getName(), "LOCATION")
 
     def listCommands(self):
-        self.outHandler.formatOutput("HELP", "success", [self.commands])
+        self.outHandler.formatOutput("HELP", SUCCESS, [self.commands])
 
     def say(self, speech):
         if speech != "":
-            self.outHandler.formatOutput("SAY", "success", [speech])
+            self.outHandler.formatOutput("SAY", SUCCESS, [speech])
         else:
-            self.outHandler.formatOutput("SAY", "failure", [])
+            self.outHandler.formatOutput("SAY", FAILED, [])
 
     def attack(self):
         pass
@@ -167,20 +180,20 @@ class GameEngine:
     # will look for a door puzzle and see if the item is its key, but already opened doors fail
     def tryOpeningDoors(self, item_obj):
         if self.current_room.tryOpeningDoors(item_obj):
-            self.outHandler.formatOutput("USE", "success", [item_obj.getName()])
+            self.outHandler.formatOutput("USE", SUCCESS, [item_obj.getName()])
             self.outHandler.appendToBuffer("\nYou unlocked a door.\n")
             return True
         else:
-            self.outHandler.formatOutput("USE", "failure", [item_obj.getName()])
+            self.outHandler.formatOutput("USE", FAILED, [item_obj.getName()])
             return False
 
     # helper for use()
     # will look in room for a puzzle and try to solve it
     def tryPuzzle(self, keyItem):
         if self.current_room.tryPuzzle(keyItem):
-            self.outHandler.formatOutput("USE", "success", [keyItem.getName()])
+            self.outHandler.formatOutput("USE", SUCCESS, [keyItem.getName()])
         else:
-            self.outHandler.formatOutput("USE", "failure", [keyItem.getName()])
+            self.outHandler.formatOutput("USE", FAILED, [keyItem.getName()])
 
     # use can be used on door keys, puzzle keyItems
     # NOT CODED IN: teleporter, revive, other special items -> will need to be sibclassed
@@ -191,7 +204,7 @@ class GameEngine:
 
         if item_obj is None:
             item_name += " because you don't have it."
-            self.outHandler.formatOutput("USE", "failure", [item_name])
+            self.outHandler.formatOutput("USE", FAILED, [item_name])
         # means the item can only be a puzzle's key
         elif item_obj.use():
             # RIGHT NOW THIS ORDER IS WACK
@@ -210,7 +223,7 @@ class GameEngine:
         if item_name == "" or item_obj is None:
             if item_name == "":
                 item_name = "nothing"
-            self.outHandler.formatOutput("TAKE", "failure", [item_name])
+            self.outHandler.formatOutput("TAKE", FAILED, [item_name])
         else:
             # print item description
             self.outHandler.appendToBuffer(
@@ -221,7 +234,7 @@ class GameEngine:
             self.player.addToInv(item_obj)
 
             # print take msg
-            self.outHandler.formatOutput("TAKE", "success", [item_name])
+            self.outHandler.formatOutput("TAKE", SUCCESS, [item_name])
 
     # like take, item_name is case Sensitive
     def discard(self, item_name):
@@ -230,15 +243,15 @@ class GameEngine:
 
         if item_name == "":
             item_name = "nothing"
-            self.outHandler.formatOutput("DISCARD", "failure", [item_name])
+            self.outHandler.formatOutput("DISCARD", FAILED, [item_name])
         elif item_obj is None:
             item_name += " since you don't have it"
-            self.outHandler.formatOutput("DISCARD", "failure", [item_name])
+            self.outHandler.formatOutput("DISCARD", FAILED, [item_name])
         else:  # player has the object
             # remove from player + put item into room inventory
             self.player.removeObject(item_obj)
             self.current_room.addToInv(item_obj)
-            self.outHandler.formatOutput("DISCARD", "success", [item_name])
+            self.outHandler.formatOutput("DISCARD", SUCCESS, [item_name])
 
     def save(self):
         pass
@@ -248,7 +261,7 @@ class GameEngine:
 
     def exit(self):
         self.player_status = False
-        self.outHandler.formatOutput("EXIT", "success", [])
+        self.outHandler.formatOutput("EXIT", SUCCESS, [])
 
     # from old demo code.... may not need
     def itemUseFail():
