@@ -115,6 +115,7 @@ class GameEngine:
 
         # get rid of invalid input
         if direction.upper() not in ["N", "E", "W", "S"]:
+            # REPLACE WITH OUT MSG CALL
             self.outH.appendToBuffer("That's not a valid direction.")
             return
 
@@ -130,6 +131,7 @@ class GameEngine:
         elif new_room is not None:  # room that direction, unblocked
             self.moveSuccess(new_room)
         else:
+            # REPLACE WITH OUT MSG CALL
             self.moveFailure("a room that doesn't exist")
 
     # === the following 2 methods are helper methods for move() ===
@@ -181,6 +183,7 @@ class GameEngine:
     def tryOpeningDoors(self, item_obj):
         if self.current_room.tryOpeningDoors(item_obj):
             self.outH.successMsg("USE", [item_obj.getName()])
+            # REPLACE WITH OUT MSG CALL
             self.outH.appendToBuffer("\nYou unlocked a door.\n")
             return True
         else:
@@ -203,6 +206,7 @@ class GameEngine:
         item_obj = self.player.getObject(item_name)
 
         if item_obj is None:
+            # REPLACE WITH OUT MSG CALL
             item_name += " because you don't have it."
             self.outH.failMsg("USE", [item_name])
         # means the item can only be a puzzle's key
@@ -245,6 +249,7 @@ class GameEngine:
             item_name = "nothing"
             self.outH.failMsg("DISCARD", [item_name])
         elif item_obj is None:
+# REPLACE WITH OUT MSG CALL
             item_name += " since you don't have it"
             self.outH.failMsg("DISCARD", [item_name])
         else:  # player has the object
