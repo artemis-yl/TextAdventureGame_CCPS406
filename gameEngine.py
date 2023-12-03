@@ -1,3 +1,4 @@
+import os
 import view, gameState
 from modelClasses import Item, Puzzle
 
@@ -50,6 +51,7 @@ class GameEngine:
         pass
 
     def play(self):
+        self.intro()
         while self.checkPlayStatus():
             self.outH.appendToBuffer(NEW_LINE)
             self.executeCommand()
@@ -57,6 +59,11 @@ class GameEngine:
             self.outH.displayOutput()
 
     # =====================================================
+    def intro(self):
+        print("")
+        self.outH.printGameMessage("introduction")
+        print("")
+
     def executeCommand(self):
         # MOVE THESE 2 DICTS UPWARD AS GLOBAL CONSTANTS LATER
 
@@ -296,6 +303,6 @@ class GameEngine:
                 else:
                     door.current_state = "solved"
 
-
+os.system('cls' if os.name == 'nt' else 'clear')
 test = GameEngine()
 test.play()
