@@ -26,13 +26,13 @@ class GameState:
 
         # print(self.npc_dict["npc_player"].inventory)
 
-    # retrieves the actual item or puzzle
-    def keyToObject(self, beingFilled, pool):
+    # converts the inventory from a list of strings(keys) to dictionary of objects
+    def fillInv(self, beingFilled, pool):
         # print("-" * 20)
         # get individual npc/room/etc whose inv needs to be filled
         for model in beingFilled.values():
             # print(model.name)
-            tmpList = []
+            tmp = {}
 
             for thing_name in model.inventory:
                 if thing_name is None:
@@ -40,10 +40,9 @@ class GameState:
 
                 true_obj = pool[thing_name]
                 # print(true_obj.name)
-                tmpList.append(true_obj)
+                tmp[true_obj.getName()] = true_obj
 
-            model.inventory.clear()
-            model.inventory.extend(tmpList)
+            model.inventory = tmp
             # print(model.inventory)
 
     def fillRooms(self, room_dict, pool):
@@ -69,18 +68,27 @@ class GameState:
             # print(room.connected_to)
             # print(room.associated_door)
 
+    def keyToObject(self):
+        for puzzle in self.puzzle_dict.values():
+            item = self.item_dict[puzzle.getKey()]
+            puzzle.setKey(item)
+            #print(puzzle.getKey())
+
     def populateWorld(self):
+        # fill puzzle keys
+        self.keyToObject()
+
         pool = {**self.item_dict, **self.puzzle_dict}  # merge the dictionaries
         # print(pool)
 
         # 1) fill NPC inventories with items + puzzles
-        self.keyToObject(self.npc_dict, pool)
+        self.fillInv(self.npc_dict, pool)
         # print(self.npc_dict["npc_lia"].inventory)
         # print(">>> npc filled")
 
         # 2) fill room inventories with NPCs, items, + puzzles (doors + others)
         pool.update(self.npc_dict)
-        self.keyToObject(self.room_dict, pool)
+        self.fillInv(self.room_dict, pool)
         self.fillRooms(self.room_dict, pool)
 
         # return updated room dictionary
@@ -104,8 +112,8 @@ class GameState:
         print("Game state changed!")
 
 
-#test = GameState()
-#rooms = test.populateWorld()
-#print( rooms["room_Hangar"].inventory)
+test = GameState()
+rooms = test.populateWorld()
+print(rooms["room_Hangar"].inventory)
 # print(rooms["room_armory"].describeRoom())
 # print(rooms.get("room_Hangar").associated_door)

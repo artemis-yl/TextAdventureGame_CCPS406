@@ -6,7 +6,7 @@
             "solved": "You've unlocked the mysterious door! It was a riddle and a key puzzle all along."
         },
         "currentState": "unsolved",
-        "key": "fob",
+        "key": "item_keyHangar",
         "keyVerb": "USE",
         "subPuzzles": ["Mysterious Riddle"]
     },
@@ -17,7 +17,7 @@
             "solved": "You've successfully opened the jail! It was a word puzzle and a key puzzle all along."
         },
         "currentState": "unsolved",
-        "key": "lockpick",
+        "key": "item_keyJail",
         "keyVerb": "USE",
         "subPuzzles": ["Word Jumble"]
     },
@@ -28,7 +28,7 @@
             "solved": "You've have key into the Reactor room! Now you can sabotage it IF you have what you need..."
         },
         "currentState": "unsolved",
-        "key": "EngineCardKey",
+        "key": "item_keyReactor",
         "keyVerb": "USE",
         "subPuzzles": ["Inventory Challenge"]
     },
@@ -39,7 +39,7 @@
             "solved": "You've opened the Control Room Room! It was a challenging logic puzzle and a key puzzle all along."
         },
         "currentState": "unsolved",
-        "key": "ControlKey",
+        "key": "item_keyControlRoom",
         "keyVerb": "USE",
         "subPuzzles": ["Cryptic Symbols"]
     },

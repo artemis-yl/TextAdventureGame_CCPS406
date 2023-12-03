@@ -30,6 +30,9 @@ class Puzzle(ContainterModel):
 
     def getKey(self):
         return self.key
+    
+    def setKey(self, keyObj):
+        self.key = keyObj
 
     def getKeyVerb(self):
         return self.keyVerb

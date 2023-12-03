@@ -19,26 +19,26 @@ class ContainterModel:
 
     # will give you the object + remove it from inv
     def getObject(self, obj_name):
-        for object in self.inventory:
-            if object.name.lower() == obj_name.lower():
-                return object
+        if obj_name in self.inventory:
+            return self.inventory[obj_name]
         return None
 
     # unlike above, need the actual object ref and not a string of its name
     def removeObject(self, object):
         if object in self.inventory:
-            self.inventory.remove(object)
+            self.inventory.pop(object)
             return True
         return False
 
-    def addToInv(self, object):
-        self.inventory.append(object)
+    def addToInv(self, obj):
+        self.inventory[obj.getName()] = obj
 
     def getInv(self):
         return self.inventory
 
     def setInv(self, invList):
         self.inventory = invList
+
 
     def getStateDescription(self, state_key):
         return self.state_descriptions[state_key]
