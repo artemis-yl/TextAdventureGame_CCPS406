@@ -1,7 +1,8 @@
 import re
 
-DEFAULT_PROMPT = "Enter what you wanna do (exit to quit)"
-INVALID = "Invalid input."
+# output msg keys
+SUCCESS = "success"
+FAILED = "failure"
 
 
 # purpose of this class is to:
@@ -9,9 +10,7 @@ INVALID = "Invalid input."
 # 2) parse the VERB and any keywords
 # 3) Basic invalid inputs are also handled
 class InputHandler:
-    def __init__(
-        self, cmd_list, prompt=DEFAULT_PROMPT, invalidResponse=INVALID
-    ) -> None:
+    def __init__(self, cmd_list, invalidResponse, prompt) -> None:
         """
         Verb Target Item ex) attack grunt with blaster
         Verb Item Target ex) use ITEM on SOMETHING
@@ -92,6 +91,7 @@ class InputHandler:
         self.keyword2 = ""
         self.keyword1 = ""
 
+
 # the purpose of this class is to handle printing everything to the user/player
 # 1) it primarily formats the success and failure responses to each VERB
 # 2) it also allows one to add anyother string to the buffer before displaying
@@ -102,13 +102,20 @@ class OutputHandler:
         self.command_msgs = command_msgs  # this and below are dictionarys
         self.game_msgs = game_msgs
 
-    def printGameMessage(self, key):
-        self.appendToBuffer(self.game_msgs[key])
-        self.displayOutput()
+    # the following 3 methods are as they say.
+    def appendToBuffer(self, string):
+        self.buffer += string
+
+    def clearBuffer(self):
+        self.buffer = ""
 
     def displayOutput(self):
         print(self.buffer)
         self.clearBuffer()
+
+    def printGameMessage(self, key):
+        self.appendToBuffer(self.game_msgs[key])
+        self.displayOutput()
 
     def getCMDOutput(self, key, result):
         # result keys can be "sucess" or "failure"
@@ -125,11 +132,17 @@ class OutputHandler:
     2nd can have many objects per <>
     """
 
+    # these 2 methods exist purely for ease of calling
+    def successMsg(self, verb, given):
+        self.formatVerbMsg(verb, SUCCESS, given)
+
+    def failMsg(self, verb, given):
+        self.formatVerbMsg(verb, FAILED, given)
+
     # even is there is only 1 object to print, must be in a list for para(meter)s
-    def formatOutput(self, verb, result, given):
+    def formatVerbMsg(self, verb, result, given):
         msg = self.getCMDOutput(verb, result)  # get success or failure ver of msg
         splited = re.split("<>", msg)  # string to list, split at seperator "<>"
-
         # print(">>> ", given)
 
         # this is very... hardcoded. good for now but may need to be redone
@@ -148,12 +161,6 @@ class OutputHandler:
             formatted = list[0]
 
         return formatted
-
-    def appendToBuffer(self, string):
-        self.buffer += string
-
-    def clearBuffer(self):
-        self.buffer = ""
 
     # entering a room, you get described:
     # room, all items in room, all NPCs in room

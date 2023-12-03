@@ -106,7 +106,7 @@ class GameState:
         return self.command_dict
 
     def getMsgs(self):
-        return self.getMsgs
+        return self.msg_dict
 
     def save(self):
         pass
