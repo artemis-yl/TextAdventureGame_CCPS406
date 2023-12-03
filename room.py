@@ -1,5 +1,5 @@
 from container import ContainterModel
-
+from puzzle import Puzzle
 
 class Room(ContainterModel):
     def __init__(self, room):
@@ -15,6 +15,28 @@ class Room(ContainterModel):
 
     def scan(self):
         return self.listInventory()
+    
+    #at the moment, just 1 standalone puzzle object per room (so doors don't count)
+    def findPuzzle(self):
+        for thing in self.inventory:
+            if isinstance(thing, Puzzle):
+                return thing
+        return None
+
+
+    # returns false is no puzzle door exists, OR all doors already unlocked
+    def tryOpenDoor(self, keyItem):
+        check = False
+        # check if the room has a puzzle door
+        for door in self.current_room.associated_door.values():
+            # a door exists
+            if door is not None:
+                if door.getCurrentState() == "solved":  # if already open move on
+                    continue
+                elif door.tryToSolve(keyItem):
+                    check = True
+                    break
+        return check
 
     # might remove
     def describeRoom(self):

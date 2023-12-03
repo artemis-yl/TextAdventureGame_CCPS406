@@ -1,4 +1,8 @@
 {
+    "GIVE": {
+        "success": "You gave the <>. ",
+        "failure": "You can't give <>. "
+    },
     "MOVE": {
         "success": "You moved to <>. ",
         "failure": "You can't move to <>. "
@@ -12,7 +16,7 @@
         "failure": "You failed to attack <>. "
     },
     "SCAN": {
-        "success": "You examined the room and found <>. ",
+        "success": "You examined the room and see <>. ",
         "failure": "You couldn't find anything of interest. "
     },
     "INVENTORY": {
@@ -20,8 +24,8 @@
         "failure": "Your inventory is empty. "
     },
     "USE": {
-        "success": "You used <> on <>. ",
-        "failure": "You can't use <> on <>. "
+        "success": "You used <>. ",
+        "failure": "You can't use <>. "
     },
     "TAKE": {
         "success": "You picked up <>. ",

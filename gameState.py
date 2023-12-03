@@ -26,6 +26,7 @@ class GameState:
 
         # print(self.npc_dict["npc_player"].inventory)
 
+    # retrieves the actual item or puzzle
     def keyToObject(self, beingFilled, pool):
         # print("-" * 20)
         # get individual npc/room/etc whose inv needs to be filled
@@ -88,6 +89,12 @@ class GameState:
     def getPlayer(self):
         return self.npc_dict["npc_player"]
 
+    def getCommands(self):
+        return self.command_dict
+
+    def getMsgs(self):
+        return self.getMsgs
+
     def save(self):
         pass
         # call gameSaver to save data
@@ -99,5 +106,6 @@ class GameState:
 
 #test = GameState()
 #rooms = test.populateWorld()
-#print(rooms["room_armory"].describeRoom())
+#print( rooms["room_Hangar"].inventory)
+# print(rooms["room_armory"].describeRoom())
 # print(rooms.get("room_Hangar").associated_door)

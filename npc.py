@@ -17,6 +17,7 @@ class NPC(ContainterModel):
         pass
 
     # check if the given key and command are correct
+    # TO BE CHANGED
     def tryPuzzle(self, command):
         key = self.puzzle.getKey()
         key_cmd = self.puzzle.getKeyVerb()

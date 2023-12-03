@@ -17,6 +17,23 @@ class ContainterModel:
     def getID(self):
         return self.id
 
+    # will give you the object + remove it from inv
+    def getObject(self, obj_name):
+        for object in self.inventory:
+            if object.name.lower() == obj_name.lower():
+                return object
+        return None
+
+    # unlike above, need the actual object ref and not a string of its name
+    def removeObject(self, object):
+        if object in self.inventory:
+            self.inventory.remove(object)
+            return True
+        return False
+
+    def addToInv(self, object):
+        self.inventory.append(object)
+
     def getInv(self):
         return self.inventory
 
@@ -42,7 +59,7 @@ class ContainterModel:
         str_list = []
         for item in self.inventory:
             str_list.append(item.name)
-        
+
         if str_list == []:
             return None
         return self.listToGrammarString(str_list)

@@ -9,7 +9,7 @@
         "is_purpose" : [true, false, false, false]
     },
     "item_beamSaber" : {
-        "name": "Beam Saber",
+        "name": "BeamSaber",
         "stateDescriptions": {
             "working": "Must be the weapon of some late Jaydai, legends say they used these to deflect enemy fire.",
             "notWorking": "This item has broken for some unknown reason."
@@ -18,7 +18,7 @@
         "is_purpose" : [true, true, false, false]
     },
     "item_keyHangar" : {
-        "name": "Hangar Door Key",
+        "name": "fob",
         "stateDescriptions": {
             "working": "You sense that this key is the starting point to a great challenge.",
             "notWorking": "This item has broken for some unknown reason."
@@ -27,7 +27,7 @@
         "is_purpose" : [false, false, false, false]
     },
     "item_keyJail": {
-        "name": "Jail Door Master Key",
+        "name": "lockpick",
         "stateDescriptions": {
             "working": "You sense that this key unlocks a door with a very important person trapped behind it.",
             "notWorking": "This item has broken for some unknown reason."
@@ -36,7 +36,7 @@
         "is_purpose" : [false, false, false, false]
     },
     "item_keyReactor" : {
-        "name": "Reactor Room Key",
+        "name": "EngineCard",
         "stateDescriptions": {
             "working": "You sense that this key unlocks a door with something critical behind it.",
             "notWorking": "This item has broken for some unknown reason."
@@ -45,7 +45,7 @@
         "is_purpose" : [false, false, false, false]
     },
     "item_keyControlRoom" : {
-        "name": "Control Room Key",
+        "name": "ControlKey",
         "stateDescriptions": {
             "working": "You sense that this key unlocks a door with great evil behind it. ",
             "notWorking": "This item has broken for some unknown reason."
@@ -54,7 +54,7 @@
         "is_purpose" : [false, false, false, false]
     },
     "item_revive" : {
-        "name": "Medical Injection",
+        "name": "MedInjection",
         "stateDescriptions": {
             "working": "The Bacta Injection will automatically revive your character upon death, or you may choose to revive an ally.",
             "notWorking": "You've already used your Bacta Injection, "
@@ -72,7 +72,7 @@
         "is_purpose" : [false, false, true, false]
     },
     "item_hintHangar" : {
-        "name": "Hangar Hint",
+        "name": "HangarHint",
         "stateDescriptions": {
             "working": "You notice a message on the computer monitor: 'Hey, did you lock me in the hangar again? Good thing I keep a spare key here.' The message must be referring to the hangar entrance door.",
             "notWorking": "The PC has been destroyed. You cannot read anything that may have once been on the screen."
@@ -81,7 +81,7 @@
         "is_purpose" : [false, false, false, false]
     },
     "item_hintJail" : {
-        "name": "Jail Hint",
+        "name": "JailHint",
         "stateDescriptions": {
             "working": "You notice a report on a tablet, quickly skimming it you read: 'The loss of the jail block master key is unacceptable... The station commander's prisoner Lia is a highly valuable asset... Key must be retrieved at once... Reports indicate the loss occured within the Hallway near the Security Room.",
             "notWorking": "The tablet has been destroyed. You cannot read anything that may have once been on the screen."
@@ -90,7 +90,7 @@
         "is_purpose" : [false, false, false, false]
     },
     "item_hintBSLocation" : {
-        "name": "Beamsword Hint",
+        "name": "BeamswordHint",
         "stateDescriptions": {
             "working": "You notice a chatlog on a communications device. '... strange that the commander came to check-out such an old sword from the armory, my guess is it must have some sentimental meaning to him.",
             "notWorking": "The tablet has been destroyed. You cannot read anything that may have once been on the screen."
@@ -99,7 +99,7 @@
         "is_purpose" : [false, false, false, false]
     },
     "item_sabotageBomb": {
-        "name": "High Yield Explosive",
+        "name": "bomb",
         "stateDescriptions": {
             "working": "This is a powerful explosive device. It can destroy several rooms, but placed in critical areas, it can take out larger structures.",
             "notWorking": "You've already planted your explosive and initiated the countdown, getting off this station should be your only goal now!"
@@ -108,7 +108,7 @@
         "is_purpose" : [false, false, false, false]
     },
     "item_secretInfo": {
-        "name": "Top-Secret DataDrive",
+        "name": "DataDrive",
         "stateDescriptions": {
             "working": "A DataDrive. Looks like it contains someone's valuable information.",
             "notWorking": "Somehow the datastick has been destroyed. Any information on it has now been lost."

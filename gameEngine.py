@@ -1,26 +1,27 @@
 import view, gameState
 
+START_ROOM = "room_Hangar"
+
 
 class GameEngine:
     def __init__(self) -> None:
-        self.turn_counter = 0
+        self.turn_counter = 0  # boomb sabotage for example
         self.playing_now = True
 
         self.gameState = gameState.GameState()
 
         self.filled_rooms = self.gameState.populateWorld()
-        self.current_room = self.filled_rooms["room_Hangar"]
+        self.current_room = self.filled_rooms[START_ROOM]
         self.player = self.gameState.getPlayer()
         self.player_status = True
         cmd_list = [cmds for cmds in self.gameState.command_dict]
         # print(cmd_list)
-        self.commands = self.player.listToGrammarString(
-            cmd_list
-        )  # list of command strings
+        # list of command strings
+        self.commands = self.player.listToGrammarString(cmd_list)
 
         self.inHandler = view.InputHandler()
         self.outHandler = view.OutputHandler(
-            self.gameState.command_dict, self.gameState.msg_dict
+            self.gameState.getCommands(), self.gameState.getMsgs()
         )
 
     # will check every possible flag that means the game needs to end
@@ -30,6 +31,7 @@ class GameEngine:
         else:
             return True
 
+    # MAIN LOOP
     def play(self):
         # create method that will print the intro
 
@@ -42,7 +44,9 @@ class GameEngine:
         # create method(s) that will print the end, depending on good or bad
 
     def executeCommand(self):
-        # to use method,type COMMANDS[key]( parameter )
+        # MOVE THESE 2 DICTS UPWARD AS GLOBAL CONSTANTS LATER
+
+        # to use method,type COMMANDS_NO_ARGS[key]( parameter )
         COMMANDS_NO_ARGS = {
             "EXIT": self.exit,  # done
             "INVENTORY": self.listInventory,  # done
@@ -54,12 +58,13 @@ class GameEngine:
         }
         # ALL METHODS HERE NEED TO HANDLE WHEN USER DONT GIVE ADDITIONAL ENOUGH EX) MOVE + ""
         COMMANDS_WITH_ARGS = {
-            "SAY": self.say,
+            "SAY": self.say,  # done
             "MOVE": self.move,  # done
             "ATTACK": self.attack,
             "USE": self.use,
-            "TAKE": self.take,  # (item_to_take)
-            "DISCARD": self.discard,
+            "GIVE": self.give,
+            "TAKE": self.take,  # done
+            "DISCARD": self.discard,  # done
         }
         # some of these will call the method from the appropriate object (container, room, etc)
         # but then get additional paramters when sent to outputHandler
@@ -68,40 +73,31 @@ class GameEngine:
         self.inHandler.parseInput()
         verb = self.inHandler.getVerb()
         keyword1 = self.inHandler.getFirstKeyword()
-        keyword2 = self.inHandler.getSecondKeyword()
+        keyword2 = self.inHandler.getSecondKeyword()  # attack GRUNT with BLASTER
 
-        #print(" >>>> : ", verb, keyword1)
-        objectList = []
+        # print(" >>>> : ", verb, keyword1)
 
         # check dictionary of commands, seperated on whether it has parameters or not
         if verb.upper() in COMMANDS_NO_ARGS:
             COMMANDS_NO_ARGS[verb.upper()]()
+
         elif verb.upper() in COMMANDS_WITH_ARGS:
-            if keyword2 == "": #aka only 1 parameter
+            if keyword2 == "":  # aka only 1 parameter
                 COMMANDS_WITH_ARGS[verb.upper()](keyword1)
-                objectList.append(keyword1)
             else:  # unlikely to occure since game atm is very simple
                 COMMANDS_WITH_ARGS[verb.upper()](keyword1, keyword2)
-                objectList.append(keyword1)
-                objectList.append(keyword2)
+
         else:
             self.outHandler.appendToBuffer("Invalid input, please try again.")
 
         self.outHandler.displayOutput()
 
-    # all command methods below - limited to 2 parameters AKA keyword
-    # returns the new current room
-
-    def basicOutputCall(self, toBeInserted, verb):
-        if toBeInserted is None:
-            self.outHandler.formatOutput(verb, "failure", [])
-        else:
-            self.outHandler.formatOutput(verb, "success", [toBeInserted])
-
     def move(self, direction="x"):
         direction = direction.upper()  # to match keys
 
         # print(self.current_room.name, direction)
+
+        # add the actually north, south, etc if time permits
 
         # get rid of invalid input
         if direction.upper() not in ["N", "E", "W", "S"]:
@@ -135,6 +131,13 @@ class GameEngine:
         self.outHandler.formatOutput("MOVE", "success", [self.current_room.getName()])
         self.outHandler.appendToBuffer("\n" + self.current_room.describeRoom() + "\n")
 
+    # refactoring to reduce code reuse
+    def basicOutputCall(self, toBeInserted, verb):
+        if toBeInserted is None:
+            self.outHandler.formatOutput(verb, "failure", [])
+        else:
+            self.outHandler.formatOutput(verb, "success", [toBeInserted])
+
     def scan(self):
         objects = self.current_room.scan()  # aka the room's inventory
         self.basicOutputCall(objects, "SCAN")
@@ -152,24 +155,88 @@ class GameEngine:
     def attack(self):
         pass
 
-    def use(self):
-        pass
-
-    def take(self):
-        # print item description + take msg
-        pass
-
     def location(self):
         self.basicOutputCall(self.current_room.getName(), "LOCATION")
 
-    def discard(self):
-        pass
+    # use is currently just to "solve" puzzle
+    def use(self, item_name):
+        # not coded for potential teleporter or helth items
+
+        used = False
+        # check player has item
+        item_obj = self.player.getObject(item_name)
+
+        if item_obj is not None:
+            # check if there is a puzzle door to unlock
+            if self.current_room.tryOpenDoor(item_obj):
+                self.outHandler.formatOutput("USE", "success", [item_name])
+                self.outHandler.appendToBuffer("\nYou unlocked a door.\n")
+                used = True
+            else:
+                pass
+
+            # check if there is a standalone puzzle object
+            puzzle = self.current_room.findPuzzle()
+            if puzzle is not None:
+                if puzzle.tryToSolve(item_obj):
+                    self.outHandler.formatOutput("USE", "success", [item_name])
+                    self.outHandler.appendToBuffer(
+                        "\nYou did something to ", puzzle.name
+                    )
+                    used = True
+            else:
+                pass
+
+        else:
+            self.outHandler.formatOutput("USE", "failure", [item_name])
+
+        if used is False:
+            self.outHandler.formatOutput("USE", "failure", [item_name])
+
+    def take(self, item_name):
+        # get the item, remove from room if there BUT returns None if not
+        item_obj = self.current_room.getObject(item_name)
+
+        if item_name == "" or item_obj is None:
+            if item_name == "":
+                item_name = "nothing"
+            self.outHandler.formatOutput("TAKE", "failure", [item_name])
+        else:
+            # print item description
+            self.outHandler.appendToBuffer(
+                "\n" + item_obj.getStateDescription(item_obj.current_state) + "\n"
+            )
+            # remove item and add item to player inv
+            self.current_room.removeObject(item_obj)
+            self.player.addToInv(item_obj)
+
+            # print take msg
+            self.outHandler.formatOutput("TAKE", "success", [item_name])
+
+    def discard(self, item_name):
+        # check the player has the item, will also remove from inv if it is there
+        item_obj = self.player.getObject(item_name)
+
+        if item_name == "":
+            item_name = "nothing"
+            self.outHandler.formatOutput("DISCARD", "failure", [item_name])
+        elif item_obj is None:
+            item_name += " since you don't have it"
+            self.outHandler.formatOutput("DISCARD", "failure", [item_name])
+        else:  # player has the object
+            # remove from player + put item into room inventory
+            self.player.removeObject(item_obj)
+            self.current_room.addToInv(item_obj)
+            self.outHandler.formatOutput("DISCARD", "success", [item_name])
 
     def save(self):
         pass
 
     def listCommands(self):
         self.outHandler.formatOutput("HELP", "success", [self.commands])
+
+    def give(self):
+        pass
 
     def exit(self):
         self.player_status = False
