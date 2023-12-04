@@ -55,7 +55,7 @@
         "subPuzzles": ["Inventory Challenge"]
     },
     "puzzle_finalSabotage" : {
-        "name": "the Reactor",
+        "name": "the Reactor Door",
         "stateDescriptions": {
             "unsolved": "the reactor....",
             "solved": "You plant the bomb. There is now a countdown"

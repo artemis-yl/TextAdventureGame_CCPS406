@@ -1,6 +1,6 @@
 import os
 import view, gameState
-from modelClasses import Item, Puzzle
+#from modelClasses import all
 
 # starting game constants : can change as desired, but may softlock players
 START_ROOM = "room_Hangar"
@@ -12,7 +12,7 @@ PROMPT = "defaultPrompt"
 
 # output msg formatting
 NEW_LINE = "\n"
-TURN_BORDER = "\n" + "=" * 20
+TURN_BORDER = "\n" + "=" * 100
 
 
 class GameEngine:
@@ -30,10 +30,12 @@ class GameEngine:
         cmd_list = [cmds for cmds in self.gameState.command_dict]
         self.commands = self.player.listToGrammarString(cmd_list)
 
-        msg_dict = self.gameState.getMsgs()
+        self.msg_dict = self.gameState.getMsgs()
 
-        self.inH = view.InputHandler(cmd_list, msg_dict[BAD_INPUT], msg_dict[PROMPT])
-        self.outH = view.OutputHandler(self.gameState.getCommands(), msg_dict)
+        self.inH = view.InputHandler(
+            cmd_list, self.msg_dict[BAD_INPUT], self.msg_dict[PROMPT]
+        )
+        self.outH = view.OutputHandler(self.gameState.getCommands(), self.msg_dict)
 
     # helper for the play() method's main while loop
     # will check every possible flag that means the game needs to end
@@ -44,10 +46,13 @@ class GameEngine:
             return True
 
     # ====== MAIN LOOP - WILL BE CALLED IN play.py ======
-    def startgame(self):
-        pass
+    def intro(self):
+        self.outH.appendToBuffer(NEW_LINE)
+        self.outH.printGameMessage("introduction")
+        self.outH.appendToBuffer(NEW_LINE)
+        self.outH.displayOutput()
 
-    def badEnging(self):
+    def badEnding(self):
         pass
 
     def play(self):
@@ -59,10 +64,6 @@ class GameEngine:
             self.outH.displayOutput()
 
     # =====================================================
-    def intro(self):
-        print("")
-        self.outH.printGameMessage("introduction")
-        print("")
 
     def executeCommand(self):
         # MOVE THESE 2 DICTS UPWARD AS GLOBAL CONSTANTS LATER
@@ -134,25 +135,26 @@ class GameEngine:
             if door.getCurrentState() == "solved":
                 self.moveSuccess(new_room)
             elif door.getCurrentState() == "unsolved":
-                self.moveFailure("there, " + door.getName() + " is locked")
+                self.moveFailure("there")
+                self.outH.appendToBuffer(
+                    door.getStateDescription(door.getCurrentState())
+                )
         elif new_room is not None:  # room that direction, unblocked
             self.moveSuccess(new_room)
         else:
-            # REPLACE WITH OUT MSG CALL
-            self.moveFailure("a room that doesn't exist")
+            self.moveFailure(self.msg_dict["roomNotThere"])
 
     # === the following 2 methods are helper methods for move() ===
     def moveFailure(self, targeted_room_name):
-        # if you cannot move to that room # "failure": "You can't move to <>"
         self.outH.failMsg("MOVE", [targeted_room_name])
 
     def moveSuccess(self, new_room):
         self.current_room = new_room
-        # you saythe success move msg + describe new room # "success": "You moved to <>",
+
         self.outH.successMsg("MOVE", [self.current_room.getName()])
         self.outH.appendToBuffer("\n" + self.current_room.describeRoom())
 
-        new_room.hasEntered()
+        new_room.hasEntered()  # has to be after description has been printed
 
     # HELPER for commands/verbs as some are very simple and use same structure
     # so far used in scan(), listInventory(), location(), listCommands()
@@ -185,6 +187,23 @@ class GameEngine:
     def attack(self):
         pass
 
+    # use can be used on door keys, puzzle keyItems
+    # NOT CODED IN: teleporter, revive, other special items -> will need to be sibclassed
+    def use(self, item_name):
+        used = False
+        # retrieve the item, but None if not in inv
+        item_obj = self.player.getObject(item_name)
+
+        if item_obj is None:
+            self.outH.printGameMessage("dontHave")
+            self.outH.failMsg("USE", [item_name])
+
+        elif item_obj.use():  # means the item can only be a puzzle's key
+            # ok, try opening door, if failed, then try to find a puzzle
+            # if both failed THEN fail msg
+            if not self.tryOpeningDoors(item_obj):  # check the doors
+                self.tryPuzzle(item_obj)  # check the room for a standalone puzzle
+
     # helper for use()
     # will look for a door puzzle and see if the item is its key, but already opened doors fail
     def tryOpeningDoors(self, item_obj):
@@ -194,7 +213,6 @@ class GameEngine:
             self.outH.appendToBuffer("\nYou unlocked a door.\n")
             return True
         else:
-            self.outH.failMsg("USE", [item_obj.getName()])
             return False
 
     # helper for use()
@@ -204,26 +222,6 @@ class GameEngine:
             self.outH.successMsg("USE", [keyItem.getName()])
         else:
             self.outH.failMsg("USE", [keyItem.getName()])
-
-    # use can be used on door keys, puzzle keyItems
-    # NOT CODED IN: teleporter, revive, other special items -> will need to be sibclassed
-    def use(self, item_name):
-        used = False
-        # retrieve the item, but None if not in inv
-        item_obj = self.player.getObject(item_name)
-
-        if item_obj is None:
-            # REPLACE WITH OUT MSG CALL
-            item_name += " because you don't have it."
-            self.outH.failMsg("USE", [item_name])
-        # means the item can only be a puzzle's key
-        elif item_obj.use():
-            # RIGHT NOW THIS ORDER IS WACK
-            # MIGHT NEED TO IMPLEMENT USE WITHIN CLASSES SOMEHOW
-            # OR
-            # MAKE USE REQUIRE 2 KEYWORDS
-            if not self.tryOpeningDoors(item_obj):  # check the doors
-                self.tryPuzzle(item_obj)  # check the room for a standalone puzzle
 
     # due to our current naming in JSON and thus how inputHandler gets the keywords
     # the item_name is case sensitive
@@ -253,11 +251,9 @@ class GameEngine:
         item_obj = self.player.getObject(item_name)
 
         if item_name == "":
-            item_name = "nothing"
-            self.outH.failMsg("DISCARD", [item_name])
+            self.outH.failMsg("DISCARD", ["nothing"])
         elif item_obj is None:
-# REPLACE WITH OUT MSG CALL
-            item_name += " since you don't have it"
+            self.outH.printGameMessage("dontHave")
             self.outH.failMsg("DISCARD", [item_name])
         else:  # player has the object
             # remove from player + put item into room inventory
@@ -268,7 +264,11 @@ class GameEngine:
     def save(self):
         pass
 
-    def give(self):
+    def give(self, item_name, target_npc):
+        # check player has item
+        # check if npc in room
+
+        # if both true, then move item
         pass
 
     def exit(self):
@@ -276,22 +276,6 @@ class GameEngine:
         self.outH.successMsg("EXIT", [])
 
     # from old demo code.... may not need
-    def itemUseFail():
-        print("Nothing happens.")
-
-    def findThing(self, key, dict):
-        if key in dict:
-            return dict[key]
-        return None
-
-    def findItem(self, item_name, items_dict):
-        return self.findThing(item_name, items_dict)
-
-    def findRoom(self, room_name, room_dict):
-        return self.findThing(room_name, room_dict)
-
-    def findPuzzle(self, puzzle_name, puzzle_dict):
-        return self.findThing(puzzle_name, puzzle_dict)
 
     def unlockAllDoors(room_dict):
         for room in room_dict.values():
@@ -303,6 +287,7 @@ class GameEngine:
                 else:
                     door.current_state = "solved"
 
-os.system('cls' if os.name == 'nt' else 'clear')
+
+os.system("cls" if os.name == "nt" else "clear")
 test = GameEngine()
 test.play()

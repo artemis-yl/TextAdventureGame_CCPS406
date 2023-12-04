@@ -113,8 +113,9 @@ class GameState:
         # call gameSaver to save data
 
 
-test = GameState()
-rooms = test.populateWorld()
+#test = GameState()
+#rooms = test.populateWorld()
+#print(rooms.get("room_Hangar").associated_door['S'])
 # print(rooms["room_security"].inventory)
 # print(rooms["room_armory"].describeRoom())
 # print(rooms.get("room_Hangar").associated_door)

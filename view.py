@@ -19,8 +19,9 @@ class InputHandler:
 
         # code repeat with reset() but better readibility
         self.verb = ""
-        self.keyword2 = ""
         self.keyword1 = ""
+        self.keyword2 = ""
+        self.notVerbText = ""
         self.cmd_list = cmd_list
 
         self.prompt = prompt
@@ -43,18 +44,20 @@ class InputHandler:
 
     # returns False if the rawInput was invalid
     def extractInput(self):
-        # prompt user and then listify inputted string
-        rawInput = input(self.prompt).strip().split(" ")
+        # prompt user and get raw string
+        rawInput = input(self.prompt)
+        splited = rawInput.strip().split(" ")
 
         # extract verb + keywords if raw input is ok
-        rawCheck = self.checkRawInput(rawInput)
+        rawCheck = self.checkRawInput(splited)
         if rawCheck:
+            self.notVerbText = splited
             # min valid input is a verb. target and item are not always there
-            self.verb = rawInput[0].lower()
-            if len(rawInput) > 1:
-                self.keyword1 = rawInput[1]
-            if len(rawInput) > 2:
-                self.keyword2 = rawInput[-1]
+            self.verb = splited[0].lower()
+            if len(splited) > 1:
+                self.keyword1 = splited[1]
+            if len(splited) > 2:
+                self.keyword2 = splited[-1]
             return True
         else:
             print(self.invalidResponse)
@@ -76,6 +79,9 @@ class InputHandler:
     def getVerb(self):
         return self.verb
 
+    def getNotVerb(self):
+        return self.notVerbText
+
     def getFirstKeyword(self):
         return self.keyword1
 
@@ -90,6 +96,7 @@ class InputHandler:
         self.verb = ""
         self.keyword2 = ""
         self.keyword1 = ""
+        self.notVerbText = ""
 
 
 # the purpose of this class is to handle printing everything to the user/player
@@ -115,7 +122,7 @@ class OutputHandler:
 
     def printGameMessage(self, key):
         self.appendToBuffer(self.game_msgs[key])
-        self.displayOutput()
+        # self.displayOutput()
 
     def getCMDOutput(self, key, result):
         # result keys can be "sucess" or "failure"

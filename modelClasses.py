@@ -19,8 +19,8 @@ class ContainterModel:
 
     # will give you the object
     def getObject(self, obj_name):
-        print(obj_name)
-        print(self.inventory)
+        #print(obj_name)
+        #print(self.inventory)
         if obj_name in self.inventory:
             return self.inventory[obj_name]
         return None
@@ -83,6 +83,14 @@ class Room(ContainterModel):
 
     def scan(self):
         return self.listInventory()
+
+    # will check if the txt string has a substring with the object's name in it
+    def isItThere(self, txt, dict):
+        for obj in dict.values():
+            if obj.getName() in txt:
+                return True
+
+        return False
 
     # will look for the puzzle in the room's inv, and try to solve it
     # will return false is the puzzle DNE or key doesn't match it
