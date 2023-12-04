@@ -151,6 +151,7 @@ class GameEngine:
 
     def moveSuccess(self, new_room):
         self.current_room = new_room
+        self.gameState.moveNPC(self.player, new_room)
 
         self.outH.successMsg("MOVE", [self.current_room.getName()])
         self.outH.appendToBuffer("\n" + self.current_room.describeRoom())
