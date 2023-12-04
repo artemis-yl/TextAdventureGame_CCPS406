@@ -26,6 +26,12 @@ class GameState:
 
         # print(self.npc_dict["npc_player"].inventory)
 
+    # ========================== COMMAND/VERB RELATED METHODS ============================
+    def move():
+        pass
+
+    # =====================================================================================
+
     # This method converts the inventories of all NPCs + Rooms into dictionaries
     # that points to the actual item/puzzle/npc object
     # Also converts puzzle's key into the actual object
@@ -113,9 +119,9 @@ class GameState:
         # call gameSaver to save data
 
 
-#test = GameState()
-#rooms = test.populateWorld()
-#print(rooms.get("room_Hangar").associated_door['S'])
+# test = GameState()
+# rooms = test.populateWorld()
+# print(rooms.get("room_Hangar").associated_door['S'])
 # print(rooms["room_security"].inventory)
 # print(rooms["room_armory"].describeRoom())
 # print(rooms.get("room_Hangar").associated_door)

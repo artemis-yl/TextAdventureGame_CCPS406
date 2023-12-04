@@ -12,7 +12,8 @@
         "isRoaming" : true,
         "initialInventory": [
             null
-        ]
+        ],
+        "location" : "room_Hangar"
     },
     "npc_lia" : {
         "name": "Lia",
@@ -28,7 +29,8 @@
         "initialInventory": [
             "item_secretInfo",
             "item_blaster"
-        ]
+        ],
+        "location": "room_jail"
     },
     "npc_jaydai" : {
         "name": "Jaydai",
@@ -43,7 +45,8 @@
         "isRoaming": false,
         "initialInventory": [
             "item_beamSaber"
-        ]
+        ],
+        "location" : "room_reactor"
     },
     "npc_gruntRoam" : {
         "name": "Trooper Patrol",
@@ -58,7 +61,8 @@
         "isRoaming" : true,
         "initialInventory": [
             "item_blaster"
-        ]
+        ],
+        "location" : "room_control"
     },
     "npc_gruntStationary" : {
         "name": "Trooper Guard",
@@ -73,7 +77,8 @@
         "isRoaming" : false,
         "initialInventory": [
             "item_blaster"
-        ]
+        ],
+        "location" : "room_jail"
     },
     "npc_boss" : {
         "name": "Dark Father",
@@ -88,6 +93,7 @@
         "isRoaming" : false,
         "initialInventory": [
             "item_beamSaber"
-        ]
+        ],
+        "location" : "room_control"
     }
 }

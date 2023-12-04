@@ -19,8 +19,8 @@ class ContainterModel:
 
     # will give you the object
     def getObject(self, obj_name):
-        #print(obj_name)
-        #print(self.inventory)
+        # print(obj_name)
+        # print(self.inventory)
         if obj_name in self.inventory:
             return self.inventory[obj_name]
         return None
@@ -243,6 +243,7 @@ class NPC(ContainterModel):
         self.current_state = npc["initialState"]
         self.is_active = npc["isActive"]
         self.is_roaming = npc["isRoaming"]
+        self.location = npc["location"]
 
     def getPuzzleState(self):
         pass
