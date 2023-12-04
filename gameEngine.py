@@ -1,6 +1,7 @@
 import os
 import view, gameState
-#from modelClasses import all
+
+# from modelClasses import all
 
 # starting game constants : can change as desired, but may softlock players
 START_ROOM = "room_Hangar"
@@ -239,8 +240,7 @@ class GameEngine:
                 item_obj.getStateDescription(item_obj.current_state) + "\n"
             )
             # remove item and add item to player inv
-            self.current_room.removeObject(item_obj)
-            self.player.addToInv(item_obj)
+            self.gameState.moveObject(item_obj, self.current_room, self.player)
 
             # print take msg
             self.outH.successMsg("TAKE", [item_name])
@@ -257,8 +257,7 @@ class GameEngine:
             self.outH.failMsg("DISCARD", [item_name])
         else:  # player has the object
             # remove from player + put item into room inventory
-            self.player.removeObject(item_obj)
-            self.current_room.addToInv(item_obj)
+            self.gameState.moveObject(item_obj, self.player, self.current_room,)
             self.outH.successMsg("DISCARD", [item_name])
 
     def save(self):

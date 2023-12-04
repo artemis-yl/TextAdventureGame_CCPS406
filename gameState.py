@@ -28,16 +28,24 @@ class GameState:
 
     # ========================== COMMAND/VERB RELATED METHODS ============================
 
-    # moves an NPC from one room to another.
-    # this method assumes the rooms are connected, the NPC is in the room, and the NPC can move there
-    # target_room is the actual room object
-    def move(self, npc_name, target_room):
+    # moves an OBJECT from one CONTAINER to another.
+    # this method assumes that
+    def moveObject(self, obj, source, target):
+        # remove from source and add to target AKA move
+        source.removeObject(obj)
+        target.addToInv(obj)
+
+    
+    def moveNPC(self, npc_name, target_room):# target_room is the actual room object
         # get the NPC object and its current room object
-        npc = self.npc_dict[npc_name]
-        current_room = self.room_dict[npc.getLocation()]
+        npc_obj = self.npc_dict[npc_name]
+        current_room = self.room_dict[npc_obj.getLocation()]
 
-        current_room.removeNPC()
+        self.moveObject(npc_obj, current_room, target_room)
+        npc_obj.setLocation(target_room.getName())
 
+    
+    def moveItem(self, item_obj, target_obj):
         pass
 
     # =====================================================================================
@@ -129,9 +137,9 @@ class GameState:
         # call gameSaver to save data
 
 
-#test = GameState()
-#rooms = test.populateWorld()
+# test = GameState()
+# rooms = test.populateWorld()
 # print(rooms.get("room_Hangar").associated_door['S'])
-#print(rooms["room_security"].inventory)
+# print(rooms["room_security"].inventory)
 # print(rooms["room_armory"].describeRoom())
 # print(rooms.get("room_Hangar").associated_door)

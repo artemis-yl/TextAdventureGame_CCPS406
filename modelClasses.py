@@ -27,10 +27,10 @@ class ContainterModel:
 
     # unlike above, need the actual object ref and not a string of its name
     def removeObject(self, object):
-        print("before : ", self.inventory)
+        # print("before : ", self.inventory)
         if object in self.inventory.values():
             self.inventory.pop(object.getName())
-            print(self.inventory)
+            # print(self.inventory)
             return True
         return False
 
@@ -180,15 +180,11 @@ class Room(ContainterModel):
     def getAssociatedDoor(self, key):
         return self.associated_door[key]
 
-    def addNPC(self, npc):
-        self.inventory[npc.getName()] = npc
+    def addNPC(self, npc_obj):
+        self.addToInv(npc_obj)
 
     def removeNPC(self, npc_obj):
-        if npc_obj in self.inventory.values():
-            self.inventory.pop(npc_obj.getName())
-            return True
-        else:
-            return False
+        return self.removeObject(npc_obj)
 
     def __str__(self):
         return f"Room Name: {self.getName()}"
@@ -250,6 +246,10 @@ class NPC(ContainterModel):
 
     def getLocation(self):
         return self.location
+
+    # location name is the STRING key
+    def setLocation(self, location_name):
+        self.location = location_name
 
     def getPuzzleState(self):
         pass
