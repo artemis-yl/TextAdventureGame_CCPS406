@@ -27,7 +27,17 @@ class GameState:
         # print(self.npc_dict["npc_player"].inventory)
 
     # ========================== COMMAND/VERB RELATED METHODS ============================
-    def move():
+
+    # moves an NPC from one room to another.
+    # this method assumes the rooms are connected, the NPC is in the room, and the NPC can move there
+    # target_room is the actual room object
+    def move(self, npc_name, target_room):
+        # get the NPC object and its current room object
+        npc = self.npc_dict[npc_name]
+        current_room = self.room_dict[npc.getLocation()]
+
+        current_room.removeNPC()
+
         pass
 
     # =====================================================================================
@@ -119,9 +129,9 @@ class GameState:
         # call gameSaver to save data
 
 
-# test = GameState()
-# rooms = test.populateWorld()
+#test = GameState()
+#rooms = test.populateWorld()
 # print(rooms.get("room_Hangar").associated_door['S'])
-# print(rooms["room_security"].inventory)
+#print(rooms["room_security"].inventory)
 # print(rooms["room_armory"].describeRoom())
 # print(rooms.get("room_Hangar").associated_door)

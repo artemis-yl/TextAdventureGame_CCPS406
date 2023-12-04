@@ -27,8 +27,10 @@ class ContainterModel:
 
     # unlike above, need the actual object ref and not a string of its name
     def removeObject(self, object):
-        if object in self.inventory:
-            self.inventory.pop(object)
+        print("before : ", self.inventory)
+        if object in self.inventory.values():
+            self.inventory.pop(object.getName())
+            print(self.inventory)
             return True
         return False
 
@@ -179,19 +181,20 @@ class Room(ContainterModel):
         return self.associated_door[key]
 
     def addNPC(self, npc):
-        self.inventory.append(npc)
+        self.inventory[npc.getName()] = npc
 
-    def removeNPC(self, npc):
-        if npc in self.inventory:
-            self.inventory.remove(npc)
+    def removeNPC(self, npc_obj):
+        if npc_obj in self.inventory.values():
+            self.inventory.pop(npc_obj.getName())
+            return True
         else:
-            print(f"{npc.name} is not inside {self.name}")
+            return False
 
     def __str__(self):
-        return f"Room Name: {self.name}"
+        return f"Room Name: {self.getName()}"
 
     def __repr__(self):
-        return f"Room Name: {self.name}"
+        return f"Room Name: {self.getName()}"
 
 
 # =================================================================================================
@@ -244,6 +247,9 @@ class NPC(ContainterModel):
         self.is_active = npc["isActive"]
         self.is_roaming = npc["isRoaming"]
         self.location = npc["location"]
+
+    def getLocation(self):
+        return self.location
 
     def getPuzzleState(self):
         pass
