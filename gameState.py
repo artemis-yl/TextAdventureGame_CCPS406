@@ -36,9 +36,8 @@ class GameState:
         target.addToInv(obj)
 
     
-    def moveNPC(self, npc_name, target_room):# target_room is the actual room object
-        # get the NPC object and its current room object
-        npc_obj = self.npc_dict[npc_name]
+    def moveNPC(self, npc_obj, target_room):# target_room is the actual room object
+        # get the NPC's current room object
         current_room = self.room_dict[npc_obj.getLocation()]
 
         self.moveObject(npc_obj, current_room, target_room)
