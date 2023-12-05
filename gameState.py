@@ -35,16 +35,29 @@ class GameState:
         source.removeObject(obj)
         target.addToInv(obj)
 
-    
-    def moveNPC(self, npc_obj, target_room):# target_room is the actual room object
+    def moveNPC(self, npc_obj, target_room):  # target_room is the actual room object
         # get the NPC's current room object
         current_room = self.room_dict[npc_obj.getLocation()]
 
         self.moveObject(npc_obj, current_room, target_room)
-        npc_obj.setLocation(target_room.getName())
 
-    
-    def moveItem(self, item_obj, target_obj):
+        new_location = self.findRoom(target_room.getName())
+        npc_obj.setLocation(new_location)
+
+    def findRoom(self, name):
+        for room_key in self.room_dict:
+            if self.room_dict[room_key].getName() == name:
+                return room_key
+        return None
+
+    # ==== ROAM ====  will cause all self roaming NPCs to move about
+    # this one will roam but be unable to go through locked door
+    def roamLimited(self, npc_list):
+        pass
+
+    # this one is for grunts/enemies, who are not limited by locked doors
+    # storywise, they all have a masterkey and lock the door behind them if it was already locked
+    def roamAnywhere(self, npc_list):
         pass
 
     # =====================================================================================
@@ -136,8 +149,9 @@ class GameState:
         # call gameSaver to save data
 
 
-# test = GameState()
-# rooms = test.populateWorld()
+test = GameState()
+rooms = test.populateWorld()
+print(rooms)
 # print(rooms.get("room_Hangar").associated_door['S'])
 # print(rooms["room_security"].inventory)
 # print(rooms["room_armory"].describeRoom())

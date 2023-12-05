@@ -19,6 +19,7 @@ TURN_BORDER = "\n" + "=" * 100
 class GameEngine:
     def __init__(self) -> None:
         self.turn_counter = 0  # bomb sabotage for example
+        self.bombSet = False # becomes true when bomb set on reactor
         self.playing_now = True
 
         self.gameState = gameState.GameState()
@@ -232,6 +233,11 @@ class GameEngine:
     def tryPuzzle(self, keyItem):
         if self.current_room.tryPuzzle(keyItem):
             self.outH.successMsg("USE", [keyItem.getName()])
+            #check if the bomb was set on reactor
+            if keyItem.getName() == "bomb":
+                self.bombSet = True
+                print("it worked ")
+
         else:
             self.outH.failMsg("USE", [keyItem.getName()])
 
