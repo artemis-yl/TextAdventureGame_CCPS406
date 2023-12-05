@@ -184,8 +184,10 @@ class Room(ContainterModel):
         self.addToInv(npc_obj)
 
     def removeNPC(self, npc_obj):
-        return self.removeObject(npc_obj)
-
+        if npc in self.inventory:
+            self.inventory.remove(npc)
+        else:
+            print(f"{npc.name} is not inside {self.name}")
     def __str__(self):
         return f"Room Name: {self.getName()}"
 
