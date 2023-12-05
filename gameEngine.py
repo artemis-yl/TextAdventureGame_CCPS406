@@ -109,7 +109,11 @@ class GameEngine:
                 COMMANDS_WITH_ARGS[verb.upper()](keyword1)
             else:  # unlikely to occure since game atm is very simple
                 COMMANDS_WITH_ARGS[verb.upper()](keyword1, keyword2)
-
+        elif verb.upper() == "GIVE":
+            if keyword2 == "":
+                self.outH.appendToBuffer("Please specify the item and the recipient.")
+            else:
+                self.give(keyword1, keyword2)
         else:
             self.outH.appendToBuffer("Invalid input, please try again.")
 
@@ -264,12 +268,40 @@ class GameEngine:
     def save(self):
         pass
 
-    def give(self, item_name, target_npc):
-        # check player has item
-        # check if npc in room
+    def give(self, item_name, receiver_name):
+        # Retrieve the player and receiver NPCs from GameState
+        player = self.gameState.getPlayer(USER_NPC)
+        receiver = self.gameState.getPlayer(receiver_name)
 
-        # if both true, then move item
-        pass
+        # Check if the receiver exists
+        if receiver is None:
+            self.outH.appendToBuffer(f"There is no NPC named {receiver_name}.")
+            return
+
+        # Retrieve the item from the player's inventory
+        item_obj = player.getObject(item_name)
+
+        # Check if the player has the item
+        if item_obj is None:
+            self.outH.appendToBuffer(f"You don't have {item_name}.")
+            return
+
+        # Remove the item from the player's inventory and add it to the receiver's inventory
+        player.removeObject(item_obj)
+        receiver.addToInv(item_obj)
+        if self.player and receiver:
+            # Remove the item from the player's inventory and add it to the receiver's inventory
+            removed = self.player.removeObject(item_name)
+
+            if removed:
+                receiver.addToInv(item_obj)
+                self.outH.successMsg("GIVE", [item_name, receiver_name])
+                self.outH.appendToBuffer(f"You gave {item_name} to {receiver_name}.")
+            else:
+                self.outH.failMsg("GIVE", [f"You do not have {item_name}."])
+        else:
+            self.outH.failMsg("GIVE", [f"NPC '{receiver_name.capitalize()}' does not exist in the game."])
+   
 
     def exit(self):
         self.player_status = False
