@@ -136,8 +136,26 @@ class GameState:
             # print(puzzle.getKey())
 
     def getPlayer(self, npc_name):
-        return self.npc_dict[npc_name]
+        # Check if the NPC exists in the dictionary before returning
+        if npc_name in self.npc_dict:
+            return self.npc_dict[npc_name]
+        else:
+            # NPC doesn't exist, handle this situation (print an error message or return None)
+            print(f"NPC '{npc_name}' does not exist in the game.")
+            return None  # Or handle the situation according to your game's logicw
 
+    def check_npc_has_item(self, npc_name, item_name):
+        npc = self.getPlayer(npc_name)  # Fetch the NPC object by their name
+
+        if npc:
+            inventory = npc.get_inventory()            # Get the NPC's inventory
+            if item_name in inventory:
+                print(f"{npc_name} has the {item_name}.")
+            else:
+                print(f"{npc_name} does not have the {item_name}.")
+        else:
+            print(f"No NPC named {npc_name} found in the game.")
+ 
     def getCommands(self):
         return self.command_dict
 
