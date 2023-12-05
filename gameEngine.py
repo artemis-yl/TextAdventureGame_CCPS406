@@ -58,11 +58,17 @@ class GameEngine:
 
     def play(self):
         self.intro()
+
         while self.checkPlayStatus():
+
             self.outH.appendToBuffer(NEW_LINE)
             self.executeCommand()
             self.outH.appendToBuffer(TURN_BORDER)
             self.outH.displayOutput()
+            # create a method that will check if a bomb flag is true AKA bomb has been placed
+            # if the checker method returns true, touch turn counter to approach bad end requirement
+            # that flag should be placed in checkPlaystatus
+
 
     # =====================================================
 
