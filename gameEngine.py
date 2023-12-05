@@ -1,4 +1,3 @@
-import os
 import view, gameState
 
 # from modelClasses import all
@@ -18,16 +17,16 @@ TURN_BORDER = "\n" + "=" * 100
 
 class GameEngine:
     def __init__(self) -> None:
-        self.turn_counter = 0 # unused
-        self.bombSet = False # becomes true when bomb set on reactor
-        self.bombTimer = 11 # decrements each turn when bombSet true
+        self.turn_counter = 0  # unused
+        self.bombSet = False  # becomes true when bomb set on reactor
+        self.bombTimer = 11  # decrements each turn when bombSet true
         self.playing_now = True
 
         self.gameState = gameState.GameState()
 
         self.filled_rooms = self.gameState.populateWorld()
         self.current_room = self.filled_rooms[START_ROOM]
-        self.player = self.gameState.getPlayer(USER_NPC)
+        self.player = self.gameState.getNPC(USER_NPC)
         self.player_status = True
 
         cmd_list = [cmds for cmds in self.gameState.command_dict]
@@ -62,22 +61,23 @@ class GameEngine:
         self.intro()
 
         while self.checkPlayStatus():
-
             self.outH.appendToBuffer(NEW_LINE)
+
             self.executeCommand()
             self.bombPlanted()
+
             self.outH.appendToBuffer(TURN_BORDER)
             self.outH.displayOutput()
-            # create a method that will check if a bomb flag is true AKA bomb has been placed
-            # if the checker method returns true, touch turn counter to approach bad end requirement
-            # that flag should be placed in checkPlaystatus
-    
+
+    #  will check if a bomb flag is true AKA bomb has been placed
+    # if the checker method returns true, touch turn counter to approach bad end requirement
     def bombPlanted(self):
         if self.bombSet is True:
             self.bombTimer -= 1
             self.outH.appendToBuffer(f"The bomb timer is now {self.bombTimer}.\n")
         if self.bombTimer == 0:
-            self.outH.appendToBuffer("Everything around you disintegrates all at once.\n")
+            self.outH.printGameMessage("bombBadEnd")
+            self.outH.printGameMessage("youDied")
             self.player_status = False
 
     # =====================================================
@@ -114,7 +114,7 @@ class GameEngine:
         keyword1 = self.inH.getFirstKeyword()
         keyword2 = self.inH.getSecondKeyword()  # attack GRUNT with BLASTER
 
-        # print(" >>>> : ", verb, keyword1)
+        print(" >>>> : ", verb, keyword1, keyword2)
 
         # check dictionary of commands, seperated on whether it has parameters or not
         if verb.upper() in COMMANDS_NO_ARGS:
@@ -125,11 +125,6 @@ class GameEngine:
                 COMMANDS_WITH_ARGS[verb.upper()](keyword1)
             else:  # unlikely to occure since game atm is very simple
                 COMMANDS_WITH_ARGS[verb.upper()](keyword1, keyword2)
-        elif verb.upper() == "GIVE":
-            if keyword2 == "":
-                self.outH.appendToBuffer("Please specify the item and the recipient.")
-            else:
-                self.give(keyword1, keyword2)
         else:
             self.outH.appendToBuffer("Invalid input, please try again.")
 
@@ -242,10 +237,10 @@ class GameEngine:
     def tryPuzzle(self, keyItem):
         if self.current_room.tryPuzzle(keyItem):
             self.outH.successMsg("USE", [keyItem.getName()])
-            #check if the bomb was set on reactor
+            # check if the bomb was set on reactor
             if keyItem.getName() == "bomb":
                 self.bombSet = True
-                self.outH.appendToBuffer("The bomb timer has been initiated.")
+                self.outH.printGameMessage("bombStart")
         else:
             self.outH.failMsg("USE", [keyItem.getName()])
 
@@ -282,46 +277,40 @@ class GameEngine:
             self.outH.failMsg("DISCARD", [item_name])
         else:  # player has the object
             # remove from player + put item into room inventory
-            self.gameState.moveObject(item_obj, self.player, self.current_room,)
+            self.gameState.moveObject(
+                item_obj,
+                self.player,
+                self.current_room,
+            )
             self.outH.successMsg("DISCARD", [item_name])
 
     def save(self):
         pass
 
     def give(self, item_name, receiver_name):
-        # Retrieve the player and receiver NPCs from GameState
-        player = self.gameState.getPlayer(USER_NPC)
-        receiver = self.gameState.getPlayer(receiver_name)
+        # Retrieve the receiver NPCs from the current room
+        receiver = self.current_room.getObject(receiver_name)
 
         # Check if the receiver exists
         if receiver is None:
-            self.outH.appendToBuffer(f"There is no NPC named {receiver_name}.")
+            self.outH.failMsg("GIVE", [item_name])
+            self.outH.appendToBuffer(
+                f"There is no NPC named {receiver_name} in this room."
+            )
             return
 
         # Retrieve the item from the player's inventory
-        item_obj = player.getObject(item_name)
+        item_obj = self.player.getObject(item_name)
 
         # Check if the player has the item
         if item_obj is None:
-            self.outH.appendToBuffer(f"You don't have {item_name}.")
+            self.outH.failMsg("GIVE", [item_name])
+            self.outH.printGameMessage("dontHave")
             return
 
         # Remove the item from the player's inventory and add it to the receiver's inventory
-        player.removeObject(item_obj)
-        receiver.addToInv(item_obj)
-        if self.player and receiver:
-            # Remove the item from the player's inventory and add it to the receiver's inventory
-            removed = self.player.removeObject(item_name)
-
-            if removed:
-                receiver.addToInv(item_obj)
-                self.outH.successMsg("GIVE", [item_name, receiver_name])
-                self.outH.appendToBuffer(f"You gave {item_name} to {receiver_name}.")
-            else:
-                self.outH.failMsg("GIVE", [f"You do not have {item_name}."])
-        else:
-            self.outH.failMsg("GIVE", [f"NPC '{receiver_name.capitalize()}' does not exist in the game."])
-   
+        self.gameState.moveObject(item_obj, self.player, receiver)
+        self.outH.successMsg("GIVE", [item_name])
 
     def exit(self):
         self.player_status = False
@@ -339,7 +328,3 @@ class GameEngine:
                 else:
                     door.current_state = "solved"
 
-
-os.system("cls" if os.name == "nt" else "clear")
-test = GameEngine()
-test.play()

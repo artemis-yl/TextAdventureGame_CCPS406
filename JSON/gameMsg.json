@@ -1,10 +1,12 @@
 {
     "introduction": "A long time ago in a galaxy far, far away... You have returned to your home planet to enjoy your winter break. Little do you know that the Galactic Empire has secretly begun constructing a new armored space station known as the DS-3 Orbital Battle Station (i.e. Planet Killer 3). Intel has also shown that during your time away, the Empire’s evil leader, Dark Vader, has returned, captured your freedom fighter friend Lia, and plans to thwart your much-deserved vacation by using the Planet Killer to destroy your homeworld. Meanwhile, a mysterious yet friendly Jaydai has already infiltrated DS-3.",
-    "youDied": "You died.",
+    "youDied": "You died. \n GAME OVER",
     "youWinMinimal": "You won the most basic objectives. A success is a success, but don't you think you could do better?",
     "youWinBestEnding": "You won! Everyone lives, the enemy is dead, everything that could be done is done!",
     "invalidInput" : "Invalid input, please try again.",
     "defaultPrompt" : "Enter what you wanna do (exit to quit): ",
     "dontHave" : " because you don't have it.",
-    "roomNotThere" : " to a room that doesn't exist"
+    "roomNotThere" : " to a room that doesn't exist",
+    "bombStart" : "The bomb timer has been initiated.",
+    "bombBadEnd" : "Everything around you disintegrates all at once."
 }

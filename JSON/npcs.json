@@ -49,7 +49,7 @@
         "location" : "room_reactor"
     },
     "npc_gruntRoam" : {
-        "name": "Trooper Patrol",
+        "name": "Patroler",
         "stateDescriptions": {
             "alive": "Trooper, reporting for duty!",
             "dead": "We don't get paid enough for this... *Dies*",
@@ -65,7 +65,7 @@
         "location" : "room_control"
     },
     "npc_gruntStationary" : {
-        "name": "Trooper Guard",
+        "name": "Guard",
         "stateDescriptions": {
             "alive": "Hey, who goes there!?",
             "dead": "We don't get paid enough for this... *Dies*",
@@ -81,7 +81,7 @@
         "location" : "room_jail"
     },
     "npc_boss" : {
-        "name": "Dark Father",
+        "name": "DarkFather",
         "stateDescriptions": {
             "alive": "I have brought peace, freedom, justice and security to my new empire!",
             "dead": "I have succumbed to your great powers.",
