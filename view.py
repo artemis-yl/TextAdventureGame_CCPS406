@@ -49,8 +49,7 @@ class InputHandler:
         splited = rawInput.strip().split(" ")
 
         # extract verb + keywords if raw input is ok
-        rawCheck = self.checkRawInput(splited)
-        if rawCheck:
+        if self.checkRawInput(splited):
             self.notVerbText = splited
             # min valid input is a verb. target and item are not always there
             self.verb = splited[0].lower()
@@ -58,6 +57,10 @@ class InputHandler:
                 self.keyword1 = splited[1]
             if len(splited) > 2:
                 self.keyword2 = splited[-1]
+
+            if self.checkVerb() is False:
+                print(self.invalidResponse)
+                return False
             return True
         else:
             print(self.invalidResponse)

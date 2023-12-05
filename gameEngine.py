@@ -17,6 +17,7 @@ TURN_BORDER = "\n" + "=" * 100
 
 class GameEngine:
     def __init__(self) -> None:
+        # create game status variables
         self.turn_counter = 0  # unused
         self.bombSet = False  # becomes true when bomb set on reactor
         self.bombTimer = 11  # decrements each turn when bombSet true
@@ -26,8 +27,9 @@ class GameEngine:
 
         self.filled_rooms = self.gameState.populateWorld()
         self.current_room = self.filled_rooms[START_ROOM]
+        self.current_room.hasEntered()
+
         self.player = self.gameState.getNPC(USER_NPC)
-        self.player_status = True
 
         cmd_list = [cmds for cmds in self.gameState.command_dict]
         self.commands = self.player.listToGrammarString(cmd_list)
@@ -42,7 +44,7 @@ class GameEngine:
     # helper for the play() method's main while loop
     # will check every possible flag that means the game needs to end
     def checkPlayStatus(self):
-        if self.player_status is False or self.playing_now is False:
+        if self.playing_now is False:
             return False
         else:
             return True
@@ -51,7 +53,8 @@ class GameEngine:
     def intro(self):
         self.outH.appendToBuffer(NEW_LINE)
         self.outH.printGameMessage("introduction")
-        self.outH.appendToBuffer(NEW_LINE)
+        self.outH.appendToBuffer(NEW_LINE + NEW_LINE + self.current_room.describeRoom())
+
         self.outH.displayOutput()
 
     def badEnding(self):
@@ -64,21 +67,35 @@ class GameEngine:
             self.outH.appendToBuffer(NEW_LINE)
 
             self.executeCommand()
-            self.bombPlanted()
+            self.isBombPlanted()
 
             self.outH.appendToBuffer(TURN_BORDER)
             self.outH.displayOutput()
 
+    def checkWinCondition(self):
+        if (
+            self.bombSet is True
+            and self.bombTimer > 0
+            and self.current_room == self.filled_rooms[START_ROOM]
+        ):
+            self.playing_now = False
+            # for now its the minimal ending.
+            # full implementation will need more checks
+            self.outH.printGameMessage("youWinMinimal")
+
     #  will check if a bomb flag is true AKA bomb has been placed
     # if the checker method returns true, touch turn counter to approach bad end requirement
-    def bombPlanted(self):
+    def isBombPlanted(self):
         if self.bombSet is True:
             self.bombTimer -= 1
             self.outH.appendToBuffer(f"The bomb timer is now {self.bombTimer}.\n")
+
         if self.bombTimer == 0:
             self.outH.printGameMessage("bombBadEnd")
             self.outH.printGameMessage("youDied")
-            self.player_status = False
+            self.playing_now = False
+        else:
+            self.checkWinCondition()
 
     # =====================================================
 
@@ -113,8 +130,7 @@ class GameEngine:
         verb = self.inH.getVerb()
         keyword1 = self.inH.getFirstKeyword()
         keyword2 = self.inH.getSecondKeyword()  # attack GRUNT with BLASTER
-
-        print(" >>>> : ", verb, keyword1, keyword2)
+        # print(" >>>> : ", verb, keyword1, keyword2)
 
         # check dictionary of commands, seperated on whether it has parameters or not
         if verb.upper() in COMMANDS_NO_ARGS:
@@ -327,4 +343,3 @@ class GameEngine:
                     continue
                 else:
                     door.current_state = "solved"
-
