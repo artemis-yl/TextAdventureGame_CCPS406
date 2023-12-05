@@ -18,8 +18,9 @@ TURN_BORDER = "\n" + "=" * 100
 
 class GameEngine:
     def __init__(self) -> None:
-        self.turn_counter = 0  # bomb sabotage for example
+        self.turn_counter = 0 # unused
         self.bombSet = False # becomes true when bomb set on reactor
+        self.bombTimer = 11 # decrements each turn when bombSet true
         self.playing_now = True
 
         self.gameState = gameState.GameState()
@@ -64,12 +65,20 @@ class GameEngine:
 
             self.outH.appendToBuffer(NEW_LINE)
             self.executeCommand()
+            self.bombPlanted()
             self.outH.appendToBuffer(TURN_BORDER)
             self.outH.displayOutput()
             # create a method that will check if a bomb flag is true AKA bomb has been placed
             # if the checker method returns true, touch turn counter to approach bad end requirement
             # that flag should be placed in checkPlaystatus
-
+    
+    def bombPlanted(self):
+        if self.bombSet is True:
+            self.bombTimer -= 1
+            self.outH.appendToBuffer(f"The bomb timer is now {self.bombTimer}.\n")
+        if self.bombTimer == 0:
+            self.outH.appendToBuffer("Everything around you disintegrates all at once.\n")
+            self.player_status = False
 
     # =====================================================
 
@@ -236,8 +245,7 @@ class GameEngine:
             #check if the bomb was set on reactor
             if keyItem.getName() == "bomb":
                 self.bombSet = True
-                print("it worked ")
-
+                self.outH.appendToBuffer("The bomb timer has been initiated.")
         else:
             self.outH.failMsg("USE", [keyItem.getName()])
 
