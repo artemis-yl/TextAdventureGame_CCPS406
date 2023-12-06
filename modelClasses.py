@@ -125,7 +125,7 @@ class Room(ContainterModel):
         else:
             room_description = self.getStateDescription("rentry")
 
-        return room_description + "\n\n" + self.describeDoors() + "\n"
+        return room_description + "\n\n" + self.describeDoors()
 
     # created a formatted string that described the items in the room
     # CURRENTLY UNUSED
@@ -163,13 +163,13 @@ class Room(ContainterModel):
             description = (
                 "There are "
                 + str(connection_count)
-                + " doors in the room. They are to the "
+                + " doors in the room, they are to the "
                 + semiString
                 + "."
             )
         else:
             description = (
-                "There is 1 door in the room. It is to the " + connections[0] + "."
+                "There is 1 door in the room, it is to the " + connections[0] + "."
             )
 
         return description

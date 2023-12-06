@@ -1,5 +1,6 @@
 from gameLoader import GameLoader
 from modelClasses import Room
+import random
 
 FILE_NAME_LIST = [
     "JSON/npcs.json",
@@ -10,7 +11,7 @@ FILE_NAME_LIST = [
     "JSON/commands.json",
 ]
 
-
+SEED = 10
 class GameState:
     def __init__(self):
         # load the json objects into dictionaries of each object type
@@ -24,12 +25,14 @@ class GameState:
             self.command_dict,
         ) = self.models.loadGame()
 
+        random.seed(10)
+
         # print(self.npc_dict["npc_player"].inventory)
 
     # ========================== COMMAND/VERB RELATED METHODS ============================
 
     # moves an OBJECT from one CONTAINER to another.
-    # this method assumes that
+    # this method assumes that the given args are the actual objs
     def moveObject(self, obj, source, target):
         # remove from source and add to target AKA move
         source.removeObject(obj)
@@ -53,6 +56,15 @@ class GameState:
     # ==== ROAM ====  will cause all self roaming NPCs to move about
     # this one will roam but be unable to go through locked door
     def roamLimited(self, npc_list):
+        for npc_name in npc_list:
+            # get the npc object
+            npc = self.npc_dict[npc_name]
+            # get their room
+            room = self.room_dict[npc.getLocation()]
+            # for each npc, rng which direction to move
+
+        # if the direction isnt valid bc locked door / not exist, they stay
+        # else move them
         pass
 
     # this one is for grunts/enemies, who are not limited by locked doors
@@ -144,18 +156,6 @@ class GameState:
             print(f"NPC '{npc_name}' does not exist in the game.")
             return None  # Or handle the situation according to your game's logicw
 
-    def check_npc_has_item(self, npc_name, item_name):
-        npc = self.getNPC(npc_name)  # Fetch the NPC object by their name
-
-        if npc:
-            inventory = npc.get_inventory()            # Get the NPC's inventory
-            if item_name in inventory:
-                print(f"{npc_name} has the {item_name}.")
-            else:
-                print(f"{npc_name} does not have the {item_name}.")
-        else:
-            print(f"No NPC named {npc_name} found in the game.")
- 
     def getCommands(self):
         return self.command_dict
 
@@ -167,9 +167,9 @@ class GameState:
         # call gameSaver to save data
 
 
-test = GameState()
-rooms = test.populateWorld()
-print(rooms)
+# test = GameState()
+# rooms = test.populateWorld()
+# print(rooms)
 # print(rooms.get("room_Hangar").associated_door['S'])
 # print(rooms["room_security"].inventory)
 # print(rooms["room_armory"].describeRoom())

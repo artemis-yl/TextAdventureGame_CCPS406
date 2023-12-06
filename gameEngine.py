@@ -12,7 +12,7 @@ PROMPT = "defaultPrompt"
 
 # output msg formatting
 NEW_LINE = "\n"
-TURN_BORDER = "\n" + "=" * 100
+TURN_BORDER = "=" * 100
 
 
 class GameEngine:
@@ -53,7 +53,11 @@ class GameEngine:
     def intro(self):
         self.outH.appendToBuffer(NEW_LINE)
         self.outH.printGameMessage("introduction")
-        self.outH.appendToBuffer(NEW_LINE + NEW_LINE + self.current_room.describeRoom())
+        # while these 3 can be placed in 1 method call, formatted like this to help visualize text
+        self.outH.appendToBuffer(NEW_LINE * 2)
+        self.outH.appendToBuffer(self.current_room.describeRoom())
+        self.outH.appendToBuffer(NEW_LINE * 2)
+        self.outH.appendToBuffer(TURN_BORDER)
 
         self.outH.displayOutput()
 
@@ -329,7 +333,7 @@ class GameEngine:
         self.outH.successMsg("GIVE", [item_name])
 
     def exit(self):
-        self.player_status = False
+        self.playing_now = False
         self.outH.successMsg("EXIT", [])
 
     # from old demo code.... may not need

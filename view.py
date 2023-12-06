@@ -1,8 +1,12 @@
 import re
+import textwrap
 
 # output msg keys
 SUCCESS = "success"
 FAILED = "failure"
+
+# output text wrapping width
+WIDTH = 100
 
 
 # purpose of this class is to:
@@ -111,6 +115,7 @@ class OutputHandler:
         self.buffer = ""
         self.command_msgs = command_msgs  # this and below are dictionarys
         self.game_msgs = game_msgs
+        self.wrapper = textwrap.TextWrapper(WIDTH, break_long_words=False)
 
     # the following 3 methods are as they say.
     def appendToBuffer(self, string):
@@ -120,7 +125,15 @@ class OutputHandler:
         self.buffer = ""
 
     def displayOutput(self):
-        print(self.buffer)
+        # this only textwraps the portions longer than the given width
+        wrapped = ""
+        lines = self.buffer.split("\n")
+        for line in lines:
+            if len(line) > WIDTH:
+                line = "\n".join(self.wrapper.wrap(line))
+            wrapped += line + "\n"
+
+        print(wrapped)
         self.clearBuffer()
 
     def printGameMessage(self, key):
