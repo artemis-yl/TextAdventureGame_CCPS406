@@ -20,7 +20,8 @@
         "initialInventory": [
             "npc_player",
             "item_keyHangar",
-            "item_hintHangar"
+            "item_hintHangar",
+            "item_coin"
         ]
     },
     "room_hallway1" : {

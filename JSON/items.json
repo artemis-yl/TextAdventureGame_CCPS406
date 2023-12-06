@@ -115,5 +115,19 @@
         },
         "currentState": "working",
         "is_purpose" : [false, false, false, false]
+    },
+    "item_coin": {
+        "name": "coin",
+        "stateDescriptions": {
+            "working": "A shiny coin. Perhaps someone would like it.",
+            "notWorking": "Somehow the coin has been mangled into something unrecognizable."
+        },
+        "currentState": "working",
+        "is_purpose": [
+            false,
+            false,
+            false,
+            false
+        ]
     }
 }

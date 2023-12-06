@@ -1,7 +1,7 @@
 {
     "GIVE": {
         "success": "You gave the <>. ",
-        "failure": "You can't give <>. "
+        "failure": "You can't give <> to <>. "
     },
     "MOVE": {
         "success": "You moved to <>. ",

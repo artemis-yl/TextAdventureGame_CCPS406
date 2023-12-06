@@ -11,10 +11,9 @@ FILE_NAME_LIST = [
     "JSON/commands.json",
 ]
 
+# for roaming
 SEED = 10  # for the roam random generator
-
-ROAMING_NPC_LIMITED = ["npc_k"]  # lists the npcs who can roam
-ROAMING_NPC_FREE = []
+DIRECTION_DUMMY = "X"
 
 
 class GameState:
@@ -30,7 +29,11 @@ class GameState:
             self.command_dict,
         ) = self.models.loadGame()
 
-        random.seed(10)
+        random.seed(SEED)  # seed it for roam
+
+        self.roamers_limited = []
+        self.getRoamers()
+        self.roamers_free = []
 
         # print(self.npc_dict["npc_player"].inventory)
 
@@ -59,19 +62,31 @@ class GameState:
         return None
 
     # ==== ROAM ====  will cause all self roaming NPCs to move about
+
+    def getRoamers(self):
+        for npc_key in self.npc_dict:
+            if self.npc_dict[npc_key].getRoamState():
+                self.roamers_limited.append(npc_key)
+
     # this one will roam but be unable to go through locked door
     def roamLimited(self):
-        for npc_name in ROAMING_NPC_FREE:
+        print(">>> LOGGING : roam activated")
+        for npc_name in self.roamers_limited:
             npc = self.npc_dict[npc_name]  # get the npc object
             room = self.room_dict[npc.getLocation()]  # get their room
 
             # check if they can move, if yes then move them
-            direction = random.choice(Room.DIRECTIONS)
+            direction = random.choice(Room.DIRECTIONS + [DIRECTION_DUMMY])
             can_move = self.canMove(room, direction)
             if can_move[0]:
                 self.moveNPC(npc, can_move[1])
-            # if the direction isnt valid bc locked door / not exist,
-            # they stay AKA do nothing
+                #print(">>> LOGGING : ", npc_name, " has moved!")
+            else:
+                # if the direction isnt valid bc locked door / not exist,
+                # they stay AKA do nothing
+                # print(">>> LOGGING : ", npc_name, " STAYED!")
+                pass
+            
 
     # returns a list of 2 objects:
     # 1st boolean tells you if you can move - if true, 2nd give new_room

@@ -74,6 +74,7 @@ class GameEngine:
 
             self.executeCommand()
             self.isBombPlanted()
+            self.gameState.roamLimited()
 
             self.outH.appendToBuffer(TURN_BORDER)
             self.outH.displayOutput()
@@ -171,7 +172,7 @@ class GameEngine:
 
         if move_check[0]:
             self.moveSuccess(move_check[1])
-        elif move_check[1]: # there is a locked door
+        elif move_check[1]:  # there is a locked door
             self.moveFailure("there")
             self.outH.appendToBuffer(door.getStateDescription(door.getCurrentState()))
         else:
@@ -186,7 +187,7 @@ class GameEngine:
         self.gameState.moveNPC(self.player, new_room)
 
         self.outH.successMsg("MOVE", [self.current_room.getName()])
-        self.outH.appendToBuffer(NEW_LINE*2 + self.current_room.describeRoom())
+        self.outH.appendToBuffer(NEW_LINE * 2 + self.current_room.describeRoom())
 
         new_room.hasEntered()  # has to be after description has been printed
 
@@ -313,9 +314,7 @@ class GameEngine:
         # Check if the receiver exists
         if receiver is None:
             self.outH.failMsg("GIVE", [item_name])
-            self.outH.appendToBuffer(
-                f"There is no NPC named {receiver_name} in this room."
-            )
+            self.outH.printGameMessage("NPCnotThere")
             return
 
         # Retrieve the item from the player's inventory

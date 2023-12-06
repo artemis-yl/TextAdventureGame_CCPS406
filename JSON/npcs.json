@@ -1,4 +1,20 @@
 {
+    "npc_K": {
+        "name": "Kay",
+        "stateDescriptions": {
+            "alive": "This weird guy is here, somehow",
+            "dead": "K is dead.",
+            "imprisoned": "K is somehow locked up - who knows why."
+        },
+        "dialogue": [],
+        "initialState": "alive",
+        "isActive": true,
+        "isRoaming": true,
+        "initialInventory": [
+            "puzzle_Kdemo"
+        ],
+        "location": "room_Hangar"
+    },
     "npc_player" : {
         "name": "yourself",
         "stateDescriptions": {
@@ -9,7 +25,7 @@
         "dialogue" : [],
         "initialState": "alive",
         "isActive" : true,
-        "isRoaming" : true,
+        "isRoaming" : false,
         "initialInventory": [
             null
         ],

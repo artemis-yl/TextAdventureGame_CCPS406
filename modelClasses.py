@@ -258,8 +258,8 @@ class NPC(ContainterModel):
     def setLocation(self, location_name):
         self.location = location_name
 
-    def getPuzzleState(self):
-        pass
+    def getRoamState(self):
+        return self.is_roaming
 
     # check if the given key and command are correct
     # TO BE CHANGED
@@ -275,9 +275,10 @@ class NPC(ContainterModel):
     def setState(self, new_state):
         if new_state in self.possible_states:
             self.current_state = new_state
-            print(f"{self.npc_id} is now in state: {new_state}")
+            #print(f"{self.npc_id} is now in state: {new_state}")
         else:
-            print(f"Error: {new_state} is not a valid state for {self.npc_id}")
+            #print(f"Error: {new_state} is not a valid state for {self.npc_id}")
+            pass
 
     def getDialogue(self):
         return self.dialogue
@@ -287,16 +288,16 @@ class NPC(ContainterModel):
 
     def setActivity(self, is_active):
         self.is_active = is_active
-        activity = "active" if is_active else "inactive"
-        print(f"{self.npc_id} is now {activity}")
+        #activity = "active" if is_active else "inactive"
+        #print(f"{self.npc_id} is now {activity}")
 
     def checkIfRoaming(self):
         return self.is_roaming
 
     def setRoaming(self, is_roaming):
         self.is_roaming = is_roaming
-        roaming_status = "roaming" if is_roaming else "not roaming"
-        print(f"{self.npc_id} is now {roaming_status}")
+        #roaming_status = "roaming" if is_roaming else "not roaming"
+        #print(f"{self.npc_id} is now {roaming_status}")
 
 
 # =================================================================================================
