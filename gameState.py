@@ -1,5 +1,5 @@
 from gameLoader import GameLoader
-from modelClasses import Room
+from modelClasses import Room, Puzzle
 import random
 
 FILE_NAME_LIST = [
@@ -11,7 +11,12 @@ FILE_NAME_LIST = [
     "JSON/commands.json",
 ]
 
-SEED = 10
+SEED = 10  # for the roam random generator
+
+ROAMING_NPC_LIMITED = ["npc_k"]  # lists the npcs who can roam
+ROAMING_NPC_FREE = []
+
+
 class GameState:
     def __init__(self):
         # load the json objects into dictionaries of each object type
@@ -55,22 +60,48 @@ class GameState:
 
     # ==== ROAM ====  will cause all self roaming NPCs to move about
     # this one will roam but be unable to go through locked door
-    def roamLimited(self, npc_list):
-        for npc_name in npc_list:
-            # get the npc object
-            npc = self.npc_dict[npc_name]
-            # get their room
-            room = self.room_dict[npc.getLocation()]
-            # for each npc, rng which direction to move
+    def roamLimited(self):
+        for npc_name in ROAMING_NPC_FREE:
+            npc = self.npc_dict[npc_name]  # get the npc object
+            room = self.room_dict[npc.getLocation()]  # get their room
 
-        # if the direction isnt valid bc locked door / not exist, they stay
-        # else move them
-        pass
+            # check if they can move, if yes then move them
+            direction = random.choice(Room.DIRECTIONS)
+            can_move = self.canMove(room, direction)
+            if can_move[0]:
+                self.moveNPC(npc, can_move[1])
+            # if the direction isnt valid bc locked door / not exist,
+            # they stay AKA do nothing
+
+    # returns a list of 2 objects:
+    # 1st boolean tells you if you can move - if true, 2nd give new_room
+    # 2nd booleans tells if there is a door
+    def canMove(self, room, direction):
+        door = room.getAssociatedDoor(direction)
+        new_room = room.getConnectedRoom(direction)
+
+        if new_room is None:
+            return [False, False]
+        elif door is None:  # is a room, no blocking door
+            return [True, new_room]
+        elif door.getCurrentState() == Puzzle.SOLVED:
+            return [True, new_room]
+        else:  # door is still locked
+            return [False, True]
 
     # this one is for grunts/enemies, who are not limited by locked doors
     # storywise, they all have a masterkey and lock the door behind them if it was already locked
-    def roamAnywhere(self, npc_list):
-        pass
+    def roamAnywhere(self):
+        for npc_name in ROAMING_NPC_LIMITED:
+            npc = self.npc_dict[npc_name]  # get the npc object
+            room = self.room_dict[npc.getLocation()]  # get their room
+
+            # check if they can move, if yes then move them
+            direction = random.choice(Room.DIRECTIONS)
+            new_room = room.getConnectedRoom(direction)
+
+            if new_room is not None:
+                self.moveNPC(npc, new_room)
 
     # =====================================================================================
 

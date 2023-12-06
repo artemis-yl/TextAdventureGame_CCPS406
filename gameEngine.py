@@ -1,4 +1,5 @@
 import view, gameState
+from modelClasses import Room
 
 # from modelClasses import all
 
@@ -27,7 +28,6 @@ class GameEngine:
 
         self.filled_rooms = self.gameState.populateWorld()
         self.current_room = self.filled_rooms[START_ROOM]
-        self.current_room.hasEntered()
 
         self.player = self.gameState.getNPC(USER_NPC)
 
@@ -43,6 +43,7 @@ class GameEngine:
 
     # helper for the play() method's main while loop
     # will check every possible flag that means the game needs to end
+    # currently only 1 flag, but more can be added
     def checkPlayStatus(self):
         if self.playing_now is False:
             return False
@@ -60,6 +61,7 @@ class GameEngine:
         self.outH.appendToBuffer(TURN_BORDER)
 
         self.outH.displayOutput()
+        self.current_room.hasEntered()
 
     def badEnding(self):
         pass
@@ -152,31 +154,26 @@ class GameEngine:
 
     def move(self, direction="x"):
         direction = direction.upper()  # to match keys
-
         # print(self.current_room.name, direction)
 
-        # add the actually north, south, etc if time permits
-
-        # get rid of invalid input
-        if direction.upper() not in ["N", "E", "W", "S"]:
+        # get rid of invalid directions
+        if direction.upper() not in Room.DIRECTIONS:
             # REPLACE WITH OUT MSG CALL
-            self.outH.appendToBuffer("That's not a valid direction.")
+            self.outH.printGameMessage("invalidDirection")
             return
 
         # get the door + room to move to
         door = self.current_room.getAssociatedDoor(direction)
-        new_room = self.current_room.getConnectedRooms().get(direction)
+        new_room = self.current_room.getConnectedRoom(direction)
 
-        if door is not None:  # there is a room that direction but door locked
-            if door.getCurrentState() == "solved":
-                self.moveSuccess(new_room)
-            elif door.getCurrentState() == "unsolved":
-                self.moveFailure("there")
-                self.outH.appendToBuffer(
-                    door.getStateDescription(door.getCurrentState())
-                )
-        elif new_room is not None:  # room that direction, unblocked
-            self.moveSuccess(new_room)
+        # 1st says if you can move, 2nd if True gives new room to move to, else says if door is there
+        move_check = self.gameState.canMove(self.current_room, direction)
+
+        if move_check[0]:
+            self.moveSuccess(move_check[1])
+        elif move_check[1]: # there is a locked door
+            self.moveFailure("there")
+            self.outH.appendToBuffer(door.getStateDescription(door.getCurrentState()))
         else:
             self.moveFailure(self.msg_dict["roomNotThere"])
 
@@ -189,7 +186,7 @@ class GameEngine:
         self.gameState.moveNPC(self.player, new_room)
 
         self.outH.successMsg("MOVE", [self.current_room.getName()])
-        self.outH.appendToBuffer("\n" + self.current_room.describeRoom())
+        self.outH.appendToBuffer(NEW_LINE*2 + self.current_room.describeRoom())
 
         new_room.hasEntered()  # has to be after description has been printed
 
@@ -232,8 +229,10 @@ class GameEngine:
         item_obj = self.player.getObject(item_name)
 
         if item_obj is None:
-            self.outH.printGameMessage("dontHave")
+            if item_name == "":
+                item_name = "nothing"
             self.outH.failMsg("USE", [item_name])
+            self.outH.printGameMessage("dontHave")
 
         elif item_obj.use():  # means the item can only be a puzzle's key
             # ok, try opening door, if failed, then try to find a puzzle
@@ -293,8 +292,8 @@ class GameEngine:
         if item_name == "":
             self.outH.failMsg("DISCARD", ["nothing"])
         elif item_obj is None:
-            self.outH.printGameMessage("dontHave")
             self.outH.failMsg("DISCARD", [item_name])
+            self.outH.printGameMessage("dontHave")
         else:  # player has the object
             # remove from player + put item into room inventory
             self.gameState.moveObject(

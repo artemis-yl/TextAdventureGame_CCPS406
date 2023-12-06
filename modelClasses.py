@@ -72,6 +72,9 @@ class ContainterModel:
 
 
 class Room(ContainterModel):
+
+    DIRECTIONS = ["N", "S", "E", "W"]
+
     def __init__(self, room):
         super().__init__(room["name"], room["description"], room["initialInventory"])
 
@@ -174,11 +177,11 @@ class Room(ContainterModel):
 
         return description
 
-    def getConnectedRooms(self):
-        return self.connected_to
+    def getConnectedRoom(self, key):
+        return self.connected_to.get(key)
 
     def getAssociatedDoor(self, key):
-        return self.associated_door[key]
+        return self.associated_door.get(key)
 
     def addNPC(self, npc_obj):
         self.addToInv(npc_obj)
@@ -197,6 +200,8 @@ class Room(ContainterModel):
 
 # =================================================================================================
 class Puzzle(ContainterModel):
+    SOLVED = "solved"
+    UNSOLVED = "unsolved"
     def __init__(self, puzzle):
         super().__init__(
             puzzle["name"], puzzle["stateDescriptions"], puzzle["subPuzzles"]

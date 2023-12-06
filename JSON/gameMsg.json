@@ -4,8 +4,9 @@
     "youWinMinimal": "You won the most basic objectives. A success is a success, but don't you think you could do better?",
     "youWinBestEnding": "You won! Everyone lives, the enemy is dead, everything that could be done is done!",
     "invalidInput" : "Invalid input, please try again.",
+    "invalidDirection" : "That's not a valid direction.",
     "defaultPrompt" : "Enter what you wanna do (exit to quit): ",
-    "dontHave" : " because you don't have it.",
+    "dontHave" : "You don't have it.",
     "roomNotThere" : " to a room that doesn't exist",
     "bombStart" : "The bomb timer has been initiated.",
     "bombBadEnd" : "Everything around you disintegrates all at once."
