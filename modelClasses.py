@@ -1,3 +1,11 @@
+NAME = "name"
+DESCRIPTION = "description"
+STATE_TEXT = "stateDescriptions"
+INV = "initialInventory"
+SOLVED = "solved"
+UNSOLVED = "unsolved"
+
+
 class ContainterModel:
     def __init__(self, name, states, inventory) -> None:
         # self.id = id #string
@@ -7,9 +15,6 @@ class ContainterModel:
         self.state_descriptions = states  # dictionary
         self.inventory = inventory  # list
 
-    # pythonically, no true data encapsulation, therefore no real need for setter/getters
-    # shall include anyway, for now
-
     # both, name and ID will never change so no need to have setters
     def getName(self):
         return self.name
@@ -17,7 +22,8 @@ class ContainterModel:
     def getID(self):
         return self.id
 
-    # will give you the object
+    # will FIND and give you the object inside the inventory
+    # returns none if the inventory does not have the object
     def getObject(self, obj_name):
         # print(obj_name)
         # print(self.inventory)
@@ -25,7 +31,9 @@ class ContainterModel:
             return self.inventory[obj_name]
         return None
 
+    # will find and remove the object in the inventory
     # unlike above, need the actual object ref and not a string of its name
+    # returns FALSE if the inventory does not have the object
     def removeObject(self, object):
         # print("before : ", self.inventory)
         if object in self.inventory.values():
@@ -34,7 +42,7 @@ class ContainterModel:
             return True
         return False
 
-    def addToInv(self, obj):
+    def addToInv(self, obj):  # self explanatory
         self.inventory[obj.getName()] = obj
 
     def getInv(self):
@@ -46,7 +54,7 @@ class ContainterModel:
     def getStateDescription(self, state_key):
         return self.state_descriptions[state_key]
 
-    # utility method that's really useful
+    # utility method - turns a list of strings into formatted sentence with commas + and
     def listToGrammarString(self, list):
         if len(list) > 1:
             formatted = ", ".join(list[:-1]) + ", and " + list[-1]
@@ -57,7 +65,7 @@ class ContainterModel:
 
         return formatted
 
-    # useful for all  command method
+    # gives a nicely formatted string that describes the content of the inventory
     def listInventory(self):
         str_list = []
         for item in self.inventory.values():
@@ -72,15 +80,14 @@ class ContainterModel:
 
 
 class Room(ContainterModel):
-
     DIRECTIONS = ["N", "S", "E", "W"]
 
     def __init__(self, room):
-        super().__init__(room["name"], room["description"], room["initialInventory"])
+        super().__init__(room[NAME], room[DESCRIPTION], room[INV])
 
         self.connected_to = room["connectedTo"]
         self.associated_door = room["associatedDoor"]
-        self.inventory = room["initialInventory"]
+        self.inventory = room[INV]
         self.entered_before = False
 
     def hasEntered(self):
@@ -88,14 +95,6 @@ class Room(ContainterModel):
 
     def scan(self):
         return self.listInventory()
-
-    # will check if the txt string has a substring with the object's name in it
-    def isItThere(self, txt, dict):
-        for obj in dict.values():
-            if obj.getName() in txt:
-                return True
-
-        return False
 
     # will look for the puzzle in the room's inv, and try to solve it
     # will return false is the puzzle DNE or key doesn't match it
@@ -114,7 +113,7 @@ class Room(ContainterModel):
 
         for door in self.associated_door.values():
             if door is not None:  # a door exists
-                if door.getCurrentState() == "solved":  # if already open move on
+                if door.getCurrentState() == SOLVED:  # if already open move on
                     continue
                 check = check or door.tryToSolve(keyItem)
 
@@ -191,6 +190,7 @@ class Room(ContainterModel):
             self.inventory.remove(npc)
         else:
             print(f"{npc.name} is not inside {self.name}")
+
     def __str__(self):
         return f"Room Name: {self.getName()}"
 
@@ -200,12 +200,10 @@ class Room(ContainterModel):
 
 # =================================================================================================
 class Puzzle(ContainterModel):
-    SOLVED = "solved"
-    UNSOLVED = "unsolved"
+    
+
     def __init__(self, puzzle):
-        super().__init__(
-            puzzle["name"], puzzle["stateDescriptions"], puzzle["subPuzzles"]
-        )
+        super().__init__(puzzle[NAME], puzzle[STATE_TEXT], puzzle["subPuzzles"])
 
         self.current_state = puzzle["currentState"]
         self.key = puzzle["key"]
@@ -214,7 +212,7 @@ class Puzzle(ContainterModel):
     def tryToSolve(self, keyItem):
         # print(self.key, keyItem)
         if self.key == keyItem:
-            self.current_state = "solved"
+            self.current_state = SOLVED
             return True
         else:
             return False
@@ -225,8 +223,8 @@ class Puzzle(ContainterModel):
     def getCurrentState(self):
         return self.current_state
 
-    def setCurrentState(self, currentState):
-        self.current_state = currentState
+    def solved(self):
+        self.current_state = SOLVED
 
     def getKey(self):
         return self.key
@@ -243,7 +241,7 @@ class Puzzle(ContainterModel):
 
 class NPC(ContainterModel):
     def __init__(self, npc):
-        super().__init__(npc["name"], npc["stateDescriptions"], npc["initialInventory"])
+        super().__init__(npc[NAME], npc[STATE_TEXT], npc[INV])
 
         self.dialogue = npc["dialogue"]
         self.current_state = npc["initialState"]
@@ -261,13 +259,15 @@ class NPC(ContainterModel):
     def getRoamState(self):
         return self.is_roaming
 
-    # check if the given key and command are correct
-    # TO BE CHANGED
-    def tryPuzzle(self, command):
-        key = self.puzzle.getKey()
-        key_cmd = self.puzzle.getKeyVerb()
-        if key in self.inventory and key_cmd == command:
-            self.puzzle.solve()
+    #
+    def checkPuzzle(self, verb, item_name):
+        # see if inv has a puzzle
+        for thing in self.inventory:
+            if isinstance(thing, Puzzle):
+                if verb == thing.getKeyVerb() and item_name == thing.getKey():
+                    thing.solved()
+                    return True
+        return False
 
     def getState(self):
         return self.current_state
@@ -275,9 +275,9 @@ class NPC(ContainterModel):
     def setState(self, new_state):
         if new_state in self.possible_states:
             self.current_state = new_state
-            #print(f"{self.npc_id} is now in state: {new_state}")
+            # print(f"{self.npc_id} is now in state: {new_state}")
         else:
-            #print(f"Error: {new_state} is not a valid state for {self.npc_id}")
+            # print(f"Error: {new_state} is not a valid state for {self.npc_id}")
             pass
 
     def getDialogue(self):
@@ -288,16 +288,16 @@ class NPC(ContainterModel):
 
     def setActivity(self, is_active):
         self.is_active = is_active
-        #activity = "active" if is_active else "inactive"
-        #print(f"{self.npc_id} is now {activity}")
+        # activity = "active" if is_active else "inactive"
+        # print(f"{self.npc_id} is now {activity}")
 
     def checkIfRoaming(self):
         return self.is_roaming
 
     def setRoaming(self, is_roaming):
         self.is_roaming = is_roaming
-        #roaming_status = "roaming" if is_roaming else "not roaming"
-        #print(f"{self.npc_id} is now {roaming_status}")
+        # roaming_status = "roaming" if is_roaming else "not roaming"
+        # print(f"{self.npc_id} is now {roaming_status}")
 
 
 # =================================================================================================
@@ -305,7 +305,7 @@ class NPC(ContainterModel):
 
 class Item(ContainterModel):
     def __init__(self, item):
-        super().__init__(item["name"], item["stateDescriptions"], [None])
+        super().__init__(item[NAME], item[STATE_TEXT], [None])
 
         self.current_state = item["currentState"]
         self.is_purpose = item["is_purpose"]  # [Weapon, Shield, Teleporter, Revive]

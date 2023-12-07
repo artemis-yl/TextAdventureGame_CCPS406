@@ -70,7 +70,7 @@ class GameState:
 
     # this one will roam but be unable to go through locked door
     def roamLimited(self):
-        print(">>> LOGGING : roam activated")
+        # print(">>> LOGGING : roam activated")
         for npc_name in self.roamers_limited:
             npc = self.npc_dict[npc_name]  # get the npc object
             room = self.room_dict[npc.getLocation()]  # get their room
@@ -80,13 +80,12 @@ class GameState:
             can_move = self.canMove(room, direction)
             if can_move[0]:
                 self.moveNPC(npc, can_move[1])
-                #print(">>> LOGGING : ", npc_name, " has moved!")
+                # print(">>> LOGGING : ", npc_name, " has moved!")
             else:
                 # if the direction isnt valid bc locked door / not exist,
                 # they stay AKA do nothing
                 # print(">>> LOGGING : ", npc_name, " STAYED!")
                 pass
-            
 
     # returns a list of 2 objects:
     # 1st boolean tells you if you can move - if true, 2nd give new_room
@@ -107,7 +106,7 @@ class GameState:
     # this one is for grunts/enemies, who are not limited by locked doors
     # storywise, they all have a masterkey and lock the door behind them if it was already locked
     def roamAnywhere(self):
-        for npc_name in ROAMING_NPC_LIMITED:
+        for npc_name in self.roamers_free:
             npc = self.npc_dict[npc_name]  # get the npc object
             room = self.room_dict[npc.getLocation()]  # get their room
 
@@ -192,6 +191,8 @@ class GameState:
             item = self.item_dict[puzzle.getKey()]
             puzzle.setKey(item)
             # print(puzzle.getKey())
+
+    # ================================END POPULATE WORLD METHODS ========================================
 
     def getNPC(self, npc_name):
         # Check if the NPC exists in the dictionary before returning

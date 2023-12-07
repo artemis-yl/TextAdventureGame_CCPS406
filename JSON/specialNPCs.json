@@ -1,0 +1,83 @@
+{
+    "npc_K": {
+        "name": "Kay",
+        "stateDescriptions": {
+            "alive": "This weird guy is here, somehow",
+            "dead": "K is dead.",
+            "imprisoned": "K is somehow locked up - who knows why.",
+            "unsolved": "K does not want anything from you",
+            "solved": "K happily accepts the coin. "
+        },
+        "dialogue": [],
+        "initialState": "alive",
+        "key": "coin",
+        "keyVerb": "GIVE",
+        "isActive": true,
+        "isRoaming": true,
+        "initialInventory": [
+            "puzzle_Kdemo"
+        ],
+        "location": "room_Hangar"
+    },
+    "npc_lia": {
+        "name": "Lia",
+        "stateDescriptions": {
+            "alive": "Thank the stars, your friend Lia is alive.",
+            "dead": "So This Is How Liberty Dies - To A Thunderous Applause.",
+            "imprisoned": "Help me Obi-Wan, you're my only hope.",
+            "unsolved": "Lia, as a freedom fighter is seeking secret information hidden inside the Planet Killer. She was in the process of loading the secret info onto a datastick when she got caught. Perhaps you can find the datastick somewhere secure.",
+            "solved": "You have found the secret information! Lia is quite pleased."
+        },
+        "dialogue": [],
+        "initialState": "imprisoned",
+        "key": "datadrive",
+        "keyVerb": "GIVE",
+        "isActive": false,
+        "isRoaming": false,
+        "initialInventory": [
+            "item_secretInfo",
+            "item_blaster"
+        ],
+        "location": "room_jail"
+    },
+    "npc_jaydai": {
+        "name": "Jaydai",
+        "stateDescriptions": {
+            "alive": "Fear is the path to the dark side. Fear leads to anger.",
+            "dead": "I lost the high ground...",
+            "imprisoned": "Save me you must, my young Padawan.",
+            "unsolved": "Jaydai is a mysterious figure. He looks at you and finds you wanting - what could he be looking for?",
+            "solved": "You have found the beamsaber and are with your friend! Now you can use the Power."
+        },
+        "dialogue": [],
+        "initialState": "alive",
+        "key": "beamsaber",
+        "keyVerb": "GIVE",
+        "isActive": false,
+        "isRoaming": false,
+        "initialInventory": [
+            "item_beamSaber"
+        ],
+        "location": "room_reactor"
+    },
+    "npc_boss": {
+        "name": "DarkFather",
+        "stateDescriptions": {
+            "alive": "I have brought peace, freedom, justice and security to my new empire!",
+            "dead": "I have succumbed to your great powers.",
+            "imprisoned": "I think you broke the game.",
+            "unsolved": "You lack allies, tools, and personal strength. Now you will die.",
+            "solved": "You have everything you need to defeat him."
+        },
+        "dialogue": [],
+        "initialState": "alive",
+        "key": "",
+        "keyVerb": "ATTACK",
+        "isActive": true,
+        "isRoaming": false,
+        "initialInventory": [
+            "item_beamSaber"
+        ],
+        "location": "room_control"
+    }
+}

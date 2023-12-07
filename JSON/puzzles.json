@@ -65,15 +65,17 @@
         "keyVerb": "USE",
         "subPuzzles": [null]
     },
-    "puzzle_LiaInfo": {
-        "name": "SideQuest - Lia's Object",
+    "puzzle_Kdemo": {
+        "name": "DoorCheat",
         "stateDescriptions": {
-            "unsolved": "Lia, as a freedom fighter is seeking secret information hidden inside the Planet Killer. She was in the process of loading the secret info onto a datastick when she got caught. Perhaps you can find the datastick somewhere secure.",
-            "solved": "You have found the secret information! Lia is quite pleased."
+            "unsolved": "A mystery",
+            "solved": "All doors are now opened"
         },
         "currentState": "unsolved",
-        "key": "item_secretInfo",
-        "keyVerb": "TALK",
-        "subPuzzles": [null]
+        "key": "item_coin",
+        "keyVerb": "GIVE",
+        "subPuzzles": [
+            null
+        ]
     }
 }

@@ -8,6 +8,7 @@
     "defaultPrompt" : "Enter what you wanna do (exit to quit): ",
     "dontHave" : "You don't have it.",
     "roomNotThere" : " to a room that doesn't exist",
+    "NPCnotThere" : " that person isn't here.",
     "bombStart" : "The bomb timer has been initiated.",
     "bombBadEnd" : "Everything around you disintegrates all at once."
 }
