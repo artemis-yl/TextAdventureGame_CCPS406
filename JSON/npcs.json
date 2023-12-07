@@ -39,9 +39,9 @@
             "imprisoned": "Help me Obi-Wan, you're my only hope."
         },
         "dialogue": {
-            "defaultDialogue": “Thank the stars, you’ve come to my rescue! I’ve been locked up in this holding cell ever since the wretched station leader intercepted my ship and confiscated the top-secret data I was transporting. The information is stored on a data drive, and I have a hunch that its being kept somewhere in the Security Room. You must get that information back to me for safe keeping, you’re my only hope! I will stay close and assist you in your mission.”,
-            "questComplete": “You have managed to retrieve my data drive! Your heroic act brings us closer to restoring peace and freedom to the galaxy and will not go unrewarded!”,
-            "finalDialogue": “I’ve got your back, let’s shoot our way off this awful space station and escape together in one piece with my data drive.”
+            "defaultDialogue": "Thank the stars, you’ve come to my rescue! I’ve been locked up in this holding cell ever since the wretched station leader intercepted my ship and confiscated the top-secret data I was transporting. The information is stored on a data drive, and I have a hunch that its being kept somewhere in the Security Room. You must get that information back to me for safe keeping, you’re my only hope! I will stay close and assist you in your mission.",
+            "questComplete": "You have managed to retrieve my data drive! Your heroic act brings us closer to restoring peace and freedom to the galaxy and will not go unrewarded!",
+            "finalDialogue": "I’ve got your back, let’s shoot our way off this awful space station and escape together in one piece with my data drive."
         },
         "initialState": "imprisoned",
         "isActive": false,
@@ -60,10 +60,10 @@
             "imprisoned": "Save me you must, my young Padawan."
         },
         "dialogue": {
-            "meetDialogue": “Greetings young adventurer, I sense that the cosmic powers at play have intertwined our fates and brought us here together with a like purpose. To rid the galaxy of the seat of evil that is this wretched space station. In the interest of time, I will be forthright. The machine in the center of this room is the reactor core for the station. Any significant damage to it will undoubtedly set off a chain reaction of explosions throughout the structure, powerful enough to tear it apart for good. I will stay close and assist you in your mission.”,
-            "defaultDialogue": “We should seek out some explosives. I sensed their presence in the armory earlier. Once they are in our possession, interact with the reactor to initiate the detonation sequence. You must do this only when you believe your mission here is complete and you are ready to escape. We won’t have much time to make it back to the main hangar once the countdown begins.”,
-            "questStart": “Ah yes, I see you’ve retrieved an old Beam Saber from the Dark Father’s possessions. An elegant weapon from a more civilized age. You were drawn to it, yes? It must have been calling to you… interesting. I will quickly teach you the basics of Beam Saber combat. *A few moments later* That should do it, with some luck, you’ll now be able to deflect oncoming blaster fire. Shall you meet the Dark Father and engage him in combat, you may have a chance at defeating him.”,
-            "questComplete": “The countdown on the explosives has begun! We must make haste to get to the main hangar and escape before this space station is destroyed!”
+            "meetDialogue": "Greetings young adventurer, I sense that the cosmic powers at play have intertwined our fates and brought us here together with a like purpose. To rid the galaxy of the seat of evil that is this wretched space station. In the interest of time, I will be forthright. The machine in the center of this room is the reactor core for the station. Any significant damage to it will undoubtedly set off a chain reaction of explosions throughout the structure, powerful enough to tear it apart for good. I will stay close and assist you in your mission.",
+            "defaultDialogue": "We should seek out some explosives. I sensed their presence in the armory earlier. Once they are in our possession, interact with the reactor to initiate the detonation sequence. You must do this only when you believe your mission here is complete and you are ready to escape. We won’t have much time to make it back to the main hangar once the countdown begins.",
+            "questStart": "Ah yes, I see you’ve retrieved an old Beam Saber from the Dark Father’s possessions. An elegant weapon from a more civilized age. You were drawn to it, yes? It must have been calling to you… interesting. I will quickly teach you the basics of Beam Saber combat. *A few moments later* That should do it, with some luck, you’ll now be able to deflect oncoming blaster fire. Shall you meet the Dark Father and engage him in combat, you may have a chance at defeating him.",
+            "questComplete": "The countdown on the explosives has begun! We must make haste to get to the main hangar and escape before this space station is destroyed!"
         },
         "initialState": "alive",
         "isActive": false,
@@ -113,7 +113,7 @@
             "imprisoned": "I think you broke the game."
         },
         "dialogue": {
-            "defaultDialogue": “You and your little friends have caused enough of a nuisance on this space station. You thought you could prevent the mighty DS-3 Orbital Battle Station from destroying your precious homeworld? Pathetic, you are a fool to believe that you can defeat me and thwart my plans. I am the Dark Father, prepare to die!”
+            "defaultDialogue": "You and your little friends have caused enough of a nuisance on this space station. You thought you could prevent the mighty DS-3 Orbital Battle Station from destroying your precious homeworld? Pathetic, you are a fool to believe that you can defeat me and thwart my plans. I am the Dark Father, prepare to die!"
         },
         "initialState": "alive",
         "isActive" : true,
