@@ -87,7 +87,6 @@ class Room(ContainterModel):
 
         self.connected_to = room["connectedTo"]
         self.associated_door = room["associatedDoor"]
-        self.inventory = room[INV]
         self.entered_before = False
 
     def hasEntered(self):
@@ -95,6 +94,14 @@ class Room(ContainterModel):
 
     def scan(self):
         return self.listInventory()
+
+    # will check if the txt string has a substring with the object's name in it
+    def isItThere(self, txt, dict):
+        for obj in dict.values():
+            if obj.getName() in txt:
+                return True
+
+        return False
 
     # will look for the puzzle in the room's inv, and try to solve it
     # will return false is the puzzle DNE or key doesn't match it
@@ -129,8 +136,8 @@ class Room(ContainterModel):
 
         return room_description + "\n\n" + self.describeDoors()
 
-    # created a formatted string that described the items in the room
-    # CURRENTLY UNUSED
+    # created a formatted string that described the items in the room # CURRENTLY UNUSED
+    
     def describeItems(self):
         itemNum = len(self.inventory)
         if itemNum == 0:

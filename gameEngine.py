@@ -93,7 +93,8 @@ class GameEngine:
     def isBombPlanted(self):
         if self.bombSet is True:
             self.bombTimer -= 1
-            self.outH.appendToBuffer(f"The bomb timer is now {self.bombTimer}.\n")
+            self.outH.printGameMessage("bombTimer")
+            self.outH.appendToBuffer(str(self.bombTimer))
 
         if self.bombTimer == 0:
             self.outH.printGameMessage("bombBadEnd")
@@ -130,12 +131,10 @@ class GameEngine:
         verb = self.inH.getVerb()
         keyword1 = self.inH.getFirstKeyword()
         keyword2 = self.inH.getSecondKeyword()  # attack GRUNT with BLASTER
-        # print(" >>>> : ", verb, keyword1, keyword2)
 
         # check dictionary of commands, seperated on whether it has parameters or not
         if verb.upper() in COMMANDS_NO_ARGS:
             COMMANDS_NO_ARGS[verb.upper()]()
-
         elif verb.upper() in COMMANDS_WITH_ARGS:
             if keyword2 == "":  # aka only 1 parameter
                 COMMANDS_WITH_ARGS[verb.upper()](keyword1)

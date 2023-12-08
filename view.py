@@ -15,12 +15,6 @@ WIDTH = 100
 # 3) Basic invalid inputs are also handled
 class InputHandler:
     def __init__(self, cmd_list, invalidResponse, prompt) -> None:
-        """
-        Verb Target Item ex) attack grunt with blaster
-        Verb Item Target ex) use ITEM on SOMETHING
-        => caller needs to know how to parse which is target and which is item based on Verb
-        """
-
         # code repeat with reset() but better readibility
         self.verb = ""
         self.keyword1 = ""
@@ -76,7 +70,6 @@ class InputHandler:
 
         # imitation do-while loop to ensure valid input from user
         # if the rawInput is invalid OR the verb not on list, keep looping
-        # else, break out of while loop
         while True:
             if self.extractInput() is False:
                 continue

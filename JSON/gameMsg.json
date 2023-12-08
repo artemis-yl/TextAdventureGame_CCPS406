@@ -10,5 +10,6 @@
     "roomNotThere" : " to a room that doesn't exist",
     "NPCnotThere" : " that person isn't here.",
     "bombStart" : "The bomb timer has been initiated.",
-    "bombBadEnd" : "Everything around you disintegrates all at once."
+    "bombBadEnd" : "Everything around you disintegrates all at once.",
+    "bombTimer" : "The bomb timer is now "
 }
