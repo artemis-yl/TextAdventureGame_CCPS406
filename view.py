@@ -164,11 +164,11 @@ class OutputHandler:
 
     # even is there is only 1 object to print, must be in a list for para(meter)s
     def formatVerbMsg(self, verb, result, given):
+        #print("GIVEN: ", given)
         msg = self.getCMDOutput(verb, result)  # get success or failure ver of msg
         splited = re.split("<>", msg)  # string to list, split at seperator "<>"
         # print(">>> ", given)
 
-        # this is very... hardcoded. good for now but may need to be redone
         if len(splited) == 2:  # AKA only 1 "<>" AKA 1 split AKA 2 substrings
             msg = splited[0] + given[0] + splited[1]
         elif len(splited) > 2:

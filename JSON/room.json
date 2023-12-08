@@ -90,7 +90,8 @@
             "item_teleport",
             "item_blaster",
             "item_sabotageBomb",
-            "item_hintBSLocation"
+            "item_hintBSLocation",
+            "npc_K"
         ]
     },
     "room_medbay" : {

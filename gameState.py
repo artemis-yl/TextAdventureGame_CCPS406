@@ -1,5 +1,5 @@
 from gameLoader import GameLoader
-from modelClasses import Room, Puzzle
+from modelClasses import Room, Puzzle, SOLVED
 import random
 
 FILE_NAME_LIST = [
@@ -10,6 +10,8 @@ FILE_NAME_LIST = [
     "JSON/gameMsg.json",
     "JSON/commands.json",
 ]
+
+SIDEQUEST_NPC = [("npc_K", "coin")]
 
 # for roaming
 SEED = 10  # for the roam random generator
@@ -34,6 +36,8 @@ class GameState:
         self.roamers_limited = []
         self.getRoamers()
         self.roamers_free = []
+
+        self.sidequest = False
 
         # print(self.npc_dict["npc_player"].inventory)
 
@@ -98,7 +102,7 @@ class GameState:
             return [False, False]
         elif door is None:  # is a room, no blocking door
             return [True, new_room]
-        elif door.getCurrentState() == Puzzle.SOLVED:
+        elif door.getCurrentState() == SOLVED:
             return [True, new_room]
         else:  # door is still locked
             return [False, True]
@@ -116,6 +120,43 @@ class GameState:
 
             if new_room is not None:
                 self.moveNPC(npc, new_room)
+
+    # =====================================================================================
+    # all side quests require the target NPC to have a certain item in their inv
+    # coin with K, datadrive with Lia, beamsaber + jaydai with player
+    # BUT the final boss one also requires the player to be in the room
+    # BUT talk with jaydai WITH beamsaber is a requirement for them to join
+    def sideQuests(self):
+        # list of NPCs with their special item
+        # check each time this method is called whether they have it
+        # if true, ensure each relative NPC acts as if the sidequest is solved
+        for npc_key, item_name in SIDEQUEST_NPC:
+            npc = self.npc_dict[npc_key]
+            #print(npc.name, item_name)
+            #print(npc.inventory)
+
+            # currently just k, so this is ok
+            if item_name in npc.inventory.keys() and self.sidequest is False:
+                self.unlockAllDoors()
+                self.sidequest = True
+                #print("cheat code: doors are all unlocked")
+
+            # admittedly this is super rough
+
+            # to improve? subclass NPC to create QuestNPCs
+            # will add variable to list their quest Item + if its present in their inv
+            # might also have them hold a veriable to their own unique method
+            # ala self.method(), like the verb dict in gameEngine's executeCommand()
+
+    def unlockAllDoors(self):
+        for room in self.room_dict.values():
+            connections = room.associated_door
+
+            for door in connections.values():
+                if door is None:
+                    continue
+                else:
+                    door.solved()
 
     # =====================================================================================
 

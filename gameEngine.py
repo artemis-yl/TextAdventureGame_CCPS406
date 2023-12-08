@@ -19,21 +19,18 @@ TURN_BORDER = "=" * 100
 class GameEngine:
     def __init__(self) -> None:
         # create game status variables
-        self.turn_counter = 0  # unused
+        self.turn_counter = 0
         self.bombSet = False  # becomes true when bomb set on reactor
         self.bombTimer = 11  # decrements each turn when bombSet true
         self.playing_now = True
 
         self.gameState = gameState.GameState()
-
         self.filled_rooms = self.gameState.populateWorld()
         self.current_room = self.filled_rooms[START_ROOM]
-
         self.player = self.gameState.getNPC(USER_NPC)
 
         cmd_list = [cmds for cmds in self.gameState.command_dict]
         self.commands = self.player.listToGrammarString(cmd_list)
-
         self.msg_dict = self.gameState.getMsgs()
 
         self.inH = view.InputHandler(
@@ -75,6 +72,7 @@ class GameEngine:
             self.executeCommand()
             self.isBombPlanted()
             self.gameState.roamLimited()
+            self.gameState.sideQuests()  # not complete
 
             self.outH.appendToBuffer(TURN_BORDER)
             self.outH.displayOutput()
@@ -107,8 +105,6 @@ class GameEngine:
     # =====================================================
 
     def executeCommand(self):
-        # MOVE THESE 2 DICTS UPWARD AS GLOBAL CONSTANTS LATER
-
         # to use method,type COMMANDS_NO_ARGS[key]( parameter )
         COMMANDS_NO_ARGS = {
             "EXIT": self.exit,  # done
@@ -129,9 +125,6 @@ class GameEngine:
             "TAKE": self.take,  # done
             "DISCARD": self.discard,  # done
         }
-        # some of these will call the method from the appropriate object (container, room, etc)
-        # but then get additional paramters when sent to outputHandler
-
         # get the input from user/player
         self.inH.parseInput()
         verb = self.inH.getVerb()
@@ -149,7 +142,7 @@ class GameEngine:
             else:  # unlikely to occure since game atm is very simple
                 COMMANDS_WITH_ARGS[verb.upper()](keyword1, keyword2)
         else:
-            self.outH.appendToBuffer("Invalid input, please try again.")
+            self.outH.printGameMessage("invalidInput")
 
         self.outH.displayOutput()
 
@@ -200,12 +193,10 @@ class GameEngine:
             self.outH.successMsg(verb, [toBeInserted])
 
     def scan(self):
-        objects = self.current_room.scan()  # aka the room's inventory
-        self.basicOutputCall(objects, "SCAN")
+        self.basicOutputCall(self.current_room.scan(), "SCAN")
 
     def listInventory(self):
-        invString = self.player.listInventory()
-        self.basicOutputCall(invString, "INVENTORY")
+        self.basicOutputCall(self.player.listInventory(), "INVENTORY")
 
     def location(self):
         self.basicOutputCall(self.current_room.getName(), "LOCATION")
@@ -313,7 +304,7 @@ class GameEngine:
 
         # Check if the receiver exists
         if receiver is None:
-            self.outH.failMsg("GIVE", [item_name])
+            self.outH.failMsg("GIVE", [item_name, receiver_name])
             self.outH.printGameMessage("NPCnotThere")
             return
 
@@ -328,20 +319,11 @@ class GameEngine:
 
         # Remove the item from the player's inventory and add it to the receiver's inventory
         self.gameState.moveObject(item_obj, self.player, receiver)
-        self.outH.successMsg("GIVE", [item_name])
+        self.outH.successMsg("GIVE", [item_name, receiver_name])
+        receiver.checkPuzzle("GIVE", item_name)
 
     def exit(self):
         self.playing_now = False
         self.outH.successMsg("EXIT", [])
 
     # from old demo code.... may not need
-
-    def unlockAllDoors(room_dict):
-        for room in room_dict.values():
-            connections = room.associated_door
-
-            for door in connections:
-                if door is None:
-                    continue
-                else:
-                    door.current_state = "solved"
